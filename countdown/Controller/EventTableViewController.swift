@@ -40,7 +40,7 @@ class EventTableViewController : UITableViewController{
         let event = eventList[indexPath.row]
 
         cell.textLabel!.text = event.name
-        cell.detailTextLabel!.text = "\(calculateCountDown(event.date)) days left"
+        cell.detailTextLabel!.text = "\(dateFormat(event.date)) - \(calculateCountDown(event.date)) days left"
         
         return cell
          
@@ -49,4 +49,48 @@ class EventTableViewController : UITableViewController{
     func calculateCountDown(_ date:Date) -> Int{
         return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal,
+                                        title: "Edit") { [weak self] (action, view, completionHandler) in
+            self?.editHandler(indexPath.row)
+                                            completionHandler(true)
+        }
+        action.backgroundColor = .systemBlue
+        
+        return UISwipeActionsConfiguration(actions: [action])
+
+    }
+    
+    func editHandler(_ index: Int){
+        performSegue(withIdentifier: "createEvent", sender: index)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createEvent", let destination = segue.destination as? AddEventViewController {
+            if let s = sender as? Int{
+                destination.event = self.eventList[s]
+            }
+        }
+    }
+    
+    func dateFormat(_ date:Date) -> String
+        {
+            let dateFormatter = DateFormatter() // set to local date (Singapore)
+            dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
+            dateFormatter.dateFormat = "d MMM yyyy h:mm a" // convert date to String
+            let datevalue = dateFormatter.string(from: date)
+            
+            return datevalue
+        }
 }

@@ -12,11 +12,27 @@ class AddEventViewController : UIViewController{
     
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var createBtn: UIButton!
+    @IBOutlet weak var updateBtn: UIButton!
     
     let eventController = EventController()
     
+    var event:Event?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (event != nil){
+            eventTitle.text = event!.name
+            datePicker.date = event!.date
+            self.navigationItem.title = "Edit"
+            self.createBtn.isHidden = true
+            self.updateBtn.isHidden = false
+        }else{
+            self.navigationItem.title = "Create"
+            self.createBtn.isHidden = false
+            self.updateBtn.isHidden = true
+        }
     }
     
     @IBAction func createEvent(_ sender: Any) {
@@ -29,7 +45,19 @@ class AddEventViewController : UIViewController{
         eventController.addEvent(event)
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func updateEvent(_ sender: Any) {
+        let title = eventTitle.text!
+        let date = datePicker.date
+        let created_at = event?.created_at
+        let groups:[Group] = []
         
+        let new = Event(title, date, created_at!, groups)
+        
+        eventController.updateEvent(event!, new)
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

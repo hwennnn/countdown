@@ -29,6 +29,33 @@ class EventController: UIViewController{
         }
     }
     
+    func updateEvent(_ old:Event, _ new:Event){
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDEvent")
+        
+        // to be changed using id to find the speficic event instead using unique name
+        fetchRequest.predicate = NSPredicate(format: "name = %@", old.name)
+        do {
+            let fetched = try context.fetch(fetchRequest)
+            
+            let r = fetched[0] as NSManagedObject
+            r.setValue(new.name, forKey: "name")
+            r.setValue(new.date, forKey: "date")
+            
+            do{
+                try context.save()
+            } catch let error as NSError{
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+        } catch let error as NSError{
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
     func retrieveAllEvent() -> [Event]{
         var eventList:[Event] = []
         var events:[CDEvent] = []

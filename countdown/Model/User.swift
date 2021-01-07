@@ -8,6 +8,7 @@
 import Foundation
 
 class User{
+    // to be added: id
     var name: String
     var email: String
     var events: [Event]

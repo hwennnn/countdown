@@ -8,6 +8,7 @@
 import Foundation
 
 class Group{
+    // to be added: id
     var name: String
     
     init(_ Name:String) {

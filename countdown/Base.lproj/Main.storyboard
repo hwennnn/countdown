@@ -103,7 +103,7 @@
                     <navigationItem key="navigationItem" title="Countdown" id="sXL-Ne-5QC">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="YFN-99-hEZ">
                             <connections>
-                                <segue destination="ma9-0W-8Ng" kind="show" id="KCp-R0-wmU"/>
+                                <segue destination="ma9-0W-8Ng" kind="show" identifier="createEvent" id="KCp-R0-wmU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -112,7 +112,7 @@
             </objects>
             <point key="canvasLocation" x="1267" y="-256"/>
         </scene>
-        <!--Create-->
+        <!--Add Event View Controller-->
         <scene sceneID="frJ-MA-7M7">
             <objects>
                 <viewController id="ma9-0W-8Ng" customClass="AddEventViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
@@ -145,14 +145,24 @@
                                     <action selector="createEvent:" destination="ma9-0W-8Ng" eventType="touchUpInside" id="3Gf-rg-5i1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMX-qV-mVs">
+                                <rect key="frame" x="179" y="534" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updateEvent:" destination="ma9-0W-8Ng" eventType="touchUpInside" id="WJA-Hh-Koe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MJz-32-zTx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create" id="VR5-9k-QdL"/>
+                    <navigationItem key="navigationItem" id="VR5-9k-QdL"/>
                     <connections>
+                        <outlet property="createBtn" destination="nrH-r6-ckR" id="ugP-HS-LfJ"/>
                         <outlet property="datePicker" destination="niv-x8-Dot" id="o1v-LY-w12"/>
                         <outlet property="eventTitle" destination="tSB-4b-THZ" id="cj9-pi-PJR"/>
+                        <outlet property="updateBtn" destination="EMX-qV-mVs" id="LId-33-8xE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIt-R6-3LX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -8,6 +8,7 @@
 import Foundation
 
 class Event{
+    // to be added: id
     var name: String
     var date: Date
     var created_at: Date
