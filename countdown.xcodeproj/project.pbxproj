@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A880ED325A7428A00494BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
+		8A880ED625A7429700494BD3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED525A7429700494BD3 /* Group.swift */; };
+		8A880ED925A742A500494BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED825A742A500494BD3 /* User.swift */; };
 		8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295BC25A73A5400EC33EB /* AppDelegate.swift */; };
 		8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */; };
 		8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB295C225A73A5400EC33EB /* Main.storyboard */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A880ED225A7428A00494BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		8A880ED525A7429700494BD3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		8A880ED825A742A500494BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8AB295B925A73A5400EC33EB /* countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB295BC25A73A5400EC33EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +94,9 @@
 		8AB295D825A7402D00EC33EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8A880ED225A7428A00494BD3 /* Event.swift */,
+				8A880ED525A7429700494BD3 /* Group.swift */,
+				8A880ED825A742A500494BD3 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,8 +174,11 @@
 				8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */,
 				8AB295E125A7415800EC33EB /* AddEventViewController.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
+				8A880ED625A7429700494BD3 /* Group.swift in Sources */,
 				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,
+				8A880ED925A742A500494BD3 /* User.swift in Sources */,
 				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
+				8A880ED325A7428A00494BD3 /* Event.swift in Sources */,
 				8AB295C725A73A5400EC33EB /* countdown.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
