@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295BC25A73A5400EC33EB /* AppDelegate.swift */; };
 		8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */; };
-		8AB295C125A73A5400EC33EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295C025A73A5400EC33EB /* ViewController.swift */; };
 		8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB295C225A73A5400EC33EB /* Main.storyboard */; };
 		8AB295C725A73A5400EC33EB /* countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */; };
 		8AB295C925A73A5500EC33EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AB295C825A73A5500EC33EB /* Assets.xcassets */; };
 		8AB295CC25A73A5500EC33EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */; };
+		8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DA25A740D500EC33EB /* EventTableViewController.swift */; };
+		8AB295DE25A7411300EC33EB /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DD25A7411300EC33EB /* EventController.swift */; };
+		8AB295E125A7415800EC33EB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295E025A7415800EC33EB /* AddEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8AB295B925A73A5400EC33EB /* countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB295BC25A73A5400EC33EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8AB295C025A73A5400EC33EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8AB295C325A73A5400EC33EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AB295C625A73A5400EC33EB /* countdown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = countdown.xcdatamodel; sourceTree = "<group>"; };
 		8AB295C825A73A5500EC33EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AB295CB25A73A5500EC33EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AB295CD25A73A5500EC33EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AB295DA25A740D500EC33EB /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
+		8AB295DD25A7411300EC33EB /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		8AB295E025A7415800EC33EB /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +62,10 @@
 		8AB295BB25A73A5400EC33EB /* countdown */ = {
 			isa = PBXGroup;
 			children = (
+				8AB295D825A7402D00EC33EB /* Model */,
+				8AB295D625A7401100EC33EB /* Controller */,
 				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */,
-				8AB295C025A73A5400EC33EB /* ViewController.swift */,
 				8AB295C225A73A5400EC33EB /* Main.storyboard */,
 				8AB295C825A73A5500EC33EB /* Assets.xcassets */,
 				8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */,
@@ -68,6 +73,23 @@
 				8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */,
 			);
 			path = countdown;
+			sourceTree = "<group>";
+		};
+		8AB295D625A7401100EC33EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8AB295DA25A740D500EC33EB /* EventTableViewController.swift */,
+				8AB295DD25A7411300EC33EB /* EventController.swift */,
+				8AB295E025A7415800EC33EB /* AddEventViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8AB295D825A7402D00EC33EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AB295C125A73A5400EC33EB /* ViewController.swift in Sources */,
 				8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */,
+				8AB295E125A7415800EC33EB /* AddEventViewController.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
+				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,
+				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
 				8AB295C725A73A5400EC33EB /* countdown.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,19 +1,16 @@
 //
-//  ViewController.swift
+//  EventTableViewController.swift
 //  countdown
 //
 //  Created by hwen on 7/1/21.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
-
+class EventTableViewController : UITableViewController{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
-
