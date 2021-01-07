@@ -39,9 +39,10 @@ class AddEventViewController : UIViewController{
         let title = eventTitle.text!
         let date = datePicker.date
         let created_at = Date()
+        let id = String(created_at.timeIntervalSince1970)
         let groups:[Group] = []
         
-        let event = Event(title, date, created_at, groups)
+        let event = Event(id, title, date, created_at, groups)
         eventController.addEvent(event)
         
         self.navigationController?.popViewController(animated: true)
@@ -50,12 +51,11 @@ class AddEventViewController : UIViewController{
     @IBAction func updateEvent(_ sender: Any) {
         let title = eventTitle.text!
         let date = datePicker.date
-        let created_at = event?.created_at
-        let groups:[Group] = []
         
-        let new = Event(title, date, created_at!, groups)
+        event!.name = title
+        event!.date = date
         
-        eventController.updateEvent(event!, new)
+        eventController.updateEvent(event!)
         
         self.navigationController?.popViewController(animated: true)
     }

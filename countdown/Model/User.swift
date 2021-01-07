@@ -6,17 +6,25 @@
 //
 
 import Foundation
+import CoreData
 
 class User{
-    // to be added: id
+    var id: String?
     var name: String
     var email: String
     var events: [Event]
     
-    init(_ Name:String, _ Email:String, _ Events:[Event]) {
-        name = Name
-        email = Email
-        events = Events
+    init(_ id:String, _ name:String, _ email:String, _ events:[Event]) {
+        self.id = id
+        self.name = name
+        self.email = email
+        self.events = events
     }
     
+    init(_ name:String, _ email:String, _ events:[Event]) {
+        self.name = name
+        self.email = email
+        self.events = events
+    }
+
 }

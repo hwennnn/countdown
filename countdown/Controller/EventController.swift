@@ -18,6 +18,7 @@ class EventController: UIViewController{
         let entity = NSEntityDescription.entity(forEntityName: "CDEvent", in: context)!
         
         let newEvent = NSManagedObject(entity: entity, insertInto: context) as! CDEvent
+        newEvent.setValue(event.id, forKey: "eventID")
         newEvent.setValue(event.name, forKey: "name")
         newEvent.setValue(event.date, forKey: "date")
         newEvent.setValue(event.created_at, forKey: "created_at")
@@ -29,20 +30,20 @@ class EventController: UIViewController{
         }
     }
     
-    func updateEvent(_ old:Event, _ new:Event){
+    func updateEvent(_ event:Event){
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDEvent")
         
         // to be changed using id to find the speficic event instead using unique name
-        fetchRequest.predicate = NSPredicate(format: "name = %@", old.name)
+        fetchRequest.predicate = NSPredicate(format: "eventID = %@", event.id!)
         do {
             let fetched = try context.fetch(fetchRequest)
             
             let r = fetched[0] as NSManagedObject
-            r.setValue(new.name, forKey: "name")
-            r.setValue(new.date, forKey: "date")
+            r.setValue(event.name, forKey: "name")
+            r.setValue(event.date, forKey: "date")
             
             do{
                 try context.save()
@@ -62,7 +63,7 @@ class EventController: UIViewController{
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDEvent")
         
-        fetchRequest.predicate = NSPredicate(format: "name = %@", event.name)
+        fetchRequest.predicate = NSPredicate(format: "eventID = %@", event.id!)
         
         do {
             let fetched = try context.fetch(fetchRequest)
@@ -92,12 +93,13 @@ class EventController: UIViewController{
             events = try context.fetch(fetchRequest)
 
             for e in events{
+                let id = e.eventID!
                 let name = e.name!
                 let date = e.date!
                 let created_at = e.created_at!
                 let groups:[Group] = []
                 
-                let event = Event(name,date,created_at,groups)
+                let event = Event(id,name,date,created_at,groups)
                 eventList.append(event)
                 
             }

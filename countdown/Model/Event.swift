@@ -6,18 +6,27 @@
 //
 
 import Foundation
+import CoreData
 
 class Event{
-    // to be added: id
+    var id: String?
     var name: String
     var date: Date
     var created_at: Date
     var groups: [Group]
     
-    init(_ Name:String, _ Date:Date, _ Created_at:Date, _ Groups:[Group]) {
-        name = Name
-        date = Date
-        created_at = Created_at
-        groups = Groups
+    init(_ name:String,_ date:Date,_ created_at:Date,_ groups:[Group]) {
+        self.name = name
+        self.date = date
+        self.created_at = created_at
+        self.groups = groups
+    }
+    
+    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ groups:[Group]) {
+        self.id = id
+        self.name = name
+        self.date = date
+        self.created_at = created_at
+        self.groups = groups
     }
 }

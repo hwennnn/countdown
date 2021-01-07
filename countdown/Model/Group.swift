@@ -6,12 +6,18 @@
 //
 
 import Foundation
+import CoreData
 
 class Group{
-    // to be added: id
+    var id: String?
     var name: String
     
-    init(_ Name:String) {
-        name = Name
+    init(_ name:String) {
+        self.name = name
+    }
+    
+    init(_ id:String, _ name:String) {
+        self.id = id
+        self.name = name
     }
 }
