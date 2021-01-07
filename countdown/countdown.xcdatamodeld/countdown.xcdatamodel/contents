@@ -4,12 +4,12 @@
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="groups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGroup" inverseName="events" inverseEntity="CDGroup"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDGroup" inverseName="events" inverseEntity="CDGroup"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="events" inverseEntity="CDUser"/>
     </entity>
     <entity name="CDGroup" representedClassName="CDGroup" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="events" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDEvent" inverseName="groups" inverseEntity="CDEvent"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDEvent" inverseName="groups" inverseEntity="CDEvent"/>
     </entity>
     <entity name="CDUser" representedClassName="CDUser" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
@@ -17,7 +17,7 @@
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDEvent" inverseName="user" inverseEntity="CDEvent"/>
     </entity>
     <elements>
-        <element name="CDEvent" positionX="-355.8360595703125" positionY="-89.206298828125" width="128" height="104"/>
+        <element name="CDEvent" positionX="-355.8360595703125" positionY="-89.206298828125" width="128" height="118"/>
         <element name="CDGroup" positionX="-67.2606201171875" positionY="181.7149658203125" width="128" height="73"/>
         <element name="CDUser" positionX="-370.3570556640625" positionY="116.0853271484375" width="128" height="88"/>
     </elements>
