@@ -8,7 +8,7 @@
 import UIKit
 import CVCalendar
 
-class CalendarViewController : UIViewController , CVCalendarViewDelegate , CVCalendarMenuViewDelegate{
+class CalendarViewController : UIViewController{
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -27,7 +27,7 @@ class CalendarViewController : UIViewController , CVCalendarViewDelegate , CVCal
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-//        menuView.commitMenuViewUpdate()
+        menuView.commitMenuViewUpdate()
         calendarView.commitCalendarViewUpdate()
     }
 
@@ -35,11 +35,14 @@ class CalendarViewController : UIViewController , CVCalendarViewDelegate , CVCal
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func presentationMode() -> CalendarMode { return .monthView }
-
-    func firstWeekday() -> Weekday { return .monday }
-
 }
 
+extension CalendarViewController : CVCalendarMenuViewDelegate{
+    
+}
+
+extension CalendarViewController : CVCalendarViewDelegate{
+    func presentationMode() -> CalendarMode { return CalendarMode.monthView }
+    func firstWeekday() -> Weekday { return Weekday.monday }
+}
 
