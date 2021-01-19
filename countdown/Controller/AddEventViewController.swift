@@ -14,6 +14,8 @@ class AddEventViewController : UIViewController{
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var createBtn: UIButton!
     @IBOutlet weak var updateBtn: UIButton!
+    @IBOutlet weak var includedTimeSwitch: UISwitch!
+    @IBOutlet weak var progressSlider: UISlider!
     
     let eventController = EventController()
     
@@ -40,9 +42,12 @@ class AddEventViewController : UIViewController{
         let date = datePicker.date
         let created_at = Date()
         let id = String(created_at.timeIntervalSince1970)
-        let groups:[Group] = []
+        let group = Group()
+        let progress:Int32 = Int32(progressSlider.value)
+        let includedTime:Bool = includedTimeSwitch.isOn
+        print(includedTimeSwitch.isOn)
         
-        let event = Event(id, title, date, created_at, groups)
+        let event = Event(id, title, date, created_at, group, progress, includedTime)
         eventController.addEvent(event)
         
         self.navigationController?.popViewController(animated: true)
@@ -62,5 +67,13 @@ class AddEventViewController : UIViewController{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    @IBAction func updateIncludeTime(_ sender: Any) {
+        if (includedTimeSwitch.isOn){
+            datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
+        }else{
+            datePicker.datePickerMode = UIDatePicker.Mode.date
+        }
     }
 }

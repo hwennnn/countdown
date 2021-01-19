@@ -40,7 +40,7 @@ class EventTableViewController : UITableViewController{
         let event = eventList[indexPath.row]
 
         cell.textLabel!.text = event.name
-        cell.detailTextLabel!.text = "\(dateFormat(event.date)) - \(calculateCountDown(event.date)) days left"
+        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(event.date)) days left Progress:\(event.progress)%"
         
         return cell
          
@@ -88,11 +88,12 @@ class EventTableViewController : UITableViewController{
         }
     }
     
-    func dateFormat(_ date:Date) -> String{
+    func dateFormat(_ event:Event) -> String{
         let dateFormatter = DateFormatter() // set to local date (Singapore)
         dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        dateFormatter.dateFormat = "d MMM yyyy h:mm a" // convert date to String
-        let datevalue = dateFormatter.string(from: date)
+        let dateFormatStyle:String = (event.includedTime) ? "d MMM yyyy h:mm a" : "d MMM yyyy"
+        dateFormatter.dateFormat = dateFormatStyle // convert date to String
+        let datevalue = dateFormatter.string(from: event.date)
         
         return datevalue
     }
