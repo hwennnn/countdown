@@ -29,9 +29,9 @@ class CalendarViewController : UIViewController{
         calendarView.animatorDelegate = self
         calendarView.delegate = self
         menuView.delegate = self
-//        calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = UIColor("Primary")
-//        calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = UIColor.PrimaryColor
-        //self.navigationItem.title = Ca
+        calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = .colorFromCode(1)
+        calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = .colorFromCode(2)
+        self.navigationItem.title = "Calendar"
     }
 
     override func viewDidLayoutSubviews() {
@@ -41,10 +41,10 @@ class CalendarViewController : UIViewController{
         calendarView.commitCalendarViewUpdate()
     }
 
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
 
 extension CalendarViewController : CVCalendarMenuViewDelegate{
@@ -70,7 +70,7 @@ extension CalendarViewController : CVCalendarViewDelegate{
                 updatedMonthLabel.transform = CGAffineTransform(translationX: 0, y: offset)
                 updatedMonthLabel.transform = CGAffineTransform(scaleX: 1, y: 0.1)
                 
-                UIView.animate(withDuration: 0.35, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                UIView.animate(withDuration: 0.35, delay: 0, options: UIView.AnimationOptions.curveEaseInOut , animations: {
                     self.animationFinished = false
                     self.monthLabel.transform = CGAffineTransform(translationX: 0, y: -offset)
                     self.monthLabel.transform = CGAffineTransform(scaleX: 1, y: 0.1)
