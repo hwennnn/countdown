@@ -13,13 +13,20 @@ class CalendarViewController : UIViewController{
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet var dayview: UILabel!
     private var randomNumberOfDotMarkersForDay = [Int]()
     private var shouldShowDaysOut = true
     private var animationFinished = true
     private var selectedDay: DayView!
     private var currentCalendar: Calendar?
     
-
+    // Controller
+    let eventController = EventController()
+    var datesDictionary:[String:String] = [:]
+    let formatter = DateFormatter()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +39,13 @@ class CalendarViewController : UIViewController{
         calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = .colorFromCode(1)
         calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = .colorFromCode(2)
         self.navigationItem.title = "Calendar"
+        
+        formatter.dateFormat = "dd mm yyyy"
+        //filling up dictionary (data)
+        for event in eventController.retrieveAllEvent(){
+            datesDictionary[formatter.string(from: Date())] = event.name
+        }
+        
     }
 
     override func viewDidLayoutSubviews() {
@@ -92,5 +106,14 @@ extension CalendarViewController : CVCalendarViewDelegate{
                 self.view.insertSubview(updatedMonthLabel, aboveSubview: self.monthLabel)
             }
         }
+    
+    
+    func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool){
+
+            dayview.text = ""
+            if(datesDictionary[dayView.date.commonDescription] != nil){
+                dayview.text = datesDictionary[dayView.date.commonDescription]
+            }
+    }
 }
 

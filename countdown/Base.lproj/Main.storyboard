@@ -36,6 +36,13 @@
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <color key="tintColor" name="AccentColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXQ-rt-VKI">
+                                <rect key="frame" x="186" y="601" width="42" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dj2-K5-i4L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -43,6 +50,7 @@
                     <navigationItem key="navigationItem" id="Udj-OU-APY"/>
                     <connections>
                         <outlet property="calendarView" destination="EF1-bD-AZw" id="fw8-GA-yTR"/>
+                        <outlet property="dayview" destination="fXQ-rt-VKI" id="2Yk-An-8eI"/>
                         <outlet property="menuView" destination="cxA-dH-boz" id="D30-Gk-bz8"/>
                         <outlet property="monthLabel" destination="Hmr-1B-RWR" id="D48-hk-wmf"/>
                     </connections>
