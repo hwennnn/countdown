@@ -29,8 +29,8 @@ class CalendarViewController : UIViewController{
         calendarView.animatorDelegate = self
         calendarView.delegate = self
         menuView.delegate = self
-        calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = UIColor("Primary")
-        calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = UIColor.PrimaryColor
+//        calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = UIColor("Primary")
+//        calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = UIColor.PrimaryColor
         //self.navigationItem.title = Ca
     }
 
