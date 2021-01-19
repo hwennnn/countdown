@@ -289,7 +289,7 @@ extension CVCalendarView {
                         height = contentViewSize.height
                         contentController.updateHeight(height, animated: false)
                     case .monthView :
-                        height = (maxHeight / countOfWeeks) - vSpace
+                        height = (maxHeight / countOfWeeks) - (vSpace * countOfWeeks)
                     }
 
                     // If no height constraint found we set it manually.

@@ -50,9 +50,6 @@ public final class CVCalendarWeekContentViewController: CVCalendarContentViewCon
                 }
             }
         }
-        
-        checkScrollToPreviousDisabled()
-        checkScrollToBeyondDisabled()
 
         if let presented = weekViews[presented] {
             insertWeekView(getPreviousWeek(presented), withIdentifier: previous)
@@ -76,9 +73,6 @@ public final class CVCalendarWeekContentViewController: CVCalendarContentViewCon
         weekView.frame.origin = CGPoint(x: scrollView.bounds.width * index, y: 0)
         weekViews[identifier] = weekView
         scrollView.addSubview(weekView)
-        
-        checkScrollToPreviousDisabled()
-        checkScrollToBeyondDisabled()
     }
 
     public func replaceWeekView(_ weekView: WeekView,
@@ -106,11 +100,6 @@ public final class CVCalendarWeekContentViewController: CVCalendarContentViewCon
                 replaceWeekView(followingWeek, withIdentifier: self.presented, animatable: true)
 
                 insertWeekView(getFollowingWeek(followingWeek), withIdentifier: following)
-                if let dayViews = followingWeek.dayViews,
-                   let fromDay = dayViews.first,
-                   let toDay = dayViews.last {
-                    self.calendarView.delegate?.didShowNextWeekView?(from: fromDay, to: toDay)
-                }
             }
         }
     }
@@ -125,11 +114,6 @@ public final class CVCalendarWeekContentViewController: CVCalendarContentViewCon
                 replaceWeekView(previousWeek, withIdentifier: presented, animatable: true)
 
                 insertWeekView(getPreviousWeek(previousWeek), withIdentifier: previous)
-                if let dayViews = previousWeek.dayViews,
-                   let fromDay = dayViews.first,
-                   let toDay = dayViews.last{
-                    self.calendarView.delegate?.didShowPreviousWeekView?(from: fromDay, to: toDay)
-                }
             }
         }
     }
@@ -191,11 +175,6 @@ public final class CVCalendarWeekContentViewController: CVCalendarContentViewCon
                     strongSelf.prepareTopMarkersOnWeekView(weekView, hidden: false)
                 }
             }
-            if let dayViews = previous.dayViews,
-               let fromDay = dayViews.first,
-               let toDay = dayViews.last {
-                self.calendarView.delegate?.didShowPreviousWeekView?(from: fromDay, to: toDay)
-            }
         }
     }
 
@@ -235,11 +214,6 @@ public final class CVCalendarWeekContentViewController: CVCalendarContentViewCon
                 for weekView in strongSelf.weekViews.values {
                     strongSelf.prepareTopMarkersOnWeekView(weekView, hidden: false)
                 }
-            }
-            if let dayViews = following.dayViews,
-               let fromDay = dayViews.first,
-               let toDay = dayViews.last {
-                self.calendarView.delegate?.didShowNextWeekView?(from: fromDay, to: toDay)
             }
         }
 
@@ -383,38 +357,6 @@ extension CVCalendarWeekContentViewController {
 
         return getFollowingWeek(presentedWeekView)
     }
-    
-    func checkScrollToPreviousDisabled() {
-        let calendar = self.calendarView.delegate?.calendar?() ?? Calendar.current
-        
-        guard let presentedWeek = getPresentedWeek(),
-            let disableScrollingBeforeDate = calendarView.disableScrollingBeforeDate else {
-                return
-        }
-        
-        let convertedDate = CVDate(date: disableScrollingBeforeDate, calendar: calendar)
-        presentedWeek.mapDayViews({ dayView in
-            if matchedDays(convertedDate, dayView.date) {
-                presentedWeek.allowScrollToPreviousWeek = false
-            }
-        })
-    }
-    
-    func checkScrollToBeyondDisabled() {
-        let calendar = self.calendarView.delegate?.calendar?() ?? Calendar.current
-        
-        guard let presentedWeek = getPresentedWeek(),
-            let disableScrollingBeyondDate = calendarView.disableScrollingBeyondDate else {
-                return
-        }
-        
-        let convertedDate = CVDate(date: disableScrollingBeyondDate, calendar: calendar)
-        presentedWeek.mapDayViews({ dayView in
-            if matchedDays(convertedDate, dayView.date) {
-                presentedWeek.allowScrollToNextWeek = false
-            }
-        })
-    }
 }
 
 // MARK: - MonthView management
@@ -532,20 +474,6 @@ extension CVCalendarWeekContentViewController {
         if scrollView.contentOffset.y != 0 {
             scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 0)
         }
-        
-        //restricts scrolling to previous weeks
-        if getPresentedWeek()?.allowScrollToPreviousWeek == false,
-            scrollView.contentOffset.x < scrollView.frame.width {
-            scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
-            return
-        }
-        
-        //restricts scrolling to next weeks
-        if getPresentedWeek()?.allowScrollToNextWeek == false,
-            scrollView.contentOffset.x > scrollView.frame.width {
-            scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
-            return
-        }
 
         let page = Int(floor((scrollView.contentOffset.x -
             scrollView.frame.width / 2) / scrollView.frame.width) + 1)
@@ -558,7 +486,7 @@ extension CVCalendarWeekContentViewController {
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if let presented = weekViews[presented] {
-            prepareTopMarkersOnWeekView(presented, hidden: self.calendarView.delegate?.shouldHideTopMarkerOnPresentedView?() ?? true)
+            prepareTopMarkersOnWeekView(presented, hidden: true)
         }
     }
 
