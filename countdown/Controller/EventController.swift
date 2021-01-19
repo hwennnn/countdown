@@ -46,6 +46,8 @@ class EventController: UIViewController{
             let r = fetched[0] as NSManagedObject
             r.setValue(event.name, forKey: "name")
             r.setValue(event.date, forKey: "date")
+            r.setValue(event.includedTime, forKey: "includeTime")
+            r.setValue(event.progress, forKey: "progress")
             
             do{
                 try context.save()

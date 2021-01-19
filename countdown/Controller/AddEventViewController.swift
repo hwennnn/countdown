@@ -25,6 +25,8 @@ class AddEventViewController : UIViewController{
         super.viewDidLoad()
         
         if (event != nil){
+            includedTimeSwitch.isOn = event!.includedTime
+            progressSlider.value = Float(event!.progress)
             eventTitle.text = event!.name
             datePicker.date = event!.date
             self.navigationItem.title = "Edit"
@@ -43,9 +45,8 @@ class AddEventViewController : UIViewController{
         let created_at = Date()
         let id = String(created_at.timeIntervalSince1970)
         let group = Group()
-        let progress:Int32 = Int32(progressSlider.value)
+        let progress = progressSlider.value
         let includedTime:Bool = includedTimeSwitch.isOn
-        print(includedTimeSwitch.isOn)
         
         let event = Event(id, title, date, created_at, group, progress, includedTime)
         eventController.addEvent(event)
@@ -56,9 +57,13 @@ class AddEventViewController : UIViewController{
     @IBAction func updateEvent(_ sender: Any) {
         let title = eventTitle.text!
         let date = datePicker.date
+        let progress = progressSlider.value
+        let includeTime = includedTimeSwitch.isOn
         
         event!.name = title
         event!.date = date
+        event!.progress = progress
+        event!.includedTime = includeTime
         
         eventController.updateEvent(event!)
         

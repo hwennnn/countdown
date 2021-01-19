@@ -14,10 +14,10 @@ class Event{
     var date: Date
     var created_at: Date
     var group: Group?
-    var progress: Int32
+    var progress: Float
     var includedTime: Bool
     
-    init(_ name:String,_ date:Date,_ created_at:Date,_ group:Group, progress:Int32,  _ includedTime:Bool) {
+    init(_ name:String,_ date:Date,_ created_at:Date,_ group:Group, progress:Float,  _ includedTime:Bool) {
         self.name = name
         self.date = date
         self.created_at = created_at
@@ -26,7 +26,7 @@ class Event{
         self.includedTime = includedTime
     }
     
-    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ progress:Int32,  _ includedTime:Bool) {
+    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ progress:Float,  _ includedTime:Bool) {
         self.id = id
         self.name = name
         self.date = date
@@ -35,7 +35,7 @@ class Event{
         self.includedTime = includedTime
     }
     
-    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ group:Group, _ progress:Int32, _ includedTime:Bool) {
+    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ group:Group, _ progress:Float, _ includedTime:Bool) {
         self.id = id
         self.name = name
         self.date = date
