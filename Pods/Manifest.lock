@@ -1,0 +1,16 @@
+PODS:
+  - CVCalendar (1.6.2)
+
+DEPENDENCIES:
+  - CVCalendar (~> 1.6.2)
+
+SPEC REPOS:
+  trunk:
+    - CVCalendar
+
+SPEC CHECKSUMS:
+  CVCalendar: 515092247b9c5059855643c2a2220f259bd5417f
+
+PODFILE CHECKSUM: b46578280b429d2e640d83d82eee803f4e2accb6
+
+COCOAPODS: 1.10.1

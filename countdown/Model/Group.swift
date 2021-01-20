@@ -10,7 +10,9 @@ import CoreData
 
 class Group{
     var id: String?
-    var name: String
+    var name: String?
+    
+    init(){}
     
     init(_ name:String) {
         self.name = name

@@ -22,6 +22,8 @@ class EventController: UIViewController{
         newEvent.setValue(event.name, forKey: "name")
         newEvent.setValue(event.date, forKey: "date")
         newEvent.setValue(event.created_at, forKey: "created_at")
+        newEvent.setValue(event.progress, forKey: "progress")
+        newEvent.setValue(event.includedTime, forKey: "includeTime")
         
         do{
             try context.save()
@@ -44,6 +46,8 @@ class EventController: UIViewController{
             let r = fetched[0] as NSManagedObject
             r.setValue(event.name, forKey: "name")
             r.setValue(event.date, forKey: "date")
+            r.setValue(event.includedTime, forKey: "includeTime")
+            r.setValue(event.progress, forKey: "progress")
             
             do{
                 try context.save()
@@ -97,9 +101,11 @@ class EventController: UIViewController{
                 let name = e.name!
                 let date = e.date!
                 let created_at = e.created_at!
-                let groups:[Group] = []
+//                let group = e.group!. as Group
+                let progress = e.progress
+                let includedTime = e.includeTime
                 
-                let event = Event(id,name,date,created_at,groups)
+                let event = Event(id,name,date,created_at,progress,includedTime)
                 eventList.append(event)
                 
             }

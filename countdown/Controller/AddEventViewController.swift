@@ -14,6 +14,8 @@ class AddEventViewController : UIViewController{
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var createBtn: UIButton!
     @IBOutlet weak var updateBtn: UIButton!
+    @IBOutlet weak var includedTimeSwitch: UISwitch!
+    @IBOutlet weak var progressSlider: UISlider!
     
     let eventController = EventController()
     
@@ -23,6 +25,8 @@ class AddEventViewController : UIViewController{
         super.viewDidLoad()
         
         if (event != nil){
+            includedTimeSwitch.isOn = event!.includedTime
+            progressSlider.value = Float(event!.progress)
             eventTitle.text = event!.name
             datePicker.date = event!.date
             self.navigationItem.title = "Edit"
@@ -40,9 +44,11 @@ class AddEventViewController : UIViewController{
         let date = datePicker.date
         let created_at = Date()
         let id = String(created_at.timeIntervalSince1970)
-        let groups:[Group] = []
+        let group = Group()
+        let progress = progressSlider.value
+        let includedTime:Bool = includedTimeSwitch.isOn
         
-        let event = Event(id, title, date, created_at, groups)
+        let event = Event(id, title, date, created_at, group, progress, includedTime)
         eventController.addEvent(event)
         
         self.navigationController?.popViewController(animated: true)
@@ -51,9 +57,13 @@ class AddEventViewController : UIViewController{
     @IBAction func updateEvent(_ sender: Any) {
         let title = eventTitle.text!
         let date = datePicker.date
+        let progress = progressSlider.value
+        let includeTime = includedTimeSwitch.isOn
         
         event!.name = title
         event!.date = date
+        event!.progress = progress
+        event!.includedTime = includeTime
         
         eventController.updateEvent(event!)
         
@@ -62,5 +72,13 @@ class AddEventViewController : UIViewController{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    @IBAction func updateIncludeTime(_ sender: Any) {
+        if (includedTimeSwitch.isOn){
+            datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
+        }else{
+            datePicker.datePickerMode = UIDatePicker.Mode.date
+        }
     }
 }
