@@ -18,6 +18,7 @@ class EventTableViewController : UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

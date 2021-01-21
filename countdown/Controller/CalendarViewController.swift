@@ -2,37 +2,57 @@
 //  CalendarViewController.swift
 //  countdown
 //
-//  Created by shadow on 12/1/21.
+//  Created by zachary on 12/1/21.
 //
 
 import UIKit
 import CVCalendar
 
-class CalendarViewController : UIViewController{
+class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet var dayview: UILabel!
+    @IBOutlet var eventTable: UITableView!
+    
+    
+    
     private var randomNumberOfDotMarkersForDay = [Int]()
     private var shouldShowDaysOut = true
     private var animationFinished = true
     private var selectedDay: DayView!
     private var currentCalendar: Calendar?
+    let formatter = DateFormatter()
     
     // Controller
     let eventController = EventController()
-    var datesDictionary:[String:String] = [:]
-    let formatter = DateFormatter()
+    
+    // Data structures
+    var datesDictionary = [String:[Event]]()
+    var eventArr = [Event]()
     
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return eventArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath)
+        let event = eventArr[indexPath.row]
+        print(event)
+        cell.textLabel!.text = event.name
+        return cell
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Appearance delegate [Unnecessary]
+    
         calendarView.calendarAppearanceDelegate = self
-        // Animator delegate [Unnecessary]
         calendarView.animatorDelegate = self
         calendarView.delegate = self
         menuView.delegate = self
@@ -40,23 +60,38 @@ class CalendarViewController : UIViewController{
         calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = .colorFromCode(2)
         self.navigationItem.title = "Calendar"
         
-        formatter.dateFormat = "dd mm yyyy"
+        formatter.dateFormat = "dd MMMM, yyyy"
+        
         //filling up dictionary (data)
         for event in eventController.retrieveAllEvent(){
-            datesDictionary[formatter.string(from: Date())] = event.name
+            let eventDate = formatter.string(from: event.date)
+            print(eventDate)
+            let keyExists = self.datesDictionary[eventDate] != nil
+            if (keyExists) {
+                self.datesDictionary[eventDate]?.append(event)
+            }else{
+                self.datesDictionary[eventDate] = [event]
+            }
         }
-        
+        self.eventTable.reloadData()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.eventTable.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
         menuView.commitMenuViewUpdate()
         calendarView.commitCalendarViewUpdate()
+        self.eventTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        self.eventTable.reloadData()
         // Dispose of any resources that can be recreated.
     }
 }
@@ -109,11 +144,18 @@ extension CalendarViewController : CVCalendarViewDelegate{
     
     
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool){
-
-            dayview.text = ""
-            if(datesDictionary[dayView.date.commonDescription] != nil){
-                dayview.text = datesDictionary[dayView.date.commonDescription]
+        eventArr = []
+        for i in eventController.retrieveAllEvent(){
+            formatter.dateFormat = "dd MMMM, yyyy"
+            let eventDate = formatter.string(from: i.date)
+            print(eventDate , dayView.date.commonDescription )
+            if (eventDate == dayView.date.commonDescription){
+                eventArr.append(i)
             }
+        }
+        print(eventArr)
+        self.eventTable.reloadData()
+
     }
 }
 
