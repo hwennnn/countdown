@@ -41,14 +41,17 @@ class AddEventViewController : UIViewController{
     
     @IBAction func createEvent(_ sender: Any) {
         let title = eventTitle.text!
-        let date = datePicker.date
         let created_at = Date()
         let id = String(created_at.timeIntervalSince1970)
         let group = Group()
         let progress = progressSlider.value
         let includedTime:Bool = includedTimeSwitch.isOn
         
-        let event = Event(id, title, date, created_at, group, progress, includedTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = (includedTime) ? "dd MMM yyyy h:mm a" : "dd MMM yyyy"
+        let date = dateFormatter.date(from: dateFormatter.string(from: datePicker.date))
+        
+        let event = Event(id, title, date!, created_at, group, progress, includedTime)
         eventController.addEvent(event)
         
         self.navigationController?.popViewController(animated: true)
