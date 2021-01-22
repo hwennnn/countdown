@@ -55,7 +55,34 @@ class LocalNotificationManager{
         let date = dateFormatter.string(from: event.date)
         content.body = "The event is due on \(date)" // xx hours
         
-        let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: event.date)
+        // substract based on the reminder hours settings
+        switch (event.reminderPicked){
+            case 1:
+                // 30 minutes before
+                event.date.addTimeInterval(-(60*30))
+                break
+                
+            case 2:
+                // 1 hour before
+                event.date.addTimeInterval(-(60*60))
+                break
+                
+            case 3:
+                // 6 hours before
+                event.date.addTimeInterval(-(60*60*6))
+                break
+                
+            case 4:
+                // 12 hours before
+                event.date.addTimeInterval(-(60*60*12))
+                break
+                
+            default:
+                break
+            
+        }
+        
+        let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: event.date)
         
         let triggerDate = dateComponents
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
@@ -69,5 +96,9 @@ class LocalNotificationManager{
             print("Notification scheduled! --- ID = \(request.identifier)")
         }
         
+    }
+    
+    func removeNotification(_ event:Event){
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.id!])
     }
 }

@@ -85,7 +85,11 @@ class AddEventViewController : UIViewController, UIPickerViewDelegate, UIPickerV
         
         let event = Event(id, title, date!, created_at, group, progress, includedTime, picked)
         eventController.addEvent(event)
-        notificationManager.schedule(event)
+        
+        if (picked != 0){
+            notificationManager.schedule(event)
+        }
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -95,11 +99,26 @@ class AddEventViewController : UIViewController, UIPickerViewDelegate, UIPickerV
         let progress = progressSlider.value
         let includeTime = includedTimeSwitch.isOn
         
+        var updateNotification:Bool = false
+        
+        if (picked == 0){
+            notificationManager.removeNotification(event!)
+        }else{
+            if (title != event!.name || date != event!.date || picked != event!.reminderPicked){
+                updateNotification = true
+            }
+        }
+       
         event!.name = title
         event!.date = date
         event!.progress = progress
         event!.includedTime = includeTime
         event!.reminderPicked = picked
+        
+        if updateNotification{
+            notificationManager.removeNotification(event!)
+            notificationManager.schedule(event!)
+        }
         
         eventController.updateEvent(event!)
         
