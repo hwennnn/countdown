@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AddEventViewController : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -36,6 +36,7 @@ class AddEventViewController : UIViewController, UIPickerViewDelegate, UIPickerV
             self.actionButton.setTitle("Save", for: .normal)
             self.picked = event!.reminderPicked
             
+            
         }else{
             self.navigationItem.title = "Create Event"
             self.actionButton.setTitle("Create", for: .normal)
@@ -60,7 +61,6 @@ class AddEventViewController : UIViewController, UIPickerViewDelegate, UIPickerV
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         picked = row
-        print(self.reminderList[row])
     }
     
     @IBAction func actionEvent(_ sender: Any) {

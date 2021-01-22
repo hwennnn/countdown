@@ -87,7 +87,7 @@ class EventTableViewController : UITableViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createEvent", let destination = segue.destination as? AddEventViewController {
+        if segue.identifier == "createEvent", let destination = segue.destination as? EventActionViewController {
             if let s = sender as? Int{
                 destination.event = self.eventList[s]
             }

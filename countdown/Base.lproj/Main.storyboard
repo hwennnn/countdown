@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="1267" y="-256"/>
         </scene>
-        <!--Add Event View Controller-->
+        <!--Event Action View Controller-->
         <scene sceneID="frJ-MA-7M7">
             <objects>
-                <viewController id="ma9-0W-8Ng" customClass="AddEventViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ma9-0W-8Ng" customClass="EventActionViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wwg-oW-pbI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
