@@ -12,6 +12,7 @@ class EventTableViewController : UITableViewController{
     
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
+    let notificationManager = LocalNotificationManager()
     
     var eventList:[Event] = []
     
@@ -44,6 +45,11 @@ class EventTableViewController : UITableViewController{
         
         return cell
          
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let event:Event = eventList[indexPath.row]
+        notificationManager.listScheduledNotifications()
     }
     
     func calculateCountDown(_ date:Date) -> Int{

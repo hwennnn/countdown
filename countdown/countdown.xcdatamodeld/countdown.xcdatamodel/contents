@@ -7,6 +7,7 @@
         <attribute name="includeTime" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="progress" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reminderPicked" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGroup" inverseName="events" inverseEntity="CDGroup"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="events" inverseEntity="CDUser"/>
     </entity>
@@ -22,7 +23,7 @@
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDEvent" inverseName="user" inverseEntity="CDEvent"/>
     </entity>
     <elements>
-        <element name="CDEvent" positionX="-355.8360595703125" positionY="-89.206298828125" width="128" height="73"/>
+        <element name="CDEvent" positionX="-355.8360595703125" positionY="-89.206298828125" width="128" height="164"/>
         <element name="CDGroup" positionX="-67.2606201171875" positionY="181.7149658203125" width="128" height="58"/>
         <element name="CDUser" positionX="-370.3570556640625" positionY="116.0853271484375" width="128" height="103"/>
     </elements>

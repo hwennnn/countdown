@@ -8,18 +8,21 @@
 import Foundation
 import UIKit
 
-class AddEventViewController : UIViewController{
+class AddEventViewController : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var createBtn: UIButton!
-    @IBOutlet weak var updateBtn: UIButton!
     @IBOutlet weak var includedTimeSwitch: UISwitch!
     @IBOutlet weak var progressSlider: UISlider!
+    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var reminderPicker: UIPickerView!
     
     let eventController = EventController()
+    let notificationManager = LocalNotificationManager()
     
     var event:Event?
+    var reminderList:[String] = ["No reminder", "30 minutes before", "1 hour before", "6 hours before", "12 hours before"]
+    var picked:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,17 +32,46 @@ class AddEventViewController : UIViewController{
             progressSlider.value = Float(event!.progress)
             eventTitle.text = event!.name
             datePicker.date = event!.date
-            self.navigationItem.title = "Edit"
-            self.createBtn.isHidden = true
-            self.updateBtn.isHidden = false
+            self.navigationItem.title = "Edit Event"
+            self.actionButton.setTitle("Save", for: .normal)
+            self.picked = event!.reminderPicked
+            
         }else{
-            self.navigationItem.title = "Create"
-            self.createBtn.isHidden = false
-            self.updateBtn.isHidden = true
+            self.navigationItem.title = "Create Event"
+            self.actionButton.setTitle("Create", for: .normal)
+        }
+        
+        self.reminderPicker.delegate = self
+        self.reminderPicker.dataSource = self
+        self.reminderPicker.selectRow(picked, inComponent: 0, animated: true)
+    }
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return reminderList.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return reminderList[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        picked = row
+        print(self.reminderList[row])
+    }
+    
+    @IBAction func actionEvent(_ sender: Any) {
+        if (event != nil){
+            updateEvent()
+        }else{
+            createEvent()
         }
     }
     
-    @IBAction func createEvent(_ sender: Any) {
+    func createEvent() {
         let title = eventTitle.text!
         let created_at = Date()
         let id = String(created_at.timeIntervalSince1970)
@@ -51,13 +83,13 @@ class AddEventViewController : UIViewController{
         dateFormatter.dateFormat = (includedTime) ? "dd MMM yyyy h:mm a" : "dd MMM yyyy"
         let date = dateFormatter.date(from: dateFormatter.string(from: datePicker.date))
         
-        let event = Event(id, title, date!, created_at, group, progress, includedTime)
+        let event = Event(id, title, date!, created_at, group, progress, includedTime, picked)
         eventController.addEvent(event)
-        
+        notificationManager.schedule(event)
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func updateEvent(_ sender: Any) {
+    func updateEvent() {
         let title = eventTitle.text!
         let date = datePicker.date
         let progress = progressSlider.value
@@ -67,6 +99,7 @@ class AddEventViewController : UIViewController{
         event!.date = date
         event!.progress = progress
         event!.includedTime = includeTime
+        event!.reminderPicked = picked
         
         eventController.updateEvent(event!)
         

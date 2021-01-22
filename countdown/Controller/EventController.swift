@@ -24,6 +24,7 @@ class EventController: UIViewController{
         newEvent.setValue(event.created_at, forKey: "created_at")
         newEvent.setValue(event.progress, forKey: "progress")
         newEvent.setValue(event.includedTime, forKey: "includeTime")
+        newEvent.setValue(event.reminderPicked, forKey: "reminderPicked")
         
         do{
             try context.save()
@@ -48,6 +49,7 @@ class EventController: UIViewController{
             r.setValue(event.date, forKey: "date")
             r.setValue(event.includedTime, forKey: "includeTime")
             r.setValue(event.progress, forKey: "progress")
+            r.setValue(event.reminderPicked, forKey: "reminderPicked")
             
             do{
                 try context.save()
@@ -104,8 +106,9 @@ class EventController: UIViewController{
 //                let group = e.group!. as Group
                 let progress = e.progress
                 let includedTime = e.includeTime
+                let reminderPicked = e.reminderPicked
                 
-                let event = Event(id,name,date,created_at,progress,includedTime)
+                let event = Event(id,name,date,created_at,progress,includedTime, Int(reminderPicked))
                 eventList.append(event)
                 
             }
