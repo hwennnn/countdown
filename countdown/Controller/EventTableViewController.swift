@@ -15,6 +15,7 @@ class EventTableViewController : UITableViewController{
     
     var eventList:[Event] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()

@@ -7,6 +7,7 @@
 
 import UIKit
 import CVCalendar
+import Foundation
 
 class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
 
@@ -29,8 +30,21 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     
     // Data structures
     var datesDictionary = [String:[Event]]()
-    var eventArr = [Event]()
+    var eventArr:[Event] = []
     
+    
+    func calculateCountDown(_ date:Date) -> Int{
+        return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+    }
+    
+    func dateFormat(_ date:Date) -> String{
+        let dateFormatter = DateFormatter() // set to local date (Singapore)
+        dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
+        dateFormatter.dateFormat = "d MMM yyyy h:mm a" // convert date to String
+        let datevalue = dateFormatter.string(from: date)
+        
+        return datevalue
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -43,8 +57,8 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath)
         let event = eventArr[indexPath.row]
-        print(event)
         cell.textLabel!.text = event.name
+        cell.detailTextLabel!.text = "\(dateFormat(event.date)) \(calculateCountDown(event.date)) days left"
         return cell
         
     }
@@ -62,10 +76,13 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         
         formatter.dateFormat = "dd MMMM, yyyy"
         
+        eventTable.delegate = self
+        eventTable.dataSource = self
+       
+        
         //filling up dictionary (data)
         for event in eventController.retrieveAllEvent(){
             let eventDate = formatter.string(from: event.date)
-            print(eventDate)
             let keyExists = self.datesDictionary[eventDate] != nil
             if (keyExists) {
                 self.datesDictionary[eventDate]?.append(event)
@@ -144,15 +161,15 @@ extension CalendarViewController : CVCalendarViewDelegate{
     
     
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool){
-        eventArr = []
-        for i in eventController.retrieveAllEvent(){
-            formatter.dateFormat = "dd MMMM, yyyy"
-            let eventDate = formatter.string(from: i.date)
-            print(eventDate , dayView.date.commonDescription )
-            if (eventDate == dayView.date.commonDescription){
-                eventArr.append(i)
-            }
-        }
+        self.eventArr = self.datesDictionary[dayView.date.commonDescription] ?? []
+//        for i in eventController.retrieveAllEvent(){
+//            formatter.dateFormat = "dd MMMM, yyyy"
+//            let eventDate = formatter.string(from: i.date)
+//            print(eventDate , dayView.date.commonDescription )
+//            if (eventDate == dayView.date.commonDescription){
+//                eventArr.append(i)
+//            }
+//        }
         print(eventArr)
         self.eventTable.reloadData()
 
