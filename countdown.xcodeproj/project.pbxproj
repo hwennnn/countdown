@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		121AD7EBE110196EE2B28CF4 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1BF6AE9E3ECC754B2E5A2B /* Pods_countdown.framework */; };
+		8A08FDEB25B9C62F00756367 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */; };
 		8A880ED325A7428A00494BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
 		8A880ED625A7429700494BD3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED525A7429700494BD3 /* Group.swift */; };
 		8A880ED925A742A500494BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED825A742A500494BD3 /* User.swift */; };
@@ -19,7 +20,7 @@
 		8AB295CC25A73A5500EC33EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */; };
 		8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DA25A740D500EC33EB /* EventTableViewController.swift */; };
 		8AB295DE25A7411300EC33EB /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DD25A7411300EC33EB /* EventController.swift */; };
-		8AB295E125A7415800EC33EB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295E025A7415800EC33EB /* AddEventViewController.swift */; };
+		8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295E025A7415800EC33EB /* EventActionViewController.swift */; };
 		B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		2C1BF6AE9E3ECC754B2E5A2B /* Pods_countdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E44D11EB7E338A68B1B8FD /* Pods-countdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.release.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.release.xcconfig"; sourceTree = "<group>"; };
 		79856B1942002CD138968C45 /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
+		8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		8A880ED225A7428A00494BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8A880ED525A7429700494BD3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		8A880ED825A742A500494BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -40,7 +42,7 @@
 		8AB295CD25A73A5500EC33EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AB295DA25A740D500EC33EB /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		8AB295DD25A7411300EC33EB /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
-		8AB295E025A7415800EC33EB /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		8AB295E025A7415800EC33EB /* EventActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionViewController.swift; sourceTree = "<group>"; };
 		B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 				8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */,
 				8AB295CD25A73A5500EC33EB /* Info.plist */,
 				8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */,
+				8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */,
 			);
 			path = countdown;
 			sourceTree = "<group>";
@@ -113,7 +116,7 @@
 				B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */,
 				8AB295DA25A740D500EC33EB /* EventTableViewController.swift */,
 				8AB295DD25A7411300EC33EB /* EventController.swift */,
-				8AB295E025A7415800EC33EB /* AddEventViewController.swift */,
+				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,9 +245,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A08FDEB25B9C62F00756367 /* LocalNotificationManager.swift in Sources */,
 				B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */,
 				8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */,
-				8AB295E125A7415800EC33EB /* AddEventViewController.swift in Sources */,
+				8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
 				8A880ED625A7429700494BD3 /* Group.swift in Sources */,
 				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,
@@ -399,6 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 46H8NG3ATK;
 				INFOPLIST_FILE = countdown/Info.plist;
@@ -408,6 +413,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.countdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -419,6 +425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 46H8NG3ATK;
 				INFOPLIST_FILE = countdown/Info.plist;
@@ -428,6 +435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.countdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

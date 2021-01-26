@@ -13,20 +13,39 @@ class Event{
     var name: String
     var date: Date
     var created_at: Date
-    var groups: [Group]
+    var group: Group?
+    var progress: Float
+    var includedTime: Bool
+    var reminderPicked: Int
     
-    init(_ name:String,_ date:Date,_ created_at:Date,_ groups:[Group]) {
+    init(_ name:String,_ date:Date,_ created_at:Date,_ group:Group, progress:Float,  _ includedTime:Bool, _ reminderPicked:Int) {
         self.name = name
         self.date = date
         self.created_at = created_at
-        self.groups = groups
+        self.group = group
+        self.progress = progress
+        self.includedTime = includedTime
+        self.reminderPicked = reminderPicked
     }
     
-    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ groups:[Group]) {
+    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ progress:Float,  _ includedTime:Bool, _ reminderPicked:Int) {
         self.id = id
         self.name = name
         self.date = date
         self.created_at = created_at
-        self.groups = groups
+        self.progress = progress
+        self.includedTime = includedTime
+        self.reminderPicked = reminderPicked
+    }
+    
+    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ group:Group, _ progress:Float, _ includedTime:Bool, _ reminderPicked:Int) {
+        self.id = id
+        self.name = name
+        self.date = date
+        self.created_at = created_at
+        self.group = group
+        self.progress = progress
+        self.includedTime = includedTime
+        self.reminderPicked = reminderPicked
     }
 }

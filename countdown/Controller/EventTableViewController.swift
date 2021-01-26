@@ -12,6 +12,7 @@ class EventTableViewController : UITableViewController{
     
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
+    let notificationManager = LocalNotificationManager()
     
     var eventList:[Event] = []
     
@@ -42,10 +43,15 @@ class EventTableViewController : UITableViewController{
         let event = eventList[indexPath.row]
 
         cell.textLabel!.text = event.name
-        cell.detailTextLabel!.text = "\(dateFormat(event.date)) - \(calculateCountDown(event.date)) days left"
+        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(event.date)) days left Progress:\(Int32(event.progress))%"
         
         return cell
          
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let event:Event = eventList[indexPath.row]
+        notificationManager.listScheduledNotifications()
     }
     
     func calculateCountDown(_ date:Date) -> Int{
@@ -60,7 +66,7 @@ class EventTableViewController : UITableViewController{
         if (editingStyle == .delete) {
             let event = self.eventList[indexPath.row]
             eventController.deleteEvent(event)
-            
+            notificationManager.removeNotification(event)
             self.eventList = self.eventController.retrieveAllEvent()
             self.tableView.reloadData()
         }
@@ -83,18 +89,19 @@ class EventTableViewController : UITableViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createEvent", let destination = segue.destination as? AddEventViewController {
+        if segue.identifier == "createEvent", let destination = segue.destination as? EventActionViewController {
             if let s = sender as? Int{
                 destination.event = self.eventList[s]
             }
         }
     }
     
-    func dateFormat(_ date:Date) -> String{
+    func dateFormat(_ event:Event) -> String{
         let dateFormatter = DateFormatter() // set to local date (Singapore)
         dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        dateFormatter.dateFormat = "d MMM yyyy h:mm a" // convert date to String
-        let datevalue = dateFormatter.string(from: date)
+        let dateFormatStyle:String = (event.includedTime) ? "d MMM yyyy h:mm a" : "d MMM yyyy"
+        dateFormatter.dateFormat = dateFormatStyle // convert date to String
+        let datevalue = dateFormatter.string(from: event.date)
         
         return datevalue
     }
