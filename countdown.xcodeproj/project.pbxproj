@@ -22,6 +22,7 @@
 		8AB295DE25A7411300EC33EB /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DD25A7411300EC33EB /* EventController.swift */; };
 		8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295E025A7415800EC33EB /* EventActionViewController.swift */; };
 		B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */; };
+		B6E43E5525BFCA0200731BA1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E43E5425BFCA0200731BA1 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		8AB295DD25A7411300EC33EB /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		8AB295E025A7415800EC33EB /* EventActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionViewController.swift; sourceTree = "<group>"; };
 		B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		B6E43E5425BFCA0200731BA1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		B6E43E5725BFCAE400731BA1 /* countdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = countdown.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,7 @@
 		8AB295BB25A73A5400EC33EB /* countdown */ = {
 			isa = PBXGroup;
 			children = (
+				B6E43E5725BFCAE400731BA1 /* countdown.entitlements */,
 				8AB295D825A7402D00EC33EB /* Model */,
 				8AB295D625A7401100EC33EB /* Controller */,
 				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */,
+				B6E43E5425BFCA0200731BA1 /* CoreDataManager.swift */,
 				8AB295DA25A740D500EC33EB /* EventTableViewController.swift */,
 				8AB295DD25A7411300EC33EB /* EventController.swift */,
 				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
@@ -251,6 +256,7 @@
 				8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
 				8A880ED625A7429700494BD3 /* Group.swift in Sources */,
+				B6E43E5525BFCA0200731BA1 /* CoreDataManager.swift in Sources */,
 				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,
 				8A880ED925A742A500494BD3 /* User.swift in Sources */,
 				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
@@ -403,9 +409,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = countdown/countdown.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46H8NG3ATK;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = countdown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -425,9 +432,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = countdown/countdown.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46H8NG3ATK;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = countdown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
