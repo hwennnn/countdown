@@ -1,16 +1,20 @@
 PODS:
+  - ActivityRings (2.0.1)
   - CVCalendar (1.6.2)
 
 DEPENDENCIES:
+  - ActivityRings
   - CVCalendar (~> 1.6.2)
 
 SPEC REPOS:
   trunk:
+    - ActivityRings
     - CVCalendar
 
 SPEC CHECKSUMS:
+  ActivityRings: f4cf172a0198c1994f4a5a1ff0bd88fd2d05b913
   CVCalendar: 515092247b9c5059855643c2a2220f259bd5417f
 
-PODFILE CHECKSUM: b46578280b429d2e640d83d82eee803f4e2accb6
+PODFILE CHECKSUM: 27a1aa6401e1bfe7b2f2170f3be9e5462f1d6460
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

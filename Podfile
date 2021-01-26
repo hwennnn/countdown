@@ -7,5 +7,6 @@ target 'countdown' do
 
   # Pods for countdown
   pod 'CVCalendar', '~> 1.6.2'
+  pod 'ActivityRings'
 
 end

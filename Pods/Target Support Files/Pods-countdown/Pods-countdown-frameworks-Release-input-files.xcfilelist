@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ActivityRings/ActivityRings.framework
 ${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework
