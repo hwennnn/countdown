@@ -73,7 +73,7 @@
         <!--Navigation Controller-->
         <scene sceneID="xdh-KN-FAE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7if-wM-aC7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginSignupVC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7if-wM-aC7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cX3-k1-HaG">
                         <autoresizingMask key="autoresizingMask"/>

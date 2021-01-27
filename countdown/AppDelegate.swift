@@ -13,11 +13,31 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var currentUser:FirebaseAuth.User?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         requestAuthorization()
+        
+        currentUser = Auth.auth().currentUser
+        
+        if currentUser == nil{
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+
+            let storyboard = UIStoryboard(name: "Base", bundle: nil)
+
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginSignupVC")
+
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+        
+        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print("The auth state has changed! \(user?.uid ?? "NULL")")
+            self.currentUser = user
+        }
+        
         return true
     }
 

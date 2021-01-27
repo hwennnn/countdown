@@ -37,8 +37,7 @@ class LoginViewController:UIViewController{
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] success, error in
             guard self != nil else { return }
             if ((success) != nil){
-                print("The user has successfully signed in!")
-                print(Auth.auth().currentUser?.uid)
+                print("The user has successfully signed in \(email)!")
             }else{
                 print("The email or password is invalid")
                 self!.popAlert("Invalid email or password", "Please enter a correct email and password!")

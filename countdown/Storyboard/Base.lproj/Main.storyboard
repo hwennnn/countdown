@@ -71,7 +71,9 @@
                         <viewLayoutGuide key="safeArea" id="Dj2-K5-i4L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Udj-OU-APY"/>
+                    <navigationItem key="navigationItem" id="Udj-OU-APY">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" style="plain" id="RYh-BJ-hvY"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="EF1-bD-AZw" id="fw8-GA-yTR"/>
                         <outlet property="eventTable" destination="wZq-Sm-dat" id="3Xf-5z-dWR"/>
@@ -82,6 +84,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zH-ik-wBw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1266.6666666666667" y="448.66071428571428"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="WyD-IW-3Di">
+            <objects>
+                <viewController id="83q-4w-DZo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9vH-2W-dIj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="emN-NK-khn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="itw-EW-SaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2229" y="449"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N4a-ns-deE">
@@ -160,6 +177,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Countdown" id="sXL-Ne-5QC">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" style="plain" id="vYt-Fa-JNJ"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="YFN-99-hEZ">
                             <connections>
                                 <segue destination="ma9-0W-8Ng" kind="show" identifier="createEvent" id="KCp-R0-wmU"/>
@@ -231,8 +249,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="VR5-9k-QdL">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="cny-Fj-8U0">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nrH-r6-ckR">
-                                <rect key="frame" x="348" y="7" width="46" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nrH-r6-ckR">
+                                <rect key="frame" x="343" y="5.5" width="51" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Create"/>
