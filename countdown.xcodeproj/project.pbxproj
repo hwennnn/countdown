@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		121AD7EBE110196EE2B28CF4 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1BF6AE9E3ECC754B2E5A2B /* Pods_countdown.framework */; };
-		8A08FDEB25B9C62F00756367 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */; };
+		5FFEC8A136E2B507F4FB84E8 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F63520597B33519B40973 /* Pods_countdown.framework */; };
 		8A880ED325A7428A00494BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
 		8A880ED625A7429700494BD3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED525A7429700494BD3 /* Group.swift */; };
 		8A880ED925A742A500494BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED825A742A500494BD3 /* User.swift */; };
@@ -21,15 +20,16 @@
 		8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DA25A740D500EC33EB /* EventTableViewController.swift */; };
 		8AB295DE25A7411300EC33EB /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DD25A7411300EC33EB /* EventController.swift */; };
 		8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295E025A7415800EC33EB /* EventActionViewController.swift */; };
+		8AD7853E25C162E3009E8357 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7853D25C162E3009E8357 /* LocalNotificationManager.swift */; };
 		8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF954D625C1507400F31095 /* GoogleService-Info.plist */; };
+		8AF9552725C1589400F31095 /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9552625C1589400F31095 /* Base.storyboard */; };
+		8AF9552C25C159A100F31095 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9552B25C159A100F31095 /* LoginViewController.swift */; };
 		B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C1BF6AE9E3ECC754B2E5A2B /* Pods_countdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35E44D11EB7E338A68B1B8FD /* Pods-countdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.release.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.release.xcconfig"; sourceTree = "<group>"; };
-		79856B1942002CD138968C45 /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
-		8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		159A631724B6B1873F5B5BB0 /* Pods-countdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.release.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.release.xcconfig"; sourceTree = "<group>"; };
+		6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
 		8A880ED225A7428A00494BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8A880ED525A7429700494BD3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		8A880ED825A742A500494BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -44,8 +44,12 @@
 		8AB295DA25A740D500EC33EB /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		8AB295DD25A7411300EC33EB /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		8AB295E025A7415800EC33EB /* EventActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionViewController.swift; sourceTree = "<group>"; };
+		8AD7853D25C162E3009E8357 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		8AF954D625C1507400F31095 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8AF9552625C1589400F31095 /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
+		8AF9552B25C159A100F31095 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		D32F63520597B33519B40973 /* Pods_countdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				121AD7EBE110196EE2B28CF4 /* Pods_countdown.framework in Frameworks */,
+				5FFEC8A136E2B507F4FB84E8 /* Pods_countdown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,16 +67,16 @@
 		091AADB8B08E9008A02F1C58 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				79856B1942002CD138968C45 /* Pods-countdown.debug.xcconfig */,
-				35E44D11EB7E338A68B1B8FD /* Pods-countdown.release.xcconfig */,
+				6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */,
+				159A631724B6B1873F5B5BB0 /* Pods-countdown.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		5A6EB39495B19A3F6CCEF8D8 /* Frameworks */ = {
+		65691C96376A44C09E3A87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C1BF6AE9E3ECC754B2E5A2B /* Pods_countdown.framework */,
+				D32F63520597B33519B40973 /* Pods_countdown.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -83,7 +87,7 @@
 				8AB295BB25A73A5400EC33EB /* countdown */,
 				8AB295BA25A73A5400EC33EB /* Products */,
 				091AADB8B08E9008A02F1C58 /* Pods */,
-				5A6EB39495B19A3F6CCEF8D8 /* Frameworks */,
+				65691C96376A44C09E3A87F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,16 +102,16 @@
 		8AB295BB25A73A5400EC33EB /* countdown */ = {
 			isa = PBXGroup;
 			children = (
+				8AD7853C25C162DA009E8357 /* Utils */,
+				8AF9552925C1589B00F31095 /* Storyboard */,
 				8AB295D825A7402D00EC33EB /* Model */,
 				8AB295D625A7401100EC33EB /* Controller */,
 				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */,
-				8AB295C225A73A5400EC33EB /* Main.storyboard */,
 				8AB295C825A73A5500EC33EB /* Assets.xcassets */,
 				8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */,
 				8AB295CD25A73A5500EC33EB /* Info.plist */,
 				8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */,
-				8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */,
 				8AF954D625C1507400F31095 /* GoogleService-Info.plist */,
 			);
 			path = countdown;
@@ -120,6 +124,7 @@
 				8AB295DA25A740D500EC33EB /* EventTableViewController.swift */,
 				8AB295DD25A7411300EC33EB /* EventController.swift */,
 				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
+				8AF9552B25C159A100F31095 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -134,6 +139,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8AD7853C25C162DA009E8357 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8AD7853D25C162E3009E8357 /* LocalNotificationManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8AF9552925C1589B00F31095 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8AF9552625C1589400F31095 /* Base.storyboard */,
+				8AB295C225A73A5400EC33EB /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,12 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AB295D025A73A5500EC33EB /* Build configuration list for PBXNativeTarget "countdown" */;
 			buildPhases = (
-				7FE28E9738FAFC98ED82194D /* [CP] Check Pods Manifest.lock */,
+				F069623F16FF68039DE315B2 /* [CP] Check Pods Manifest.lock */,
 				8AB295B525A73A5400EC33EB /* Sources */,
 				8AB295B625A73A5400EC33EB /* Frameworks */,
 				8AB295B725A73A5400EC33EB /* Resources */,
-				CE4851D8EE33B7174AF57FA8 /* [CP] Embed Pods Frameworks */,
-				6DDA40B5653E78FBF2C941DC /* [CP] Copy Pods Resources */,
+				CC06FE59E353C9295CDBF728 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,6 +217,7 @@
 			files = (
 				8AB295CC25A73A5500EC33EB /* LaunchScreen.storyboard in Resources */,
 				8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */,
+				8AF9552725C1589400F31095 /* Base.storyboard in Resources */,
 				8AB295C925A73A5500EC33EB /* Assets.xcassets in Resources */,
 				8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */,
 			);
@@ -204,24 +226,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6DDA40B5653E78FBF2C941DC /* [CP] Copy Pods Resources */ = {
+		CC06FE59E353C9295CDBF728 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7FE28E9738FAFC98ED82194D /* [CP] Check Pods Manifest.lock */ = {
+		F069623F16FF68039DE315B2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -243,23 +265,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CE4851D8EE33B7174AF57FA8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -267,12 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A08FDEB25B9C62F00756367 /* LocalNotificationManager.swift in Sources */,
+				8AF9552C25C159A100F31095 /* LoginViewController.swift in Sources */,
 				B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */,
 				8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */,
 				8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
 				8A880ED625A7429700494BD3 /* Group.swift in Sources */,
+				8AD7853E25C162E3009E8357 /* LocalNotificationManager.swift in Sources */,
 				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,
 				8A880ED925A742A500494BD3 /* User.swift in Sources */,
 				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
@@ -421,7 +427,7 @@
 		};
 		8AB295D125A73A5500EC33EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79856B1942002CD138968C45 /* Pods-countdown.debug.xcconfig */;
+			baseConfigurationReference = 6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -443,7 +449,7 @@
 		};
 		8AB295D225A73A5500EC33EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35E44D11EB7E338A68B1B8FD /* Pods-countdown.release.xcconfig */;
+			baseConfigurationReference = 159A631724B6B1873F5B5BB0 /* Pods-countdown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

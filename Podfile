@@ -13,8 +13,6 @@ target 'countdown' do
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
 
-  pod 'FirebaseUI'
   pod 'Firebase/Auth'
-
 
 end
