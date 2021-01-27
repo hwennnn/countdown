@@ -72,11 +72,13 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.10)
+  - SideMenu (5.0.1)
 
 DEPENDENCIES:
   - CVCalendar (~> 1.6.2)
   - Firebase/Analytics
   - Firebase/Auth
+  - SideMenu
 
 SPEC REPOS:
   trunk:
@@ -93,6 +95,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - PromisesObjC
+    - SideMenu
 
 SPEC CHECKSUMS:
   CVCalendar: 515092247b9c5059855643c2a2220f259bd5417f
@@ -108,7 +111,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
+  SideMenu: 87efd943737bb83aedf0358884d09fcf5576636d
 
-PODFILE CHECKSUM: 2a278737fce48eb43c845c70984d0b6fe224d9d5
+PODFILE CHECKSUM: 438eb81f7ae576a4f844bd0bb82a658e00eec521
 
 COCOAPODS: 1.10.0

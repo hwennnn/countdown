@@ -8,6 +8,7 @@
 import UIKit
 import CVCalendar
 import Foundation
+import SideMenu
 
 class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
 
@@ -16,7 +17,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet var eventTable: UITableView!
     
-    
+    var menu: UISideMenuNavigationController?
     
     private var randomNumberOfDotMarkersForDay = [Int]()
     private var shouldShowDaysOut = true
@@ -32,6 +33,9 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     var datesDictionary = [String:[Event]]()
     var eventArr:[Event] = []
     
+    @IBAction func didTapMenu(){
+        present(menu!, animated: true, completion: nil)
+    }
     
     func calculateCountDown(_ date:Date) -> Int{
         return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
@@ -91,6 +95,17 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
             }
         }
         self.eventTable.reloadData()
+        
+        // Define the menu
+        menu = storyboard!.instantiateViewController(identifier: "LeftMenu") as? UISideMenuNavigationController
+        
+        SideMenuManager.default.menuLeftNavigationController = menu
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.view)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.view)
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuAnimationFadeStrength = 0.5
+        SideMenuManager.default.menuWidth = view.frame.width * 0.7
+        SideMenuManager.default.menuLeftNavigationController?.sideMenuManager.menuPresentMode = .menuSlideIn
     }
 
     override func viewDidAppear(_ animated: Bool) {

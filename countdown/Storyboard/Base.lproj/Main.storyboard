@@ -72,7 +72,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Udj-OU-APY">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" style="plain" id="RYh-BJ-hvY"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="RNi-fU-PmZ">
+                            <connections>
+                                <action selector="didTapMenu" destination="BWQ-Mv-FoK" id="Kum-mw-Qbw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="EF1-bD-AZw" id="fw8-GA-yTR"/>
@@ -84,21 +88,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zH-ik-wBw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1266.6666666666667" y="448.66071428571428"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="WyD-IW-3Di">
-            <objects>
-                <viewController id="83q-4w-DZo" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9vH-2W-dIj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="emN-NK-khn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="itw-EW-SaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2229" y="449"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N4a-ns-deE">
@@ -177,7 +166,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Countdown" id="sXL-Ne-5QC">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" style="plain" id="vYt-Fa-JNJ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" image="line.horizontal.3" catalog="system" id="4Bp-ai-NQH">
+                            <connections>
+                                <action selector="didTapMenu" destination="GYt-6a-7fN" id="IWd-Yc-HQ6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="YFN-99-hEZ">
                             <connections>
                                 <segue destination="ma9-0W-8Ng" kind="show" identifier="createEvent" id="KCp-R0-wmU"/>
@@ -249,7 +242,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="VR5-9k-QdL">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="cny-Fj-8U0">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nrH-r6-ckR">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nrH-r6-ckR">
                                 <rect key="frame" x="343" y="5.5" width="51" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -292,8 +285,69 @@
             </objects>
             <point key="canvasLocation" x="281" y="449"/>
         </scene>
+        <!--Profile Menu View Controller-->
+        <scene sceneID="Ukb-LD-VlP">
+            <objects>
+                <viewController storyboardIdentifier="ProfileMenuVC" id="LfV-JV-ctL" customClass="ProfileMenuViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1yS-jR-ssU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izt-NS-mOO">
+                                <rect key="frame" x="41" y="90" width="143" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYW-Yp-YKH">
+                                <rect key="frame" x="41" y="219" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="LfV-JV-ctL" eventType="touchUpInside" id="RvG-zQ-kvX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jl6-qI-w2s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WHK-9U-RjS"/>
+                    <connections>
+                        <outlet property="userID" destination="Izt-NS-mOO" id="P9Q-n5-xpU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJu-3Q-Mb7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1189.8550724637682" y="-986.38392857142856"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="Tv3-7V-WH9">
+            <objects>
+                <navigationController storyboardIdentifier="LeftMenu" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="nSj-qr-gG4" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="NRa-8q-aHJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="JBq-Vx-cTZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rWO-jI-gFq">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="LfV-JV-ctL" kind="relationship" relationship="rootViewController" id="hUU-ED-VST"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzU-wz-bzc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279.71014492753625" y="-986.38392857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

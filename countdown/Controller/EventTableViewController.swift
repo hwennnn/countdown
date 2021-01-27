@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SideMenu
 
 class EventTableViewController : UITableViewController{
     
@@ -14,20 +15,34 @@ class EventTableViewController : UITableViewController{
     let eventController = EventController()
     let notificationManager = LocalNotificationManager()
     
+    var menu: UISideMenuNavigationController?
+    
     var eventList:[Event] = []
     
+    @IBAction func didTapMenu(){
+        present(menu!, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
         
+        // Define the menu
+        menu = storyboard!.instantiateViewController(identifier: "LeftMenu") as? UISideMenuNavigationController
+        
+        SideMenuManager.default.menuLeftNavigationController = menu
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.view)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.view)
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuAnimationFadeStrength = 0.5
+        SideMenuManager.default.menuWidth = view.frame.width * 0.7
+        SideMenuManager.default.menuLeftNavigationController?.sideMenuManager.menuPresentMode = .menuSlideIn
     }
-    
+ 
     override func viewDidAppear(_ animated: Bool) {
         self.eventList = eventController.retrieveAllEvent()
         self.tableView.reloadData()
     }
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
