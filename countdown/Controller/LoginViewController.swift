@@ -30,6 +30,13 @@ class LoginViewController:UIViewController{
         self.present(alertView, animated: true, completion: nil)
     }
     
+    func redirectToMain(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainEntryVC") as UIViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
     @IBAction func login(_ sender: Any) {
         let email = emailField.text!
         let password = passwordField.text!
@@ -38,6 +45,7 @@ class LoginViewController:UIViewController{
             guard self != nil else { return }
             if ((success) != nil){
                 print("The user has successfully signed in \(email)!")
+                self!.redirectToMain()
             }else{
                 print("The email or password is invalid")
                 self!.popAlert("Invalid email or password", "Please enter a correct email and password!")

@@ -29,7 +29,7 @@ class SignUpViewController:UIViewController{
     }
     
     func validatePassword(_ password:String) -> Bool{
-//        Minimum 8-17 characters at least 1 Alphabet and 1 Number:
+        // Minimum 8-17 characters at least 1 Alphabet and 1 Number:
         let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,17}$"
         return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
     }

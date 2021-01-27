@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class ProfileMenuViewController: UIViewController{
     
@@ -16,10 +17,25 @@ class ProfileMenuViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userID.text = appDelegate.currentUser!.uid
+        if (appDelegate.currentUser != nil){
+            self.userID.text = appDelegate.currentUser!.uid
+        }
     }
     
     
     @IBAction func logout(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
+        
+        self.navigationController?.popViewController(animated: false)
+        
+        let storyboard = UIStoryboard(name: "Base", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginSignupVC") as UIViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 }

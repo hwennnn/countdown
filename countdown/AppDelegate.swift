@@ -21,18 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         requestAuthorization()
         
         currentUser = Auth.auth().currentUser
-        
-        if currentUser == nil{
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-
-            let storyboard = UIStoryboard(name: "Base", bundle: nil)
-
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginSignupVC")
-
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        }
-        
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             print("The auth state has changed! \(user?.uid ?? "NULL")")
             self.currentUser = user
