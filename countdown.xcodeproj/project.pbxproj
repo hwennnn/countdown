@@ -21,6 +21,7 @@
 		8AB295DE25A7411300EC33EB /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DD25A7411300EC33EB /* EventController.swift */; };
 		8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295E025A7415800EC33EB /* EventActionViewController.swift */; };
 		8AD7853E25C162E3009E8357 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7853D25C162E3009E8357 /* LocalNotificationManager.swift */; };
+		8AD7854225C16628009E8357 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7854125C16628009E8357 /* SignUpViewController.swift */; };
 		8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF954D625C1507400F31095 /* GoogleService-Info.plist */; };
 		8AF9552725C1589400F31095 /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9552625C1589400F31095 /* Base.storyboard */; };
 		8AF9552C25C159A100F31095 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9552B25C159A100F31095 /* LoginViewController.swift */; };
@@ -45,6 +46,7 @@
 		8AB295DD25A7411300EC33EB /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		8AB295E025A7415800EC33EB /* EventActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionViewController.swift; sourceTree = "<group>"; };
 		8AD7853D25C162E3009E8357 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		8AD7854125C16628009E8357 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8AF954D625C1507400F31095 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8AF9552625C1589400F31095 /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
 		8AF9552B25C159A100F31095 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				8AB295DD25A7411300EC33EB /* EventController.swift */,
 				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
 				8AF9552B25C159A100F31095 /* LoginViewController.swift */,
+				8AD7854125C16628009E8357 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				8A880ED925A742A500494BD3 /* User.swift in Sources */,
 				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
 				8A880ED325A7428A00494BD3 /* Event.swift in Sources */,
+				8AD7854225C16628009E8357 /* SignUpViewController.swift in Sources */,
 				8AB295C725A73A5400EC33EB /* countdown.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
