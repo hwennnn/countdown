@@ -28,11 +28,6 @@ class SignUpViewController:UIViewController{
         return NSPredicate(format:"SELF MATCHES %@", emailRegEx).evaluate(with: email)
     }
     
-    func isEmailExist(_ email: String) -> Bool{
-        // TODO:check this email does not exist in the database
-        return false
-    }
-    
     func validatePassword(_ password:String) -> Bool{
         // Minimum 8-17 characters at least 1 Alphabet and 1 Number:
         let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,17}$"
@@ -43,6 +38,14 @@ class SignUpViewController:UIViewController{
         let alertView = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
                 
         alertView.addAction(UIAlertAction(title: "Noted",style: UIAlertAction.Style.default, handler: { _ in }))
+        
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func popSuccess(){
+        let alertView = UIAlertController(title: "Successful", message: "Your account has been created", preferredStyle: UIAlertController.Style.alert)
+                
+        alertView.addAction(UIAlertAction(title: "Noted",style: UIAlertAction.Style.default, handler: { _ in self.navigationController?.popViewController(animated: true) }))
         
         self.present(alertView, animated: true, completion: nil)
     }
@@ -59,24 +62,19 @@ class SignUpViewController:UIViewController{
             return
         }
         
-        if (isEmailExist(email)){
-            popAlert("Email existed", "Please use another email as this email has been registered with another user!")
-        }
-
         if (!isValidPassword){
             popAlert("Invalid password", "Please enter a password consisting of 8-17 characters with at least 1 alphabet and 1 number")
             return
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            print("Successful signup for \(email)")
-            
             if ((error) != nil){
-                print(error!)
+                self.popAlert("Error", error!.localizedDescription)
+            }else{
+                print("Successful signup for \(email)")
+                self.popSuccess()
             }
         }
-
-        self.navigationController?.popViewController(animated: true)
     }
     
 }
