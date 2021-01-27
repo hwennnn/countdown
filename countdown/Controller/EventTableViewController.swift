@@ -12,12 +12,15 @@ class EventTableViewController : UITableViewController{
     
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
+    let notificationManager = LocalNotificationManager()
     
     var eventList:[Event] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +49,11 @@ class EventTableViewController : UITableViewController{
          
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let event:Event = eventList[indexPath.row]
+        notificationManager.listScheduledNotifications()
+    }
+    
     func calculateCountDown(_ date:Date) -> Int{
         return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
     }
@@ -58,7 +66,7 @@ class EventTableViewController : UITableViewController{
         if (editingStyle == .delete) {
             let event = self.eventList[indexPath.row]
             eventController.deleteEvent(event)
-            
+            notificationManager.removeNotification(event)
             self.eventList = self.eventController.retrieveAllEvent()
             self.tableView.reloadData()
         }
@@ -81,7 +89,7 @@ class EventTableViewController : UITableViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createEvent", let destination = segue.destination as? AddEventViewController {
+        if segue.identifier == "createEvent", let destination = segue.destination as? EventActionViewController {
             if let s = sender as? Int{
                 destination.event = self.eventList[s]
             }
