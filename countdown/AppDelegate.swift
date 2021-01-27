@@ -8,12 +8,14 @@
 import UIKit
 import CoreData
 import Firebase
+import SideMenu
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var currentUser:FirebaseAuth.User?
+    var menu: UISideMenuNavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -21,10 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         requestAuthorization()
         
         currentUser = Auth.auth().currentUser
+
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             print("The auth state has changed! \(user?.uid ?? "NULL")")
             self.currentUser = user
         }
+        
+        // Define the menu
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        menu = storyboard.instantiateViewController(identifier: "LeftMenu") as? UISideMenuNavigationController
+        
+        SideMenuManager.default.menuLeftNavigationController = menu
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuAnimationFadeStrength = 0.5
+        SideMenuManager.default.menuWidth = menu!.view.frame.width * 0.7
+        SideMenuManager.default.menuAllowPushOfSameClassTwice = false
+        SideMenuManager.default.menuLeftNavigationController?.sideMenuManager.menuPresentMode = .menuSlideIn
         
         return true
     }
