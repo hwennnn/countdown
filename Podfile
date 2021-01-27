@@ -8,4 +8,13 @@ target 'countdown' do
   # Pods for countdown
   pod 'CVCalendar', '~> 1.6.2'
 
+  # add the Firebase pod for Google Analytics
+  pod 'Firebase/Analytics'
+  # add pods for any other desired Firebase products
+  # https://firebase.google.com/docs/ios/setup#available-pods
+
+  pod 'FirebaseUI'
+  pod 'Firebase/Auth'
+
+
 end

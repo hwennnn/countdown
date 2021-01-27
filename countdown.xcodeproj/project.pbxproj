@@ -21,6 +21,7 @@
 		8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DA25A740D500EC33EB /* EventTableViewController.swift */; };
 		8AB295DE25A7411300EC33EB /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DD25A7411300EC33EB /* EventController.swift */; };
 		8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295E025A7415800EC33EB /* EventActionViewController.swift */; };
+		8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF954D625C1507400F31095 /* GoogleService-Info.plist */; };
 		B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		8AB295DA25A740D500EC33EB /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		8AB295DD25A7411300EC33EB /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		8AB295E025A7415800EC33EB /* EventActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionViewController.swift; sourceTree = "<group>"; };
+		8AF954D625C1507400F31095 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				8AB295CD25A73A5500EC33EB /* Info.plist */,
 				8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */,
 				8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */,
+				8AF954D625C1507400F31095 /* GoogleService-Info.plist */,
 			);
 			path = countdown;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				8AB295B625A73A5400EC33EB /* Frameworks */,
 				8AB295B725A73A5400EC33EB /* Resources */,
 				CE4851D8EE33B7174AF57FA8 /* [CP] Embed Pods Frameworks */,
+				6DDA40B5653E78FBF2C941DC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AB295CC25A73A5500EC33EB /* LaunchScreen.storyboard in Resources */,
+				8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */,
 				8AB295C925A73A5500EC33EB /* Assets.xcassets in Resources */,
 				8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */,
 			);
@@ -199,6 +204,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6DDA40B5653E78FBF2C941DC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7FE28E9738FAFC98ED82194D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
