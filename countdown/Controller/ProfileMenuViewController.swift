@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import SideMenu
 
 class ProfileMenuViewController: UIViewController{
     
@@ -15,14 +16,16 @@ class ProfileMenuViewController: UIViewController{
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
         if (appDelegate.currentUser != nil){
             self.userID.text = appDelegate.currentUser!.uid
         }
     }
-    
     
     @IBAction func logout(_ sender: Any) {
         let firebaseAuth = Auth.auth()
@@ -33,12 +36,6 @@ class ProfileMenuViewController: UIViewController{
         }
         
         eventController.deleteAllEvents()
-        
-        self.navigationController?.popViewController(animated: false)
-        
-        let storyboard = UIStoryboard(name: "Base", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LoginSignupVC") as UIViewController
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
     }
 }

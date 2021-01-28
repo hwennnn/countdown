@@ -52,6 +52,9 @@ class LoginViewController:UIViewController{
             guard self != nil else { return }
             if ((success) != nil){
                 print("The user has successfully signed in \(email)!")
+                self!.emailField.text = ""
+                self!.passwordField.text = ""
+                
                 self!.firebaseDataController.fetchAllEvents()
                 self!.redirectToMain()
             }else{
