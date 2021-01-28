@@ -10,8 +10,6 @@
 		5FFEC8A136E2B507F4FB84E8 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F63520597B33519B40973 /* Pods_countdown.framework */; };
 		8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */; };
 		8A880ED325A7428A00494BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
-		8A880ED625A7429700494BD3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED525A7429700494BD3 /* Group.swift */; };
-		8A880ED925A742A500494BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED825A742A500494BD3 /* User.swift */; };
 		8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295BC25A73A5400EC33EB /* AppDelegate.swift */; };
 		8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */; };
 		8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB295C225A73A5400EC33EB /* Main.storyboard */; };
@@ -35,8 +33,6 @@
 		6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
 		8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataController.swift; sourceTree = "<group>"; };
 		8A880ED225A7428A00494BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		8A880ED525A7429700494BD3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		8A880ED825A742A500494BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8AB295B925A73A5400EC33EB /* countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB295BC25A73A5400EC33EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,8 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				8A880ED225A7428A00494BD3 /* Event.swift */,
-				8A880ED525A7429700494BD3 /* Group.swift */,
-				8A880ED825A742A500494BD3 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,10 +280,8 @@
 				8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */,
 				8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
-				8A880ED625A7429700494BD3 /* Group.swift in Sources */,
 				8AD7853E25C162E3009E8357 /* LocalNotificationManager.swift in Sources */,
 				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,
-				8A880ED925A742A500494BD3 /* User.swift in Sources */,
 				8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */,
 				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
 				8A880ED325A7428A00494BD3 /* Event.swift in Sources */,
