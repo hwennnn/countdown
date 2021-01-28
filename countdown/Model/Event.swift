@@ -17,6 +17,8 @@ class Event{
     var progress: Float
     var includedTime: Bool
     var reminderPicked: Int
+    var colour: String?
+    var icon: String?
     
     init(_ name:String,_ date:Date,_ created_at:Date,_ group:Group, progress:Float,  _ includedTime:Bool, _ reminderPicked:Int) {
         self.name = name

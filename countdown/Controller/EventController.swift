@@ -103,7 +103,6 @@ class EventController: UIViewController{
                 let name = e.name!
                 let date = e.date!
                 let created_at = e.created_at!
-//                let group = e.group!. as Group
                 let progress = e.progress
                 let includedTime = e.includeTime
                 let reminderPicked = e.reminderPicked

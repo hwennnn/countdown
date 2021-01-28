@@ -18,6 +18,7 @@ class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var reminderPicker: UIPickerView!
     
     let eventController = EventController()
+    let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
     
     var event:Event?
@@ -74,7 +75,7 @@ class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPick
     func createEvent() {
         let title = eventTitle.text!
         let created_at = Date()
-        let id = String(created_at.timeIntervalSince1970)
+        let id = UUID().uuidString
         let group = Group()
         let progress = progressSlider.value
         let includedTime:Bool = includedTimeSwitch.isOn
@@ -89,6 +90,8 @@ class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPick
         if (picked != 0){
             notificationManager.schedule(event)
         }
+        
+        firebaseDataController.insertEvent(event)
         
         self.navigationController?.popViewController(animated: true)
     }
@@ -121,6 +124,7 @@ class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPick
         }
         
         eventController.updateEvent(event!)
+        firebaseDataController.updateEvent(event!)
         
         self.navigationController?.popViewController(animated: true)
     }

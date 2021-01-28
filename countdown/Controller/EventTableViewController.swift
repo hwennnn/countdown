@@ -13,6 +13,7 @@ class EventTableViewController : UITableViewController{
     
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
+    let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
     
     var eventList:[Event] = []
@@ -68,6 +69,7 @@ class EventTableViewController : UITableViewController{
         if (editingStyle == .delete) {
             let event = self.eventList[indexPath.row]
             eventController.deleteEvent(event)
+            firebaseDataController.deleteEvent(event)
             notificationManager.removeNotification(event)
             self.eventList = self.eventController.retrieveAllEvent()
             self.tableView.reloadData()
