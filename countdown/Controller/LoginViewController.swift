@@ -52,7 +52,7 @@ class LoginViewController:UIViewController{
                 print("The user has successfully signed in \(email)!")
                 self!.redirectToMain()
             }else{
-                print(error!.localizedDescription )
+                print(error!.localizedDescription)
                 self!.popAlert("Login Error", error!.localizedDescription)
             }
         

@@ -15,5 +15,6 @@ target 'countdown' do
 
   pod 'Firebase/Auth'
   pod ‘SideMenu’
+  pod 'Firebase/Database'
 
 end
