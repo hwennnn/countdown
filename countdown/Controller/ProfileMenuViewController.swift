@@ -13,6 +13,7 @@ class ProfileMenuViewController: UIViewController{
     
     @IBOutlet weak var userID: UILabel!
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+    let eventController = EventController()
 
     
     override func viewDidLoad() {
@@ -30,6 +31,8 @@ class ProfileMenuViewController: UIViewController{
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
         }
+        
+        eventController.deleteAllEvents()
         
         self.navigationController?.popViewController(animated: false)
         

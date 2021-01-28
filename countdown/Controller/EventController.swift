@@ -121,4 +121,30 @@ class EventController: UIViewController{
         
         return eventList
     }
+    
+    func deleteAllEvents()
+    {
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<CDEvent>(entityName: "CDEvent")
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do
+        {
+            let results:[CDEvent] = try context.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject
+                context.delete(managedObjectData)
+            }
+            
+            do{
+                try context.save()
+            } catch let error as NSError{
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        } catch let error as NSError {
+            print("Detele all data in Event Table error : \(error) \(error.userInfo)")
+        }
+    }
 }

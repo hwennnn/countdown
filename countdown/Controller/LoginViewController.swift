@@ -14,6 +14,8 @@ class LoginViewController:UIViewController{
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    let firebaseDataController = FirebaseDataController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -50,6 +52,7 @@ class LoginViewController:UIViewController{
             guard self != nil else { return }
             if ((success) != nil){
                 print("The user has successfully signed in \(email)!")
+                self!.firebaseDataController.fetchAllEvents()
                 self!.redirectToMain()
             }else{
                 print(error!.localizedDescription)

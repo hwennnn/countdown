@@ -10,12 +10,14 @@ import Firebase
 import UIKit
 
 class FirebaseDataController: UIViewController{
+    
     var ref: DatabaseReference! = Database.database().reference()
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+    let eventController = EventController()
     
     func insertEvent(_ event:Event){
         let uid = appDelegate.currentUser?.uid
-        let newEvent = ["name": event.name, "date": currentTimeInMiliseconds(event.date), "created_at": currentTimeInMiliseconds(event.created_at), "progress": event.progress, "includeTime": event.includedTime, "reminderPicked": event.reminderPicked] as [String : Any]
+        let newEvent = ["name": event.name, "date": currentTimeInMiliseconds(event.date), "created_at": currentTimeInMiliseconds(event.created_at), "progress": event.progress as Float, "includeTime": event.includedTime, "reminderPicked": event.reminderPicked] as [String : Any]
         self.ref.child("events").child(uid!).child(event.id!).setValue(newEvent)
     }
     
@@ -26,12 +28,53 @@ class FirebaseDataController: UIViewController{
     
     func updateEvent(_ event:Event){
         let uid = appDelegate.currentUser?.uid
-        let updatedEvent = ["name": event.name, "date": currentTimeInMiliseconds(event.date), "created_at": currentTimeInMiliseconds(event.created_at), "progress": event.progress, "includeTime": event.includedTime, "reminderPicked": event.reminderPicked] as [String : Any]
+        let updatedEvent = ["name": event.name, "date": currentTimeInMiliseconds(event.date), "created_at": currentTimeInMiliseconds(event.created_at), "progress": event.progress as Float, "includeTime": event.includedTime, "reminderPicked": event.reminderPicked] as [String : Any]
         self.ref.child("events").child(uid!).child(event.id!).updateChildValues(updatedEvent)
+    }
+    
+    func fetchAllEvents(){
+        let uid = Auth.auth().currentUser?.uid
+        ref.child("events").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+
+            let events = snapshot.value as? [String : Any]
+            if events != nil{
+                for event in events!{
+                    let id = event.key
+                    let value = event.value as! [String: Any]
+                    
+                    let name = value["name"] as! String
+                    let includeTime = value["includeTime"] as! Bool
+                    let dateMs = value["date"] as! Int
+                    let createdAtMs = value["created_at"] as! Int
+                    let progress = value["progress"] as! Float
+                    let reminerPicked = value["reminderPicked"] as! Int
+                    
+                    let date:Date = self.dateFromMilliseconds(includeTime, dateMs)
+                    let created_at:Date = self.dateFromMilliseconds(true, createdAtMs)
+                    
+                    let newEvent = Event(id, name, date, created_at, progress, includeTime, reminerPicked)
+                    self.eventController.addEvent(newEvent)
+                }
+                
+            }
+        }) { (error) in
+          print(error.localizedDescription)
+          }
     }
     
     func currentTimeInMiliseconds(_ date:Date) -> Int {
         let since1970 = date.timeIntervalSince1970
         return Int(since1970 * 1000)
     }
+    
+    func dateFromMilliseconds(_ includeTime:Bool, _ ms:Int ) -> Date {
+        return Date(timeIntervalSince1970: TimeInterval(ms/1000))
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = (includeTime) ? "dd MMM yyyy h:mm a" : "dd MMM yyyy"
+//        let formattedDate = dateFormatter.date(from: dateFormatter.string(from: date))!
+//
+//        return formattedDate
+    }
+    
 }
+

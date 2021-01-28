@@ -76,7 +76,6 @@ class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPick
         let title = eventTitle.text!
         let created_at = Date()
         let id = UUID().uuidString
-        let group = Group()
         let progress = progressSlider.value
         let includedTime:Bool = includedTimeSwitch.isOn
         
@@ -84,7 +83,7 @@ class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPick
         dateFormatter.dateFormat = (includedTime) ? "dd MMM yyyy h:mm a" : "dd MMM yyyy"
         let date = dateFormatter.date(from: dateFormatter.string(from: datePicker.date))
         
-        let event = Event(id, title, date!, created_at, group, progress, includedTime, picked)
+        let event = Event(id, title, date!, created_at, progress, includedTime, picked)
         eventController.addEvent(event)
         
         if (picked != 0){
