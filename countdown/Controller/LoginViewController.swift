@@ -52,8 +52,8 @@ class LoginViewController:UIViewController{
                 print("The user has successfully signed in \(email)!")
                 self!.redirectToMain()
             }else{
-                print("The email or password is invalid")
-                self!.popAlert("Invalid email or password", "Please enter a correct email and password!")
+                print(error!.localizedDescription )
+                self!.popAlert("Login Error", error!.localizedDescription)
             }
         
         }

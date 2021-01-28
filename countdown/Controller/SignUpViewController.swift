@@ -69,7 +69,7 @@ class SignUpViewController:UIViewController{
         
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if ((error) != nil){
-                self.popAlert("Error", error!.localizedDescription)
+                self.popAlert("Signup Error", error!.localizedDescription)
             }else{
                 print("Successful signup for \(email)")
                 self.popSuccess()
