@@ -24,7 +24,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     private var animationFinished = true
     private var selectedDay: DayView!
     private var currentCalendar: Calendar?
-    let formatter = DateFormatter()
+    var formatter = DateFormatter()
     
     // Controller
     let eventController = EventController()
@@ -44,7 +44,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     func dateFormat(_ date:Date) -> String{
         let dateFormatter = DateFormatter() // set to local date (Singapore)
         dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        dateFormatter.dateFormat = "d MMM yyyy h:mm a" // convert date to String
+        dateFormatter.dateFormat = "dd MMM yyyy h:mm a" // convert date to String
         let datevalue = dateFormatter.string(from: date)
         
         return datevalue
@@ -67,9 +67,29 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         
     }
     
+    func loadEventData() -> [String:[Event]]{
+        //filling up dictionary (data)
+        var dict = [String:[Event]]()
+        
+        for event in eventController.retrieveAllEvent(){
+            let eventDate = formatter.string(from: event.date)
+            let keyExists = dict[eventDate] != nil
+            if (keyExists) {
+                dict[eventDate]?.append(event)
+            }else{
+                dict[eventDate] = [event]
+            }
+        }
+        
+        return dict
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        formatter.dateFormat = "dd MMMM, yyyy"
+        formatter.locale = Locale(identifier: "en_SG")
+        
         calendarView.calendarAppearanceDelegate = self
         calendarView.animatorDelegate = self
         calendarView.delegate = self
@@ -78,27 +98,28 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = .colorFromCode(2)
         self.navigationItem.title = "Calendar"
         
-        formatter.dateFormat = "dd MMMM, yyyy"
-        
         eventTable.delegate = self
         eventTable.dataSource = self
-       
-        
-        //filling up dictionary (data)
-        for event in eventController.retrieveAllEvent(){
-            let eventDate = formatter.string(from: event.date)
-            let keyExists = self.datesDictionary[eventDate] != nil
-            if (keyExists) {
-                self.datesDictionary[eventDate]?.append(event)
-            }else{
-                self.datesDictionary[eventDate] = [event]
-            }
-        }
+
         self.eventTable.reloadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        self.datesDictionary = self.loadEventData()
+        
+        let date = selectedDay.date.convertedDate()!
+        let formattedDateString:String = formatter.string(from: date)
+        self.eventArr = self.datesDictionary[formattedDateString] ?? []
+
+//        printing of the dictionary
+//        for day in datesDictionary{
+//            print(day.key)
+//            for e in day.value as [Event]{
+//                print(e.name, e.date)
+//            }
+//        }
+        
         self.eventTable.reloadData()
     }
     
@@ -165,18 +186,11 @@ extension CalendarViewController : CVCalendarViewDelegate{
     
     
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool){
-        self.eventArr = self.datesDictionary[dayView.date.commonDescription] ?? []
-//        for i in eventController.retrieveAllEvent(){
-//            formatter.dateFormat = "dd MMMM, yyyy"
-//            let eventDate = formatter.string(from: i.date)
-//            print(eventDate , dayView.date.commonDescription )
-//            if (eventDate == dayView.date.commonDescription){
-//                eventArr.append(i)
-//            }
-//        }
-        print(eventArr)
-        self.eventTable.reloadData()
+        selectedDay = dayView
+        let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
+        self.eventArr = self.datesDictionary[formattedDateString] ?? []
 
+//        print(formattedDateString, self.eventArr)
     }
 }
 
