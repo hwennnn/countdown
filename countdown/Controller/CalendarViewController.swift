@@ -111,14 +111,14 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         let date = selectedDay.date.convertedDate()!
         let formattedDateString:String = formatter.string(from: date)
         self.eventArr = self.datesDictionary[formattedDateString] ?? []
-
+        
 //        printing of the dictionary
-//        for day in datesDictionary{
-//            print(day.key)
-//            for e in day.value as [Event]{
-//                print(e.name, e.date)
-//            }
-//        }
+        for day in datesDictionary{
+            print(day.key)
+            for e in day.value as [Event]{
+                print(e.name, e.date)
+            }
+        }
         
         self.eventTable.reloadData()
     }
@@ -186,11 +186,13 @@ extension CalendarViewController : CVCalendarViewDelegate{
     
     
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool){
-        selectedDay = dayView
+        self.selectedDay = dayView
         let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
         self.eventArr = self.datesDictionary[formattedDateString] ?? []
 
 //        print(formattedDateString, self.eventArr)
+        
+        self.eventTable.reloadData()
     }
 }
 
