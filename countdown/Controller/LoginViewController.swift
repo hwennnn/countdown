@@ -18,6 +18,11 @@ class LoginViewController:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // redirect to main page if logged in
+        if (Auth.auth().currentUser?.uid != nil){
+            redirectToMain(false)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,11 +42,11 @@ class LoginViewController:UIViewController{
         self.present(alertView, animated: true, completion: nil)
     }
     
-    func redirectToMain(){
+    func redirectToMain(_ isAnimated:Bool){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MainEntryVC") as UIViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as UIViewController
         vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        present(vc, animated: isAnimated, completion: nil)
     }
     
     @IBAction func login(_ sender: Any) {
@@ -56,7 +61,7 @@ class LoginViewController:UIViewController{
                 self!.passwordField.text = ""
                 
                 self!.firebaseDataController.fetchAllEvents()
-                self!.redirectToMain()
+                self!.redirectToMain(true)
             }else{
                 print(error!.localizedDescription)
                 self!.popAlert("Login Error", error!.localizedDescription)

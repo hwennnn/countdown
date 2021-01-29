@@ -32,10 +32,16 @@ class ProfileMenuViewController: UIViewController{
         do {
           try firebaseAuth.signOut()
         } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
+            print ("Error signing out: %@", signOutError.localizedDescription)
         }
         
         eventController.deleteAllEvents()
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+        
+        // dismiss the side menu
+        self.dismiss(animated: false, completion: nil)
+        
+        // dismiss the presenting view controller(mainVC)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
+    
 }
