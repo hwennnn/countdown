@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        // to make sure the firebase authentication will be reset when the app is newly installed (auth is stored in keychain)
         let userDefaults = UserDefaults.standard
         if userDefaults.value(forKey: "appFirstTimeOpend") == nil {
             //if app is first time opened then it will be nil
@@ -32,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }catch {
 
             }
-            // load borading screen
+            
+            // load boarding screen here
         }
         
         requestAuthorization()
@@ -44,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.currentUser = user
         }
         
-        // Define the menu
+        // Define the side menu
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         menu = storyboard.instantiateViewController(identifier: "LeftMenu") as? UISideMenuNavigationController
         

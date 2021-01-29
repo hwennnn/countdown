@@ -217,5 +217,15 @@ extension CalendarViewController : CVCalendarViewDelegate{
         
         self.eventTable.reloadData()
     }
+    
+//    func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
+//        let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
+//        if let _ = self.datesDictionary[formattedDateString]{
+//            print("\(formattedDateString) Dot")
+//            return true
+//        }
+//
+//        return false
+//    }
 }
 
