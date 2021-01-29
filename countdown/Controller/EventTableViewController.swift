@@ -88,13 +88,13 @@ class EventTableViewController : UITableViewController{
     }
     
     func editHandler(_ index: Int){
-        performSegue(withIdentifier: "createEvent", sender: index)
+        performSegue(withIdentifier: "eventAction", sender: index)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createEvent", let destination = segue.destination as? EventActionViewController {
+        if segue.identifier == "eventAction", let destination = segue.destination as? EventActionsViewController {
             if let s = sender as? Int{
-                destination.event = self.eventList[s]
+                destination.currentEvent = self.eventList[s]
             }
         }
     }

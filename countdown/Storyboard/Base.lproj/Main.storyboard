@@ -173,7 +173,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="YFN-99-hEZ">
                             <connections>
-                                <segue destination="jEI-Wz-kVS" kind="show" id="Cxc-uL-jfe"/>
+                                <segue destination="jEI-Wz-kVS" kind="show" identifier="eventAction" id="Cxc-uL-jfe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -492,6 +492,7 @@
                     </navigationItem>
                     <size key="freeformSize" width="390" height="1350"/>
                     <connections>
+                        <outlet property="actionButton" destination="hHz-He-KLY" id="47c-YK-7lI"/>
                         <outlet property="colour1" destination="QId-5H-IiT" id="d49-Lh-qOU"/>
                         <outlet property="colour2" destination="AFY-74-TgQ" id="1dl-Xo-gf1"/>
                         <outlet property="colour3" destination="kLh-f7-zSw" id="8wN-Zw-zBf"/>

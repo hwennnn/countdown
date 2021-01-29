@@ -18,6 +18,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var isIncludeTime: UISwitch!
     @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet weak var actionButton: UIBarButtonItem!
     
     @IBOutlet weak var reminder1: UISwitch!
     @IBOutlet weak var reminder2: UISwitch!
@@ -33,6 +34,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     var currentEvent:Event?
     var colourList:[UIButton] = []
     var selectedColour:Int = 0
+    var reminderSwitches:[UISwitch] = []
     
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
@@ -40,6 +42,9 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        colourList = [colour1, colour2, colour3, colour4, colour5, colour6]
+        reminderSwitches = [reminder1, reminder2, reminder3]
         
         // close the keyboard when dragging the screen
         scrollView.keyboardDismissMode = .interactive
@@ -61,13 +66,32 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         datePicker.datePickerMode = UIDatePicker.Mode.date
         timePicker.datePickerMode = UIDatePicker.Mode.time
         
+        if (currentEvent != nil){
+            eventTitle.text = currentEvent!.name
+            emojiField.text = currentEvent!.emoji.decodeEmoji
+            isIncludeTime.isOn = !currentEvent!.includedTime
+            datePicker.date = currentEvent!.date
+            timePicker.date = currentEvent!.time
+            let reminders = stringToArray(currentEvent!.reminders)
+            for (index, isSet) in reminders.enumerated(){
+                if (isSet){
+                    reminderSwitches[index].isOn = true
+                }
+            }
+            selectedColour = currentEvent!.colour
+            self.navigationItem.title = "Edit Countdown"
+            self.actionButton.title = "Save"
+        }else{
+            self.navigationItem.title = "Create Countdown"
+            self.actionButton.title = "Create"
+        }
+        
         if (isIncludeTime.isOn){
             self.timePicker.isHidden = true
         }else{
             self.timePicker.isHidden = false
         }
         
-        colourList = [colour1, colour2, colour3, colour4, colour5, colour6]
         initColourButtons(colourList)
     }
     
@@ -129,6 +153,8 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         }else{
             createEvent()
         }
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     func createEvent(){
@@ -153,12 +179,33 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         firebaseDataController.insertEvent(newEvent)
         
         notificationManager.schedule(newEvent)
-        
-        self.navigationController?.popViewController(animated: true)
     }
     
     func updateEvent(){
+        let title = eventTitle.text!
+        let emoji = (emojiField.text!).encodeEmoji
         
+        let includedTime = !isIncludeTime.isOn
+        let date = datePicker.date
+        let time = timePicker.date
+        
+        let reminders = [reminder1.isOn, reminder2.isOn, reminder3.isOn]
+        let remindersAsString = arrayToString(reminders)
+
+        let colour = selectedColour
+        
+        currentEvent!.name = title
+        currentEvent!.emoji = emoji
+        currentEvent!.includedTime = includedTime
+        currentEvent!.date = date
+        currentEvent!.time = time
+        currentEvent!.reminders = remindersAsString
+        currentEvent!.colour = colour
+        
+        eventController.updateEvent(currentEvent!)
+        firebaseDataController.updateEvent(currentEvent!)
+        
+        notificationManager.schedule(currentEvent!)
     }
     
     func arrayToString(_ array:[Bool]) -> String {

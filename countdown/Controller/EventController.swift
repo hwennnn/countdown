@@ -38,32 +38,36 @@ class EventController: UIViewController{
     }
     
     func updateEvent(_ event:Event){
-//        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
-//        let context = appDelegate.persistentContainer.viewContext
-//
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDEvent")
-//
-//        // to be changed using id to find the speficic event instead using unique name
-//        fetchRequest.predicate = NSPredicate(format: "eventID = %@", event.id!)
-//        do {
-//            let fetched = try context.fetch(fetchRequest)
-//
-//            let r = fetched[0] as NSManagedObject
-//            r.setValue(event.name, forKey: "name")
-//            r.setValue(event.date, forKey: "date")
-//            r.setValue(event.includedTime, forKey: "includeTime")
-//            r.setValue(event.progress, forKey: "progress")
-//            r.setValue(event.reminderPicked, forKey: "reminderPicked")
-//
-//            do{
-//                try context.save()
-//            } catch let error as NSError{
-//                print("Could not save. \(error), \(error.userInfo)")
-//            }
-//
-//        } catch let error as NSError{
-//            print("Could not fetch. \(error), \(error.userInfo)")
-//        }
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDEvent")
+
+        fetchRequest.predicate = NSPredicate(format: "eventID = %@", event.id)
+        do {
+            let fetched = try context.fetch(fetchRequest)
+
+            let r = fetched[0] as NSManagedObject
+            r.setValue(event.id, forKey: "eventID")
+            r.setValue(event.name, forKey: "name")
+            r.setValue(event.emoji, forKey: "emoji")
+            r.setValue(event.includedTime, forKey: "includedTime")
+            r.setValue(event.date, forKey: "date")
+            r.setValue(event.time, forKey: "time")
+            r.setValue(event.created_at, forKey: "created_at")
+            r.setValue(event.reminders, forKey: "reminders")
+            r.setValue(event.colour, forKey: "colour")
+            r.setValue(event.progress, forKey: "progress")
+
+            do{
+                try context.save()
+            } catch let error as NSError{
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+
+        } catch let error as NSError{
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
         
     }
     
@@ -124,7 +128,7 @@ class EventController: UIViewController{
         }
 
         eventList.sort { (event1, event2) -> Bool in
-            return event1.date < event2.date
+            return combineDateAndTime(event1.date, event1.time, event1.includedTime) < combineDateAndTime(event2.date, event2.time, event2.includedTime)
         }
 
         return eventList
@@ -153,6 +157,26 @@ class EventController: UIViewController{
         } catch let error as NSError {
             print("Detele all data in Event Table error : \(error) \(error.userInfo)")
         }
+    }
+    
+    private func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
+        
+        let calendar = NSCalendar.current
+
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+
+        var components = DateComponents()
+        components.year = dateComponents.year
+        components.month = dateComponents.month
+        components.day = dateComponents.day
+        
+        if (includedTime){
+            components.hour = timeComponents.hour
+            components.minute = timeComponents.minute
+        }
+        
+        return calendar.date(from: components)!
     }
     
 }

@@ -28,9 +28,10 @@ class FirebaseDataController: UIViewController{
     }
     
     func updateEvent(_ event:Event){
-//        let uid = appDelegate.currentUser?.uid
-//        let updatedEvent = ["name": event.name, "date": currentTimeInMiliseconds(event.date), "created_at": currentTimeInMiliseconds(event.created_at), "progress": event.progress as Float, "includeTime": event.includedTime, "reminderPicked": event.reminderPicked] as [String : Any]
-//        self.ref.child("events").child(uid!).child(event.id!).updateChildValues(updatedEvent)
+        let uid = appDelegate.currentUser?.uid
+        let updatedEvent = ["name": event.name, "emoji": event.emoji, "includedTime": event.includedTime, "date": currentTimeInMiliseconds(event.date), "time": currentTimeInMiliseconds(event.time), "created_at": currentTimeInMiliseconds(event.created_at), "reminders": event.reminders, "colour": event.colour, "progress": event.progress as Float] as [String : Any]
+        
+        self.ref.child("events").child(uid!).child(event.id).updateChildValues(updatedEvent)
     }
     
     func fetchAllEvents(){
