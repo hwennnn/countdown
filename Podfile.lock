@@ -72,6 +72,7 @@ PODS:
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.4.0)
+  - ISEmojiView (0.2.6)
   - leveldb-library (1.22)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
+  - ISEmojiView
   - SideMenu
 
 SPEC REPOS:
@@ -102,6 +104,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - ISEmojiView
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -120,11 +123,12 @@ SPEC CHECKSUMS:
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  ISEmojiView: f7cd94a6c93307f429ec5da001293d0b02247f03
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SideMenu: 87efd943737bb83aedf0358884d09fcf5576636d
 
-PODFILE CHECKSUM: 48f8cdf34720616442094521cc78d8e044c6b063
+PODFILE CHECKSUM: c4ff6a13da04be29b692a46cb2ee673602ae9f45
 
 COCOAPODS: 1.10.0
