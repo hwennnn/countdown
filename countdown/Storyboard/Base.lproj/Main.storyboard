@@ -187,14 +187,14 @@
             <objects>
                 <viewController id="jEI-Wz-kVS" customClass="EventActionsViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PiR-Jj-sy9">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zC-za-9ug">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="1129"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9W-Ua-heX" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="1129.3333333333333"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owm-rR-j5d">
                                                 <rect key="frame" x="-20" y="0.0" width="430" height="30"/>
@@ -217,22 +217,90 @@
                                                 </state>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="📝" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="43" translatesAutoresizingMaskIntoConstraints="NO" id="PBh-Ms-bhY">
-                                                <rect key="frame" x="157" y="124" width="76" height="61"/>
+                                                <rect key="frame" x="157" y="120" width="76" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="43"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJy-tD-GPi">
+                                                <rect key="frame" x="-20" y="196" width="430" height="30"/>
+                                                <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Pick a date">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="24D-gN-i8k">
+                                                <rect key="frame" x="17" y="241" width="356" height="328"/>
+                                            </datePicker>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SG-SX-dFq">
+                                                <rect key="frame" x="-20" y="584" width="430" height="30"/>
+                                                <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Pick a time">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All-day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-gU-Y3c">
+                                                <rect key="frame" x="17" y="634" width="54" height="20.333333333333371"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hj6-Pn-h1N">
+                                                <rect key="frame" x="324" y="629" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="updateIncludeTime:" destination="jEI-Wz-kVS" eventType="valueChanged" id="sam-6l-4qN"/>
+                                                </connections>
+                                            </switch>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="8oE-dB-PdH">
+                                                <rect key="frame" x="176" y="688" width="197" height="53"/>
+                                            </datePicker>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSt-k5-y4z" userLabel="horizontal_line">
+                                                <rect key="frame" x="17" y="679" width="356" height="1"/>
+                                                <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rax-Qp-E9n">
+                                                <rect key="frame" x="-20" y="756.33333333333337" width="430" height="30"/>
+                                                <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Remind me">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Rax-Qp-E9n" secondAttribute="trailing" constant="-20" id="0RH-qY-4gU"/>
+                                            <constraint firstAttribute="trailing" secondItem="Hj6-Pn-h1N" secondAttribute="trailing" constant="17" id="0xu-Mw-hJm"/>
+                                            <constraint firstItem="24D-gN-i8k" firstAttribute="top" secondItem="HJy-tD-GPi" secondAttribute="bottom" constant="15" id="2uY-xK-IvO"/>
+                                            <constraint firstItem="8oE-dB-PdH" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="176" id="3vW-lF-IUe"/>
+                                            <constraint firstAttribute="trailing" secondItem="HJy-tD-GPi" secondAttribute="trailing" constant="-20" id="4ag-Nm-ncL"/>
+                                            <constraint firstItem="HJy-tD-GPi" firstAttribute="top" secondItem="PBh-Ms-bhY" secondAttribute="bottom" constant="15" id="6Eu-NG-trc"/>
                                             <constraint firstItem="DKm-Wk-7qr" firstAttribute="top" secondItem="Owm-rR-j5d" secondAttribute="bottom" constant="8" symbolic="YES" id="77t-Av-7dG"/>
+                                            <constraint firstItem="Ngn-gU-Y3c" firstAttribute="top" secondItem="4SG-SX-dFq" secondAttribute="bottom" constant="20" id="Fcm-nz-QO6"/>
+                                            <constraint firstItem="Ngn-gU-Y3c" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="17" id="HiL-38-d2G"/>
                                             <constraint firstItem="PBh-Ms-bhY" firstAttribute="centerX" secondItem="D9W-Ua-heX" secondAttribute="centerX" id="JsZ-Lv-T0g"/>
                                             <constraint firstAttribute="trailing" secondItem="rPD-xB-YdH" secondAttribute="trailing" constant="-20" id="MaS-qW-S8y"/>
+                                            <constraint firstAttribute="trailing" secondItem="JSt-k5-y4z" secondAttribute="trailing" constant="17" id="OQh-8L-6s2"/>
+                                            <constraint firstItem="24D-gN-i8k" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="17" id="Pru-Kj-q4h"/>
+                                            <constraint firstItem="Hj6-Pn-h1N" firstAttribute="leading" secondItem="Ngn-gU-Y3c" secondAttribute="trailing" constant="253" id="R2s-Kd-fDB"/>
+                                            <constraint firstItem="Hj6-Pn-h1N" firstAttribute="top" secondItem="4SG-SX-dFq" secondAttribute="bottom" constant="15" id="UGa-qk-VoI"/>
+                                            <constraint firstItem="JSt-k5-y4z" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="17" id="VpE-Cb-Qde"/>
+                                            <constraint firstAttribute="trailing" secondItem="24D-gN-i8k" secondAttribute="trailing" constant="17" id="WrN-dY-fs3"/>
                                             <constraint firstItem="Owm-rR-j5d" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="-20" id="bCx-Y1-p37"/>
                                             <constraint firstItem="rPD-xB-YdH" firstAttribute="top" secondItem="DKm-Wk-7qr" secondAttribute="bottom" constant="15" id="bhe-Qb-pbD"/>
                                             <constraint firstItem="DKm-Wk-7qr" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="17" id="cIv-rK-b6X"/>
+                                            <constraint firstItem="8oE-dB-PdH" firstAttribute="top" secondItem="JSt-k5-y4z" secondAttribute="bottom" constant="8" symbolic="YES" id="chy-0u-FYe"/>
+                                            <constraint firstAttribute="bottom" secondItem="Rax-Qp-E9n" secondAttribute="bottom" constant="343" id="dCh-gC-1M8"/>
+                                            <constraint firstItem="HJy-tD-GPi" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="-20" id="eRq-rk-Xbq"/>
+                                            <constraint firstAttribute="trailing" secondItem="4SG-SX-dFq" secondAttribute="trailing" constant="-20" id="fDA-1Q-Gey"/>
                                             <constraint firstItem="rPD-xB-YdH" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="-20" id="gBb-kc-14T"/>
+                                            <constraint firstAttribute="trailing" secondItem="8oE-dB-PdH" secondAttribute="trailing" constant="17" id="hdB-Br-l2c"/>
+                                            <constraint firstItem="4SG-SX-dFq" firstAttribute="top" secondItem="24D-gN-i8k" secondAttribute="bottom" constant="15" id="j2r-aZ-pyt"/>
+                                            <constraint firstItem="4SG-SX-dFq" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="-20" id="j85-2d-606"/>
                                             <constraint firstAttribute="trailing" secondItem="Owm-rR-j5d" secondAttribute="trailing" constant="-20" id="jaQ-QL-3z0"/>
-                                            <constraint firstItem="PBh-Ms-bhY" firstAttribute="top" secondItem="rPD-xB-YdH" secondAttribute="bottom" constant="19" id="tSA-W4-cJq"/>
+                                            <constraint firstItem="Rax-Qp-E9n" firstAttribute="top" secondItem="8oE-dB-PdH" secondAttribute="bottom" constant="15" id="nQr-mi-Tw6"/>
+                                            <constraint firstItem="Rax-Qp-E9n" firstAttribute="leading" secondItem="D9W-Ua-heX" secondAttribute="leading" constant="-20" id="oah-5O-NeR"/>
+                                            <constraint firstItem="PBh-Ms-bhY" firstAttribute="top" secondItem="rPD-xB-YdH" secondAttribute="bottom" constant="15" id="tSA-W4-cJq"/>
+                                            <constraint firstItem="JSt-k5-y4z" firstAttribute="top" secondItem="Hj6-Pn-h1N" secondAttribute="bottom" constant="19" id="yY1-B9-OGV"/>
+                                            <constraint firstItem="8oE-dB-PdH" firstAttribute="top" secondItem="Hj6-Pn-h1N" secondAttribute="bottom" constant="28" id="yxh-4t-z0p"/>
                                             <constraint firstAttribute="trailing" secondItem="DKm-Wk-7qr" secondAttribute="trailing" constant="17" id="zd1-UH-kCi"/>
                                         </constraints>
                                     </view>
@@ -262,9 +330,13 @@
                     <navigationItem key="navigationItem" title="New Countdown" id="G3K-Pj-4x2">
                         <barButtonItem key="rightBarButtonItem" title="Create" id="hHz-He-KLY"/>
                     </navigationItem>
+                    <size key="freeformSize" width="390" height="1300"/>
                     <connections>
+                        <outlet property="datePicker" destination="24D-gN-i8k" id="r8g-FQ-N8l"/>
                         <outlet property="emojiField" destination="PBh-Ms-bhY" id="CR7-8N-GAS"/>
                         <outlet property="eventTitle" destination="DKm-Wk-7qr" id="UFZ-N1-y4j"/>
+                        <outlet property="isIncludeTime" destination="Hj6-Pn-h1N" id="ngm-FW-Onf"/>
+                        <outlet property="timePicker" destination="8oE-dB-PdH" id="W30-0O-MpU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiq-B3-Wb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
