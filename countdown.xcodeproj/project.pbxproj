@@ -178,11 +178,11 @@
 				B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */,
 				8AB295DA25A740D500EC33EB /* EventTableViewController.swift */,
 				8AB295DD25A7411300EC33EB /* EventController.swift */,
-				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
 				8AF9552B25C159A100F31095 /* LoginViewController.swift */,
 				8AD7854125C16628009E8357 /* SignUpViewController.swift */,
 				8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */,
 				8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */,
+				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
 				8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */,
 			);
 			path = Controller;

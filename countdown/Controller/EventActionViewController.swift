@@ -35,7 +35,7 @@ class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPick
             datePicker.date = event!.date
             self.navigationItem.title = "Edit Event"
             self.actionButton.setTitle("Save", for: .normal)
-            self.picked = event!.reminderPicked
+//            self.picked = event!.reminderPicked
             
             
         }else{
@@ -80,52 +80,53 @@ class EventActionViewController : UIViewController, UIPickerViewDelegate, UIPick
         let includedTime:Bool = includedTimeSwitch.isOn
         
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_SG")
         dateFormatter.dateFormat = (includedTime) ? "dd MMM yyyy h:mm a" : "dd MMM yyyy"
         let date = dateFormatter.date(from: dateFormatter.string(from: datePicker.date))
         
-        let event = Event(id, title, date!, created_at, progress, includedTime, picked)
-        eventController.addEvent(event)
-        
-        if (picked != 0){
-            notificationManager.schedule(event)
-        }
-        
-        firebaseDataController.insertEvent(event)
-        
-        self.navigationController?.popViewController(animated: true)
+//        let event = Event(id, title, date!, created_at, progress, includedTime, picked)
+//        eventController.addEvent(event)
+//
+//        if (picked != 0){
+//            notificationManager.schedule(event)
+//        }
+//
+//        firebaseDataController.insertEvent(event)
+//
+//        self.navigationController?.popViewController(animated: true)
     }
     
     func updateEvent() {
-        let title = eventTitle.text!
-        let date = datePicker.date
-        let progress = progressSlider.value
-        let includeTime = includedTimeSwitch.isOn
-        
-        var updateNotification:Bool = false
-        
-        if (picked == 0){
-            notificationManager.removeNotification(event!)
-        }else{
-            if (title != event!.name || date != event!.date || picked != event!.reminderPicked){
-                updateNotification = true
-            }
-        }
-       
-        event!.name = title
-        event!.date = date
-        event!.progress = progress
-        event!.includedTime = includeTime
-        event!.reminderPicked = picked
-        
-        if updateNotification{
-            notificationManager.removeNotification(event!)
-            notificationManager.schedule(event!)
-        }
-        
-        eventController.updateEvent(event!)
-        firebaseDataController.updateEvent(event!)
-        
-        self.navigationController?.popViewController(animated: true)
+//        let title = eventTitle.text!
+//        let date = datePicker.date
+//        let progress = progressSlider.value
+//        let includeTime = includedTimeSwitch.isOn
+//
+//        var updateNotification:Bool = false
+//
+//        if (picked == 0){
+//            notificationManager.removeNotification(event!)
+//        }else{
+//            if (title != event!.name || date != event!.date || picked != event!.reminderPicked){
+//                updateNotification = true
+//            }
+//        }
+//
+//        event!.name = title
+//        event!.date = date
+//        event!.progress = progress
+//        event!.includedTime = includeTime
+//        event!.reminderPicked = picked
+//
+//        if updateNotification{
+//            notificationManager.removeNotification(event!)
+//            notificationManager.schedule(event!)
+//        }
+//
+//        eventController.updateEvent(event!)
+//        firebaseDataController.updateEvent(event!)
+//
+//        self.navigationController?.popViewController(animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

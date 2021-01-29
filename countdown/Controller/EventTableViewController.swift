@@ -45,8 +45,8 @@ class EventTableViewController : UITableViewController{
 
         let event = eventList[indexPath.row]
 
-        cell.textLabel!.text = event.name
-        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(event.date)) days left Progress:\(Int32(event.progress))%"
+        cell.textLabel!.text = "\(event.name) \(event.emoji.decodeEmoji)"
+        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(event.date)) days left"
         
         return cell
          

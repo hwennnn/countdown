@@ -19,6 +19,10 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     @IBOutlet weak var isIncludeTime: UISwitch!
     @IBOutlet weak var timePicker: UIDatePicker!
     
+    @IBOutlet weak var reminder1: UISwitch!
+    @IBOutlet weak var reminder2: UISwitch!
+    @IBOutlet weak var reminder3: UISwitch!
+    
     @IBOutlet weak var colour1: UIButton!
     @IBOutlet weak var colour2: UIButton!
     @IBOutlet weak var colour3: UIButton!
@@ -26,12 +30,15 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     @IBOutlet weak var colour5: UIButton!
     @IBOutlet weak var colour6: UIButton!
     
+    var currentEvent:Event?
     var colourList:[UIButton] = []
+    var selectedColour:Int = 0
+    
+    let eventController = EventController()
+    let firebaseDataController = FirebaseDataController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        hideKeyboardWhenTappedAround()
         
         // close the keyboard when dragging the screen
         scrollView.keyboardDismissMode = .interactive
@@ -48,7 +55,10 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         emojiView.delegate = self
         emojiField.inputView = emojiView
         
+        datePicker.timeZone = NSTimeZone.local
+        timePicker.timeZone = NSTimeZone.local
         datePicker.datePickerMode = UIDatePicker.Mode.date
+        timePicker.datePickerMode = UIDatePicker.Mode.time
         
         if (isIncludeTime.isOn){
             self.timePicker.isHidden = true
@@ -87,6 +97,8 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         for button in buttons{
             button.layer.cornerRadius = 15
         }
+        buttons[selectedColour].layer.borderWidth = 1
+        buttons[selectedColour].layer.borderColor = UIColor.black.cgColor
     }
     
     @IBAction func updateIncludeTime(_ sender: Any) {
@@ -98,8 +110,9 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     }
     
     @IBAction func colourClicked(sender: UIButton){
-        for button in colourList{
+        for (index,button) in colourList.enumerated(){
             if (button.tag == sender.tag){
+                selectedColour = index
                 button.layer.borderWidth = 1
                 button.layer.borderColor = UIColor.black.cgColor
             }else{
@@ -108,16 +121,70 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
             }
         }
     }
+    
+    @IBAction func actionEvent(_ sender: Any){
+        if (currentEvent != nil){
+            updateEvent()
+        }else{
+            createEvent()
+        }
+    }
+    
+    func createEvent(){
+        let id = UUID().uuidString
+        let title = eventTitle.text!
+        let emoji = (emojiField.text!).encodeEmoji
+        
+        let includedTime = !isIncludeTime.isOn
+        let date = datePicker.date
+        let time = timePicker.date
+        let created_at = Date()
+        
+        let reminders = [reminder1.isOn, reminder2.isOn, reminder3.isOn]
+        let remindersAsString = arrayToString(reminders)
+
+        let colour = selectedColour
+        let progress:Float = 0
+        
+        let newEvent = Event(id, title, emoji, includedTime, date, time, created_at, remindersAsString, colour, progress)
+        
+        eventController.addEvent(newEvent)
+        firebaseDataController.insertEvent(newEvent)
+        
+        // TODO: schedule notifications
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func updateEvent(){
+        
+    }
+    
+    func arrayToString(_ array:[Bool]) -> String {
+        let stringArray = array.map{String($0)}
+        return stringArray.joined(separator: ",")
+    }
+    
+    func stringToArray(_ s:String) -> [Bool] {
+        let stringArray:[String] = s.components(separatedBy: ",")
+        return stringArray.map{Bool($0)!}
+    }
 }
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tapGesture = UITapGestureRecognizer(target: self,
-                         action: #selector(hideKeyboard))
-        view.addGestureRecognizer(tapGesture)
+extension String {
+    var encodeEmoji: String{
+        if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue){
+            return encodeStr as String
+        }
+        return self
     }
-
-    @objc func hideKeyboard() {
-        view.endEditing(true)
+    
+    var decodeEmoji: String{
+        let data = self.data(using: String.Encoding.utf8);
+        let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
+        if let str = decodedStr{
+            return str as String
+        }
+        return self
     }
 }

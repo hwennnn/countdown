@@ -484,7 +484,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Countdown" id="G3K-Pj-4x2">
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="hHz-He-KLY"/>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="hHz-He-KLY">
+                            <connections>
+                                <action selector="actionEvent:" destination="jEI-Wz-kVS" id="j9d-u2-Z4z"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="390" height="1350"/>
                     <connections>
@@ -498,6 +502,9 @@
                         <outlet property="emojiField" destination="PBh-Ms-bhY" id="CR7-8N-GAS"/>
                         <outlet property="eventTitle" destination="DKm-Wk-7qr" id="UFZ-N1-y4j"/>
                         <outlet property="isIncludeTime" destination="Hj6-Pn-h1N" id="ngm-FW-Onf"/>
+                        <outlet property="reminder1" destination="XSA-O3-8zc" id="JAa-fZ-dyT"/>
+                        <outlet property="reminder2" destination="Szt-Ne-Ehc" id="ltJ-bt-ETc"/>
+                        <outlet property="reminder3" destination="XKv-xY-X3z" id="4Cf-Tc-wZ3"/>
                         <outlet property="scrollView" destination="0zC-za-9ug" id="Mcf-11-CPY"/>
                         <outlet property="timePicker" destination="8oE-dB-PdH" id="W30-0O-MpU"/>
                     </connections>
