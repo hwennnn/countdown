@@ -41,11 +41,12 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
     }
     
-    func dateFormat(_ date:Date) -> String{
+    func dateFormat(_ event:Event) -> String{
         let dateFormatter = DateFormatter() // set to local date (Singapore)
         dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        dateFormatter.dateFormat = "dd MMM yyyy h:mm a" // convert date to String
-        let datevalue = dateFormatter.string(from: date)
+        let dateFormatStyle:String = (event.includedTime) ? "dd MMM yyyy h:mm a" : "dd MMM yyyy"
+        dateFormatter.dateFormat = dateFormatStyle // convert date to String
+        let datevalue = dateFormatter.string(from: combineDateAndTime(event.date, event.time, event.includedTime))
         
         return datevalue
     }
@@ -61,8 +62,10 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath)
         let event = eventArr[indexPath.row]
-        cell.textLabel!.text = event.name
-        cell.detailTextLabel!.text = "\(dateFormat(event.date)) \(calculateCountDown(event.date)) days left"
+        
+        cell.textLabel!.text = "\(event.name) \(event.emoji.decodeEmoji)"
+        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(event.date)) days left"
+
         return cell
         
     }
@@ -113,12 +116,12 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         self.eventArr = self.datesDictionary[formattedDateString] ?? []
         
 //        printing of the dictionary
-        for day in datesDictionary{
-            print(day.key)
-            for e in day.value as [Event]{
-                print(e.name, e.date)
-            }
-        }
+//        for day in datesDictionary{
+//            print(day.key)
+//            for e in day.value as [Event]{
+//                print(e.name, dateFormat(e))
+//            }
+//        }
         
         self.eventTable.reloadData()
     }
@@ -135,6 +138,26 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         super.didReceiveMemoryWarning()
         self.eventTable.reloadData()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
+        
+        let calendar = NSCalendar.current
+
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+
+        var components = DateComponents()
+        components.year = dateComponents.year
+        components.month = dateComponents.month
+        components.day = dateComponents.day
+        
+        if (includedTime){
+            components.hour = timeComponents.hour
+            components.minute = timeComponents.minute
+        }
+        
+        return calendar.date(from: components)!
     }
 }
 
