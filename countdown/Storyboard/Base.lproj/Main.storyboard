@@ -239,7 +239,7 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All-day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-gU-Y3c">
-                                                <rect key="frame" x="17" y="636.33333333333337" width="54" height="20.333333333333371"/>
+                                                <rect key="frame" x="17" y="636.33333333333337" width="54" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -499,6 +499,7 @@
                         <outlet property="emojiField" destination="PBh-Ms-bhY" id="CR7-8N-GAS"/>
                         <outlet property="eventTitle" destination="DKm-Wk-7qr" id="UFZ-N1-y4j"/>
                         <outlet property="isIncludeTime" destination="Hj6-Pn-h1N" id="ngm-FW-Onf"/>
+                        <outlet property="scrollView" destination="0zC-za-9ug" id="Mcf-11-CPY"/>
                         <outlet property="timePicker" destination="8oE-dB-PdH" id="W30-0O-MpU"/>
                     </connections>
                 </viewController>

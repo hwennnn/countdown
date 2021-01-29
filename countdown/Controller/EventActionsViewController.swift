@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 import ISEmojiView
 
-class EventActionsViewController: UIViewController, EmojiViewDelegate{
-   
+class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiViewDelegate{
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var emojiField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -26,9 +28,15 @@ class EventActionsViewController: UIViewController, EmojiViewDelegate{
     
     var colourList:[UIButton] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // close the keyboard when dragging the screen
+        scrollView.keyboardDismissMode = .interactive
+        scrollView.keyboardDismissMode = .onDrag
+        
+        eventTitle.delegate = self
+        emojiField.delegate = self
         
         // initialise the emoji keyboard settings
         let keyboardSettings = KeyboardSettings(bottomType: .categories)
@@ -49,8 +57,9 @@ class EventActionsViewController: UIViewController, EmojiViewDelegate{
         initColourButtons(colourList)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // callback when tap a emoji on keyboard
