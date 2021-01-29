@@ -31,12 +31,15 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         // close the keyboard when dragging the screen
         scrollView.keyboardDismissMode = .interactive
         scrollView.keyboardDismissMode = .onDrag
         
         eventTitle.delegate = self
         emojiField.delegate = self
+        emojiField.tintColor = .clear
         
         // initialise the emoji keyboard settings
         let keyboardSettings = KeyboardSettings(bottomType: .categories)
@@ -104,5 +107,17 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
                 button.layer.borderColor = nil
             }
         }
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                         action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func hideKeyboard() {
+        view.endEditing(true)
     }
 }
