@@ -17,6 +17,16 @@ class EventActionsViewController: UIViewController, EmojiViewDelegate{
     @IBOutlet weak var isIncludeTime: UISwitch!
     @IBOutlet weak var timePicker: UIDatePicker!
     
+    @IBOutlet weak var colour1: UIButton!
+    @IBOutlet weak var colour2: UIButton!
+    @IBOutlet weak var colour3: UIButton!
+    @IBOutlet weak var colour4: UIButton!
+    @IBOutlet weak var colour5: UIButton!
+    @IBOutlet weak var colour6: UIButton!
+    
+    var colourList:[UIButton] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +44,9 @@ class EventActionsViewController: UIViewController, EmojiViewDelegate{
         }else{
             self.timePicker.isHidden = false
         }
+        
+        colourList = [colour1, colour2, colour3, colour4, colour5, colour6]
+        initColourButtons(colourList)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,11 +71,29 @@ class EventActionsViewController: UIViewController, EmojiViewDelegate{
         emojiField.resignFirstResponder()
     }
     
+    func initColourButtons(_ buttons:[UIButton]){
+        for button in buttons{
+            button.layer.cornerRadius = 15
+        }
+    }
+    
     @IBAction func updateIncludeTime(_ sender: Any) {
         if (isIncludeTime.isOn){
             self.timePicker.isHidden = true
         }else{
             self.timePicker.isHidden = false
+        }
+    }
+    
+    @IBAction func colourClicked(sender: UIButton){
+        for button in colourList{
+            if (button.tag == sender.tag){
+                button.layer.borderWidth = 1
+                button.layer.borderColor = UIColor.black.cgColor
+            }else{
+                button.layer.borderWidth = 0
+                button.layer.borderColor = nil
+            }
         }
     }
 }
