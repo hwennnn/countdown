@@ -68,28 +68,28 @@ class EventController: UIViewController{
     }
     
     func deleteEvent(_ event:Event){
-//        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
-//        let context = appDelegate.persistentContainer.viewContext
-//
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDEvent")
-//
-//        fetchRequest.predicate = NSPredicate(format: "eventID = %@", event.id!)
-//
-//        do {
-//            let fetched = try context.fetch(fetchRequest)
-//
-//            let f = fetched[0] as NSManagedObject
-//            context.delete(f)
-//
-//            do{
-//                try context.save()
-//            } catch let error as NSError{
-//                print("Could not save. \(error), \(error.userInfo)")
-//            }
-//
-//        } catch let error as NSError{
-//            print("Could not fetch. \(error), \(error.userInfo)")
-//        }
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDEvent")
+
+        fetchRequest.predicate = NSPredicate(format: "eventID = %@", event.id)
+
+        do {
+            let fetched = try context.fetch(fetchRequest)
+
+            let f = fetched[0] as NSManagedObject
+            context.delete(f)
+
+            do{
+                try context.save()
+            } catch let error as NSError{
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+
+        } catch let error as NSError{
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     
@@ -130,8 +130,7 @@ class EventController: UIViewController{
         return eventList
     }
     
-    func deleteAllEvents()
-    {
+    func deleteAllEvents() {
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<CDEvent>(entityName: "CDEvent")
@@ -155,4 +154,5 @@ class EventController: UIViewController{
             print("Detele all data in Event Table error : \(error) \(error.userInfo)")
         }
     }
+    
 }

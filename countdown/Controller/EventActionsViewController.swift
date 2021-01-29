@@ -36,6 +36,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
+    let notificationManager = LocalNotificationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,7 +152,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         eventController.addEvent(newEvent)
         firebaseDataController.insertEvent(newEvent)
         
-        // TODO: schedule notifications
+        notificationManager.schedule(newEvent)
         
         self.navigationController?.popViewController(animated: true)
     }

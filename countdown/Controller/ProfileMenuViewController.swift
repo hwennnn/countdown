@@ -15,6 +15,7 @@ class ProfileMenuViewController: UIViewController{
     @IBOutlet weak var userID: UILabel!
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
+    let notificationManager = LocalNotificationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class ProfileMenuViewController: UIViewController{
         if (appDelegate.currentUser != nil){
             self.userID.text = appDelegate.currentUser!.email
         }
+        notificationManager.listScheduledNotifications()
     }
     
     @IBAction func logout(_ sender: Any) {

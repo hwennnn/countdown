@@ -54,7 +54,6 @@ class EventTableViewController : UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let event:Event = eventList[indexPath.row]
-        notificationManager.listScheduledNotifications()
     }
     
     func calculateCountDown(_ date:Date) -> Int{
@@ -70,7 +69,7 @@ class EventTableViewController : UITableViewController{
             let event = self.eventList[indexPath.row]
             eventController.deleteEvent(event)
             firebaseDataController.deleteEvent(event)
-            notificationManager.removeNotification(event)
+            notificationManager.removeNotifications(event)
             self.eventList = self.eventController.retrieveAllEvent()
             self.tableView.reloadData()
         }
@@ -105,8 +104,28 @@ class EventTableViewController : UITableViewController{
         dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
         let dateFormatStyle:String = (event.includedTime) ? "d MMM yyyy h:mm a" : "d MMM yyyy"
         dateFormatter.dateFormat = dateFormatStyle // convert date to String
-        let datevalue = dateFormatter.string(from: event.date)
+        let datevalue = dateFormatter.string(from: combineDateAndTime(event.date, event.time, event.includedTime))
         
         return datevalue
+    }
+    
+    func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
+        
+        let calendar = NSCalendar.current
+
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+
+        var components = DateComponents()
+        components.year = dateComponents.year
+        components.month = dateComponents.month
+        components.day = dateComponents.day
+        
+        if (includedTime){
+            components.hour = timeComponents.hour
+            components.minute = timeComponents.minute
+        }
+        
+        return calendar.date(from: components)!
     }
 }

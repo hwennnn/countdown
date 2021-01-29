@@ -44,61 +44,113 @@ class LocalNotificationManager{
         }
     }
     
-    private func scheduleNotifications(_ event: Event) {
+    private func scheduleNotifications(_ event:Event){
+        // set reminder when the countdown finishes
+        scheduleNotification(event, -1)
+        
+        // set reminders based on the user settings
+        let reminders = stringToArray(event.reminders)
+        for (index, needSet) in reminders.enumerated(){
+            if (needSet){
+                scheduleNotification(event, index)
+            }
+        }
+    }
+    
+    private func scheduleNotification(_ event: Event, _ index: Int) {
         let content = UNMutableNotificationContent()
         content.title = event.name
         content.sound = UNNotificationSound.default
         content.badge = 1
 
+        var combinedDate = combineDateAndTime(event.date, event.time, event.includedTime)
+        
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_SG")
         dateFormatter.dateFormat = (event.includedTime) ? "d MMM yyyy h:mm a" : "d MMM yyyy"
-        let date = dateFormatter.string(from: event.date)
+        let date = dateFormatter.string(from: combinedDate)
         content.body = "The event is due on \(date)" // xx hours
         
-        // substract based on the reminder hours settings
-//        switch (event.reminderPicked){
-//            case 1:
-//                // 30 minutes before
-//                event.date.addTimeInterval(-(60*30))
-//                break
-//
-//            case 2:
-//                // 1 hour before
-//                event.date.addTimeInterval(-(60*60))
-//                break
-//
-//            case 3:
-//                // 6 hours before
-//                event.date.addTimeInterval(-(60*60*6))
-//                break
-//
-//            case 4:
-//                // 12 hours before
-//                event.date.addTimeInterval(-(60*60*12))
-//                break
-//
-//            default:
-//                break
-//
-//        }
+//         substract based on the reminder hours settings
+        switch (index){
+            case 0:
+                // 30 minutes before
+                combinedDate.addTimeInterval(-(60*30))
+                break
+
+            case 1:
+                // 1 hour before
+                combinedDate.addTimeInterval(-(60*60))
+                break
+
+            case 2:
+                // 1 day before
+                combinedDate.addTimeInterval(-(60*60*24))
+                break
+
+            default:
+                break
+
+        }
         
-//        let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: event.date)
-//
-//        let triggerDate = dateComponents
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-//        let request = UNNotificationRequest(identifier: event.id!, content: content, trigger: trigger)
-//
-//        UNUserNotificationCenter.current().add(request) { (error) in
-//            if let error = error {
-//                print("Error \(error.localizedDescription)")
-//            }
-//
-//            print("Notification scheduled! --- ID = \(request.identifier)")
-//        }
+        let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: combinedDate)
+
+        let triggerDate = dateComponents
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        // use the index as a suffix to make the notificationID unique
+        let notificationID = (index == -1) ? event.id : "\(event.id)\(index)"
+        
+        let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("Error \(error.localizedDescription)")
+            }
+
+            print("Notification scheduled! --- ID = \(request.identifier)")
+        }
         
     }
     
-    func removeNotification(_ event:Event){
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.id])
+    func removeNotifications(_ event:Event){
+        removeNotification(event, -1)
+        
+        // set reminders based on the user settings
+        let reminders = stringToArray(event.reminders)
+        for (index, needSet) in reminders.enumerated(){
+            if (needSet){
+                removeNotification(event, index)
+            }
+        }
+    }
+    
+    private func removeNotification(_ event:Event, _ index:Int){
+        let notificationID = (index == -1) ? event.id : "\(event.id)\(index)"
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationID])
+    }
+    
+    func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
+        
+        let calendar = NSCalendar.current
+
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+
+        var components = DateComponents()
+        components.year = dateComponents.year
+        components.month = dateComponents.month
+        components.day = dateComponents.day
+        
+        if (includedTime){
+            components.hour = timeComponents.hour
+            components.minute = timeComponents.minute
+        }
+        
+        return calendar.date(from: components)!
+    }
+    
+    func stringToArray(_ s:String) -> [Bool] {
+        let stringArray:[String] = s.components(separatedBy: ",")
+        return stringArray.map{Bool($0)!}
     }
 }
