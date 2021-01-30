@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 import SideMenu
 
-class EventTableViewController : UITableViewController{
+class EventTableViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
     
+    @IBOutlet weak var tableView: UITableView!
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
@@ -24,6 +25,10 @@ class EventTableViewController : UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         self.tableView.reloadData()
     }
  
@@ -32,15 +37,15 @@ class EventTableViewController : UITableViewController{
         self.tableView.reloadData()
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         let event = eventList[indexPath.row]
@@ -52,7 +57,7 @@ class EventTableViewController : UITableViewController{
          
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let event:Event = eventList[indexPath.row]
     }
     
@@ -60,11 +65,11 @@ class EventTableViewController : UITableViewController{
         return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             let event = self.eventList[indexPath.row]
             eventController.deleteEvent(event)
@@ -75,7 +80,7 @@ class EventTableViewController : UITableViewController{
         }
     }
     
-    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal,
                                         title: "Edit") { [weak self] (action, view, completionHandler) in
             self?.editHandler(indexPath.row)
