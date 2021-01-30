@@ -12,13 +12,20 @@ import SideMenu
 class EventTableViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var bannerRemaining: UILabel!
+    @IBOutlet weak var bannerRemainingDesc: UILabel!
+    @IBOutlet weak var bannerTitle: UILabel!
+    @IBOutlet weak var bannerDate: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
     
+    var firstEvent:Event?
     var eventList:[Event] = []
+    var colourSchemeList:[String] = []
     
     @IBAction func didTapMenu(){
         present(appDelegate.menu!, animated: true, completion: nil)
@@ -27,6 +34,11 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.tappedBanner(sender:)))
+        self.bannerView.addGestureRecognizer(gesture)
+        
+        colourSchemeList = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -34,16 +46,49 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     }
  
     override func viewDidAppear(_ animated: Bool) {
-        self.eventList = eventController.retrieveAllEvent()
+        initEventList()
         self.tableView.reloadData()
-        
-        self.navigationController?.navigationBar.barTintColor = colorWithHexString(hexString: "#5854D5")
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
-        self.bannerView.backgroundColor = colorWithHexString(hexString: "#5854D5")
     }
     
+    func initEventList(){
+        var fetchedList = eventController.retrieveAllEvent()
+        
+        if (fetchedList.count == 0){
+            self.firstEvent = nil
+            self.eventList = []
+        }else{
+            let firstEvent = fetchedList[0]
+            self.firstEvent = firstEvent
+            let remainingDateTime = combineDateAndTime(firstEvent.date, firstEvent.time, firstEvent.includedTime)
+            
+            bannerRemaining.text = "\(calculateCountDown(remainingDateTime))"
+            bannerRemainingDesc.text = "days left"
+            bannerTitle.text = firstEvent.name
+            bannerDate.text = dateFormat(firstEvent)
+            
+            self.navigationController?.navigationBar.barTintColor = colourSchemeList[firstEvent.colour].colorWithHexString()
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            self.navigationController?.navigationBar.layoutIfNeeded()
+            self.bannerView.backgroundColor = colourSchemeList[firstEvent.colour].colorWithHexString()
+            
+            if (fetchedList.count == 1){
+                self.eventList = []
+            }else{
+                fetchedList.removeFirst()
+                self.eventList = fetchedList
+            }
+        }
+        
+    }
+    
+    @objc func tappedBanner(sender : UITapGestureRecognizer) {
+        print("tapped")
+        if (self.firstEvent != nil){
+            performSegue(withIdentifier: "eventAction", sender: nil)
+        }
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -107,6 +152,8 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         if segue.identifier == "eventAction", let destination = segue.destination as? EventActionsViewController {
             if let s = sender as? Int{
                 destination.currentEvent = self.eventList[s]
+            }else{
+                destination.currentEvent = self.firstEvent
             }
         }
     }
@@ -140,8 +187,10 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         
         return calendar.date(from: components)!
     }
-    
-    func intFromHexString(hexStr: String) -> UInt32 {
+}
+
+extension String {
+    private func intFromHexString(_ hexStr: String) -> UInt32 {
         var hexInt: UInt32 = 0
         // Create scanner
         let scanner: Scanner = Scanner(string: hexStr)
@@ -152,10 +201,10 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         return hexInt
     }
     
-    func colorWithHexString(hexString: String, alpha:CGFloat = 1.0) -> UIColor {
+    func colorWithHexString(_ alpha:CGFloat = 1.0) -> UIColor {
 
         // Convert hex string to an integer
-        let hexint = Int(self.intFromHexString(hexStr: hexString))
+        let hexint = Int(self.intFromHexString(self))
         let red = CGFloat((hexint & 0xff0000) >> 16) / 255.0
         let green = CGFloat((hexint & 0xff00) >> 8) / 255.0
         let blue = CGFloat((hexint & 0xff) >> 0) / 255.0
