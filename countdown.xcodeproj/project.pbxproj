@@ -33,6 +33,11 @@
 		B64A364F25C30C7F0087999A /* Countdowns.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */; };
 		B64A365025C30C7F0087999A /* Countdowns.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */; };
 		B64A365325C30C7F0087999A /* CountdownsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B64A364525C30C7D0087999A /* CountdownsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B6E0222925C3E51000E66B1C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
+		B6E0222D25C3E54E00E66B1C /* EventEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0222C25C3E54E00E66B1C /* EventEntry.swift */; };
+		B6E0223E25C3E81B00E66B1C /* EventTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0223D25C3E81B00E66B1C /* EventTimelineProvider.swift */; };
+		B6E0225225C3EFCD00E66B1C /* CountdownWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */; };
+		B6E0225925C3F07500E66B1C /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0225825C3F07500E66B1C /* EventView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +94,10 @@
 		B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Countdowns.intentdefinition; sourceTree = "<group>"; };
 		B64A364C25C30C7F0087999A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64A364E25C30C7F0087999A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6E0222C25C3E54E00E66B1C /* EventEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEntry.swift; sourceTree = "<group>"; };
+		B6E0223D25C3E81B00E66B1C /* EventTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimelineProvider.swift; sourceTree = "<group>"; };
+		B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetSmall.swift; sourceTree = "<group>"; };
+		B6E0225825C3F07500E66B1C /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		D32F63520597B33519B40973 /* Pods_countdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -135,6 +144,7 @@
 		8AB295B025A73A5400EC33EB = {
 			isa = PBXGroup;
 			children = (
+				B6E0222825C3E4C100E66B1C /* Shared */,
 				8AB295BB25A73A5400EC33EB /* countdown */,
 				B64A364825C30C7D0087999A /* Countdowns */,
 				8AB295BA25A73A5400EC33EB /* Products */,
@@ -159,8 +169,8 @@
 				8AF9552925C1589B00F31095 /* Storyboard */,
 				8AB295D825A7402D00EC33EB /* Model */,
 				8AB295D625A7401100EC33EB /* Controller */,
-				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */,
+				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295C825A73A5500EC33EB /* Assets.xcassets */,
 				8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */,
 				8AB295CD25A73A5500EC33EB /* Info.plist */,
@@ -173,14 +183,14 @@
 		8AB295D625A7401100EC33EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */,
 				B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */,
 				8AB295DA25A740D500EC33EB /* EventTableViewController.swift */,
-				8AB295DD25A7411300EC33EB /* EventController.swift */,
 				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
+				8AB295DD25A7411300EC33EB /* EventController.swift */,
 				8AF9552B25C159A100F31095 /* LoginViewController.swift */,
 				8AD7854125C16628009E8357 /* SignUpViewController.swift */,
 				8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */,
-				8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,7 +198,6 @@
 		8AB295D825A7402D00EC33EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8A880ED225A7428A00494BD3 /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,12 +222,40 @@
 		B64A364825C30C7D0087999A /* Countdowns */ = {
 			isa = PBXGroup;
 			children = (
+				B6E0225025C3EFB500E66B1C /* Views */,
 				B64A364925C30C7E0087999A /* Countdowns.swift */,
 				B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */,
 				B64A364C25C30C7F0087999A /* Assets.xcassets */,
 				B64A364E25C30C7F0087999A /* Info.plist */,
+				B6E0222C25C3E54E00E66B1C /* EventEntry.swift */,
+				B6E0223D25C3E81B00E66B1C /* EventTimelineProvider.swift */,
 			);
 			path = Countdowns;
+			sourceTree = "<group>";
+		};
+		B6E0222825C3E4C100E66B1C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8A880ED225A7428A00494BD3 /* Event.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B6E0225025C3EFB500E66B1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0225725C3F05E00E66B1C /* Commons */,
+				B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B6E0225725C3F05E00E66B1C /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0225825C3F07500E66B1C /* EventView.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,7 +427,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B64A364F25C30C7F0087999A /* Countdowns.intentdefinition in Sources */,
+				B6E0222925C3E51000E66B1C /* Event.swift in Sources */,
+				B6E0225225C3EFCD00E66B1C /* CountdownWidgetSmall.swift in Sources */,
 				B64A364A25C30C7E0087999A /* Countdowns.swift in Sources */,
+				B6E0223E25C3E81B00E66B1C /* EventTimelineProvider.swift in Sources */,
+				B6E0222D25C3E54E00E66B1C /* EventEntry.swift in Sources */,
+				B6E0225925C3F07500E66B1C /* EventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +503,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -522,6 +565,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -549,7 +593,27 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46H8NG3ATK;
+				DEVELOPMENT_TEAM = 3R67X3SQZB;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CVCalendar/CVCalendar.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase/FirebaseDatabase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SideMenu/SideMenu.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+				);
 				INFOPLIST_FILE = countdown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -572,7 +636,27 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46H8NG3ATK;
+				DEVELOPMENT_TEAM = 3R67X3SQZB;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CVCalendar/CVCalendar.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase/FirebaseDatabase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SideMenu/SideMenu.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+				);
 				INFOPLIST_FILE = countdown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -593,7 +677,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46H8NG3ATK;
+				DEVELOPMENT_TEAM = 3R67X3SQZB;
 				INFOPLIST_FILE = Countdowns/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -45,19 +45,16 @@ struct CountdownsEntryView : View {
     var entry: Provider.Entry
     let formatter = RelativeDateTimeFormatter()
     let progress:String = "30%"
+    let icon = "\u{1F496}"
     
     var body: some View {
         ZStack{
             Color.orange.edgesIgnoringSafeArea(.all)
             VStack( spacing: 10){
                 HStack{
-                    Image(systemName: "person.fill").foregroundColor(.white)
-                    Text("John's Birthday").foregroundColor(.white).font(.headline)
+                    Text(icon).foregroundColor(.white)
+                    Text("GAYSEX").foregroundColor(.white).font(.headline)
                 }
-    //            VStack{
-    //                Text("36").font(.title)
-    //                Text("days left")
-    //            }
                 Text("Progress: \(progress)").foregroundColor(.white)
                 Text(formatter.localizedString(from: DateComponents(day: 36))).font(.title).foregroundColor(.white)
             }
