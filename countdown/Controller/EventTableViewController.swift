@@ -122,34 +122,36 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
                 return remainingMinutes
             }
             
-            return remainingHours
+            return abs(remainingHours)
         }
-        return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+        return abs(Calendar.current.dateComponents([.day], from: Date(), to: date).day!)
     }
     
     func getCountDownDesc(_ date:Date) -> String {
         let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
+        let suffix = (remainingHours >= 0) ? "left" : "ago"
+        
         if (remainingHours < 24){
             if (remainingHours == 0){
                 let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
                 if (remainingMinutes == 0){
-                    return "minute left"
+                    return "minute \(suffix)"
                 } else{
-                    return "minutes left"
+                    return "minutes \(suffix)"
                 }
             }
             
             if (remainingHours == 1){
-                return "hour left"
+                return "hour \(suffix)"
             }else{
-                return "hours left"
+                return "hours \(suffix)"
             }
         } else{
             let remainingDays = Calendar.current.dateComponents([.day], from: Date(), to: date).day!
             if (remainingDays == 1){
-                return "day left"
+                return "day \(suffix)"
             }else{
-                return "days left"
+                return "days \(suffix)"
             }
         }
     }
