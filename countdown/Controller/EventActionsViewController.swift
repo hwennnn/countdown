@@ -95,6 +95,11 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         initColourButtons(colourList)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
