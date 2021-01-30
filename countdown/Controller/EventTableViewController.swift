@@ -63,7 +63,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             
             bannerRemaining.text = "\(calculateCountDown(remainingDateTime))"
             bannerRemainingDesc.text = getCountDownDesc(remainingDateTime)
-            bannerTitle.text = "\(firstEvent.name) \(firstEvent.emoji.decodeEmoji)"
+            bannerTitle.text = "\(firstEvent.emoji.decodeEmoji) \(firstEvent.name)"
             bannerDate.text = dateFormat(firstEvent)
             
             self.navigationController?.navigationBar.barTintColor = colourSchemeList[firstEvent.colour].colorWithHexString()
@@ -98,14 +98,17 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EventTableViewCell
 
         let event = eventList[indexPath.row]
         let remainingDateTime = combineDateAndTime(event.date, event.time, event.includedTime)
-
-        cell.textLabel!.text = "\(event.name) \(event.emoji.decodeEmoji)"
-        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(remainingDateTime)) \(getCountDownDesc(remainingDateTime))"
         
+        cell.colourLine.backgroundColor = colourSchemeList[event.colour].colorWithHexString()
+        cell.title.text = "\(event.emoji.decodeEmoji) \(event.name)"
+        cell.date.text = "\(dateFormat(event))"
+        cell.remaining.text = "\(calculateCountDown(remainingDateTime))"
+        cell.remainingDesc.text = "\(getCountDownDesc(remainingDateTime))"
+  
         return cell
          
     }
@@ -119,7 +122,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         if (remainingHours < 24){
             if (remainingHours == 0){
                 let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
-                return remainingMinutes
+                return abs(remainingMinutes)
             }
             
             return abs(remainingHours)
@@ -129,7 +132,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     
     func getCountDownDesc(_ date:Date) -> String {
         let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
-        let suffix = (remainingHours >= 0) ? "left" : "ago"
+        var suffix = (remainingHours >= 0) ? "left" : "ago"
         
         if (remainingHours < 24){
             if (remainingHours == 0){
@@ -137,6 +140,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
                 if (remainingMinutes == 0){
                     return "minute \(suffix)"
                 } else{
+                    suffix = (remainingMinutes > 0) ? "left" : "ago"
                     return "minutes \(suffix)"
                 }
             }
@@ -151,6 +155,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             if (remainingDays == 1){
                 return "day \(suffix)"
             }else{
+                suffix = (remainingDays > 0) ? "left" : "ago"
                 return "days \(suffix)"
             }
         }
