@@ -159,7 +159,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     }
     
     @IBAction func backToHome(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func actionEvent(_ sender: Any){

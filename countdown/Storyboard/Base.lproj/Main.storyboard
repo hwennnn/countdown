@@ -188,11 +188,11 @@
             <objects>
                 <viewController id="jEI-Wz-kVS" customClass="EventActionsViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PiR-Jj-sy9">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="1262"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="1350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zC-za-9ug">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="1179"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="1179"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9W-Ua-heX" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="-2.3333333333333712" width="390" height="1234.3333333333335"/>
@@ -513,7 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiq-B3-Wb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2227.6923076923076" y="-256.6350710900474"/>
+            <point key="canvasLocation" x="3156.9230769230767" y="-256.6350710900474"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="KHb-i6-Oci">
@@ -737,7 +737,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1Pk-T0-yJl">
                             <connections>
-                                <segue destination="jEI-Wz-kVS" kind="show" identifier="eventAction" id="hn6-DB-4E5"/>
+                                <segue destination="yBk-gt-ngM" kind="show" identifier="eventAction" id="hn6-DB-4E5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -753,6 +753,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1f-y4-3n2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1187.6923076923076" y="-257.34597156398104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fB6-NP-Ec8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yBk-gt-ngM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="nRK-Tz-dGt"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="far-w3-Qjg">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jEI-Wz-kVS" kind="relationship" relationship="rootViewController" id="fZ7-af-CYM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugh-nL-AGA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2227.6923076923076" y="-256.6350710900474"/>
         </scene>
     </scenes>
     <resources>

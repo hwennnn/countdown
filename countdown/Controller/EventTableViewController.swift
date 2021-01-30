@@ -193,7 +193,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "eventAction", let destination = segue.destination as? EventActionsViewController {
+        if segue.identifier == "eventAction", let destination = segue.destination.children[0] as? EventActionsViewController {
             if let s = sender as? Int{
                 if (s == -1){
                     destination.currentEvent = self.firstEvent
