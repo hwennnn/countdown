@@ -207,7 +207,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     func dateFormat(_ event:Event) -> String{
         let dateFormatter = DateFormatter() // set to local date (Singapore)
         dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        let dateFormatStyle:String = (event.includedTime) ? "d MMM yyyy h:mm a" : "d MMM yyyy"
+        let dateFormatStyle:String = (event.includedTime) ? "EE, d MMM yyyy h:mm a" : "EE, d MMM yyyy"
         dateFormatter.dateFormat = dateFormatStyle // convert date to String
         let datevalue = dateFormatter.string(from: combineDateAndTime(event.date, event.time, event.includedTime))
         
