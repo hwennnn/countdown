@@ -38,6 +38,7 @@ class ProfileMenuViewController: UIViewController{
         }
         
         eventController.deleteAllEvents()
+        notificationManager.removeAllNotifications()
         
         // dismiss the side menu
         self.dismiss(animated: false, completion: nil)

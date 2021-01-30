@@ -214,6 +214,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         eventController.updateEvent(currentEvent!)
         firebaseDataController.updateEvent(currentEvent!)
         
+        notificationManager.removeNotifications(currentEvent!)
         notificationManager.schedule(currentEvent!)
     }
     

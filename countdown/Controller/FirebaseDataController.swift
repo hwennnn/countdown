@@ -14,6 +14,7 @@ class FirebaseDataController: UIViewController{
     var ref: DatabaseReference! = Database.database().reference()
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
+    let notificationManger = LocalNotificationManager()
     
     func insertEvent(_ event:Event){
         let uid = appDelegate.currentUser?.uid
@@ -60,6 +61,7 @@ class FirebaseDataController: UIViewController{
                     
                     let newEvent = Event(id,name,emoji,includedTime,date,time,created_at,reminders,colour,progress)
                     self.eventController.addEvent(newEvent)
+                    self.notificationManger.schedule(newEvent)
                 }
                 
             }

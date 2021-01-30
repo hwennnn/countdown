@@ -16,7 +16,7 @@ class LocalNotificationManager{
         UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
 
             for notification in notifications {
-                print(notification)
+                print(notification.identifier)
             }
         }
     }
@@ -99,7 +99,7 @@ class LocalNotificationManager{
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         // use the index as a suffix to make the notificationID unique
         let notificationID = (index == -1) ? event.id : "\(event.id)\(index)"
-        
+        print(notificationID)
         let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { (error) in
@@ -112,15 +112,16 @@ class LocalNotificationManager{
         
     }
     
+    func removeAllNotifications(){
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
+    
     func removeNotifications(_ event:Event){
         removeNotification(event, -1)
         
-        // set reminders based on the user settings
         let reminders = stringToArray(event.reminders)
-        for (index, needSet) in reminders.enumerated(){
-            if (needSet){
-                removeNotification(event, index)
-            }
+        for (index, _) in reminders.enumerated(){
+            removeNotification(event, index)
         }
     }
     
