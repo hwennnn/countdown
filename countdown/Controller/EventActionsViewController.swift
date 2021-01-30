@@ -175,6 +175,12 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     func createEvent(){
         let id = UUID().uuidString
         let title = eventTitle.text!
+        
+        if (title.isEmpty){
+            popAlert("Blank field", "Please enter a title for the countdown!")
+            return
+        }
+        
         let emoji = (emojiField.text!).encodeEmoji
         
         let includedTime = !isIncludeTime.isOn
@@ -198,6 +204,12 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     
     func updateEvent(){
         let title = eventTitle.text!
+        
+        if (title.isEmpty){
+            popAlert("Blank field", "Please enter a title for the countdown!")
+            return
+        }
+        
         let emoji = (emojiField.text!).encodeEmoji
         
         let includedTime = !isIncludeTime.isOn
@@ -233,6 +245,15 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         let stringArray:[String] = s.components(separatedBy: ",")
         return stringArray.map{Bool($0)!}
     }
+    
+    func popAlert(_ alertTitle:String, _ alertMessage:String){
+        let alertView = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+                
+        alertView.addAction(UIAlertAction(title: "Noted",style: UIAlertAction.Style.default, handler: { _ in }))
+        
+        self.present(alertView, animated: true, completion: nil)
+    }
+   
 }
 
 extension String {
