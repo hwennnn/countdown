@@ -39,29 +39,72 @@
                                     <constraint firstAttribute="height" constant="265" id="nKK-lm-Ydn"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="calendarCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarCell" textLabel="0bb-pm-V0S" detailTextLabel="6k5-Zy-Cbg" style="IBUITableViewCellStyleSubtitle" id="X4b-CT-WlD">
-                                        <rect key="frame" x="0.0" y="28" width="390" height="55.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarCell" rowHeight="60" id="qLW-LL-l0O" customClass="EventTableViewCell" customModule="countdown" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="390" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X4b-CT-WlD" id="OAN-jA-g5K">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="55.666667938232422"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qLW-LL-l0O" id="Yy3-1f-A3N">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0bb-pm-V0S">
-                                                    <rect key="frame" x="20" y="8.9999999999999982" width="33" height="20.333333333333332"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John's Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Te6-vn-0hd">
+                                                    <rect key="frame" x="31.999999999999993" y="9" width="110.33333333333331" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6k5-Zy-Cbg">
-                                                    <rect key="frame" x="19.999999999999996" y="31.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed, 2 Feb 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX6-Cn-lmI">
+                                                    <rect key="frame" x="32" y="35" width="104" height="15.666666666666664"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-ai-2uX">
+                                                    <rect key="frame" x="327.66666666666669" y="8.9999999999999982" width="27" height="26.333333333333329"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="27" id="iRE-5h-61x"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hours left" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="57" translatesAutoresizingMaskIntoConstraints="NO" id="4IJ-tR-Gy1">
+                                                    <rect key="frame" x="312" y="34" width="58" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="58" id="B8U-mg-tIi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l78-Aq-9aH">
+                                                    <rect key="frame" x="20" y="9" width="4" height="42"/>
+                                                    <color key="backgroundColor" systemColor="labelColor"/>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HX6-Cn-lmI" firstAttribute="top" secondItem="Te6-vn-0hd" secondAttribute="bottom" constant="8" id="8zG-R5-Zz3"/>
+                                                <constraint firstItem="HX6-Cn-lmI" firstAttribute="leading" secondItem="Yy3-1f-A3N" secondAttribute="leading" constant="32" id="Bo8-vN-caI"/>
+                                                <constraint firstItem="Te6-vn-0hd" firstAttribute="leading" secondItem="Yy3-1f-A3N" secondAttribute="leading" constant="32" id="Iql-E1-PT7"/>
+                                                <constraint firstItem="l78-Aq-9aH" firstAttribute="leading" secondItem="Yy3-1f-A3N" secondAttribute="leading" constant="20" symbolic="YES" id="J3d-Mc-aha"/>
+                                                <constraint firstAttribute="trailing" secondItem="4IJ-tR-Gy1" secondAttribute="trailing" constant="20" id="NEn-NP-V5B"/>
+                                                <constraint firstAttribute="bottom" secondItem="l78-Aq-9aH" secondAttribute="bottom" constant="9" id="drs-zY-On4"/>
+                                                <constraint firstItem="NoN-ai-2uX" firstAttribute="centerX" secondItem="4IJ-tR-Gy1" secondAttribute="centerX" id="f7q-Oq-7yN"/>
+                                                <constraint firstAttribute="bottom" secondItem="4IJ-tR-Gy1" secondAttribute="bottom" constant="10" id="goP-5D-lUm"/>
+                                                <constraint firstItem="Te6-vn-0hd" firstAttribute="top" secondItem="Yy3-1f-A3N" secondAttribute="top" constant="9" id="iWw-jb-TIk"/>
+                                                <constraint firstAttribute="bottom" secondItem="HX6-Cn-lmI" secondAttribute="bottom" constant="9.3333333333333357" id="jGV-tn-H4C"/>
+                                                <constraint firstItem="HX6-Cn-lmI" firstAttribute="leading" secondItem="l78-Aq-9aH" secondAttribute="trailing" constant="8" symbolic="YES" id="mja-Y6-qSJ"/>
+                                                <constraint firstItem="l78-Aq-9aH" firstAttribute="top" secondItem="Yy3-1f-A3N" secondAttribute="top" constant="9" id="ocQ-lE-xWk"/>
+                                                <constraint firstItem="NoN-ai-2uX" firstAttribute="top" secondItem="Yy3-1f-A3N" secondAttribute="top" constant="9" id="pkr-yY-SEb"/>
+                                                <constraint firstItem="Te6-vn-0hd" firstAttribute="leading" secondItem="l78-Aq-9aH" secondAttribute="trailing" constant="8" symbolic="YES" id="rew-dG-xVE"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="colourLine" destination="l78-Aq-9aH" id="Lg3-uP-kcy"/>
+                                            <outlet property="date" destination="HX6-Cn-lmI" id="9zG-3u-S1V"/>
+                                            <outlet property="remaining" destination="NoN-ai-2uX" id="4CN-Lh-INe"/>
+                                            <outlet property="remainingDesc" destination="4IJ-tR-Gy1" id="0J0-Ki-brF"/>
+                                            <outlet property="title" destination="Te6-vn-0hd" id="jCN-d0-0ca"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

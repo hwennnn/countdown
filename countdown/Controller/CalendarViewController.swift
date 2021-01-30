@@ -25,6 +25,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     private var selectedDay: DayView!
     private var currentCalendar: Calendar?
     var formatter = DateFormatter()
+    var colourSchemeList:[String] = []
     
     // Controller
     let eventController = EventController()
@@ -37,8 +38,48 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         present(appDelegate.menu!, animated: true, completion: nil)
     }
     
-    func calculateCountDown(_ date:Date) -> Int{
-        return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+    func calculateCountDown(_ date:Date) -> Int {
+        let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
+        if (remainingHours < 24){
+            if (remainingHours == 0){
+                let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
+                return abs(remainingMinutes)
+            }
+            
+            return abs(remainingHours)
+        }
+        return abs(Calendar.current.dateComponents([.day], from: Date(), to: date).day!)
+    }
+    
+    func getCountDownDesc(_ date:Date) -> String {
+        let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
+        var suffix = (remainingHours >= 0) ? "left" : "ago"
+        
+        if (remainingHours < 24){
+            if (remainingHours == 0){
+                let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
+                if (remainingMinutes == 0){
+                    return "minute \(suffix)"
+                } else{
+                    suffix = (remainingMinutes > 0) ? "left" : "ago"
+                    return "minutes \(suffix)"
+                }
+            }
+            
+            if (remainingHours == 1){
+                return "hour \(suffix)"
+            }else{
+                return "hours \(suffix)"
+            }
+        } else{
+            let remainingDays = Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+            if (remainingDays == 1){
+                return "day \(suffix)"
+            }else{
+                suffix = (remainingDays > 0) ? "left" : "ago"
+                return "days \(suffix)"
+            }
+        }
     }
     
     func dateFormat(_ event:Event) -> String{
@@ -60,11 +101,17 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath)
+
+        let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! EventTableViewCell
+
         let event = eventArr[indexPath.row]
+        let remainingDateTime = combineDateAndTime(event.date, event.time, event.includedTime)
         
-        cell.textLabel!.text = "\(event.name) \(event.emoji.decodeEmoji)"
-        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(event.date)) days left"
+        cell.colourLine.backgroundColor = colourSchemeList[event.colour].colorWithHexString()
+        cell.title.text = "\(event.emoji.decodeEmoji) \(event.name)"
+        cell.date.text = "\(dateFormat(event))"
+        cell.remaining.text = "\(calculateCountDown(remainingDateTime))"
+        cell.remainingDesc.text = "\(getCountDownDesc(remainingDateTime))"
 
         return cell
         
@@ -89,6 +136,8 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        colourSchemeList = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
         
         formatter.dateFormat = "dd MMMM, yyyy"
         formatter.locale = Locale(identifier: "en_SG")
