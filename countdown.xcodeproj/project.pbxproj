@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5FFEC8A136E2B507F4FB84E8 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F63520597B33519B40973 /* Pods_countdown.framework */; };
+		8A16BEC225C5077E004C15D5 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A16BEC125C5077E004C15D5 /* logo.png */; };
 		8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */; };
 		8A5D6FB525C3FF3600301E56 /* EventActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */; };
 		8A880ED325A7428A00494BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		159A631724B6B1873F5B5BB0 /* Pods-countdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.release.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.release.xcconfig"; sourceTree = "<group>"; };
 		6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
+		8A16BEC125C5077E004C15D5 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataController.swift; sourceTree = "<group>"; };
 		8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionsViewController.swift; sourceTree = "<group>"; };
 		8A880ED225A7428A00494BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				8AB295D625A7401100EC33EB /* Controller */,
 				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */,
+				8A16BEC125C5077E004C15D5 /* logo.png */,
 				8AB295C825A73A5500EC33EB /* Assets.xcassets */,
 				8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */,
 				8AB295CD25A73A5500EC33EB /* Info.plist */,
@@ -307,6 +310,7 @@
 				8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */,
 				8AF9552725C1589400F31095 /* Base.storyboard in Resources */,
 				8AB295C925A73A5500EC33EB /* Assets.xcassets in Resources */,
+				8A16BEC225C5077E004C15D5 /* logo.png in Resources */,
 				8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
