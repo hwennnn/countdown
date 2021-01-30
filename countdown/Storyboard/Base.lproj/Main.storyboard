@@ -484,6 +484,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Countdown" id="G3K-Pj-4x2">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="nPj-5F-ML4">
+                            <connections>
+                                <action selector="backToHome:" destination="jEI-Wz-kVS" id="Qxv-Yb-cCr"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Create" id="hHz-He-KLY">
                             <connections>
                                 <action selector="actionEvent:" destination="jEI-Wz-kVS" id="j9d-u2-Z4z"/>
@@ -596,6 +601,7 @@
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <namedColor name="AccentColor">
