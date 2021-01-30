@@ -62,8 +62,8 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             let remainingDateTime = combineDateAndTime(firstEvent.date, firstEvent.time, firstEvent.includedTime)
             
             bannerRemaining.text = "\(calculateCountDown(remainingDateTime))"
-            bannerRemainingDesc.text = "days left"
-            bannerTitle.text = firstEvent.name
+            bannerRemainingDesc.text = getCountDownDesc(remainingDateTime)
+            bannerTitle.text = "\(firstEvent.name) \(firstEvent.emoji.decodeEmoji)"
             bannerDate.text = dateFormat(firstEvent)
             
             self.navigationController?.navigationBar.barTintColor = colourSchemeList[firstEvent.colour].colorWithHexString()
@@ -85,7 +85,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     @objc func tappedBanner(sender : UITapGestureRecognizer) {
         print("tapped")
         if (self.firstEvent != nil){
-            performSegue(withIdentifier: "eventAction", sender: nil)
+            performSegue(withIdentifier: "eventAction", sender: -1)
         }
     }
 
@@ -101,9 +101,10 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         let event = eventList[indexPath.row]
+        let remainingDateTime = combineDateAndTime(event.date, event.time, event.includedTime)
 
         cell.textLabel!.text = "\(event.name) \(event.emoji.decodeEmoji)"
-        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(event.date)) days left"
+        cell.detailTextLabel!.text = "\(dateFormat(event)) - \(calculateCountDown(remainingDateTime)) \(getCountDownDesc(remainingDateTime))"
         
         return cell
          
@@ -113,8 +114,30 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
 //        let event:Event = eventList[indexPath.row]
     }
     
-    func calculateCountDown(_ date:Date) -> Int{
+    func calculateCountDown(_ date:Date) -> Int {
+        let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
+        if (remainingHours < 24){
+            return remainingHours
+        }
         return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+    }
+    
+    func getCountDownDesc(_ date:Date) -> String {
+        let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
+        if (remainingHours < 24){
+            if (remainingHours >= 0 && remainingHours <= 1){
+                return "hour left"
+            }else{
+                return "hours left"
+            }
+        } else{
+            let remainingDays = Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+            if (remainingDays >= 0 && remainingDays <= 1){
+                return "day left"
+            }else{
+                return "days left"
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -151,9 +174,11 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "eventAction", let destination = segue.destination as? EventActionsViewController {
             if let s = sender as? Int{
-                destination.currentEvent = self.eventList[s]
-            }else{
-                destination.currentEvent = self.firstEvent
+                if (s == -1){
+                    destination.currentEvent = self.firstEvent
+                } else{
+                    destination.currentEvent = self.eventList[s]
+                }
             }
         }
     }
