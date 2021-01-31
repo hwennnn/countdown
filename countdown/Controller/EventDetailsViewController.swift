@@ -8,16 +8,19 @@
 import Foundation
 import UIKit
 
-class EventDetailsViewController:UIViewController {
+class EventDetailsViewController:UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    var detailsList:[(String, Int)] = []
     var event:Event?
     var colourSchemeList:[String] = []
     @IBOutlet weak var iconField: UILabel!
     @IBOutlet weak var titleField: UILabel!
     @IBOutlet weak var dateField: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         colourSchemeList = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
         
         if (event != nil){
@@ -26,10 +29,60 @@ class EventDetailsViewController:UIViewController {
             self.titleField.text = event!.name
             self.dateField.text = dateFormat(event!)
         }
+        
+        self.detailsList = generateRemaining()
+        
+        self.collectionView.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
+        if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+           }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.detailsList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventDetail", for: indexPath) as! EventDetailCollectionViewCell
+        let detail = self.detailsList[indexPath.row]
+        cell.remaining.text = "\(detail.1)"
+        cell.remainingDesc.text = detail.0
+        
+        return cell
+    }
+    
+    func generateRemaining() -> [(String, Int)] {
+        var res:[(String, Int)] = []
+        
+        let combinedDate = combineDateAndTime(event!.date, event!.time, event!.includedTime)
+        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date(), to: combinedDate)
+        
+        let desc:[String] = ["year", "month", "day", "hour", "minute", "second"]
+        let years = abs(components.year!)
+        let months = abs(components.month!)
+        let days = abs(components.day!)
+        let hours = abs(components.hour!)
+        let minutes = abs(components.minute!)
+        let seconds = abs(components.second!)
+        let dates:[Int] = [years, months, days, hours, minutes, seconds]
+        
+        for (i, (suffix, d)) in (zip(desc, dates)).enumerated(){
+            if (d == 0 && (i == 0 || i == 1 || i == 2)){
+                continue
+            }else{
+                let s = (d == 0) ? suffix : "\(suffix)s"
+                res.append((s, d))
+            }
+        }
+        
+        return res
     }
     
     @IBAction func back(){
