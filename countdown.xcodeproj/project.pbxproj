@@ -25,6 +25,12 @@
 		8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF954D625C1507400F31095 /* GoogleService-Info.plist */; };
 		8AF9552725C1589400F31095 /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9552625C1589400F31095 /* Base.storyboard */; };
 		8AF9552C25C159A100F31095 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9552B25C159A100F31095 /* LoginViewController.swift */; };
+		B620304125C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */; };
+		B620304225C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */; };
+		B620304725C6350F0033FDCF /* countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */; };
+		B634120725C5464500E69447 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
+		B63412BF25C5844500E69447 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63412BE25C5844500E69447 /* CoreDataContainer.swift */; };
+		B63412C025C5844500E69447 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63412BE25C5844500E69447 /* CoreDataContainer.swift */; };
 		B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */; };
 		B64A364625C30C7D0087999A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64A362825C308C40087999A /* WidgetKit.framework */; };
 		B64A364725C30C7D0087999A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64A362A25C308C40087999A /* SwiftUI.framework */; };
@@ -33,9 +39,6 @@
 		B64A364F25C30C7F0087999A /* Countdowns.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */; };
 		B64A365025C30C7F0087999A /* Countdowns.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */; };
 		B64A365325C30C7F0087999A /* CountdownsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B64A364525C30C7D0087999A /* CountdownsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B6E0222925C3E51000E66B1C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
-		B6E0222D25C3E54E00E66B1C /* EventEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0222C25C3E54E00E66B1C /* EventEntry.swift */; };
-		B6E0223E25C3E81B00E66B1C /* EventTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0223D25C3E81B00E66B1C /* EventTimelineProvider.swift */; };
 		B6E0225225C3EFCD00E66B1C /* CountdownWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */; };
 		B6E0225925C3F07500E66B1C /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0225825C3F07500E66B1C /* EventView.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +89,10 @@
 		8AF954D625C1507400F31095 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8AF9552625C1589400F31095 /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
 		8AF9552B25C159A100F31095 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCustomPersistentContainer.swift; sourceTree = "<group>"; };
+		B634120325C545B300E69447 /* countdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = countdown.entitlements; sourceTree = "<group>"; };
+		B634120425C5460A00E69447 /* CountdownsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CountdownsExtension.entitlements; sourceTree = "<group>"; };
+		B63412BE25C5844500E69447 /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
 		B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B64A362825C308C40087999A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B64A362A25C308C40087999A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -94,8 +101,6 @@
 		B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Countdowns.intentdefinition; sourceTree = "<group>"; };
 		B64A364C25C30C7F0087999A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64A364E25C30C7F0087999A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6E0222C25C3E54E00E66B1C /* EventEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEntry.swift; sourceTree = "<group>"; };
-		B6E0223D25C3E81B00E66B1C /* EventTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimelineProvider.swift; sourceTree = "<group>"; };
 		B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetSmall.swift; sourceTree = "<group>"; };
 		B6E0225825C3F07500E66B1C /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		D32F63520597B33519B40973 /* Pods_countdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,7 +149,8 @@
 		8AB295B025A73A5400EC33EB = {
 			isa = PBXGroup;
 			children = (
-				B6E0222825C3E4C100E66B1C /* Shared */,
+				B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */,
+				B634120425C5460A00E69447 /* CountdownsExtension.entitlements */,
 				8AB295BB25A73A5400EC33EB /* countdown */,
 				B64A364825C30C7D0087999A /* Countdowns */,
 				8AB295BA25A73A5400EC33EB /* Products */,
@@ -165,6 +171,7 @@
 		8AB295BB25A73A5400EC33EB /* countdown */ = {
 			isa = PBXGroup;
 			children = (
+				B634120325C545B300E69447 /* countdown.entitlements */,
 				8AD7853C25C162DA009E8357 /* Utils */,
 				8AF9552925C1589B00F31095 /* Storyboard */,
 				8AB295D825A7402D00EC33EB /* Model */,
@@ -191,6 +198,7 @@
 				8AF9552B25C159A100F31095 /* LoginViewController.swift */,
 				8AD7854125C16628009E8357 /* SignUpViewController.swift */,
 				8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */,
+				B63412BE25C5844500E69447 /* CoreDataContainer.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 		8AB295D825A7402D00EC33EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8A880ED225A7428A00494BD3 /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,18 +236,8 @@
 				B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */,
 				B64A364C25C30C7F0087999A /* Assets.xcassets */,
 				B64A364E25C30C7F0087999A /* Info.plist */,
-				B6E0222C25C3E54E00E66B1C /* EventEntry.swift */,
-				B6E0223D25C3E81B00E66B1C /* EventTimelineProvider.swift */,
 			);
 			path = Countdowns;
-			sourceTree = "<group>";
-		};
-		B6E0222825C3E4C100E66B1C /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				8A880ED225A7428A00494BD3 /* Event.swift */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		B6E0225025C3EFB500E66B1C /* Views */ = {
@@ -409,10 +408,12 @@
 				B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */,
 				8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */,
 				8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */,
+				B620304125C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
 				8AD7853E25C162E3009E8357 /* LocalNotificationManager.swift in Sources */,
 				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,
 				8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */,
+				B63412BF25C5844500E69447 /* CoreDataContainer.swift in Sources */,
 				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
 				8A880ED325A7428A00494BD3 /* Event.swift in Sources */,
 				B64A365025C30C7F0087999A /* Countdowns.intentdefinition in Sources */,
@@ -426,12 +427,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B63412C025C5844500E69447 /* CoreDataContainer.swift in Sources */,
+				B620304725C6350F0033FDCF /* countdown.xcdatamodeld in Sources */,
 				B64A364F25C30C7F0087999A /* Countdowns.intentdefinition in Sources */,
-				B6E0222925C3E51000E66B1C /* Event.swift in Sources */,
 				B6E0225225C3EFCD00E66B1C /* CountdownWidgetSmall.swift in Sources */,
 				B64A364A25C30C7E0087999A /* Countdowns.swift in Sources */,
-				B6E0223E25C3E81B00E66B1C /* EventTimelineProvider.swift in Sources */,
-				B6E0222D25C3E54E00E66B1C /* EventEntry.swift in Sources */,
+				B620304225C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */,
+				B634120725C5464500E69447 /* Event.swift in Sources */,
 				B6E0225925C3F07500E66B1C /* EventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,6 +593,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = countdown/countdown.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3R67X3SQZB;
@@ -634,6 +637,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = countdown/countdown.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3R67X3SQZB;
@@ -675,7 +679,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_ENTITLEMENTS = CountdownsExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3R67X3SQZB;
 				INFOPLIST_FILE = Countdowns/Info.plist;
@@ -698,9 +703,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_ENTITLEMENTS = CountdownsExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46H8NG3ATK;
+				DEVELOPMENT_TEAM = 3R67X3SQZB;
 				INFOPLIST_FILE = Countdowns/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (

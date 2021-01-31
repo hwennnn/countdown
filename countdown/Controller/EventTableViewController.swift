@@ -10,12 +10,12 @@ import UIKit
 import SideMenu
 
 class EventTableViewController : UITableViewController{
-    
+
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
-    
+   
     var eventList:[Event] = []
     
     @IBAction func didTapMenu(){
