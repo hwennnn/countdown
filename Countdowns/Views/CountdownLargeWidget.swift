@@ -8,12 +8,18 @@
 import SwiftUI
 import WidgetKit
 
+func shouldShowViewLarge(c:Int) -> Bool {
+    return c < 6
+}
+
 struct CountdownLargeWidget: View {
     let entry:EventEntry
     var body: some View {
         VStack{
             ForEach(0 ..< entry.event.count){
-                EventView(entry: entry,selected: $0)
+                if shouldShowViewLarge(c:$0){
+                    EventView(entry: entry,selected: $0)
+                }
             }
         }.padding(10).redacted(reason: entry.isPlaceholder ? .placeholder : .init())
     }

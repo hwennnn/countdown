@@ -121,10 +121,10 @@ struct EventTimelineProvider: IntentTimelineProvider {
     func getTimeline(for configuration: SelectEventIntent, in context: Context, completion: @escaping (Timeline<EventEntry>) -> Void) {
         if let event:[Event]? = fetchdata(){
             let entry = EventEntry(date: Date(), event: event!)
-            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60*10)))
+            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(2)))
             completion(timeline)
         }else{
-            let timeline = Timeline(entries: [EventEntry.placeholder], policy: .after(Date().addingTimeInterval(60*2)))
+            let timeline = Timeline(entries: [EventEntry.placeholder], policy: .after(Date().addingTimeInterval(2)))
             completion(timeline)
         }
     }
