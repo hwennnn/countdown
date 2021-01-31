@@ -56,6 +56,16 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         var fetchedList = eventController.retrieveAllEvent()
         
         if (fetchedList.count == 0){
+            self.navigationController?.navigationBar.barTintColor = nil
+            self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+            self.navigationController?.navigationBar.shadowImage = nil
+            self.bannerView.backgroundColor = nil
+            
+            bannerRemaining.text = "😭"
+            bannerRemainingDesc.text = "Countdown is empty!"
+            bannerTitle.text = ""
+            bannerDate.text = ""
+            
             self.firstEvent = nil
             self.eventList = []
         }else{
@@ -85,7 +95,6 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     }
     
     @objc func tappedBanner(sender : UITapGestureRecognizer) {
-        print("tapped")
         if (self.firstEvent != nil){
             performSegue(withIdentifier: "eventDetails", sender: nil)
         }
