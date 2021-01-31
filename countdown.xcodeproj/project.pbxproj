@@ -197,10 +197,8 @@
 		8AB295D625A7401100EC33EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */,
 				B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */,
 				8AB295DA25A740D500EC33EB /* EventTableViewController.swift */,
-				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
 				8AB295DD25A7411300EC33EB /* EventController.swift */,
 				8AF9552B25C159A100F31095 /* LoginViewController.swift */,
 				8AD7854125C16628009E8357 /* SignUpViewController.swift */,
@@ -610,7 +608,7 @@
 				CODE_SIGN_ENTITLEMENTS = countdown/countdown.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3R67X3SQZB;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/CVCalendar/CVCalendar.framework/Headers\"",
@@ -636,7 +634,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.countdown;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -654,7 +652,7 @@
 				CODE_SIGN_ENTITLEMENTS = countdown/countdown.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3R67X3SQZB;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/CVCalendar/CVCalendar.framework/Headers\"",
@@ -680,7 +678,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.countdown;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -694,9 +692,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = CountdownsExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3R67X3SQZB;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
 				INFOPLIST_FILE = Countdowns/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -704,8 +702,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.countdown.Countdowns;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown.MadCountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -718,9 +717,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = CountdownsExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3R67X3SQZB;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
 				INFOPLIST_FILE = Countdowns/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -728,8 +727,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.countdown.Countdowns;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown.MadCountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
