@@ -13,6 +13,8 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     var detailsList:[(String, Int)] = []
     var event:Event?
     var colourSchemeList:[String] = []
+    var timer:Timer?
+    
     @IBOutlet weak var iconField: UILabel!
     @IBOutlet weak var titleField: UILabel!
     @IBOutlet weak var dateField: UILabel!
@@ -37,12 +39,37 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         self.collectionView.dataSource = self
         
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-           }
+            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+       }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        
+        if (event != nil){
+            self.view.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
+            self.iconField.text = event!.emoji.decodeEmoji
+            self.titleField.text = event!.name
+            self.dateField.text = dateFormat(event!)
+        }
+        self.collectionView.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
+        
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateDetails), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        timer?.invalidate()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        timer?.invalidate()
+    }
+    
+    @objc func updateDetails(){
+        self.detailsList = generateRemaining()
+        self.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -73,14 +100,19 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         let seconds = abs(components.second!)
         let dates:[Int] = [years, months, days, hours, minutes, seconds]
         
-        for (i, (suffix, d)) in (zip(desc, dates)).enumerated(){
-            if (d == 0 && (i == 0 || i == 1 || i == 2)){
-                continue
-            }else{
-                let s = (d == 0) ? suffix : "\(suffix)s"
-                res.append((s, d))
-            }
+        for (suffix, d) in zip(desc, dates){
+            let s = (d == 0 || d == 1) ? suffix : "\(suffix)s"
+            res.append((s, d))
         }
+        
+//        for (i, (suffix, d)) in (zip(desc, dates)).enumerated(){
+//            if (d == 0 && (i == 0 || i == 1 || i == 2)){
+//                continue
+//            }else{
+//                let s = (d == 0 || d == 1) ? suffix : "\(suffix)s"
+//                res.append((s, d))
+//            }
+//        }
         
         return res
     }

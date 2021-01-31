@@ -42,6 +42,8 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        initEventList()
+        
         self.tableView.reloadData()
     }
  
