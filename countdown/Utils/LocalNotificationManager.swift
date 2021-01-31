@@ -59,7 +59,7 @@ class LocalNotificationManager{
     
     private func scheduleNotification(_ event: Event, _ index: Int) {
         let content = UNMutableNotificationContent()
-        content.title = event.name
+        content.title = "Countdown - \(event.name)"
         content.sound = UNNotificationSound.default
         content.badge = 1
 
@@ -67,9 +67,33 @@ class LocalNotificationManager{
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_SG")
-        dateFormatter.dateFormat = (event.includedTime) ? "d MMM yyyy h:mm a" : "d MMM yyyy"
+        dateFormatter.dateFormat = "h:mm a"
         let date = dateFormatter.string(from: combinedDate)
-        content.body = "The event is due on \(date)" // xx hours
+        
+        if (index == -1){
+            content.body = "The countdown has completed"
+        }else{
+            var desc = ""
+            switch (index){
+                case 0:
+                    desc = "in 30 minutes"
+                    break
+                    
+                case 1:
+                    desc = "in 1 hour"
+                    break
+                
+                case 2:
+                    desc = "tomorrow"
+                    break
+                    
+                default:
+                    break
+            }
+            
+            content.body = "The countdown will be due \(desc) @ \(date) "
+        }
+        
         
 //         substract based on the reminder hours settings
         switch (index){
