@@ -27,7 +27,6 @@ class LoginViewController:UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

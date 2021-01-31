@@ -179,6 +179,11 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
             return
         }
         
+        if (title.count > 30){
+            popAlert("Invalid name", "Please enter a shorter name for the countdown!")
+            return
+        }
+        
         let emoji = (emojiField.text!).encodeEmoji
         
         let includedTime = !isIncludeTime.isOn
@@ -207,6 +212,11 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         
         if (title.isEmpty){
             popAlert("Blank field", "Please enter a title for the countdown!")
+            return
+        }
+        
+        if (title.count > 30){
+            popAlert("Invalid name", "Please enter a shorter name for the countdown!")
             return
         }
         
