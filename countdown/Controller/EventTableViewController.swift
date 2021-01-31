@@ -23,7 +23,6 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
     
-    var indexPathForButton: IndexPath?
     var firstEvent:Event?
     var eventList:[Event] = []
     var colourSchemeList:[String] = []
