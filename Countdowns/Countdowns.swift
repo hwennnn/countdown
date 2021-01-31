@@ -13,6 +13,7 @@ import CoreData
 import UIKit
 
 var colourSchemeList:[String] = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
+var selectedName:String = ""
 
 // MARK: - Core Data stack
 var persistentContainer: NSPersistentContainer = {
@@ -110,7 +111,8 @@ struct EventTimelineProvider: IntentTimelineProvider {
         }else{
             let entry: EventEntry
             if let event:[Event]? = fetchdata(){
-                entry = EventEntry(date: Date(), event: event!)
+                print(selectedName)
+                entry = EventEntry(date: Date(), event: event!,configuration: configuration)
             }else{
                 entry = EventEntry.placeholder
             }
@@ -120,11 +122,11 @@ struct EventTimelineProvider: IntentTimelineProvider {
     
     func getTimeline(for configuration: SelectEventIntent, in context: Context, completion: @escaping (Timeline<EventEntry>) -> Void) {
         if let event:[Event]? = fetchdata(){
-            let entry = EventEntry(date: Date(), event: event!)
-            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(2)))
+            let entry = EventEntry(date: Date(), event: event! ,configuration: configuration)
+            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(4)))
             completion(timeline)
         }else{
-            let timeline = Timeline(entries: [EventEntry.placeholder], policy: .after(Date().addingTimeInterval(2)))
+            let timeline = Timeline(entries: [EventEntry.placeholder], policy: .after(Date().addingTimeInterval(4)))
             completion(timeline)
         }
     }
@@ -134,20 +136,22 @@ struct EventEntry: TimelineEntry {
     let date: Date
     var event:[Event]
     var isPlaceholder = false
+    var configuration:SelectEventIntent
 }
 
 extension EventEntry{
     static var stub: EventEntry{
-        EventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)])
+        EventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)],configuration: SelectEventIntent())
     }
 
     static var placeholder: EventEntry{
-        EventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)], isPlaceholder: true)
+        EventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)], isPlaceholder: true ,configuration: SelectEventIntent())
     }
 }
 
 struct CountdownsEntryView : View {
     var entry: EventEntry
+    
     @Environment(\.widgetFamily) var family
     
     var body: some View {
@@ -178,8 +182,8 @@ struct Countdowns: Widget {
         IntentConfiguration(kind: kind,  intent: SelectEventIntent.self, provider: EventTimelineProvider()) { entry in
             CountdownsEntryView(entry:entry)
         }
-        .configurationDisplayName("Single Event Widget")
-        .description("Get updates on one event")
+        .configurationDisplayName("Event Widgets")
+        .description("Get updates on events")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

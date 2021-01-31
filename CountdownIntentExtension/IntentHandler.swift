@@ -8,17 +8,14 @@
 import Intents
 import CoreData
 
-class IntentHandler: INExtension{
-//    func provideEventOptionsCollection(for intent: SelectEventIntent, with completion: @escaping (INObjectCollection<EventParam>?, Error?) -> Void) {
-//        func provideEventOptionsCollections(for intent: SelectEventIntent, with completion : @escaping (INObjectCollection<EventParam>?,Error?) -> Void){
-//            let events = fetchdata()
-//            var eventParams:[EventParam] = []
-//            for event in events{
-//                eventParams.append(EventParam(event))
-//            }
-//            completion(INObjectCollection(items: eventParams),nil)
-//        }
-//    }
+class IntentHandler: INExtension,SelectEventIntentHandling{
+    func provideEventOptionsCollection(for intent: SelectEventIntent, with completion: @escaping (INObjectCollection<EventParam>?, Error?) -> Void) {
+            let events = fetchdata()
+            let items = events.map {
+                EventParam(identifier: $0.id, display: $0.name)
+            }
+            completion(INObjectCollection(items: items), nil)
+    }
     
     // MARK: - Core Data stack
     var persistentContainer: NSPersistentContainer = {
