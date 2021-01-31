@@ -105,6 +105,7 @@
                                             <outlet property="remaining" destination="NoN-ai-2uX" id="4CN-Lh-INe"/>
                                             <outlet property="remainingDesc" destination="4IJ-tR-Gy1" id="0J0-Ki-brF"/>
                                             <outlet property="title" destination="Te6-vn-0hd" id="jCN-d0-0ca"/>
+                                            <segue destination="b9z-XC-ZtY" kind="presentation" identifier="calendarEventDetails" modalPresentationStyle="fullScreen" id="p6n-J6-pFH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -938,7 +939,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BzJ-J2-suI"/>
+        <segue reference="p6n-J6-pFH"/>
+        <segue reference="hn6-DB-4E5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

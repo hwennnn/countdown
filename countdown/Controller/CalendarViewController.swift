@@ -191,6 +191,16 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "calendarEventDetails", let destination = segue.destination.children[0] as? EventDetailsViewController {
+            if let cell:EventTableViewCell = sender as? EventTableViewCell{
+                let row = self.eventTable.indexPath(for: cell)?.row
+                destination.event = self.eventArr[row!]
+            }
+            // TODO: Add animation here (from left ro right)
+        }
+    }
+    
     func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
         
         let calendar = NSCalendar.current
