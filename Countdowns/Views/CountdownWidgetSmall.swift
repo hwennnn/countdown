@@ -10,8 +10,12 @@ import WidgetKit
 
 func fetchEvent(entry:EventEntry) -> Event {
     for event in entry.event{
-        if(event.name == entry.configuration.Event!.displayString){
-            return event
+        if entry.configuration.Event != nil {
+            if(entry.configuration.Event!.displayString == event.name){
+                return event
+            }
+        } else {
+            print("Doesn’t contain a value.")
         }
     }
     return EventEntry.placeholder.event[0]
@@ -31,12 +35,15 @@ struct CountdownWidgetSmall: View {
             VStack( spacing: 10){
                 HStack{
                     Text(decode((event.emoji))!).foregroundColor(.white)
-                    Text(event.name).foregroundColor(.white).font(.headline)
+                    Text(event.name).foregroundColor(.white).font(.subheadline).lineLimit(2)
                 }
-                VStack{
-                    Text(String(days)).font(.title).foregroundColor(.white)
-                    Text(utils.getCountDownDesc(combined)).foregroundColor(.white)
+                HStack(alignment: .lastTextBaseline){
+                    VStack{
+                        Text(String(days)).font(.title).foregroundColor(.white)
+                        Text(utils.getCountDownDesc(combined)).foregroundColor(.white)
+                    }.padding(.trailing,10)
                 }
+                
                 Text(utils.convertDateToString(date: combined)).foregroundColor(.white)
             }
             

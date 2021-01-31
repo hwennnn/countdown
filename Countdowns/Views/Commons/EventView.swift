@@ -18,12 +18,11 @@ struct EventView: View {
         let combined = utils.combineDateAndTime(entry.event[selected].date, entry.event[selected].time, entry.event[selected].includedTime)
         let days = utils.calculateCountDown(combined)
         HStack(){
-            Rectangle().fill(Color(utils.colourSchemeList[entry.event[selected].colour].colorWithHexString())).frame(width: 5, height: 30).padding(4)
-            VStack{
+            Rectangle().fill(Color(utils.colourSchemeList[entry.event[selected].colour].colorWithHexString())).frame(width: 5, height: 35).padding(4)
+            VStack(alignment: .leading){
                 HStack{
                     Text(decode((entry.event[selected].emoji))!)
                     Text(entry.event[selected].name)
-                    
                 }
                 Text(utils.convertDateToString(date: combined))
             }
