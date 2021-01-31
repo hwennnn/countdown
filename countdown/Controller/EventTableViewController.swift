@@ -17,7 +17,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
-    
+   
     var eventList:[Event] = []
     
     @IBAction func didTapMenu(){
