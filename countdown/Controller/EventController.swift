@@ -99,7 +99,10 @@ class EventController: UIViewController{
     
     func retrieveAllEvent() -> [Event]{
         var eventList:[Event] = []
+        var completed:[Event] = []
+        var incomplete:[Event] = []
         var events:[CDEvent] = []
+        
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
 
@@ -120,16 +123,27 @@ class EventController: UIViewController{
                 let progress = e.progress
 
                 let event = Event(id,name,emoji,includedTime,date,time,created_at,reminders,colour,progress)
-                eventList.append(event)
+                if (combineDateAndTime(event.date, event.time, event.includedTime) <= Date()){
+                    completed.append(event)
+                }else{
+                    incomplete.append(event)
+                }
 
             }
         } catch let error as NSError{
             print("Could not fetch. \(error), \(error.userInfo)")
         }
 
-        eventList.sort { (event1, event2) -> Bool in
+        completed.sort { (event1, event2) -> Bool in
             return combineDateAndTime(event1.date, event1.time, event1.includedTime) < combineDateAndTime(event2.date, event2.time, event2.includedTime)
         }
+        
+        incomplete.sort { (event1, event2) -> Bool in
+            return combineDateAndTime(event1.date, event1.time, event1.includedTime) < combineDateAndTime(event2.date, event2.time, event2.includedTime)
+        }
+        
+        eventList.append(contentsOf: incomplete)
+        eventList.append(contentsOf: completed)
 
         return eventList
     }
