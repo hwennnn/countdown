@@ -170,7 +170,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             eventController.deleteEvent(event)
             firebaseDataController.deleteEvent(event)
             notificationManager.removeNotifications(event)
-            self.eventList = self.eventController.retrieveAllEvent()
+            initEventList()
             self.tableView.reloadData()
         }
     }
@@ -209,6 +209,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             }else{
                 destination.event = self.firstEvent
             }
+            // TODO: Add animation here (from left ro right)
         }
     }
     

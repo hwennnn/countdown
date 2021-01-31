@@ -19,13 +19,13 @@ class ProfileMenuViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (appDelegate.currentUser != nil){
+            self.userID.text = appDelegate.currentUser!.email
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        if (appDelegate.currentUser != nil){
-            self.userID.text = appDelegate.currentUser!.email
-        }
         notificationManager.listScheduledNotifications()
     }
     

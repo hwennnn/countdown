@@ -146,23 +146,72 @@
             </objects>
             <point key="canvasLocation" x="1266.1538461538462" y="448.57819905213267"/>
         </scene>
-        <!--Event Details View Controller-->
+        <!--Countdown-->
         <scene sceneID="GPU-OZ-Sza">
             <objects>
                 <viewController storyboardIdentifier="eventDetails" id="cuI-zQ-yhf" customClass="EventDetailsViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YcU-mU-fHS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIb-X3-Jeb">
+                                <rect key="frame" x="114" y="147" width="162" height="154"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="eec-i8-EXh"/>
+                                    <constraint firstAttribute="width" constant="162" id="zOO-ge-c45"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9B-1O-Qxq">
+                                <rect key="frame" x="130.66666666666666" y="352" width="128.99999999999997" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed, 2 Feb 2020 10:30 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eTV-Yy-Etz">
+                                <rect key="frame" x="96" y="390" width="198" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="198" id="T0t-Df-WY7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="okh-ic-qSB">
+                                <rect key="frame" x="96" y="442" width="200" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hLT-cJ-nb5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eTV-Yy-Etz" firstAttribute="centerX" secondItem="hLT-cJ-nb5" secondAttribute="centerX" id="4vL-3W-hoM"/>
+                            <constraint firstItem="PIb-X3-Jeb" firstAttribute="top" secondItem="hLT-cJ-nb5" secondAttribute="top" constant="59" id="6aE-c3-EoX"/>
+                            <constraint firstItem="q9B-1O-Qxq" firstAttribute="centerX" secondItem="eTV-Yy-Etz" secondAttribute="centerX" id="LV5-LN-l7p"/>
+                            <constraint firstItem="eTV-Yy-Etz" firstAttribute="top" secondItem="q9B-1O-Qxq" secondAttribute="bottom" constant="8" symbolic="YES" id="QTt-W4-OMb"/>
+                            <constraint firstItem="PIb-X3-Jeb" firstAttribute="centerX" secondItem="hLT-cJ-nb5" secondAttribute="centerX" id="af8-uh-hzo"/>
+                            <constraint firstItem="q9B-1O-Qxq" firstAttribute="top" secondItem="PIb-X3-Jeb" secondAttribute="bottom" constant="51" id="tFb-U0-eiV"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2kV-tS-kLh">
+                    <navigationItem key="navigationItem" title="Countdown" id="2kV-tS-kLh">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="XUu-ke-YLv">
                             <connections>
                                 <action selector="back" destination="cuI-zQ-yhf" id="r35-O4-s83"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="RqH-33-YoT">
+                            <connections>
+                                <segue destination="yBk-gt-ngM" kind="presentation" identifier="editEvent" modalPresentationStyle="fullScreen" id="BzJ-J2-suI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateField" destination="eTV-Yy-Etz" id="gP4-xe-eNm"/>
+                        <outlet property="iconField" destination="PIb-X3-Jeb" id="4SU-v4-Wof"/>
+                        <outlet property="titleField" destination="q9B-1O-Qxq" id="msW-hK-GOW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6p-lu-vJh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -816,6 +865,9 @@
             <point key="canvasLocation" x="2227.6923076923076" y="448.57819905213267"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="BzJ-J2-suI"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
