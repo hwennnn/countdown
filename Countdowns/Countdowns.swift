@@ -12,6 +12,8 @@ import Foundation
 import CoreData
 import UIKit
 
+var colourSchemeList:[String] = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
+
 // MARK: - Core Data stack
 var persistentContainer: NSPersistentContainer = {
     /*
@@ -93,111 +95,73 @@ func fetchdata() -> ([Event]){
     return eventList
 }
 
-//struct Provider: IntentTimelineProvider {
-//
-//    func placeholder(in context: Context) -> SimpleEntry {
-//        SimpleEntry(date: Date(), event: fetchdata(), configuration: ConfigurationIntent())
-//    }
-//
-//    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-//        let entry = SimpleEntry(date: Date(), event: fetchdata(), configuration: ConfigurationIntent())
-//        completion(entry)
-//    }
-//
-//    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-//        var entries: [SimpleEntry]
-//        let entry = SimpleEntry(date: Date(), event: fetchdata(), configuration: ConfigurationIntent())
-//        entries = [entry]
-//        let timeline = Timeline(entries: entries, policy: .atEnd)
-//        completion(timeline)
-//    }
-//}
-
-struct EventTimelineProvider: TimelineProvider {
-    typealias Entry = EventEntry
+struct EventTimelineProvider: IntentTimelineProvider {
+    typealias Intent = SelectEventIntent
     
+    typealias Entry = EventEntry
     
     func placeholder(in context: Context) -> EventEntry {
         EventEntry.placeholder
     }
-
-    func getSnapshot(in context: Context, completion: @escaping (EventEntry) -> Void) {
-        print(fetchdata())
+    
+    func getSnapshot(for configuration: SelectEventIntent, in context: Context, completion: @escaping (EventEntry) -> Void) {
         if context.isPreview {
             completion(EventEntry.placeholder)
         }else{
             let entry: EventEntry
             if let event:[Event]? = fetchdata(){
-                entry = EventEntry(date: Date(), event: event![0])
+                entry = EventEntry(date: Date(), event: event!)
             }else{
                 entry = EventEntry.placeholder
             }
             completion(entry)
         }
     }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<EventEntry>) -> Void) {
-
+    
+    func getTimeline(for configuration: SelectEventIntent, in context: Context, completion: @escaping (Timeline<EventEntry>) -> Void) {
         if let event:[Event]? = fetchdata(){
-            let entry = EventEntry(date: Date(), event: event![0])
+            let entry = EventEntry(date: Date(), event: event!)
             let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60*10)))
             completion(timeline)
         }else{
             let timeline = Timeline(entries: [EventEntry.placeholder], policy: .after(Date().addingTimeInterval(60*2)))
             completion(timeline)
         }
-
-
     }
 }
 
 struct EventEntry: TimelineEntry {
     let date: Date
-    var event:Event?
-//    let configuration: ConfigurationIntent
+    var event:[Event]
     var isPlaceholder = false
 }
 
 extension EventEntry{
     static var stub: EventEntry{
-        EventEntry(date: Date(), event: .init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0))
+        EventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)])
     }
 
     static var placeholder: EventEntry{
-        EventEntry(date: Date(), event: .init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0),isPlaceholder: true)
+        EventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)], isPlaceholder: true)
     }
 }
-
-
-
-
 
 struct CountdownsEntryView : View {
     var entry: EventEntry
-    let formatter = RelativeDateTimeFormatter()
+    @Environment(\.widgetFamily) var family
     
     var body: some View {
-        let formattedProgress = String(format: "Progress: %.2f", entry.event!.progress)
-        ZStack{
-            Color.purple.edgesIgnoringSafeArea(.all)
-//            uiColorFromHex(rgbValue: entry.event!.color).
-            VStack( spacing: 10){
-                HStack{
-                    Text(decode((entry.event!.emoji))!).foregroundColor(.white)
-                    Text(entry.event!.name).foregroundColor(.white).font(.headline)
-                }
-                Text(formattedProgress).foregroundColor(.white)
-                Text(formatter.localizedString(from: DateComponents(day: calculateCountDown(entry.event!.date) ))).font(.title).foregroundColor(.white)
-                
-            }
+        switch family{
+            case .systemMedium:
+                CountdownMediumWidget(entry: entry)
+            case .systemLarge:
+                CountdownLargeWidget(entry: entry)
+            default:
+                CountdownWidgetSmall(entry: entry)
         }
-        
-        
     }
-}
-
-func calculateCountDown(_ date:Date) -> Int{
-    return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+    
+    
 }
 
 func decode(_ s: String) -> String? {
@@ -205,29 +169,18 @@ func decode(_ s: String) -> String? {
     return String(data: data, encoding: .nonLossyASCII)
 }
 
-func uiColorFromHex(rgbValue: Int) -> UIColor {
-    
-    // &  binary AND operator to zero out other color values
-    // >>  bitwise right shift operator
-    // Divide by 0xFF because UIColor takes CGFloats between 0.0 and 1.0
-    
-    let red =   CGFloat((rgbValue & 0xFF0000) >> 16) / 0xFF
-    let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 0xFF
-    let blue =  CGFloat(rgbValue & 0x0000FF) / 0xFF
-    let alpha = CGFloat(1.0)
-    
-    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
-}
+
 @main
 struct Countdowns: Widget {
     let kind: String = "Countdown"
-
+    
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: EventTimelineProvider()) { entry in
+        IntentConfiguration(kind: kind,  intent: SelectEventIntent.self, provider: EventTimelineProvider()) { entry in
             CountdownsEntryView(entry:entry)
         }
         .configurationDisplayName("Single Event Widget")
         .description("Get updates on one event")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
 
@@ -238,4 +191,8 @@ struct Countdowns_Previews: PreviewProvider {
     }
 }
 
-
+extension EventParam{
+    convenience init(event:Event){
+        self.init(identifier: event.id, display: event.name)
+    }
+}
