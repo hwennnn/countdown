@@ -23,6 +23,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
     
+    var indexPathForButton: IndexPath?
     var firstEvent:Event?
     var eventList:[Event] = []
     var colourSchemeList:[String] = []
@@ -85,7 +86,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     @objc func tappedBanner(sender : UITapGestureRecognizer) {
         print("tapped")
         if (self.firstEvent != nil){
-            performSegue(withIdentifier: "eventAction", sender: -1)
+            performSegue(withIdentifier: "eventDetails", sender: nil)
         }
     }
 
@@ -113,12 +114,8 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
          
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let event:Event = eventList[indexPath.row]
-    }
-    
     func calculateCountDown(_ date:Date) -> Int {
-        let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
+        let remainingHours = abs(Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!)
         if (remainingHours < 24){
             if (remainingHours == 0){
                 let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
@@ -127,21 +124,23 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             
             return abs(remainingHours)
         }
-        return abs(Calendar.current.dateComponents([.day], from: Date(), to: date).day!)
+        
+        let remainingDays = abs(Calendar.current.dateComponents([.day], from: Date(), to: date).day!)
+        return remainingDays
     }
     
     func getCountDownDesc(_ date:Date) -> String {
         let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
         var suffix = (remainingHours >= 0) ? "left" : "ago"
         
-        if (remainingHours < 24){
+        if (abs(remainingHours) < 24){
             if (remainingHours == 0){
                 let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
                 if (remainingMinutes == 0){
-                    return "minute \(suffix)"
+                    return "min \(suffix)"
                 } else{
                     suffix = (remainingMinutes > 0) ? "left" : "ago"
-                    return "minutes \(suffix)"
+                    return "mins \(suffix)"
                 }
             }
             
@@ -200,6 +199,15 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
                 } else{
                     destination.currentEvent = self.eventList[s]
                 }
+            }
+        }
+        
+        if segue.identifier == "eventDetails", let destination = segue.destination.children[0] as? EventDetailsViewController {
+            if let cell:EventTableViewCell = sender as? EventTableViewCell{
+                let row = self.tableView.indexPath(for: cell)?.row
+                destination.event = self.eventList[row!]
+            }else{
+                destination.event = self.firstEvent
             }
         }
     }

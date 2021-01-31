@@ -24,6 +24,7 @@
 		8AD7854225C16628009E8357 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7854125C16628009E8357 /* SignUpViewController.swift */; };
 		8AD7855525C182F7009E8357 /* ProfileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */; };
 		8AEB590025C5AE80008E1209 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB58FF25C5AE80008E1209 /* EventTableViewCell.swift */; };
+		8AEB590A25C5CB0F008E1209 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB590925C5CB0F008E1209 /* EventDetailsViewController.swift */; };
 		8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF954D625C1507400F31095 /* GoogleService-Info.plist */; };
 		8AF9552725C1589400F31095 /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9552625C1589400F31095 /* Base.storyboard */; };
 		8AF9552C25C159A100F31095 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9552B25C159A100F31095 /* LoginViewController.swift */; };
@@ -82,6 +83,7 @@
 		8AD7854125C16628009E8357 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuViewController.swift; sourceTree = "<group>"; };
 		8AEB58FF25C5AE80008E1209 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		8AEB590925C5CB0F008E1209 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		8AF954D625C1507400F31095 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8AF9552625C1589400F31095 /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
 		8AF9552B25C159A100F31095 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */,
 				8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */,
 				8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */,
+				8AEB590925C5CB0F008E1209 /* EventDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */,
 				8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */,
 				8AEB590025C5AE80008E1209 /* EventTableViewCell.swift in Sources */,
+				8AEB590A25C5CB0F008E1209 /* EventDetailsViewController.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
 				8AD7853E25C162E3009E8357 /* LocalNotificationManager.swift in Sources */,
 				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,

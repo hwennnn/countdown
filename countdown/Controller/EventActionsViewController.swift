@@ -168,8 +168,6 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         }else{
             createEvent()
         }
-        
-        self.navigationController?.popViewController(animated: true)
     }
     
     func createEvent(){
@@ -200,6 +198,8 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         firebaseDataController.insertEvent(newEvent)
         
         notificationManager.schedule(newEvent)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func updateEvent(){
@@ -234,6 +234,8 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         
         notificationManager.removeNotifications(currentEvent!)
         notificationManager.schedule(currentEvent!)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func arrayToString(_ array:[Bool]) -> String {

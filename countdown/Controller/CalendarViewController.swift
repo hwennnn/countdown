@@ -39,7 +39,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func calculateCountDown(_ date:Date) -> Int {
-        let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
+        let remainingHours = abs(Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!)
         if (remainingHours < 24){
             if (remainingHours == 0){
                 let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
@@ -48,21 +48,23 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
             
             return abs(remainingHours)
         }
-        return abs(Calendar.current.dateComponents([.day], from: Date(), to: date).day!)
+        
+        let remainingDays = abs(Calendar.current.dateComponents([.day], from: Date(), to: date).day!)
+        return remainingDays
     }
     
     func getCountDownDesc(_ date:Date) -> String {
         let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
         var suffix = (remainingHours >= 0) ? "left" : "ago"
         
-        if (remainingHours < 24){
+        if (abs(remainingHours) < 24){
             if (remainingHours == 0){
                 let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
                 if (remainingMinutes == 0){
-                    return "minute \(suffix)"
+                    return "min \(suffix)"
                 } else{
                     suffix = (remainingMinutes > 0) ? "left" : "ago"
-                    return "minutes \(suffix)"
+                    return "mins \(suffix)"
                 }
             }
             

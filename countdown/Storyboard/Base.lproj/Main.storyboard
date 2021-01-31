@@ -67,7 +67,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hours left" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="57" translatesAutoresizingMaskIntoConstraints="NO" id="4IJ-tR-Gy1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hours left" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" preferredMaxLayoutWidth="57" translatesAutoresizingMaskIntoConstraints="NO" id="4IJ-tR-Gy1">
                                                     <rect key="frame" x="312" y="34" width="58" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="58" id="B8U-mg-tIi"/>
@@ -146,6 +146,28 @@
             </objects>
             <point key="canvasLocation" x="1266.1538461538462" y="448.57819905213267"/>
         </scene>
+        <!--Event Details View Controller-->
+        <scene sceneID="GPU-OZ-Sza">
+            <objects>
+                <viewController storyboardIdentifier="eventDetails" id="cuI-zQ-yhf" customClass="EventDetailsViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YcU-mU-fHS">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hLT-cJ-nb5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2kV-tS-kLh">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="XUu-ke-YLv">
+                            <connections>
+                                <action selector="back" destination="cuI-zQ-yhf" id="r35-O4-s83"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b6p-lu-vJh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3156.9230769230767" y="448.57819905213267"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N4a-ns-deE">
             <objects>
@@ -192,7 +214,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zC-za-9ug">
-                                <rect key="frame" x="0.0" y="88" width="390" height="1179"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="1228"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9W-Ua-heX" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="-2.3333333333333712" width="390" height="1234.3333333333335"/>
@@ -229,23 +251,23 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="24D-gN-i8k">
-                                                <rect key="frame" x="17" y="243.33333333333331" width="356" height="327.99999999999994"/>
+                                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="24D-gN-i8k">
+                                                <rect key="frame" x="17" y="243.33333333333334" width="356" height="318.33333333333326"/>
                                             </datePicker>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SG-SX-dFq">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SG-SX-dFq">
                                                 <rect key="frame" x="-20" y="586.33333333333337" width="430" height="30"/>
                                                 <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Pick a time">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All-day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-gU-Y3c">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="All-day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-gU-Y3c">
                                                 <rect key="frame" x="17" y="636.33333333333337" width="54" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hj6-Pn-h1N">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hj6-Pn-h1N">
                                                 <rect key="frame" x="324" y="631.33333333333337" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="updateIncludeTime:" destination="jEI-Wz-kVS" eventType="valueChanged" id="sam-6l-4qN"/>
@@ -263,10 +285,10 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fvp-YF-eBF" userLabel="Switch1">
                                                 <rect key="frame" x="324" y="803.66666666666674" width="51" height="31"/>
                                             </switch>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="8oE-dB-PdH">
-                                                <rect key="frame" x="176" y="690.33333333333337" width="197" height="53.333333333333371"/>
+                                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="8oE-dB-PdH">
+                                                <rect key="frame" x="176" y="690.33333333333326" width="197" height="53.333333333333371"/>
                                             </datePicker>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSt-k5-y4z" userLabel="horizontal_line">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JSt-k5-y4z" userLabel="horizontal_line">
                                                 <rect key="frame" x="17" y="681.33333333333337" width="356" height="1"/>
                                                 <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
@@ -513,7 +535,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiq-B3-Wb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3156.9230769230767" y="-256.6350710900474"/>
+            <point key="canvasLocation" x="3189" y="-436"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="KHb-i6-Oci">
@@ -634,7 +656,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hours left" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="57" translatesAutoresizingMaskIntoConstraints="NO" id="29F-N4-G8y">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hours left" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" preferredMaxLayoutWidth="57" translatesAutoresizingMaskIntoConstraints="NO" id="29F-N4-G8y">
                                                     <rect key="frame" x="312" y="34" width="58" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="58" id="jEt-RY-CsD"/>
@@ -671,6 +693,7 @@
                                             <outlet property="remaining" destination="6kk-St-X9E" id="Vkv-QB-Nks"/>
                                             <outlet property="remainingDesc" destination="29F-N4-G8y" id="ePl-4e-ZCj"/>
                                             <outlet property="title" destination="fWP-v4-NRD" id="jr4-2q-ZPZ"/>
+                                            <segue destination="b9z-XC-ZtY" kind="presentation" identifier="eventDetails" modalPresentationStyle="fullScreen" id="J8y-GS-MBa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -737,7 +760,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1Pk-T0-yJl">
                             <connections>
-                                <segue destination="yBk-gt-ngM" kind="show" identifier="eventAction" id="hn6-DB-4E5"/>
+                                <segue destination="yBk-gt-ngM" kind="presentation" identifier="eventAction" modalPresentationStyle="fullScreen" id="hn6-DB-4E5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -772,6 +795,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugh-nL-AGA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2227.6923076923076" y="-256.6350710900474"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PFe-AE-9wk">
+            <objects>
+                <navigationController storyboardIdentifier="eventDetailsVC" automaticallyAdjustsScrollViewInsets="NO" id="b9z-XC-ZtY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="wSm-p2-kfb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kmb-Xw-Mzq">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cuI-zQ-yhf" kind="relationship" relationship="rootViewController" id="dGn-wj-z97"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VZK-LW-mL5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2227.6923076923076" y="448.57819905213267"/>
         </scene>
     </scenes>
     <resources>
