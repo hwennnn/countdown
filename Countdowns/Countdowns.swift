@@ -112,11 +112,13 @@ func fetchdata() -> ([Event]){
 struct EventTimelineProvider: TimelineProvider {
     typealias Entry = EventEntry
     
+    
     func placeholder(in context: Context) -> EventEntry {
         EventEntry.placeholder
     }
 
     func getSnapshot(in context: Context, completion: @escaping (EventEntry) -> Void) {
+        print(fetchdata())
         if context.isPreview {
             completion(EventEntry.placeholder)
         }else{
@@ -177,8 +179,8 @@ struct CountdownsEntryView : View {
             Color.orange.edgesIgnoringSafeArea(.all)
             VStack( spacing: 10){
                 HStack{
-                    Text((entry.event?.icon)!).foregroundColor(.white)
-                    Text((entry.event?.name)!).foregroundColor(.white).font(.headline)
+                    Text(icon).foregroundColor(.white)
+                    Text(entry.event!.name).foregroundColor(.white).font(.headline)
                 }
                 Text("Progress: \(progress)").foregroundColor(.white)
                 Text(formatter.localizedString(from: DateComponents(day: 36))).font(.title).foregroundColor(.white)
