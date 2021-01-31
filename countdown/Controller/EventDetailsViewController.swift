@@ -15,6 +15,10 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     var colourSchemeList:[String] = []
     var timer:Timer?
     
+    let eventController = EventController()
+    let firebaseDataController = FirebaseDataController()
+    let notificationManager = LocalNotificationManager()
+    
     @IBOutlet weak var iconField: UILabel!
     @IBOutlet weak var titleField: UILabel!
     @IBOutlet weak var dateField: UILabel!
@@ -119,6 +123,23 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     
     @IBAction func back(){
         // TODO: add animation here (from right to left)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteAction(){
+        let alertView = UIAlertController(title: "Delete Countdown", message: "Are you sure you want to delete \(event!.name)?", preferredStyle: UIAlertController.Style.alert)
+                
+        alertView.addAction(UIAlertAction(title: "No",style: UIAlertAction.Style.default, handler: { _ in }))
+        alertView.addAction(UIAlertAction(title: "Yes",style: UIAlertAction.Style.default, handler: { _ in self.deleteEvent() }))
+        
+        
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func deleteEvent(){
+        eventController.deleteEvent(event!)
+        firebaseDataController.deleteEvent(event!)
+        notificationManager.removeNotifications(event!)
         self.dismiss(animated: true, completion: nil)
     }
     

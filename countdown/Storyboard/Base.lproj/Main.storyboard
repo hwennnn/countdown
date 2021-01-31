@@ -265,11 +265,18 @@
                                 <action selector="back" destination="cuI-zQ-yhf" id="r35-O4-s83"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="RqH-33-YoT">
-                            <connections>
-                                <segue destination="yBk-gt-ngM" kind="presentation" identifier="editEvent" modalPresentationStyle="fullScreen" id="BzJ-J2-suI"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="trash" id="fMR-eh-taa">
+                                <connections>
+                                    <action selector="deleteAction" destination="cuI-zQ-yhf" id="0UK-PD-ESU"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" image="pencil" catalog="system" id="RqH-33-YoT">
+                                <connections>
+                                    <segue destination="yBk-gt-ngM" kind="presentation" identifier="editEvent" modalPresentationStyle="fullScreen" id="BzJ-J2-suI"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="6Px-di-6oc" id="kOZ-W1-yTc"/>
@@ -938,6 +945,7 @@
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

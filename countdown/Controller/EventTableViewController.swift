@@ -168,11 +168,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             let event = self.eventList[indexPath.row]
-            eventController.deleteEvent(event)
-            firebaseDataController.deleteEvent(event)
-            notificationManager.removeNotifications(event)
-            initEventList()
-            self.tableView.reloadData()
+            deleteAction(event)
         }
     }
     
@@ -186,6 +182,24 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         
         return UISwipeActionsConfiguration(actions: [action])
 
+    }
+    
+    func deleteAction(_ event:Event){
+        let alertView = UIAlertController(title: "Delete Countdown", message: "Are you sure you want to delete \(event.name)?", preferredStyle: UIAlertController.Style.alert)
+                
+        alertView.addAction(UIAlertAction(title: "No",style: UIAlertAction.Style.default, handler: { _ in }))
+        alertView.addAction(UIAlertAction(title: "Yes",style: UIAlertAction.Style.default, handler: { _ in self.deleteEvent(event) }))
+        
+        
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func deleteEvent(_ event:Event){
+        eventController.deleteEvent(event)
+        firebaseDataController.deleteEvent(event)
+        notificationManager.removeNotifications(event)
+        initEventList()
+        self.tableView.reloadData()
     }
     
     func editHandler(_ index: Int){
