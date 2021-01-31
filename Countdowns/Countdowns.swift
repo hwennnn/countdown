@@ -10,6 +10,7 @@ import SwiftUI
 import Intents
 import Foundation
 import CoreData
+import UIKit
 
 // MARK: - Core Data stack
 var persistentContainer: NSPersistentContainer = {
@@ -176,15 +177,18 @@ struct CountdownsEntryView : View {
     let formatter = RelativeDateTimeFormatter()
     
     var body: some View {
+        let formattedProgress = String(format: "Progress: %.2f", entry.event!.progress)
         ZStack{
-            Color.orange.edgesIgnoringSafeArea(.all)
+            Color.purple.edgesIgnoringSafeArea(.all)
+//            uiColorFromHex(rgbValue: entry.event!.color).
             VStack( spacing: 10){
                 HStack{
-                    Text(entry.event!.emoji).foregroundColor(.white)
+                    Text(decode((entry.event!.emoji))!).foregroundColor(.white)
                     Text(entry.event!.name).foregroundColor(.white).font(.headline)
                 }
-                Text("Progress: \(entry.event!.progress)").foregroundColor(.white)
+                Text(formattedProgress).foregroundColor(.white)
                 Text(formatter.localizedString(from: DateComponents(day: calculateCountDown(entry.event!.date) ))).font(.title).foregroundColor(.white)
+                
             }
         }
         
@@ -196,6 +200,24 @@ func calculateCountDown(_ date:Date) -> Int{
     return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
 }
 
+func decode(_ s: String) -> String? {
+    let data = s.data(using: .utf8)!
+    return String(data: data, encoding: .nonLossyASCII)
+}
+
+func uiColorFromHex(rgbValue: Int) -> UIColor {
+    
+    // &  binary AND operator to zero out other color values
+    // >>  bitwise right shift operator
+    // Divide by 0xFF because UIColor takes CGFloats between 0.0 and 1.0
+    
+    let red =   CGFloat((rgbValue & 0xFF0000) >> 16) / 0xFF
+    let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 0xFF
+    let blue =  CGFloat(rgbValue & 0x0000FF) / 0xFF
+    let alpha = CGFloat(1.0)
+    
+    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+}
 @main
 struct Countdowns: Widget {
     let kind: String = "Countdown"
