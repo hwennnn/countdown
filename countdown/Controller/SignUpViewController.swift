@@ -9,13 +9,18 @@ import Foundation
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController, UITextFieldDelegate{
+class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var backButton: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.back(sender:)))
+        self.backButton.isUserInteractionEnabled = true
+        self.backButton.addGestureRecognizer(gesture)
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -25,10 +30,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         
         passwordField.isEnabled = false
         passwordField.enablesReturnKeyAutomatically = true
+        
+        self.navigationController?.interactivePopGestureRecognizer!.delegate = self;
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     // UITextFieldDelegate
@@ -50,10 +61,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         return true
     }
     
-    @IBAction func back(_ sender: Any) {
+    @objc func back(sender : UITapGestureRecognizer) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
     func validateEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         return NSPredicate(format:"SELF MATCHES %@", emailRegEx).evaluate(with: email)
@@ -107,5 +118,4 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             }
         }
     }
-    
 }
