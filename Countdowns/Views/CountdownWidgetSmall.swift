@@ -11,7 +11,7 @@ import WidgetKit
 func fetchEvent(entry:EventEntry) -> Event {
     for event in entry.event{
         if entry.configuration.Event != nil {
-            if(entry.configuration.Event!.displayString == event.name){
+            if(entry.configuration.Event!.identifier == event.id){
                 return event
             }
         } else {

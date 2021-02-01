@@ -7,6 +7,7 @@
 
 import Intents
 import CoreData
+import WidgetKit
 
 class IntentHandler: INExtension,SelectEventIntentHandling{
     func provideEventOptionsCollection(for intent: SelectEventIntent, with completion: @escaping (INObjectCollection<EventParam>?, Error?) -> Void) {
@@ -15,6 +16,7 @@ class IntentHandler: INExtension,SelectEventIntentHandling{
                 EventParam(identifier: $0.id, display: $0.name)
             }
             completion(INObjectCollection(items: items), nil)
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     // MARK: - Core Data stack
