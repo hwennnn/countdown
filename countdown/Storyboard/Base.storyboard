@@ -108,6 +108,7 @@
                     <connections>
                         <outlet property="animationView" destination="MFQ-q8-yG1" id="hDf-Ns-mmg"/>
                         <outlet property="emailField" destination="Oyt-OT-ovz" id="htt-Vb-vrm"/>
+                        <outlet property="loginButton" destination="jJC-9O-iQa" id="2N5-fb-eeZ"/>
                         <outlet property="passwordField" destination="W1Q-KV-nmt" id="Vad-tO-agI"/>
                     </connections>
                 </viewController>
@@ -229,6 +230,7 @@
                         <outlet property="backButton" destination="Y2R-Jf-JF3" id="tDJ-LJ-gLb"/>
                         <outlet property="emailField" destination="flg-OM-MZY" id="Y5S-3V-35z"/>
                         <outlet property="passwordField" destination="ueh-OW-Cbb" id="EEh-rc-NTb"/>
+                        <outlet property="signUpButton" destination="EQp-Yt-g0I" id="chr-eu-A6y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrX-tm-wCC" sceneMemberID="firstResponder"/>

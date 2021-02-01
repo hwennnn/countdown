@@ -12,6 +12,7 @@ import Lottie
 
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
     
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var animationView: AnimationView!
@@ -114,6 +115,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     }
     
     @IBAction func signUp(_ sender: Any) {
+        self.signUpButton.isEnabled = false
         let email = emailField.text!
         let password = passwordField.text!
         
@@ -122,11 +124,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         
         if (!isValidEmail){
             popAlert("Invalid email", "Please enter a valid email!")
+            self.signUpButton.isEnabled = true
             return
         }
         
         if (!isValidPassword){
             popAlert("Invalid password", "Please enter a password consisting of 8-17 characters with at least 1 alphabet and 1 number")
+            self.signUpButton.isEnabled = true
             return
         }
         
@@ -137,6 +141,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureReco
                 print("Successful signup for \(email)")
                 self.popSuccess()
             }
+            self.signUpButton.isEnabled = true
         }
     }
 }

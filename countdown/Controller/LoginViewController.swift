@@ -13,6 +13,7 @@ import Lottie
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
     
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var animationView: AnimationView!
@@ -98,6 +99,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func login(_ sender: Any) {
+        self.loginButton.isEnabled = false
         let email = emailField.text!
         let password = passwordField.text!
         
@@ -105,6 +107,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             guard self != nil else { return }
             if ((success) != nil){
                 print("The user has successfully signed in \(email)!")
+                
                 self!.emailField.text = ""
                 self!.passwordField.text = ""
                 
@@ -115,7 +118,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                 print(error!.localizedDescription)
                 self!.popAlert("Login Error", error!.localizedDescription)
             }
-        
+            self!.loginButton.isEnabled = true
         }
+        
     }
 }
