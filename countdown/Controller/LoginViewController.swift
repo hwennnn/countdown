@@ -34,37 +34,44 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         emailField.returnKeyType = UIReturnKeyType.next
         passwordField.returnKeyType = UIReturnKeyType.go
         
-        passwordField.isEnabled = false
-        passwordField.enablesReturnKeyAutomatically = true
-        
         // redirect to main page if logged in
         if (Auth.auth().currentUser?.uid != nil){
             redirectToMain(false)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
+        super.viewDidAppear(true)
         // 4. Play animation
+        animationView.play()
+    }
+    
+    @objc func didEnterBackground() {
+        print("didEnterBackground")
+        animationView.pause()
+   }
+    
+    @objc func didBecomeActive() {
+        print("didBecomeActive")
         animationView.play()
     }
     
     // UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
-        if (emailField.text?.isEmpty ?? true) {
-            passwordField.isEnabled = false
-            textField.resignFirstResponder()
-        }
-        else if textField == emailField {
-            passwordField.isEnabled = true
+        
+        if (textField == emailField){
             passwordField.becomeFirstResponder()
         }
-        else {
+        
+        if (textField == passwordField){
             textField.resignFirstResponder()
             login(passwordField as Any)
         }
-
+        
         return true
     }
     

@@ -170,7 +170,7 @@
                                             <constraint firstAttribute="width" constant="300" id="4Da-P8-hVj"/>
                                             <constraint firstAttribute="height" constant="34" id="fNx-Bo-gRe"/>
                                         </constraints>
-                                        <state key="normal" title="SIgn up">
+                                        <state key="normal" title="Sign up">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
