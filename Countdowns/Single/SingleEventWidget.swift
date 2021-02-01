@@ -11,11 +11,12 @@ import Foundation
 import CoreData
 import UIKit
 
-let coredatautil = CoredataUtils()
+
 
 struct SingleEventTimelineProvider: IntentTimelineProvider {
     typealias Intent = SelectEventIntent
     typealias Entry = SingleEventEntry
+    let coredatautils = CoredataUtils()
     
     func placeholder(in context: Context) -> SingleEventEntry {
         SingleEventEntry.placeholder
@@ -26,7 +27,7 @@ struct SingleEventTimelineProvider: IntentTimelineProvider {
             completion(SingleEventEntry.placeholder)
         }else{
             let entry: SingleEventEntry
-            if let event:[Event]? = coredatautil.fetchdata(){
+            if let event:[Event]? = coredatautils.fetchdata(){
                 entry = SingleEventEntry(date: Date(), event: event!,configuration: configuration)
             }else{
                 entry = SingleEventEntry.placeholder
@@ -36,7 +37,7 @@ struct SingleEventTimelineProvider: IntentTimelineProvider {
     }
     
     func getTimeline(for configuration: SelectEventIntent, in context: Context, completion: @escaping (Timeline<SingleEventEntry>) -> Void) {
-        if let event:[Event]? = coredatautil.fetchdata(){
+        if let event:[Event]? = coredatautils.fetchdata(){
             let entry = SingleEventEntry(date: Date(), event: event! ,configuration: configuration)
             let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60)))
             completion(timeline)
@@ -54,7 +55,7 @@ struct SingleEventEntry: TimelineEntry {
     var configuration:SelectEventIntent
 }
 
-extension SingleEventEntry{
+extension SingleEventEntry {
     static var stub: SingleEventEntry{
         SingleEventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)],configuration: SelectEventIntent())
     }
@@ -67,13 +68,11 @@ extension SingleEventEntry{
 struct SingleEventEntryView : View {
     var entry: SingleEventTimelineProvider.Entry
     var body: some View {
-        CountdownWidgetSmall(entry: entry)
+        CountdownSmallWidget(entry: entry)
     }
 }
 
-
-@main
-struct SingleEventView: Widget {
+struct SingleEvent: Widget {
     let kind: String = "Countdown"
     
     var body: some WidgetConfiguration {
@@ -82,15 +81,16 @@ struct SingleEventView: Widget {
         }
         .configurationDisplayName("Single Event Widget")
         .description("Get updates on one event")
+        .supportedFamilies([.systemSmall])
     }
 }
 
-//struct SmallEvent_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SingleEventView(entry: SingleEventEntry.stub )
-//            .previewContext(WidgetPreviewContext(family: .systemSmall))
-//    }
-//}
+struct SingleEvent_Previews: PreviewProvider {
+    static var previews: some View {
+        SingleEventEntryView(entry: SingleEventEntry.stub )
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
+}
 
 extension EventParam{
     convenience init(event:Event){

@@ -6,11 +6,9 @@
 //
 
 import WidgetKit
-import CoreData
 import SwiftUI
 
 struct MultiEventTimelineProvider: TimelineProvider {
-    
     typealias Entry = MultiEventEntry
     let coredatautil = CoredataUtils()
  
@@ -62,6 +60,7 @@ extension MultiEventEntry{
 
 struct MultiEventEntryView : View {
     var entry: MultiEventEntry
+    
     @Environment(\.widgetFamily) var family
     var body: some View {
         switch family{
@@ -74,8 +73,7 @@ struct MultiEventEntryView : View {
 }
 
 
-@main
-struct MultiEventView: Widget {
+struct MultiEvent: Widget {
     let kind: String = "Countdown"
     
     var body: some WidgetConfiguration {

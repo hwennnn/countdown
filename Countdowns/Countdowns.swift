@@ -7,16 +7,12 @@
 
 import WidgetKit
 import SwiftUI
-import Intents
-import Foundation
-import CoreData
-import UIKit
 
 @main
-struct Countdowns:WidgetBundle{
-    var body : some Widget{
-        SingleEventWidget()
-        MultiEventWidget()
+struct Countdowns: WidgetBundle {
+    @WidgetBundleBuilder
+    var body: some Widget {
+        SingleEvent()
+        MultiEvent()
     }
 }
-

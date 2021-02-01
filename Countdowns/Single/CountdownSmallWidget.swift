@@ -27,7 +27,7 @@ func fetchEvent(entry:SingleEventEntry) -> Event {
     
 }
 
-struct CountdownWidgetSmall: View {
+struct CountdownSmallWidget: View {
     let entry:SingleEventEntry
     let utils:Utility = Utility()
    
@@ -41,7 +41,7 @@ struct CountdownWidgetSmall: View {
             VStack( spacing: 10){
                 HStack{
                     Text(utils.decode((event.emoji))!).foregroundColor(.white)
-                    Text(event.name).foregroundColor(.white).font(.subheadline).lineLimit(2)
+                    Text(event.name).foregroundColor(.white).font(.subheadline).lineLimit(1)
                 }
                 VStack(alignment: .leading)
                 {
@@ -58,7 +58,7 @@ struct CountdownWidgetSmall: View {
 
 struct CountdownWidgetSmall_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownWidgetSmall(entry:SingleEventEntry.placeholder).previewContext(WidgetPreviewContext(family: .systemSmall))
+        CountdownSmallWidget(entry:SingleEventEntry.placeholder).previewContext(WidgetPreviewContext(family: .systemSmall))
     }
     
 }
