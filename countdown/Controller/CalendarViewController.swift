@@ -49,6 +49,8 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.datesDictionary = self.loadEventData()
+        
         monthLabel.text = getCurrentMonthLabel()
         
         formatter.dateFormat = "dd MMMM, yyyy"
@@ -67,9 +69,10 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
 
         self.eventTable.reloadData()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         self.datesDictionary = self.loadEventData()
         
         let date = selectedDay.date.convertedDate()!
@@ -85,7 +88,9 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
 //        }
         
         self.eventTable.reloadData()
+        self.calendarView.contentController.refreshPresentedMonth()
     }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -148,7 +153,6 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
                 let row = self.eventTable.indexPath(for: cell)?.row
                 destination.event = self.eventArr[row!]
             }
-            // TODO: Add animation here (from left ro right)
         }
     }
 }
@@ -159,7 +163,7 @@ extension CalendarViewController : CVCalendarMenuViewDelegate{
 
 extension CalendarViewController : CVCalendarViewDelegate{
     func presentationMode() -> CalendarMode { return CalendarMode.monthView }
-    func firstWeekday() -> Weekday { return Weekday.monday }
+    func firstWeekday() -> Weekday { return Weekday.sunday }
     
     func presentedDateUpdated(_ date: CVDate) {
             if monthLabel.text != date.globalDescription && self.animationFinished {
@@ -196,6 +200,7 @@ extension CalendarViewController : CVCalendarViewDelegate{
                 }
                 
                 self.view.insertSubview(updatedMonthLabel, aboveSubview: self.monthLabel)
+                self.calendarView.contentController.refreshPresentedMonth()
             }
         }
     
@@ -210,14 +215,17 @@ extension CalendarViewController : CVCalendarViewDelegate{
         self.eventTable.reloadData()
     }
     
-//    func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
-//        let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
-//        if let _ = self.datesDictionary[formattedDateString]{
-//            print("\(formattedDateString) Dot")
-//            return true
-//        }
-//
-//        return false
-//    }
+    func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
+        let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
+        if let _ = self.datesDictionary[formattedDateString]{
+            return true
+        }
+
+        return false
+    }
+    
+    func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
+        return [.systemBlue]
+    }
 }
 
