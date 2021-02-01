@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import WidgetKit
 
 class LoginViewController:UIViewController{
     
@@ -61,6 +62,7 @@ class LoginViewController:UIViewController{
                 
                 self!.firebaseDataController.fetchAllEvents()
                 self!.redirectToMain(true)
+                WidgetCenter.shared.reloadAllTimelines()
             }else{
                 print(error!.localizedDescription)
                 self!.popAlert("Login Error", error!.localizedDescription)

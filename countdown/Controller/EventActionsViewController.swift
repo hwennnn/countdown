@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import ISEmojiView
+import WidgetKit
 
 class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiViewDelegate{
     
@@ -203,6 +204,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         firebaseDataController.insertEvent(newEvent)
         
         notificationManager.schedule(newEvent)
+        WidgetCenter.shared.reloadAllTimelines()
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -244,6 +246,8 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         
         notificationManager.removeNotifications(currentEvent!)
         notificationManager.schedule(currentEvent!)
+        
+        WidgetCenter.shared.reloadAllTimelines()
         
         self.dismiss(animated: true, completion: nil)
     }

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Firebase
 import SideMenu
+import WidgetKit
 
 class ProfileMenuViewController: UIViewController{
     
@@ -42,6 +43,8 @@ class ProfileMenuViewController: UIViewController{
         
         eventController.deleteAllEvents()
         notificationManager.removeAllNotifications()
+        
+        WidgetCenter.shared.reloadAllTimelines()
         
         // dismiss the side menu
         self.dismiss(animated: false, completion: nil)

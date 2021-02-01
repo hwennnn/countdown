@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SideMenu
+import WidgetKit
 
 class EventTableViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
     
@@ -209,6 +210,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         notificationManager.removeNotifications(event)
         initEventList()
         self.tableView.reloadData()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func editHandler(_ index: Int){

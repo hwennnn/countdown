@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import WidgetKit
 
 class EventDetailsViewController:UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -141,6 +142,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         firebaseDataController.deleteEvent(event!)
         notificationManager.removeNotifications(event!)
         self.dismiss(animated: true, completion: nil)
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
