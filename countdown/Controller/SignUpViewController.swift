@@ -53,6 +53,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         animationView.play()
     }
     
+    override func didReceiveMemoryWarning() {
+        animationView.stop()
+    }
+    
     @objc func didEnterBackground() {
         print("didEnterBackground")
         animationView.pause()

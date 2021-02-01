@@ -34,20 +34,25 @@ struct CountdownWidgetSmall: View {
         
         ZStack{
             Color(utils.colourSchemeList[event.colour].colorWithHexString()).edgesIgnoringSafeArea(.all)
-            VStack( spacing: 10){
+            VStack(alignment: .leading){
+                
+
                 HStack{
                     Text(decode((event.emoji))!).foregroundColor(.white)
                     Text(event.name).foregroundColor(.white).font(.subheadline).lineLimit(2)
                 }
                 
+
                 
                 VStack(alignment: .leading)
                 {
                     Text(String(days)).font(.title).foregroundColor(.white)
                     Text(utils.getCountDownDesc(combined)).foregroundColor(.white)
-                }.padding(.trailing,65)
+                }
                 
-                Text(utils.convertDateToString(event)).foregroundColor(.white).font(.subheadline)
+
+                
+                Text(utils.convertDateToString(event)).foregroundColor(.white).font(.system(size: 13)).lineLimit(1)
             }
             
         }.redacted(reason: entry.isPlaceholder ? .placeholder : .init())

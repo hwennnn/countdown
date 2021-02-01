@@ -57,6 +57,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         animationView.pause()
     }
     
+    override func didReceiveMemoryWarning() {
+        animationView.stop()
+    }
+    
     @objc func didEnterBackground() {
         print("didEnterBackground")
         animationView.pause()
