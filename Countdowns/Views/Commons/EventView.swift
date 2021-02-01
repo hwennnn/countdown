@@ -18,19 +18,19 @@ struct EventView: View {
         let combined = utils.combineDateAndTime(entry.event[selected].date, entry.event[selected].time, entry.event[selected].includedTime)
         let days = utils.calculateCountDown(combined)
         HStack(){
-            Rectangle().fill(Color(utils.colourSchemeList[entry.event[selected].colour].colorWithHexString())).frame(width: 5, height: 50).padding(4)
+            Rectangle().fill(Color(utils.colourSchemeList[entry.event[selected].colour].colorWithHexString())).frame(width: 5, height: 40).padding(4)
             VStack(alignment: .leading){
                 HStack{
                     Text(decode((entry.event[selected].emoji))!)
                     Text(entry.event[selected].name)
                 }.lineLimit(1)
-                Text(utils.convertDateToString(entry.event[selected]))
+                Text(utils.convertDateToString(entry.event[selected])).font(.subheadline)
             }
             Spacer()
             VStack{
                 Text(String(days)).font(.largeTitle)
-                Text(utils.getCountDownDesc(combined))
-            }.padding(10)
+                Text(utils.getCountDownDesc(combined)).font(.subheadline)
+            }.padding(5)
         }.minimumScaleFactor(0.5).redacted(reason: entry.isPlaceholder ? .placeholder : .init())
     }
 }
