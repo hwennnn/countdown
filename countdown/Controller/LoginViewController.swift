@@ -111,9 +111,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                 self!.emailField.text = ""
                 self!.passwordField.text = ""
                 
-                self!.firebaseDataController.fetchAllEvents()
-                self!.redirectToMain(true)
-                WidgetCenter.shared.reloadAllTimelines()
+                self!.firebaseDataController.fetchAllEvents(completion: { completion in
+                    if (completion){
+                        self!.redirectToMain(true)
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }
+                })
+                
             }else{
                 print(error!.localizedDescription)
                 self!.popAlert("Login Error", error!.localizedDescription)

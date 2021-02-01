@@ -35,7 +35,7 @@ class FirebaseDataController: UIViewController{
         self.ref.child("events").child(uid!).child(event.id).updateChildValues(updatedEvent)
     }
     
-    func fetchAllEvents(){
+    func fetchAllEvents(completion: @escaping (_ success: Bool) -> Void){
         let uid = Auth.auth().currentUser?.uid
         ref.child("events").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
 
@@ -63,8 +63,9 @@ class FirebaseDataController: UIViewController{
                     self.eventController.addEvent(newEvent)
                     self.notificationManger.schedule(newEvent)
                 }
-                
             }
+            // callback when finished fetching all events
+            completion(true)
         }) { (error) in
           print(error.localizedDescription)
           }
