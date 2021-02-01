@@ -11,11 +11,19 @@
 
      var colourSchemeList:[String] = ["#DFC8F2", "#A0C5E8", "#AEFFBD","#FFEAAB", "#5854D5", "#D92728"]
 
-     func convertDateToString(date:Date) -> String {
-         let df = DateFormatter()
-         df.dateStyle = .medium
-         return df.string(from: date)
-     }
+//     func convertDateToString(date:Date) -> String {
+//         let df = DateFormatter()
+//         df.dateStyle = .medium
+//         return df.string(from: date)
+//     }
+    
+    func convertDateToString(_ event:Event) -> String{
+        let dateFormatter = DateFormatter() // set to local date (Singapore)
+        dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
+        let dateFormatStyle:String = (event.includedTime) ? "EE, d MMM yyyy h:mm a" : "EE, d MMM yyyy"
+        dateFormatter.dateFormat = dateFormatStyle // convert date to String
+        return dateFormatter.string(from: combineDateAndTime(event.date, event.time, event.includedTime))
+    }
 
      func calculateCountDown(_ date:Date) -> Int {
          let remainingHours = abs(Calendar.current.dateComponents([.hour], from:  Date(), to: date).hour!)
