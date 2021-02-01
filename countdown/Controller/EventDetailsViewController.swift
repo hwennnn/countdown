@@ -168,7 +168,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         eventController.deleteEvent(event!)
         firebaseDataController.deleteEvent(event!)
         notificationManager.removeNotifications(event!)
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
         WidgetCenter.shared.reloadAllTimelines()
     }
     
