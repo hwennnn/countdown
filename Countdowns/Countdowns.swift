@@ -64,7 +64,10 @@ func fetchdata() -> ([Event]){
     let managedContext = persistentContainer.viewContext
     var eventList:[Event] = []
     var events:[CDEvent] = []
-
+    var completed:[Event] = []
+    var incomplete:[Event] = []
+    
+    let utils = Utility()
     let fetchRequest = NSFetchRequest<CDEvent>(entityName: "CDEvent")
     do {
         events = try managedContext.fetch(fetchRequest)
@@ -82,7 +85,12 @@ func fetchdata() -> ([Event]){
             let progress = e.progress
 
             let event = Event(id,name,emoji,includedTime,date,time,created_at,reminders,colour,progress)
-            eventList.append(event)
+            if (utils.combineDateAndTime(event.date, event.time, event.includedTime) <= Date()){
+                completed.append(event)
+            }else{
+                incomplete.append(event)
+            }
+            
             WidgetCenter.shared.reloadAllTimelines()
 
         }
@@ -90,10 +98,18 @@ func fetchdata() -> ([Event]){
         print("Could not fetch. \(error), \(error.userInfo)")
     }
     
-    eventList.sort { (event1, event2) -> Bool in
-        return event1.date < event2.date
+    completed.sort { (event1, event2) -> Bool in
+        return utils.combineDateAndTime(event1.date, event1.time, event1.includedTime) < utils.combineDateAndTime(event2.date, event2.time, event2.includedTime)
     }
     
+    incomplete.sort { (event1, event2) -> Bool in
+        return utils.combineDateAndTime(event1.date, event1.time, event1.includedTime) < utils.combineDateAndTime(event2.date, event2.time, event2.includedTime)
+    }
+    
+    eventList.append(contentsOf: incomplete)
+    eventList.append(contentsOf: completed)
+    
+
     return eventList
 }
 
