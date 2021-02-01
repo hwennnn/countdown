@@ -105,7 +105,7 @@
                                             <outlet property="remaining" destination="NoN-ai-2uX" id="4CN-Lh-INe"/>
                                             <outlet property="remainingDesc" destination="4IJ-tR-Gy1" id="0J0-Ki-brF"/>
                                             <outlet property="title" destination="Te6-vn-0hd" id="jCN-d0-0ca"/>
-                                            <segue destination="b9z-XC-ZtY" kind="presentation" identifier="calendarEventDetails" modalPresentationStyle="fullScreen" id="p6n-J6-pFH"/>
+                                            <segue destination="cuI-zQ-yhf" kind="show" identifier="calendarEventDetails" id="zKP-XG-XmL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -153,11 +153,11 @@
             <objects>
                 <viewController storyboardIdentifier="eventDetails" id="cuI-zQ-yhf" customClass="EventDetailsViewController" customModule="countdown" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YcU-mU-fHS">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIb-X3-Jeb">
-                                <rect key="frame" x="114" y="147" width="162" height="154"/>
+                                <rect key="frame" x="114" y="59" width="162" height="154"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="154" id="eec-i8-EXh"/>
                                     <constraint firstAttribute="width" constant="162" id="zOO-ge-c45"/>
@@ -167,13 +167,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9B-1O-Qxq">
-                                <rect key="frame" x="130.66666666666666" y="352" width="128.99999999999997" height="30"/>
+                                <rect key="frame" x="130.66666666666666" y="264" width="128.99999999999997" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed, 2 Feb 2020 10:30 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eTV-Yy-Etz">
-                                <rect key="frame" x="96" y="390" width="198" height="20"/>
+                                <rect key="frame" x="96" y="302" width="198" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="198" id="T0t-Df-WY7"/>
                                 </constraints>
@@ -182,7 +182,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Px-di-6oc">
-                                <rect key="frame" x="97" y="466" width="196" height="134"/>
+                                <rect key="frame" x="97" y="378" width="196" height="134"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="196" id="E6Y-5q-xio"/>
@@ -274,7 +274,7 @@
                             </barButtonItem>
                             <barButtonItem title="Edit" image="pencil" catalog="system" id="RqH-33-YoT">
                                 <connections>
-                                    <segue destination="yBk-gt-ngM" kind="presentation" identifier="editEvent" modalPresentationStyle="fullScreen" id="BzJ-J2-suI"/>
+                                    <segue destination="yBk-gt-ngM" kind="presentation" identifier="editEvent" modalPresentationStyle="fullScreen" id="qZl-gw-RMB"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -288,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6p-lu-vJh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3156.9230769230767" y="448.57819905213267"/>
+            <point key="canvasLocation" x="2228" y="437"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N4a-ns-deE">
@@ -815,7 +815,7 @@
                                             <outlet property="remaining" destination="6kk-St-X9E" id="Vkv-QB-Nks"/>
                                             <outlet property="remainingDesc" destination="29F-N4-G8y" id="ePl-4e-ZCj"/>
                                             <outlet property="title" destination="fWP-v4-NRD" id="jr4-2q-ZPZ"/>
-                                            <segue destination="b9z-XC-ZtY" kind="presentation" identifier="eventDetails" modalPresentationStyle="fullScreen" id="J8y-GS-MBa"/>
+                                            <segue destination="cuI-zQ-yhf" kind="show" identifier="eventDetails" id="jMQ-k1-ois"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -918,29 +918,10 @@
             </objects>
             <point key="canvasLocation" x="2227.6923076923076" y="-256.6350710900474"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="PFe-AE-9wk">
-            <objects>
-                <navigationController storyboardIdentifier="eventDetailsVC" automaticallyAdjustsScrollViewInsets="NO" id="b9z-XC-ZtY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="wSm-p2-kfb"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kmb-Xw-Mzq">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="cuI-zQ-yhf" kind="relationship" relationship="rootViewController" id="dGn-wj-z97"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VZK-LW-mL5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2227.6923076923076" y="448.57819905213267"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="p6n-J6-pFH"/>
-        <segue reference="hn6-DB-4E5"/>
+        <segue reference="qZl-gw-RMB"/>
+        <segue reference="zKP-XG-XmL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

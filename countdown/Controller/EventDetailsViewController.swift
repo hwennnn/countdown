@@ -9,11 +9,10 @@ import Foundation
 import UIKit
 import WidgetKit
 
-class EventDetailsViewController:UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class EventDetailsViewController:UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     var detailsList:[(String, Int)] = []
     var event:Event?
-    var colourSchemeList:[String] = []
     var timer:Timer?
     
     let eventController = EventController()
@@ -29,10 +28,8 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        colourSchemeList = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
-        
         if (event != nil){
-            self.view.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
+            self.view.backgroundColor = utils.colourSchemeList[event!.colour].colorWithHexString()
             self.iconField.text = event!.emoji.decodeEmoji
             self.titleField.text = event!.name
             self.dateField.text = utils.convertDateToString(event!)
@@ -40,7 +37,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         
         self.detailsList = generateRemaining()
         
-        self.collectionView.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
+        self.collectionView.backgroundColor = utils.colourSchemeList[event!.colour].colorWithHexString()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
@@ -50,21 +47,32 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        self.navigationController?.interactivePopGestureRecognizer!.delegate = self;
+        self.navigationController?.navigationBar.barTintColor = nil
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear")
-        super.viewDidAppear(true)
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        super.viewWillAppear(true)
+        
+        self.navigationController?.navigationBar.barTintColor = nil
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
         
         if (event != nil){
-            self.view.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
+            self.view.backgroundColor = utils.colourSchemeList[event!.colour].colorWithHexString()
             self.iconField.text = event!.emoji.decodeEmoji
             self.titleField.text = event!.name
             self.dateField.text = utils.convertDateToString(event!)
         }
-        self.collectionView.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
+        self.collectionView.backgroundColor = utils.colourSchemeList[event!.colour].colorWithHexString()
         
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateDetails), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -90,6 +98,10 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     @objc func updateDetails(){
         self.detailsList = generateRemaining()
         self.collectionView.reloadData()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -139,7 +151,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     
     @IBAction func back(){
         // TODO: add animation here (from right to left)
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func deleteAction(){

@@ -143,7 +143,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "calendarEventDetails", let destination = segue.destination.children[0] as? EventDetailsViewController {
+        if segue.identifier == "calendarEventDetails", let destination = segue.destination as? EventDetailsViewController {
             if let cell:EventTableViewCell = sender as? EventTableViewCell{
                 let row = self.eventTable.indexPath(for: cell)?.row
                 destination.event = self.eventArr[row!]

@@ -46,7 +46,8 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         self.tableView.reloadData()
     }
  
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         initEventList()
         self.tableView.reloadData()
     }
@@ -178,7 +179,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             }
         }
         
-        if segue.identifier == "eventDetails", let destination = segue.destination.children[0] as? EventDetailsViewController {
+        if segue.identifier == "eventDetails", let destination = segue.destination as? EventDetailsViewController {
             if let cell:EventTableViewCell = sender as? EventTableViewCell{
                 let row = self.tableView.indexPath(for: cell)?.row
                 destination.event = self.eventList[row!]

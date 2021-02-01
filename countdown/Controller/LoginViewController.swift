@@ -50,6 +50,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         animationView.play()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        animationView.pause()
+    }
+    
     @objc func didEnterBackground() {
         print("didEnterBackground")
         animationView.pause()
