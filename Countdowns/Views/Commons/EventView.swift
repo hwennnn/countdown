@@ -10,18 +10,33 @@ import WidgetKit
 
 struct EventView: View {
     
+    let entry:EventEntry
+    let selected:Int
+    let utils:Utility = Utility()
     
     var body: some View {
-        HStack{
-            Divider().foregroundColor(.blue)
-            Text("\u{2665}")
-            Text("Hello")
-        }
+        let combined = utils.combineDateAndTime(entry.event[selected].date, entry.event[selected].time, entry.event[selected].includedTime)
+        let days = utils.calculateCountDown(combined)
+        HStack(){
+            Rectangle().fill(Color(utils.colourSchemeList[entry.event[selected].colour].colorWithHexString())).frame(width: 5, height: 35).padding(4)
+            VStack(alignment: .leading){
+                HStack{
+                    Text(decode((entry.event[selected].emoji))!)
+                    Text(entry.event[selected].name)
+                }
+                Text(utils.convertDateToString(date: combined))
+            }
+            Spacer()
+            VStack{
+                Text(String(days)).font(.title)
+                Text(utils.getCountDownDesc(combined))
+            }.padding(10)
+        }.minimumScaleFactor(0.5).redacted(reason: entry.isPlaceholder ? .placeholder : .init())
     }
 }
 
 struct EventView_Previews: PreviewProvider {
     static var previews: some View {
-        EventView().previewContext(WidgetPreviewContext(family: .systemSmall))
+        EventView(entry: EventEntry.placeholder,selected: -1).previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
