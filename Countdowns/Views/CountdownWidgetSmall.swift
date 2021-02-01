@@ -57,4 +57,5 @@ struct CountdownWidgetSmall_Previews: PreviewProvider {
     static var previews: some View {
         CountdownWidgetSmall(entry:EventEntry.placeholder).previewContext(WidgetPreviewContext(family: .systemSmall))
     }
+    //set default as first event
 }
