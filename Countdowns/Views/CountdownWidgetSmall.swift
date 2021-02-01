@@ -48,7 +48,7 @@ struct CountdownWidgetSmall: View {
                     Spacer()
                 }
                 
-                Text(utils.convertDateToString(date: combined)).foregroundColor(.white)
+                Text(utils.convertDateToString(event)).foregroundColor(.white)
             }
             
         }.redacted(reason: entry.isPlaceholder ? .placeholder : .init())
@@ -59,5 +59,5 @@ struct CountdownWidgetSmall_Previews: PreviewProvider {
     static var previews: some View {
         CountdownWidgetSmall(entry:EventEntry.placeholder).previewContext(WidgetPreviewContext(family: .systemSmall))
     }
-    //set default as first event
+    
 }

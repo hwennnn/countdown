@@ -24,7 +24,7 @@ struct EventView: View {
                     Text(decode((entry.event[selected].emoji))!)
                     Text(entry.event[selected].name)
                 }.lineLimit(1)
-                Text(utils.convertDateToString(date: combined))
+                Text(utils.convertDateToString(entry.event[selected]))
             }
             Spacer()
             VStack{
