@@ -186,7 +186,6 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             }else{
                 destination.event = self.firstEvent
             }
-            // TODO: Add animation here (from left ro right)
         }
     }
 }
