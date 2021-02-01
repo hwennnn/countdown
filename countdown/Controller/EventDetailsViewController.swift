@@ -47,9 +47,13 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
         super.viewDidAppear(true)
         
         if (event != nil){
@@ -71,6 +75,16 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         timer?.invalidate()
+    }
+    
+    @objc func didEnterBackground() {
+        print("didEnterBackground")
+        timer?.invalidate()
+   }
+    
+    @objc func didBecomeActive() {
+        print("didBecomeActive")
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateDetails), userInfo: nil, repeats: true)
     }
     
     @objc func updateDetails(){
