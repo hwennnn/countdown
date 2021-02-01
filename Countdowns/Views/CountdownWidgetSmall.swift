@@ -40,15 +40,14 @@ struct CountdownWidgetSmall: View {
                     Text(event.name).foregroundColor(.white).font(.subheadline).lineLimit(2)
                 }
                 
-                HStack{
-                    VStack{
-                        Text(String(days)).font(.title).foregroundColor(.white)
-                        Text(utils.getCountDownDesc(combined)).foregroundColor(.white).padding(.leading)
-                    }
-                    Spacer()
-                }
                 
-                Text(utils.convertDateToString(event)).foregroundColor(.white)
+                VStack(alignment: .leading)
+                {
+                    Text(String(days)).font(.title).foregroundColor(.white)
+                    Text(utils.getCountDownDesc(combined)).foregroundColor(.white)
+                }.padding(.trailing,65)
+                
+                Text(utils.convertDateToString(event)).foregroundColor(.white).font(.subheadline)
             }
             
         }.redacted(reason: entry.isPlaceholder ? .placeholder : .init())
