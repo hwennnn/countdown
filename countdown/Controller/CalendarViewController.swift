@@ -38,8 +38,18 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         present(appDelegate.menu!, animated: true, completion: nil)
     }
     
+    func getCurrentMonthLabel() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "MMMM YYYY"
+        f.locale = Locale(identifier: "en_SG")
+        
+        return f.string(from: Date())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        monthLabel.text = getCurrentMonthLabel()
         
         formatter.dateFormat = "dd MMMM, yyyy"
         formatter.locale = Locale(identifier: "en_SG")
