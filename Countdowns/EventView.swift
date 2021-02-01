@@ -10,7 +10,7 @@ import WidgetKit
 
 struct EventView: View {
     
-    let entry:EventEntry
+    let entry:MultiEventEntry
     let selected:Int
     let utils:Utility = Utility()
     
@@ -21,7 +21,7 @@ struct EventView: View {
             Rectangle().fill(Color(utils.colourSchemeList[entry.event[selected].colour].colorWithHexString())).frame(width: 5, height: 40).padding(4)
             VStack(alignment: .leading){
                 HStack{
-                    Text(decode((entry.event[selected].emoji))!)
+                    Text(utils.decode((entry.event[selected].emoji))!)
                     Text(entry.event[selected].name)
                 }.lineLimit(1)
                 Text(utils.convertDateToString(entry.event[selected])).font(.subheadline)
@@ -37,6 +37,6 @@ struct EventView: View {
 
 struct EventView_Previews: PreviewProvider {
     static var previews: some View {
-        EventView(entry: EventEntry.placeholder,selected: -1).previewContext(WidgetPreviewContext(family: .systemSmall))
+        EventView(entry: MultiEventEntry.placeholder,selected: -1).previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

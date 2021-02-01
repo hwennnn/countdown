@@ -13,7 +13,7 @@ func shouldShowViewLarge(c:Int) -> Bool {
 }
 
 struct CountdownLargeWidget: View {
-    let entry:EventEntry
+    let entry:MultiEventEntry
     var body: some View {
         VStack{
             ForEach(0 ..< entry.event.count){
@@ -27,7 +27,7 @@ struct CountdownLargeWidget: View {
 
 struct CountdownLargeWidget_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownLargeWidget(entry: EventEntry.placeholder)
+        CountdownLargeWidget(entry: MultiEventEntry.placeholder)
                     .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

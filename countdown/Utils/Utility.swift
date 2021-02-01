@@ -9,13 +9,7 @@
 
  class Utility{
 
-     var colourSchemeList:[String] = ["#DFC8F2", "#A0C5E8", "#AEFFBD","#FFEAAB", "#5854D5", "#D92728"]
-
-//     func convertDateToString(date:Date) -> String {
-//         let df = DateFormatter()
-//         df.dateStyle = .medium
-//         return df.string(from: date)
-//     }
+    var colourSchemeList:[String] = ["#DFC8F2", "#A0C5E8", "#AEFFBD","#FFEAAB", "#5854D5", "#D92728"]
     
     func convertDateToString(_ event:Event) -> String{
         let dateFormatter = DateFormatter() // set to local date (Singapore)
@@ -71,23 +65,29 @@
             }
         }
 
-        func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) ->  Date {
+    func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) ->  Date {
 
-            let calendar = NSCalendar.current
-            let dateComponents = calendar.dateComponents([.year, .month, .day],      from: date)
-            let timeComponents = calendar.dateComponents([.hour, .minute], from:     time)
+        let calendar = NSCalendar.current
+        let dateComponents = calendar.dateComponents([.year, .month, .day],      from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute], from:     time)
 
-            var components = DateComponents()
-            components.year = dateComponents.year
-            components.month = dateComponents.month
-            components.day = dateComponents.day
+        var components = DateComponents()
+        components.year = dateComponents.year
+        components.month = dateComponents.month
+        components.day = dateComponents.day
 
-            if (includedTime){
-                components.hour = timeComponents.hour
-                components.minute = timeComponents.minute
-            }
-
-            return calendar.date(from: components)!
+        if (includedTime){
+            components.hour = timeComponents.hour
+            components.minute = timeComponents.minute
         }
+
+        return calendar.date(from: components)!
     }
+    
+    func decode(_ s: String) -> String? {
+        let data = s.data(using: .utf8)!
+        return String(data: data, encoding: .nonLossyASCII)
+    }
+
+}
                 

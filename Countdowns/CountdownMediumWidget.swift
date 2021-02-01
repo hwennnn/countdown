@@ -14,7 +14,7 @@ func shouldShowViewMedium(c:Int) -> Bool {
 }
 
 struct CountdownMediumWidget: View {
-    let entry:EventEntry
+    let entry:MultiEventEntry
     
     var body: some View {
         VStack{
@@ -32,7 +32,7 @@ struct CountdownMediumWidget: View {
 
 struct CountdownMediumWidget_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownMediumWidget(entry: EventEntry.placeholder)
+        CountdownMediumWidget(entry: MultiEventEntry.placeholder)
                     .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

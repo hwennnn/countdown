@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-func fetchEvent(entry:EventEntry) -> Event {
+func fetchEvent(entry:SingleEventEntry) -> Event {
     for event in entry.event{
         if entry.configuration.Event != nil {
             if(entry.configuration.Event!.identifier == event.id){
@@ -19,12 +19,16 @@ func fetchEvent(entry:EventEntry) -> Event {
         }
     }
     WidgetCenter.shared.reloadAllTimelines()
-    return EventEntry.placeholder.event[0]
+    if entry.event.count == 0 {
+        return SingleEventEntry.placeholder.event[0]
+    }else{
+        return entry.event[0]
+    }
     
 }
 
 struct CountdownWidgetSmall: View {
-    let entry:EventEntry
+    let entry:SingleEventEntry
     let utils:Utility = Utility()
    
     var body: some View {
@@ -36,11 +40,9 @@ struct CountdownWidgetSmall: View {
             Color(utils.colourSchemeList[event.colour].colorWithHexString()).edgesIgnoringSafeArea(.all)
             VStack( spacing: 10){
                 HStack{
-                    Text(decode((event.emoji))!).foregroundColor(.white)
+                    Text(utils.decode((event.emoji))!).foregroundColor(.white)
                     Text(event.name).foregroundColor(.white).font(.subheadline).lineLimit(2)
                 }
-                
-                
                 VStack(alignment: .leading)
                 {
                     Text(String(days)).font(.title).foregroundColor(.white)
@@ -56,7 +58,7 @@ struct CountdownWidgetSmall: View {
 
 struct CountdownWidgetSmall_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownWidgetSmall(entry:EventEntry.placeholder).previewContext(WidgetPreviewContext(family: .systemSmall))
+        CountdownWidgetSmall(entry:SingleEventEntry.placeholder).previewContext(WidgetPreviewContext(family: .systemSmall))
     }
     
 }
