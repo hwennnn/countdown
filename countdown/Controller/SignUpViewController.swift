@@ -9,18 +9,49 @@ import Foundation
 import UIKit
 import Firebase
 
-class SignUpViewController:UIViewController{
+class SignUpViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailField.delegate = self
+        passwordField.delegate = self
+        
+        emailField.returnKeyType = UIReturnKeyType.next
+        passwordField.returnKeyType = UIReturnKeyType.go
+        
+        passwordField.isEnabled = false
+        passwordField.enablesReturnKeyAutomatically = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    // UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        if (emailField.text?.isEmpty ?? true) {
+            passwordField.isEnabled = false
+            textField.resignFirstResponder()
+        }
+        else if textField == emailField {
+            passwordField.isEnabled = true
+            passwordField.becomeFirstResponder()
+        }
+        else {
+            textField.resignFirstResponder()
+            signUp(passwordField as Any)
+        }
+
+        return true
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func validateEmail(_ email: String) -> Bool {

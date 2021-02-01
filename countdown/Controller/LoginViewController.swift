@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import WidgetKit
 
-class LoginViewController:UIViewController{
+class LoginViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -20,6 +20,15 @@ class LoginViewController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailField.delegate = self
+        passwordField.delegate = self
+        
+        emailField.returnKeyType = UIReturnKeyType.next
+        passwordField.returnKeyType = UIReturnKeyType.go
+        
+        passwordField.isEnabled = false
+        passwordField.enablesReturnKeyAutomatically = true
+        
         // redirect to main page if logged in
         if (Auth.auth().currentUser?.uid != nil){
             redirectToMain(false)
@@ -28,6 +37,25 @@ class LoginViewController:UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
+    }
+    
+    // UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        if (emailField.text?.isEmpty ?? true) {
+            passwordField.isEnabled = false
+            textField.resignFirstResponder()
+        }
+        else if textField == emailField {
+            passwordField.isEnabled = true
+            passwordField.becomeFirstResponder()
+        }
+        else {
+            textField.resignFirstResponder()
+            login(passwordField as Any)
+        }
+
+        return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
