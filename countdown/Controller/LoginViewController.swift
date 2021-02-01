@@ -39,10 +39,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         emailField.returnKeyType = UIReturnKeyType.next
         passwordField.returnKeyType = UIReturnKeyType.go
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
