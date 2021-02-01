@@ -83,6 +83,7 @@ func fetchdata() -> ([Event]){
 
             let event = Event(id,name,emoji,includedTime,date,time,created_at,reminders,colour,progress)
             eventList.append(event)
+            WidgetCenter.shared.reloadAllTimelines()
 
         }
     } catch let error as NSError{
@@ -123,10 +124,10 @@ struct EventTimelineProvider: IntentTimelineProvider {
     func getTimeline(for configuration: SelectEventIntent, in context: Context, completion: @escaping (Timeline<EventEntry>) -> Void) {
         if let event:[Event]? = fetchdata(){
             let entry = EventEntry(date: Date(), event: event! ,configuration: configuration)
-            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(4)))
+            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(1)))
             completion(timeline)
         }else{
-            let timeline = Timeline(entries: [EventEntry.placeholder], policy: .after(Date().addingTimeInterval(4)))
+            let timeline = Timeline(entries: [EventEntry.placeholder], policy: .after(Date().addingTimeInterval(1)))
             completion(timeline)
         }
     }

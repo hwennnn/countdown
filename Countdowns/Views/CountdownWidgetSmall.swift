@@ -18,7 +18,9 @@ func fetchEvent(entry:EventEntry) -> Event {
             print("Doesn’t contain a value.")
         }
     }
+    WidgetCenter.shared.reloadAllTimelines()
     return EventEntry.placeholder.event[0]
+    
 }
 
 struct CountdownWidgetSmall: View {
@@ -26,9 +28,9 @@ struct CountdownWidgetSmall: View {
     let utils:Utility = Utility()
    
     var body: some View {
-        let combined = utils.combineDateAndTime(entry.event[0].date, entry.event[0].time, entry.event[0].includedTime)
-        let days = utils.calculateCountDown(combined)
         let event:Event = fetchEvent(entry: entry)
+        let combined = utils.combineDateAndTime(event.date, event.time, event.includedTime)
+        let days = utils.calculateCountDown(combined)
         
         ZStack{
             Color(utils.colourSchemeList[event.colour].colorWithHexString()).edgesIgnoringSafeArea(.all)
