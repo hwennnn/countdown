@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 func shouldShowViewLarge(c:Int) -> Bool {
-    return c < 6
+    return c < 7
 }
 
 struct CountdownLargeWidget: View {
