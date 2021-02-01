@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 class EventController: UIViewController{
+    
+    let utils = Utility()
         
     func addEvent(_ event:Event){
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
@@ -123,7 +125,7 @@ class EventController: UIViewController{
                 let progress = e.progress
 
                 let event = Event(id,name,emoji,includedTime,date,time,created_at,reminders,colour,progress)
-                if (combineDateAndTime(event.date, event.time, event.includedTime) <= Date()){
+                if (utils.combineDateAndTime(event.date, event.time, event.includedTime) <= Date()){
                     completed.append(event)
                 }else{
                     incomplete.append(event)
@@ -135,11 +137,11 @@ class EventController: UIViewController{
         }
 
         completed.sort { (event1, event2) -> Bool in
-            return combineDateAndTime(event1.date, event1.time, event1.includedTime) < combineDateAndTime(event2.date, event2.time, event2.includedTime)
+            return utils.combineDateAndTime(event1.date, event1.time, event1.includedTime) < utils.combineDateAndTime(event2.date, event2.time, event2.includedTime)
         }
         
         incomplete.sort { (event1, event2) -> Bool in
-            return combineDateAndTime(event1.date, event1.time, event1.includedTime) < combineDateAndTime(event2.date, event2.time, event2.includedTime)
+            return utils.combineDateAndTime(event1.date, event1.time, event1.includedTime) < utils.combineDateAndTime(event2.date, event2.time, event2.includedTime)
         }
         
         eventList.append(contentsOf: incomplete)
@@ -172,25 +174,4 @@ class EventController: UIViewController{
             print("Detele all data in Event Table error : \(error) \(error.userInfo)")
         }
     }
-    
-    private func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
-        
-        let calendar = NSCalendar.current
-
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
-
-        var components = DateComponents()
-        components.year = dateComponents.year
-        components.month = dateComponents.month
-        components.day = dateComponents.day
-        
-        if (includedTime){
-            components.hour = timeComponents.hour
-            components.minute = timeComponents.minute
-        }
-        
-        return calendar.date(from: components)!
-    }
-    
 }

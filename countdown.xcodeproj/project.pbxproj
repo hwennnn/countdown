@@ -10,6 +10,7 @@
 		5FFEC8A136E2B507F4FB84E8 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F63520597B33519B40973 /* Pods_countdown.framework */; };
 		8A16BEC225C5077E004C15D5 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A16BEC125C5077E004C15D5 /* logo.png */; };
 		8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */; };
+		8A4D3FC025C820530073FA1C /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
 		8A5D6FB525C3FF3600301E56 /* EventActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */; };
 		8A880ED325A7428A00494BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
 		8A945C8025C696A50076F596 /* EventDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A945C7F25C696A50076F596 /* EventDetailCollectionViewCell.swift */; };
@@ -40,7 +41,6 @@
 		B613EBC925C6FAA400136B61 /* countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */; };
 		B613EBFB25C6FE1400136B61 /* CountdownMediumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EBFA25C6FE1400136B61 /* CountdownMediumWidget.swift */; };
 		B613EC3325C706C600136B61 /* CountdownLargeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC3225C706C600136B61 /* CountdownLargeWidget.swift */; };
-		B613EC5125C70DD200136B61 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
 		B613EC5225C70DD200136B61 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
 		B613EC5325C70DD200136B61 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
 		B620304125C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */; };
@@ -523,11 +523,11 @@
 				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
 				8A880ED325A7428A00494BD3 /* Event.swift in Sources */,
 				B62BF3F325C78BCF007FAFC2 /* Utility.swift in Sources */,
+				8A4D3FC025C820530073FA1C /* String+Ext.swift in Sources */,
 				B64A365025C30C7F0087999A /* Countdowns.intentdefinition in Sources */,
 				8AD7855525C182F7009E8357 /* ProfileMenuViewController.swift in Sources */,
 				8AD7854225C16628009E8357 /* SignUpViewController.swift in Sources */,
 				8AB295C725A73A5400EC33EB /* countdown.xcdatamodeld in Sources */,
-				B613EC5125C70DD200136B61 /* String+Ext.swift in Sources */,
 				8A5D6FB525C3FF3600301E56 /* EventActionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

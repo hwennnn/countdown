@@ -18,6 +18,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet var eventTable: UITableView!
     
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+    let utils = Utility()
     
     private var randomNumberOfDotMarkersForDay = [Int]()
     private var shouldShowDaysOut = true
@@ -25,7 +26,6 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     private var selectedDay: DayView!
     private var currentCalendar: Calendar?
     var formatter = DateFormatter()
-    var colourSchemeList:[String] = []
     
     // Controller
     let eventController = EventController()
@@ -38,108 +38,8 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         present(appDelegate.menu!, animated: true, completion: nil)
     }
     
-    func calculateCountDown(_ date:Date) -> Int {
-        let remainingHours = abs(Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!)
-        if (remainingHours < 24){
-            if (remainingHours == 0){
-                let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
-                return abs(remainingMinutes)
-            }
-            
-            return abs(remainingHours)
-        }
-        
-        let remainingDays = abs(Calendar.current.dateComponents([.day], from: Date(), to: date).day!)
-        return remainingDays
-    }
-    
-    func getCountDownDesc(_ date:Date) -> String {
-        let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
-        var suffix = (remainingHours >= 0) ? "left" : "ago"
-        
-        if (abs(remainingHours) < 24){
-            if (remainingHours == 0){
-                let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
-                if (remainingMinutes == 0){
-                    return "min \(suffix)"
-                } else{
-                    suffix = (remainingMinutes > 0) ? "left" : "ago"
-                    return "mins \(suffix)"
-                }
-            }
-            
-            if (remainingHours == 1){
-                return "hour \(suffix)"
-            }else{
-                return "hours \(suffix)"
-            }
-        } else{
-            let remainingDays = Calendar.current.dateComponents([.day], from: Date(), to: date).day!
-            if (remainingDays == 1){
-                return "day \(suffix)"
-            }else{
-                suffix = (remainingDays > 0) ? "left" : "ago"
-                return "days \(suffix)"
-            }
-        }
-    }
-    
-    func dateFormat(_ event:Event) -> String{
-        let dateFormatter = DateFormatter() // set to local date (Singapore)
-        dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        let dateFormatStyle:String = (event.includedTime) ? "EE, d MMM yyyy h:mm a" : "EE, d MMM yyyy"
-        dateFormatter.dateFormat = dateFormatStyle // convert date to String
-        let datevalue = dateFormatter.string(from: combineDateAndTime(event.date, event.time, event.includedTime))
-        
-        return datevalue
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventArr.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! EventTableViewCell
-
-        let event = eventArr[indexPath.row]
-        let remainingDateTime = combineDateAndTime(event.date, event.time, event.includedTime)
-        
-        cell.colourLine.backgroundColor = colourSchemeList[event.colour].colorWithHexString()
-        cell.title.text = "\(event.emoji.decodeEmoji) \(event.name)"
-        cell.date.text = "\(dateFormat(event))"
-        cell.remaining.text = "\(calculateCountDown(remainingDateTime))"
-        cell.remainingDesc.text = "\(getCountDownDesc(remainingDateTime))"
-
-        return cell
-        
-    }
-    
-    func loadEventData() -> [String:[Event]]{
-        //filling up dictionary (data)
-        var dict = [String:[Event]]()
-        
-        for event in eventController.retrieveAllEvent(){
-            let eventDate = formatter.string(from: event.date)
-            let keyExists = dict[eventDate] != nil
-            if (keyExists) {
-                dict[eventDate]?.append(event)
-            }else{
-                dict[eventDate] = [event]
-            }
-        }
-        
-        return dict
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        colourSchemeList = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
         
         formatter.dateFormat = "dd MMMM, yyyy"
         formatter.locale = Locale(identifier: "en_SG")
@@ -191,6 +91,47 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return eventArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! EventTableViewCell
+
+        let event = eventArr[indexPath.row]
+        let remainingDateTime = utils.combineDateAndTime(event.date, event.time, event.includedTime)
+        
+        cell.colourLine.backgroundColor = utils.colourSchemeList[event.colour].colorWithHexString()
+        cell.title.text = "\(event.emoji.decodeEmoji) \(event.name)"
+        cell.date.text = "\(utils.convertDateToString(event))"
+        cell.remaining.text = "\(utils.calculateCountDown(remainingDateTime))"
+        cell.remainingDesc.text = "\(utils.getCountDownDesc(remainingDateTime))"
+
+        return cell
+    }
+    
+    func loadEventData() -> [String:[Event]]{
+        //filling up dictionary (data)
+        var dict = [String:[Event]]()
+        
+        for event in eventController.retrieveAllEvent(){
+            let eventDate = formatter.string(from: event.date)
+            let keyExists = dict[eventDate] != nil
+            if (keyExists) {
+                dict[eventDate]?.append(event)
+            } else{
+                dict[eventDate] = [event]
+            }
+        }
+        
+        return dict
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "calendarEventDetails", let destination = segue.destination.children[0] as? EventDetailsViewController {
             if let cell:EventTableViewCell = sender as? EventTableViewCell{
@@ -199,26 +140,6 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
             }
             // TODO: Add animation here (from left ro right)
         }
-    }
-    
-    func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
-        
-        let calendar = NSCalendar.current
-
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
-
-        var components = DateComponents()
-        components.year = dateComponents.year
-        components.month = dateComponents.month
-        components.day = dateComponents.day
-        
-        if (includedTime){
-            components.hour = timeComponents.hour
-            components.minute = timeComponents.minute
-        }
-        
-        return calendar.date(from: components)!
     }
 }
 

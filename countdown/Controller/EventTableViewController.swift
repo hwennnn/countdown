@@ -23,10 +23,10 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
+    let utils = Utility()
     
     var firstEvent:Event?
     var eventList:[Event] = []
-    var colourSchemeList:[String] = []
     
     @IBAction func didTapMenu(){
         present(appDelegate.menu!, animated: true, completion: nil)
@@ -37,8 +37,6 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.tappedBanner(sender:)))
         self.bannerView.addGestureRecognizer(gesture)
-        
-        colourSchemeList = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -69,21 +67,21 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             
             self.firstEvent = nil
             self.eventList = []
-        }else{
+        } else{
             let firstEvent = fetchedList[0]
             self.firstEvent = firstEvent
-            let remainingDateTime = combineDateAndTime(firstEvent.date, firstEvent.time, firstEvent.includedTime)
+            let remainingDateTime = utils.combineDateAndTime(firstEvent.date, firstEvent.time, firstEvent.includedTime)
             
-            bannerRemaining.text = "\(calculateCountDown(remainingDateTime))"
-            bannerRemainingDesc.text = getCountDownDesc(remainingDateTime)
+            bannerRemaining.text = "\(utils.calculateCountDown(remainingDateTime))"
+            bannerRemainingDesc.text = utils.getCountDownDesc(remainingDateTime)
             bannerTitle.text = "\(firstEvent.emoji.decodeEmoji) \(firstEvent.name)"
-            bannerDate.text = dateFormat(firstEvent)
+            bannerDate.text = utils.convertDateToString(firstEvent)
             
-            self.navigationController?.navigationBar.barTintColor = colourSchemeList[firstEvent.colour].colorWithHexString()
+            self.navigationController?.navigationBar.barTintColor = utils.colourSchemeList[firstEvent.colour].colorWithHexString()
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
             self.navigationController?.navigationBar.shadowImage = UIImage()
             self.navigationController?.navigationBar.layoutIfNeeded()
-            self.bannerView.backgroundColor = colourSchemeList[firstEvent.colour].colorWithHexString()
+            self.bannerView.backgroundColor = utils.colourSchemeList[firstEvent.colour].colorWithHexString()
             
             if (fetchedList.count == 1){
                 self.eventList = []
@@ -92,7 +90,6 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
                 self.eventList = fetchedList
             }
         }
-        
     }
     
     @objc func tappedBanner(sender : UITapGestureRecognizer) {
@@ -113,62 +110,15 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EventTableViewCell
 
         let event = eventList[indexPath.row]
-        let remainingDateTime = combineDateAndTime(event.date, event.time, event.includedTime)
+        let remainingDateTime = utils.combineDateAndTime(event.date, event.time, event.includedTime)
         
-        cell.colourLine.backgroundColor = colourSchemeList[event.colour].colorWithHexString()
+        cell.colourLine.backgroundColor = utils.colourSchemeList[event.colour].colorWithHexString()
         cell.title.text = "\(event.emoji.decodeEmoji) \(event.name)"
-        cell.date.text = "\(dateFormat(event))"
-        cell.remaining.text = "\(calculateCountDown(remainingDateTime))"
-        cell.remainingDesc.text = "\(getCountDownDesc(remainingDateTime))"
+        cell.date.text = "\(utils.convertDateToString(event))"
+        cell.remaining.text = "\(utils.calculateCountDown(remainingDateTime))"
+        cell.remainingDesc.text = "\(utils.getCountDownDesc(remainingDateTime))"
   
         return cell
-         
-    }
-    
-    func calculateCountDown(_ date:Date) -> Int {
-        let remainingHours = abs(Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!)
-        if (remainingHours < 24){
-            if (remainingHours == 0){
-                let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
-                return abs(remainingMinutes)
-            }
-            
-            return abs(remainingHours)
-        }
-        
-        let remainingDays = abs(Calendar.current.dateComponents([.day], from: Date(), to: date).day!)
-        return remainingDays
-    }
-    
-    func getCountDownDesc(_ date:Date) -> String {
-        let remainingHours = Calendar.current.dateComponents([.hour], from: Date(), to: date).hour!
-        var suffix = (remainingHours >= 0) ? "left" : "ago"
-        
-        if (abs(remainingHours) < 24){
-            if (remainingHours == 0){
-                let remainingMinutes = Calendar.current.dateComponents([.minute], from: Date(), to: date).minute!
-                if (remainingMinutes == 0){
-                    return "min \(suffix)"
-                } else{
-                    suffix = (remainingMinutes > 0) ? "left" : "ago"
-                    return "mins \(suffix)"
-                }
-            }
-            
-            if (remainingHours == 1){
-                return "hour \(suffix)"
-            }else{
-                return "hours \(suffix)"
-            }
-        } else{
-            let remainingDays = Calendar.current.dateComponents([.day], from: Date(), to: date).day!
-            if (remainingDays == 1){
-                return "day \(suffix)"
-            }else{
-                suffix = (remainingDays > 0) ? "left" : "ago"
-                return "days \(suffix)"
-            }
-        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -238,61 +188,4 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
             // TODO: Add animation here (from left ro right)
         }
     }
-    
-    func dateFormat(_ event:Event) -> String{
-        let dateFormatter = DateFormatter() // set to local date (Singapore)
-        dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        let dateFormatStyle:String = (event.includedTime) ? "EE, d MMM yyyy h:mm a" : "EE, d MMM yyyy"
-        dateFormatter.dateFormat = dateFormatStyle // convert date to String
-        let datevalue = dateFormatter.string(from: combineDateAndTime(event.date, event.time, event.includedTime))
-        
-        return datevalue
-    }
-    
-    func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
-        
-        let calendar = NSCalendar.current
-
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
-
-        var components = DateComponents()
-        components.year = dateComponents.year
-        components.month = dateComponents.month
-        components.day = dateComponents.day
-        
-        if (includedTime){
-            components.hour = timeComponents.hour
-            components.minute = timeComponents.minute
-        }
-        
-        return calendar.date(from: components)!
-    }
 }
-
-//extension String {
-//    private func intFromHexString(_ hexStr: String) -> UInt32 {
-//        var hexInt: UInt32 = 0
-//        // Create scanner
-//        let scanner: Scanner = Scanner(string: hexStr)
-//        // Tell scanner to skip the # character
-//        scanner.charactersToBeSkipped = CharacterSet(charactersIn: "#")
-//        // Scan hex value
-//        scanner.scanHexInt32(&hexInt)
-//        return hexInt
-//    }
-//
-//    func colorWithHexString(_ alpha:CGFloat = 1.0) -> UIColor {
-//
-//        // Convert hex string to an integer
-//        let hexint = Int(self.intFromHexString(self))
-//        let red = CGFloat((hexint & 0xff0000) >> 16) / 255.0
-//        let green = CGFloat((hexint & 0xff00) >> 8) / 255.0
-//        let blue = CGFloat((hexint & 0xff) >> 0) / 255.0
-//
-//        // Create color object, specifying alpha as well
-//        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
-//        return color
-//    }
-//}
-

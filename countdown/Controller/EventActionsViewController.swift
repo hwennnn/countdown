@@ -34,19 +34,18 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     
     var currentEvent:Event?
     var colourList:[UIButton] = []
-    var colourSchemeList:[String] = []
     var selectedColour:Int = 0
     var reminderSwitches:[UISwitch] = []
     
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
+    let utils = Utility()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         colourList = [colour1, colour2, colour3, colour4, colour5, colour6]
-        colourSchemeList = ["#DFC8F2", "#A0C5E8", "#AEFFBD", "#FFEAAB", "#5854D5", "#D92728"]
         reminderSwitches = [reminder1, reminder2, reminder3]
         
         // close the keyboard when dragging the screen
@@ -127,7 +126,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     }
     
     func initColourButtons(_ buttons:[UIButton]){
-        for (button, colourHex) in zip(buttons, colourSchemeList){
+        for (button, colourHex) in zip(buttons, utils.colourSchemeList){
             button.backgroundColor = colourHex.colorWithHexString()
         }
         

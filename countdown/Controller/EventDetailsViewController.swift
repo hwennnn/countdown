@@ -19,6 +19,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
+    let utils = Utility()
     
     @IBOutlet weak var iconField: UILabel!
     @IBOutlet weak var titleField: UILabel!
@@ -34,7 +35,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
             self.view.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
             self.iconField.text = event!.emoji.decodeEmoji
             self.titleField.text = event!.name
-            self.dateField.text = dateFormat(event!)
+            self.dateField.text = utils.convertDateToString(event!)
         }
         
         self.detailsList = generateRemaining()
@@ -55,7 +56,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
             self.view.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
             self.iconField.text = event!.emoji.decodeEmoji
             self.titleField.text = event!.name
-            self.dateField.text = dateFormat(event!)
+            self.dateField.text = utils.convertDateToString(event!)
         }
         self.collectionView.backgroundColor = colourSchemeList[event!.colour].colorWithHexString()
         
@@ -93,7 +94,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
     func generateRemaining() -> [(String, Int)] {
         var res:[(String, Int)] = []
         
-        let combinedDate = combineDateAndTime(event!.date, event!.time, event!.includedTime)
+        let combinedDate = utils.combineDateAndTime(event!.date, event!.time, event!.includedTime)
         let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date(), to: combinedDate)
         
         let desc:[String] = ["year", "month", "day", "hour", "minute", "second"]
@@ -151,35 +152,5 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
                 destination.currentEvent = event
             }
         }
-    }
-    
-    func dateFormat(_ event:Event) -> String{
-        let dateFormatter = DateFormatter() // set to local date (Singapore)
-        dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        let dateFormatStyle:String = (event.includedTime) ? "EE, d MMM yyyy h:mm a" : "EE, d MMM yyyy"
-        dateFormatter.dateFormat = dateFormatStyle // convert date to String
-        let datevalue = dateFormatter.string(from: combineDateAndTime(event.date, event.time, event.includedTime))
-        
-        return datevalue
-    }
-    
-    func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
-        
-        let calendar = NSCalendar.current
-
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
-
-        var components = DateComponents()
-        components.year = dateComponents.year
-        components.month = dateComponents.month
-        components.day = dateComponents.day
-        
-        if (includedTime){
-            components.hour = timeComponents.hour
-            components.minute = timeComponents.minute
-        }
-        
-        return calendar.date(from: components)!
     }
 }
