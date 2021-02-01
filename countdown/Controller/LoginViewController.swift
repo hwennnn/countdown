@@ -22,6 +22,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // redirect to main page if logged in
+        if (Auth.auth().currentUser?.uid != nil){
+            redirectToMain(false)
+        }
+        
         animationView.contentMode = .scaleAspectFit
         // 2. Set animation loop mode
         animationView.loopMode = .loop
@@ -34,10 +39,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         emailField.returnKeyType = UIReturnKeyType.next
         passwordField.returnKeyType = UIReturnKeyType.go
         
-        // redirect to main page if logged in
-        if (Auth.auth().currentUser?.uid != nil){
-            redirectToMain(false)
-        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
