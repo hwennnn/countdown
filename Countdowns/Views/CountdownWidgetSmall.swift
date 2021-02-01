@@ -32,28 +32,30 @@ struct CountdownWidgetSmall: View {
         let combined = utils.combineDateAndTime(event.date, event.time, event.includedTime)
         let days = utils.calculateCountDown(combined)
         
-        ZStack{
+        ZStack(alignment: .topLeading){
             Color(utils.colourSchemeList[event.colour].colorWithHexString()).edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading){
                 
-
-                HStack{
-                    Text(decode((event.emoji))!).foregroundColor(.white)
-                    Text(event.name).foregroundColor(.white).font(.subheadline).lineLimit(2)
-                }
+                HStack(){
+                    Text(decode((event.emoji))!).foregroundColor(.black)
+                    Text(event.name).foregroundColor(.black).font(.subheadline).lineLimit(2)
+                }.lineSpacing(1)
                 
-
+                Spacer()
                 
                 VStack(alignment: .leading)
                 {
-                    Text(String(days)).font(.title).foregroundColor(.white)
-                    Text(utils.getCountDownDesc(combined)).foregroundColor(.white)
+                    Text(String(days)).font(.title).foregroundColor(.black)
+                    Text(utils.getCountDownDesc(combined)).foregroundColor(.black).font(.system(size: 12))
                 }
                 
+                Spacer()
 
+                HStack{
+                    Text(utils.convertDateToString(event)).foregroundColor(.black).font(.system(size: 13)).lineLimit(2)
+                }
                 
-                Text(utils.convertDateToString(event)).foregroundColor(.white).font(.system(size: 13)).lineLimit(1)
-            }
+            }.padding(15)
             
         }.redacted(reason: entry.isPlaceholder ? .placeholder : .init())
     }
