@@ -19,26 +19,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxA-dH-boz" customClass="CVCalendarMenuView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="95" width="390" height="41"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="41"/>
                                 <color key="tintColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="pgH-Rf-UIC"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmr-1B-RWR">
-                                <rect key="frame" x="195" y="45" width="0.0" height="20.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmr-1B-RWR">
+                                <rect key="frame" x="191" y="19" width="9" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-bD-AZw" customClass="CVCalendarView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="135" width="390" height="324"/>
+                                <rect key="frame" x="0.0" y="90" width="390" height="325"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <color key="tintColor" name="AccentColor"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wZq-Sm-dat">
-                                <rect key="frame" x="0.0" y="459" width="390" height="265"/>
+                                <rect key="frame" x="0.0" y="415" width="390" height="265"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="265" id="nKK-lm-Ydn"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarCell" rowHeight="60" id="qLW-LL-l0O" customClass="EventTableViewCell" customModule="countdown" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="390" height="60"/>
@@ -115,18 +115,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Dj2-K5-i4L" firstAttribute="trailing" secondItem="cxA-dH-boz" secondAttribute="trailing" id="35q-MT-rEg"/>
+                            <constraint firstItem="wZq-Sm-dat" firstAttribute="bottom" secondItem="Dj2-K5-i4L" secondAttribute="bottom" constant="7" id="51Y-Ag-g6E"/>
+                            <constraint firstItem="wZq-Sm-dat" firstAttribute="top" secondItem="Dj2-K5-i4L" secondAttribute="top" constant="415" id="5Gm-JD-0rc"/>
                             <constraint firstItem="Hmr-1B-RWR" firstAttribute="centerX" secondItem="Dj2-K5-i4L" secondAttribute="centerX" id="6PQ-89-nXh"/>
-                            <constraint firstItem="cxA-dH-boz" firstAttribute="top" secondItem="Hmr-1B-RWR" secondAttribute="bottom" constant="29.666666666666671" id="81n-YV-PLO"/>
-                            <constraint firstItem="cxA-dH-boz" firstAttribute="top" secondItem="Dj2-K5-i4L" secondAttribute="top" constant="95" id="DLH-s4-Y0Z"/>
-                            <constraint firstItem="EF1-bD-AZw" firstAttribute="top" secondItem="cxA-dH-boz" secondAttribute="bottom" constant="-1" id="Tf4-HG-d1H"/>
-                            <constraint firstItem="wZq-Sm-dat" firstAttribute="bottom" secondItem="Dj2-K5-i4L" secondAttribute="bottom" constant="51" id="bS6-5g-cnJ"/>
+                            <constraint firstItem="cxA-dH-boz" firstAttribute="centerX" secondItem="Dj2-K5-i4L" secondAttribute="centerX" id="KNj-pY-KAL"/>
+                            <constraint firstItem="cxA-dH-boz" firstAttribute="top" secondItem="Dj2-K5-i4L" secondAttribute="top" constant="47" id="TZR-7n-fh5"/>
                             <constraint firstItem="EF1-bD-AZw" firstAttribute="leading" secondItem="Dj2-K5-i4L" secondAttribute="leading" id="c0t-gf-oSe"/>
                             <constraint firstItem="Dj2-K5-i4L" firstAttribute="trailing" secondItem="EF1-bD-AZw" secondAttribute="trailing" id="crF-DB-iqa"/>
                             <constraint firstItem="wZq-Sm-dat" firstAttribute="top" secondItem="EF1-bD-AZw" secondAttribute="bottom" id="eo6-zh-9yO"/>
-                            <constraint firstItem="EF1-bD-AZw" firstAttribute="top" secondItem="Dj2-K5-i4L" secondAttribute="top" constant="135" id="fYM-Ir-sAM"/>
                             <constraint firstItem="cxA-dH-boz" firstAttribute="leading" secondItem="Dj2-K5-i4L" secondAttribute="leading" id="ffz-0L-9ZT"/>
                             <constraint firstItem="wZq-Sm-dat" firstAttribute="leading" secondItem="Dj2-K5-i4L" secondAttribute="leading" id="nXo-qi-jJd"/>
-                            <constraint firstItem="Hmr-1B-RWR" firstAttribute="top" secondItem="Dj2-K5-i4L" secondAttribute="top" constant="45" id="rWe-Wn-UGf"/>
+                            <constraint firstItem="EF1-bD-AZw" firstAttribute="top" secondItem="Dj2-K5-i4L" secondAttribute="top" constant="90" id="oCt-AR-weR"/>
+                            <constraint firstItem="cxA-dH-boz" firstAttribute="top" secondItem="Hmr-1B-RWR" secondAttribute="bottom" constant="7.6666666666666714" id="wKQ-SB-Nzc"/>
                             <constraint firstItem="Dj2-K5-i4L" firstAttribute="trailing" secondItem="wZq-Sm-dat" secondAttribute="trailing" id="wnT-vi-QFN"/>
                         </constraints>
                     </view>
