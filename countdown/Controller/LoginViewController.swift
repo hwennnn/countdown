@@ -9,16 +9,24 @@ import Foundation
 import UIKit
 import Firebase
 import WidgetKit
+import Lottie
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var animationView: AnimationView!
     
     let firebaseDataController = FirebaseDataController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        animationView.contentMode = .scaleAspectFit
+        // 2. Set animation loop mode
+        animationView.loopMode = .loop
+        // 3. Adjust animation speed
+        animationView.animationSpeed = 0.5
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -37,6 +45,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
+        // 4. Play animation
+        animationView.play()
     }
     
     // UITextFieldDelegate

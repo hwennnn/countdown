@@ -84,18 +84,29 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="38"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFQ-q8-yG1" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="26" y="69" width="362" height="199"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="calendar"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1kf-T8-9IR"/>
                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="1kf-T8-9IR" firstAttribute="trailing" secondItem="MFQ-q8-yG1" secondAttribute="trailing" constant="26" id="7F7-xD-4YL"/>
+                            <constraint firstItem="MFQ-q8-yG1" firstAttribute="leading" secondItem="1kf-T8-9IR" secondAttribute="leading" constant="26" id="BUM-B7-Sme"/>
                             <constraint firstItem="RAH-DC-uKl" firstAttribute="bottom" secondItem="1kf-T8-9IR" secondAttribute="bottom" constant="34" id="E40-dE-z2z"/>
                             <constraint firstItem="RAH-DC-uKl" firstAttribute="top" secondItem="1kf-T8-9IR" secondAttribute="top" constant="264" id="Nn1-2N-Zub"/>
                             <constraint firstItem="1kf-T8-9IR" firstAttribute="trailing" secondItem="RAH-DC-uKl" secondAttribute="trailing" id="Ptw-f1-v5s"/>
+                            <constraint firstItem="RAH-DC-uKl" firstAttribute="top" secondItem="MFQ-q8-yG1" secondAttribute="bottom" constant="40" id="piy-jh-sry"/>
+                            <constraint firstItem="MFQ-q8-yG1" firstAttribute="top" secondItem="1kf-T8-9IR" secondAttribute="top" constant="25" id="w4B-t5-70B"/>
                             <constraint firstItem="RAH-DC-uKl" firstAttribute="leading" secondItem="1kf-T8-9IR" secondAttribute="leading" id="w6z-zr-Xdw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ySa-4Q-56O"/>
                     <connections>
+                        <outlet property="animationView" destination="MFQ-q8-yG1" id="hDf-Ns-mmg"/>
                         <outlet property="emailField" destination="Oyt-OT-ovz" id="htt-Vb-vrm"/>
                         <outlet property="passwordField" destination="W1Q-KV-nmt" id="Vad-tO-agI"/>
                     </connections>
@@ -193,6 +204,12 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="38"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AX1-vL-OYG" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="26" y="69" width="362" height="199"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="calendar"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dRc-Se-Ocy"/>
                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -201,9 +218,14 @@
                             <constraint firstItem="WDd-tV-svH" firstAttribute="bottom" secondItem="dRc-Se-Ocy" secondAttribute="bottom" constant="34" id="MWu-FR-dtg"/>
                             <constraint firstItem="dRc-Se-Ocy" firstAttribute="trailing" secondItem="WDd-tV-svH" secondAttribute="trailing" id="Mwo-Gc-7xU"/>
                             <constraint firstItem="WDd-tV-svH" firstAttribute="leading" secondItem="dRc-Se-Ocy" secondAttribute="leading" id="Nvo-Sg-4ot"/>
+                            <constraint firstItem="WDd-tV-svH" firstAttribute="top" secondItem="AX1-vL-OYG" secondAttribute="bottom" constant="40" id="U28-hp-xkb"/>
+                            <constraint firstItem="AX1-vL-OYG" firstAttribute="leading" secondItem="dRc-Se-Ocy" secondAttribute="leading" constant="26" id="YIy-sE-tXN"/>
+                            <constraint firstItem="AX1-vL-OYG" firstAttribute="top" secondItem="dRc-Se-Ocy" secondAttribute="top" constant="25" id="cLR-Tb-6HH"/>
+                            <constraint firstItem="dRc-Se-Ocy" firstAttribute="trailing" secondItem="AX1-vL-OYG" secondAttribute="trailing" constant="26" id="muu-HA-mlp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animationView" destination="AX1-vL-OYG" id="XHc-bT-ANi"/>
                         <outlet property="backButton" destination="Y2R-Jf-JF3" id="tDJ-LJ-gLb"/>
                         <outlet property="emailField" destination="flg-OM-MZY" id="Y5S-3V-35z"/>
                         <outlet property="passwordField" destination="ueh-OW-Cbb" id="EEh-rc-NTb"/>
@@ -214,6 +236,10 @@
             <point key="canvasLocation" x="2718.840579710145" y="95.758928571428569"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="AX1-vL-OYG"/>
+        <designable name="MFQ-q8-yG1"/>
+    </designables>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="labelColor">

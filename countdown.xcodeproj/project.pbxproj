@@ -11,6 +11,7 @@
 		8A16BEC225C5077E004C15D5 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A16BEC125C5077E004C15D5 /* logo.png */; };
 		8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */; };
 		8A4D3FC025C820530073FA1C /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
+		8A5068C525C83DCB00A68A13 /* calendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A5068C425C83DCB00A68A13 /* calendar.json */; };
 		8A5D6FB525C3FF3600301E56 /* EventActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */; };
 		8A880ED325A7428A00494BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
 		8A945C8025C696A50076F596 /* EventDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A945C7F25C696A50076F596 /* EventDetailCollectionViewCell.swift */; };
@@ -101,6 +102,7 @@
 		6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
 		8A16BEC125C5077E004C15D5 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataController.swift; sourceTree = "<group>"; };
+		8A5068C425C83DCB00A68A13 /* calendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = calendar.json; path = ../../../Desktop/calendar.json; sourceTree = "<group>"; };
 		8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionsViewController.swift; sourceTree = "<group>"; };
 		8A880ED225A7428A00494BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8A945C7F25C696A50076F596 /* EventDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */,
 				8A945C8925C6B8000076F596 /* splashScreen.png */,
 				8A16BEC125C5077E004C15D5 /* logo.png */,
+				8A5068C425C83DCB00A68A13 /* calendar.json */,
 				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295C825A73A5500EC33EB /* Assets.xcassets */,
 				8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */,
@@ -441,6 +444,7 @@
 				8A16BEC225C5077E004C15D5 /* logo.png in Resources */,
 				8A945C8A25C6B8000076F596 /* splashScreen.png in Resources */,
 				8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */,
+				8A5068C525C83DCB00A68A13 /* calendar.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -74,6 +74,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - ISEmojiView (0.2.6)
   - leveldb-library (1.22)
+  - lottie-ios (3.1.9)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - ISEmojiView
+  - lottie-ios
   - SideMenu
 
 SPEC REPOS:
@@ -106,6 +108,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - ISEmojiView
     - leveldb-library
+    - lottie-ios
     - nanopb
     - PromisesObjC
     - SideMenu
@@ -125,10 +128,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   ISEmojiView: f7cd94a6c93307f429ec5da001293d0b02247f03
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SideMenu: 87efd943737bb83aedf0358884d09fcf5576636d
 
-PODFILE CHECKSUM: c4ff6a13da04be29b692a46cb2ee673602ae9f45
+PODFILE CHECKSUM: b3fa5f763c8aeecd65f522dfe251c054f74b3a4b
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.0

@@ -8,15 +8,25 @@
 import Foundation
 import UIKit
 import Firebase
+import Lottie
 
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var backButton: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        animationView.contentMode = .scaleAspectFit
+        // 2. Set animation loop mode
+        animationView.loopMode = .loop
+        // 3. Adjust animation speed
+        animationView.animationSpeed = 0.5
+        // 4. Play animation
+        animationView.play()
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.back(sender:)))
         self.backButton.isUserInteractionEnabled = true
