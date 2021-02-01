@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import WidgetKit
 import Lottie
+import NVActivityIndicatorView
+
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
     
@@ -17,6 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var animationView: AnimationView!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     let firebaseDataController = FirebaseDataController()
     
@@ -27,7 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         if (Auth.auth().currentUser?.uid != nil){
             redirectToMain(false)
         }
-        
+
         animationView.contentMode = .scaleAspectFit
         // 2. Set animation loop mode
         animationView.loopMode = .loop
@@ -99,6 +102,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func login(_ sender: Any) {
+        activityIndicator.startAnimating()
         self.loginButton.isEnabled = false
         let email = emailField.text!
         let password = passwordField.text!
@@ -108,17 +112,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             if ((success) != nil){
                 print("The user has successfully signed in \(email)!")
                 
-                self!.emailField.text = ""
-                self!.passwordField.text = ""
-                
                 self!.firebaseDataController.fetchAllEvents(completion: { completion in
                     if (completion){
+                        self!.activityIndicator.stopAnimating()
                         self!.redirectToMain(true)
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                 })
                 
+                self!.emailField.text = ""
+                self!.passwordField.text = ""
+                
             }else{
+                self!.activityIndicator.stopAnimating()
                 print(error!.localizedDescription)
                 self!.popAlert("Login Error", error!.localizedDescription)
             }

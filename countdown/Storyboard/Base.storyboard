@@ -66,6 +66,22 @@
                                         <color key="textColor" systemColor="systemIndigoColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kx-Kc-d0r" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="157" y="101" width="100" height="88"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="88" id="KoD-F7-g5J"/>
+                                            <constraint firstAttribute="width" constant="100" id="XZe-JW-Dam"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -94,6 +110,7 @@
                         <viewLayoutGuide key="safeArea" id="1kf-T8-9IR"/>
                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="1kx-Kc-d0r" firstAttribute="centerY" secondItem="1kf-T8-9IR" secondAttribute="centerY" id="1x9-vk-H9x"/>
                             <constraint firstItem="1kf-T8-9IR" firstAttribute="trailing" secondItem="MFQ-q8-yG1" secondAttribute="trailing" constant="26" id="7F7-xD-4YL"/>
                             <constraint firstItem="MFQ-q8-yG1" firstAttribute="leading" secondItem="1kf-T8-9IR" secondAttribute="leading" constant="26" id="BUM-B7-Sme"/>
                             <constraint firstItem="RAH-DC-uKl" firstAttribute="bottom" secondItem="1kf-T8-9IR" secondAttribute="bottom" constant="34" id="E40-dE-z2z"/>
@@ -102,10 +119,12 @@
                             <constraint firstItem="RAH-DC-uKl" firstAttribute="top" secondItem="MFQ-q8-yG1" secondAttribute="bottom" constant="40" id="piy-jh-sry"/>
                             <constraint firstItem="MFQ-q8-yG1" firstAttribute="top" secondItem="1kf-T8-9IR" secondAttribute="top" constant="25" id="w4B-t5-70B"/>
                             <constraint firstItem="RAH-DC-uKl" firstAttribute="leading" secondItem="1kf-T8-9IR" secondAttribute="leading" id="w6z-zr-Xdw"/>
+                            <constraint firstItem="1kx-Kc-d0r" firstAttribute="centerX" secondItem="1kf-T8-9IR" secondAttribute="centerX" id="ylP-vO-rLP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ySa-4Q-56O"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="1kx-Kc-d0r" id="vyb-nz-2xs"/>
                         <outlet property="animationView" destination="MFQ-q8-yG1" id="hDf-Ns-mmg"/>
                         <outlet property="emailField" destination="Oyt-OT-ovz" id="htt-Vb-vrm"/>
                         <outlet property="loginButton" destination="jJC-9O-iQa" id="2N5-fb-eeZ"/>
@@ -189,6 +208,22 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axV-tM-0aF" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="157" y="101" width="100" height="88"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="k3B-1m-TwX"/>
+                                            <constraint firstAttribute="height" constant="88" id="ycG-E6-tjE"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -216,12 +251,14 @@
                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="WDd-tV-svH" firstAttribute="top" secondItem="dRc-Se-Ocy" secondAttribute="top" constant="264" id="1C7-WS-aRk"/>
+                            <constraint firstItem="axV-tM-0aF" firstAttribute="centerX" secondItem="dRc-Se-Ocy" secondAttribute="centerX" id="5pa-cO-tWl"/>
                             <constraint firstItem="WDd-tV-svH" firstAttribute="bottom" secondItem="dRc-Se-Ocy" secondAttribute="bottom" constant="34" id="MWu-FR-dtg"/>
                             <constraint firstItem="dRc-Se-Ocy" firstAttribute="trailing" secondItem="WDd-tV-svH" secondAttribute="trailing" id="Mwo-Gc-7xU"/>
                             <constraint firstItem="WDd-tV-svH" firstAttribute="leading" secondItem="dRc-Se-Ocy" secondAttribute="leading" id="Nvo-Sg-4ot"/>
                             <constraint firstItem="WDd-tV-svH" firstAttribute="top" secondItem="AX1-vL-OYG" secondAttribute="bottom" constant="40" id="U28-hp-xkb"/>
                             <constraint firstItem="AX1-vL-OYG" firstAttribute="leading" secondItem="dRc-Se-Ocy" secondAttribute="leading" constant="26" id="YIy-sE-tXN"/>
                             <constraint firstItem="AX1-vL-OYG" firstAttribute="top" secondItem="dRc-Se-Ocy" secondAttribute="top" constant="25" id="cLR-Tb-6HH"/>
+                            <constraint firstItem="axV-tM-0aF" firstAttribute="centerY" secondItem="dRc-Se-Ocy" secondAttribute="centerY" id="fPH-zE-aQA"/>
                             <constraint firstItem="dRc-Se-Ocy" firstAttribute="trailing" secondItem="AX1-vL-OYG" secondAttribute="trailing" constant="26" id="muu-HA-mlp"/>
                         </constraints>
                     </view>

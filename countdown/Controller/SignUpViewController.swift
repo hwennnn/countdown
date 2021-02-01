@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Firebase
 import Lottie
+import NVActivityIndicatorView
 
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
     
@@ -17,6 +18,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var backButton: UIImageView!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +117,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     }
     
     @IBAction func signUp(_ sender: Any) {
+        self.activityIndicator.startAnimating()
         self.signUpButton.isEnabled = false
         let email = emailField.text!
         let password = passwordField.text!
@@ -125,16 +128,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         if (!isValidEmail){
             popAlert("Invalid email", "Please enter a valid email!")
             self.signUpButton.isEnabled = true
+            self.activityIndicator.stopAnimating()
             return
         }
         
         if (!isValidPassword){
             popAlert("Invalid password", "Please enter a password consisting of 8-17 characters with at least 1 alphabet and 1 number")
             self.signUpButton.isEnabled = true
+            self.activityIndicator.stopAnimating()
             return
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+            self.activityIndicator.stopAnimating()
             if ((error) != nil){
                 self.popAlert("Signup Error", error!.localizedDescription)
             }else{

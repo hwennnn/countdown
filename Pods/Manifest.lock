@@ -80,6 +80,9 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (1.2.10)
   - SideMenu (5.0.1)
 
@@ -90,6 +93,7 @@ DEPENDENCIES:
   - Firebase/Database
   - ISEmojiView
   - lottie-ios
+  - NVActivityIndicatorView
   - SideMenu
 
 SPEC REPOS:
@@ -110,6 +114,7 @@ SPEC REPOS:
     - leveldb-library
     - lottie-ios
     - nanopb
+    - NVActivityIndicatorView
     - PromisesObjC
     - SideMenu
 
@@ -130,9 +135,10 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SideMenu: 87efd943737bb83aedf0358884d09fcf5576636d
 
-PODFILE CHECKSUM: b3fa5f763c8aeecd65f522dfe251c054f74b3a4b
+PODFILE CHECKSUM: bcb9fd7d15c4c0b887f63c5f73bbd958dfa9ae44
 
 COCOAPODS: 1.10.0

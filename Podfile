@@ -18,5 +18,6 @@ target 'countdown' do
   pod 'Firebase/Database'
   pod 'ISEmojiView'
   pod 'lottie-ios'
+  pod 'NVActivityIndicatorView'
 
 end
