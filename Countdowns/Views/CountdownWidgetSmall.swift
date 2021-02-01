@@ -39,11 +39,13 @@ struct CountdownWidgetSmall: View {
                     Text(decode((event.emoji))!).foregroundColor(.white)
                     Text(event.name).foregroundColor(.white).font(.subheadline).lineLimit(2)
                 }
-                HStack(alignment: .lastTextBaseline){
+                
+                HStack{
                     VStack{
                         Text(String(days)).font(.title).foregroundColor(.white)
-                        Text(utils.getCountDownDesc(combined)).foregroundColor(.white)
-                    }.padding(.trailing,10)
+                        Text(utils.getCountDownDesc(combined)).foregroundColor(.white).padding(.leading)
+                    }
+                    Spacer()
                 }
                 
                 Text(utils.convertDateToString(date: combined)).foregroundColor(.white)
