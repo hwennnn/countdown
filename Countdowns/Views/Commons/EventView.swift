@@ -12,7 +12,7 @@ struct EventView: View {
     
     let entry:EventEntry
     let selected:Int
-    let utils:Utils = Utils()
+    let utils:Utility = Utility()
     
     var body: some View {
         let combined = utils.combineDateAndTime(entry.event[selected].date, entry.event[selected].time, entry.event[selected].includedTime)

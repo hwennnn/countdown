@@ -23,7 +23,7 @@ func fetchEvent(entry:EventEntry) -> Event {
 
 struct CountdownWidgetSmall: View {
     let entry:EventEntry
-    let utils:Utils = Utils()
+    let utils:Utility = Utility()
    
     var body: some View {
         let combined = utils.combineDateAndTime(entry.event[0].date, entry.event[0].time, entry.event[0].includedTime)
