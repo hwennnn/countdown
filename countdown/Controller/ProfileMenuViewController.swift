@@ -20,6 +20,10 @@ class ProfileMenuViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if (appDelegate.currentUser != nil){
             self.userID.text = appDelegate.currentUser!.email
         }
@@ -27,9 +31,6 @@ class ProfileMenuViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        if (appDelegate.currentUser != nil){
-            self.userID.text = appDelegate.currentUser!.email
-        }
     }
     
     @IBAction func logout(_ sender: Any) {

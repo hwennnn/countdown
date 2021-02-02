@@ -130,16 +130,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         let isValidPassword = validatePassword(password)
         
         if (!isValidEmail){
+            self.activityIndicator.stopAnimating()
             popAlert("Invalid email", "Please enter a valid email!")
             self.signUpButton.isEnabled = true
-            self.activityIndicator.stopAnimating()
             return
         }
         
         if (!isValidPassword){
+            self.activityIndicator.stopAnimating()
             popAlert("Invalid password", "Please enter a password consisting of 8-17 characters with at least 1 alphabet and 1 number")
             self.signUpButton.isEnabled = true
-            self.activityIndicator.stopAnimating()
             return
         }
         

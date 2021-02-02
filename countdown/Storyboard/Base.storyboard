@@ -263,6 +263,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="axV-tM-0aF" id="0Tm-uM-bpw"/>
                         <outlet property="animationView" destination="AX1-vL-OYG" id="XHc-bT-ANi"/>
                         <outlet property="backButton" destination="Y2R-Jf-JF3" id="tDJ-LJ-gLb"/>
                         <outlet property="emailField" destination="flg-OM-MZY" id="Y5S-3V-35z"/>
