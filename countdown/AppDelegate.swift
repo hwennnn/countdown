@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // configure the firebase
         FirebaseApp.configure()
         
         // to make sure the firebase authentication will be reset when the app is newly installed (auth is stored in keychain)
@@ -37,10 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // load boarding screen here
         }
         
+        // request noficaition authorization
         requestAuthorization()
         
         currentUser = Auth.auth().currentUser
-
+        
+        // firebase user listener to update the current user
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             print("The auth state has changed! \(user?.uid ?? "NULL")")
             self.currentUser = user
