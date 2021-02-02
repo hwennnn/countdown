@@ -41,7 +41,7 @@ class EventController: UIViewController{
         }
     }
     
-    // This will update the existing event based on its identifier.
+    // This will update the existing event in the core data based on its identifier.
     func updateEvent(_ event:Event){
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext

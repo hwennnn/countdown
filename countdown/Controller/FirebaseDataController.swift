@@ -11,11 +11,13 @@ import UIKit
 
 class FirebaseDataController: UIViewController{
     
+    // Initialisation of controllers
     var ref: DatabaseReference! = Database.database().reference()
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
     let notificationManger = LocalNotificationManager()
     
+    // This will create a new event entry in firebase
     func insertEvent(_ event:Event){
         let uid = appDelegate.currentUser?.uid
         let newEvent = ["name": event.name, "emoji": event.emoji, "includedTime": event.includedTime, "date": currentTimeInMiliseconds(event.date), "time": currentTimeInMiliseconds(event.time), "created_at": currentTimeInMiliseconds(event.created_at), "reminders": event.reminders, "colour": event.colour, "progress": event.progress as Float] as [String : Any]
@@ -23,11 +25,13 @@ class FirebaseDataController: UIViewController{
         self.ref.child("events").child(uid!).child(event.id).setValue(newEvent)
     }
     
+    // This will delete the event from the firebase using its identifier.
     func deleteEvent(_ event:Event){
         let uid = appDelegate.currentUser?.uid
         self.ref.child("events").child(uid!).child(event.id).removeValue()
     }
     
+    // This will update the existing event in the firebase based on its identifier.
     func updateEvent(_ event:Event){
         let uid = appDelegate.currentUser?.uid
         let updatedEvent = ["name": event.name, "emoji": event.emoji, "includedTime": event.includedTime, "date": currentTimeInMiliseconds(event.date), "time": currentTimeInMiliseconds(event.time), "created_at": currentTimeInMiliseconds(event.created_at), "reminders": event.reminders, "colour": event.colour, "progress": event.progress as Float] as [String : Any]
@@ -35,6 +39,7 @@ class FirebaseDataController: UIViewController{
         self.ref.child("events").child(uid!).child(event.id).updateChildValues(updatedEvent)
     }
     
+    // THis will fetch all events from firebase when there is a new login. This function will insert the fetched event to coredata. There is a completion handler which will do a callback to the main application to load the main page after every event is inserted to the core data.
     func fetchAllEvents(completion: @escaping (_ success: Bool) -> Void){
         let uid = Auth.auth().currentUser?.uid
         ref.child("events").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -71,11 +76,13 @@ class FirebaseDataController: UIViewController{
           }
     }
     
+    // This functions will return the miliseconds from data.
     func currentTimeInMiliseconds(_ date:Date) -> Int {
         let since1970 = date.timeIntervalSince1970
         return Int(since1970 * 1000)
     }
     
+    // This function will return the data from miliseconds.
     func dateFromMilliseconds(_ ms:Int ) -> Date {
         return Date(timeIntervalSince1970: TimeInterval(ms/1000))
     }
