@@ -1,4 +1,4 @@
-# <img src="countdown/logo_clear.png" alt="Logo" width="40" height="40"> Countdown 
+# Countdown <img src="countdown/logo_clear.png" alt="Logo" width="40" height="40">
 <br />
 <p align="center">
     <img src="countdown/logo_clear.png" alt="Logo" width="80" height="80">
