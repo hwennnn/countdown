@@ -11,20 +11,24 @@ import WidgetKit
 
 class EventDetailsViewController:UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
+    // Initialisation of objects and array
     var detailsList:[(String, Int)] = []
     var event:Event?
     var timer:Timer?
     
+    // Initialisation of controllers
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
     let utils = Utility()
     
+    // Initialisation of storyboard objects
     @IBOutlet weak var iconField: UILabel!
     @IBOutlet weak var titleField: UILabel!
     @IBOutlet weak var dateField: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // Initialise when the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,31 +79,37 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         super.viewDidAppear(true)
     }
     
+    // Invalidate the timer when the view disappeared.
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         timer?.invalidate()
     }
     
+    // Invalidate the timer when received memory warning
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         timer?.invalidate()
     }
     
+    // Invalidate the timer when the application goes to background
     @objc func didEnterBackground() {
         print("didEnterBackground")
         timer?.invalidate()
    }
     
+    // Re-initialsie the timer again when the application once becomes active
     @objc func didBecomeActive() {
         print("didBecomeActive")
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateDetails), userInfo: nil, repeats: true)
     }
     
+    // Timer function to be called every second to show the current countdown
     @objc func updateDetails(){
         self.detailsList = generateRemaining()
         self.collectionView.reloadData()
     }
     
+    // Gesture recognizer which enablse swipe left to go back main page
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -108,6 +118,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         return self.detailsList.count
     }
     
+    // Initialisation of collection view cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventDetail", for: indexPath) as! EventDetailCollectionViewCell
         let detail = self.detailsList[indexPath.row]
@@ -117,6 +128,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         return cell
     }
     
+    // Generate the collection view cell data by returning the countdown for each label.
     func generateRemaining() -> [(String, Int)] {
         var res:[(String, Int)] = []
         
@@ -137,23 +149,15 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
             res.append((s, d))
         }
         
-//        for (i, (suffix, d)) in (zip(desc, dates)).enumerated(){
-//            if (d == 0 && (i == 0 || i == 1 || i == 2)){
-//                continue
-//            }else{
-//                let s = (d == 0 || d == 1) ? suffix : "\(suffix)s"
-//                res.append((s, d))
-//            }
-//        }
-        
         return res
     }
     
+    // Pop the view controller to go back main page when the "back" button is clicked.
     @IBAction func back(){
-        // TODO: add animation here (from right to left)
         self.navigationController?.popViewController(animated: true)
     }
     
+    // Delete action to alert user if they really want to delete that event.
     @IBAction func deleteAction(){
         let alertView = UIAlertController(title: "Delete Countdown", message: "Are you sure you want to delete \(event!.name)?", preferredStyle: UIAlertController.Style.alert)
                 
@@ -164,6 +168,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         self.present(alertView, animated: true, completion: nil)
     }
     
+    // This function will call all the controllers to reflect on the event is deleted
     func deleteEvent(){
         eventController.deleteEvent(event!)
         firebaseDataController.deleteEvent(event!)
@@ -172,6 +177,7 @@ class EventDetailsViewController:UIViewController, UICollectionViewDataSource, U
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    // Parse in the event to the destination eventController when performing segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editEvent", let destination = segue.destination.children[0] as? EventActionsViewController {
             if (event != nil){
