@@ -95,5 +95,12 @@
         return stringArray.map{Bool($0)!}
     }
     
+    // This function will convert array to string using joining string function.
+    func arrayToString(_ array:[Bool]) -> String {
+        let stringArray = array.map{String($0)}
+        return stringArray.joined(separator: ",")
+    }
+    
+    
 }
                 

@@ -12,6 +12,7 @@ import WidgetKit
 
 class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiViewDelegate{
     
+    // Initialisation of storyboard objects
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var eventTitle: UITextField!
@@ -32,11 +33,13 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
     @IBOutlet weak var colour5: UIButton!
     @IBOutlet weak var colour6: UIButton!
     
+    // Initialisation of objects and array
     var currentEvent:Event?
     var colourList:[UIButton] = []
     var selectedColour:Int = 0
     var reminderSwitches:[UISwitch] = []
     
+    // Initialisation of controllers
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
     let notificationManager = LocalNotificationManager()
@@ -68,13 +71,14 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         datePicker.datePickerMode = UIDatePicker.Mode.date
         timePicker.datePickerMode = UIDatePicker.Mode.time
         
+        // If the current event is NULL, meaning there is no event parsed in when performing the segue (which means this is a "create event" action. Then, this will initialise the view based on that settings and vice versa.
         if (currentEvent != nil){
             eventTitle.text = currentEvent!.name
             emojiField.text = currentEvent!.emoji.decodeEmoji
             isIncludeTime.isOn = !currentEvent!.includedTime
             datePicker.date = currentEvent!.date
             timePicker.date = currentEvent!.time
-            let reminders = stringToArray(currentEvent!.reminders)
+            let reminders = utils.stringToArray(currentEvent!.reminders)
             for (index, isSet) in reminders.enumerated(){
                 if (isSet){
                     reminderSwitches[index].isOn = true
@@ -97,11 +101,15 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         initColourButtons(colourList)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+    }
+    
+    // close the keyboard when return button in the textField is clicked
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -125,6 +133,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         emojiField.resignFirstResponder()
     }
     
+    // initialise the buttons with colour, radius and border
     func initColourButtons(_ buttons:[UIButton]){
         for (button, colourHex) in zip(buttons, utils.colourSchemeList){
             button.backgroundColor = colourHex.colorWithHexString()
@@ -138,6 +147,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         buttons[selectedColour].layer.borderColor = UIColor.black.cgColor
     }
     
+    // show/hide when the includeTime switch is clicked.
     @IBAction func updateIncludeTime(_ sender: Any) {
         if (isIncludeTime.isOn){
             self.timePicker.isHidden = true
@@ -146,6 +156,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         }
     }
     
+    // Border the button when clicked
     @IBAction func colourClicked(sender: UIButton){
         for (index,button) in colourList.enumerated(){
             if (button.tag == sender.tag){
@@ -159,10 +170,12 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         }
     }
     
+    // dismiss current present when "back" button is clicked.
     @IBAction func backToHome(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // call create/update action based on the event(null state will indicate the releveant action)
     @IBAction func actionEvent(_ sender: Any){
         if (currentEvent != nil){
             updateEvent()
@@ -171,15 +184,18 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         }
     }
     
+    // Create event Action
     func createEvent(){
         let id = UUID().uuidString
         let title = eventTitle.text!
         
+        // Empty field validation
         if (title.isEmpty){
             popAlert("Blank field", "Please enter a title for the countdown!")
             return
         }
         
+        // Title Length validation
         if (title.count > 30){
             popAlert("Invalid name", "Please enter a shorter name for the countdown!")
             return
@@ -193,13 +209,14 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         let created_at = Date()
         
         let reminders = [reminder1.isOn, reminder2.isOn, reminder3.isOn]
-        let remindersAsString = arrayToString(reminders)
+        let remindersAsString = utils.arrayToString(reminders)
 
         let colour = selectedColour
         let progress:Float = 0
         
         let newEvent = Event(id, title, emoji, includedTime, date, time, created_at, remindersAsString, colour, progress)
         
+        // call the controllers to reflect on when the event is added
         eventController.addEvent(newEvent)
         firebaseDataController.insertEvent(newEvent)
         
@@ -209,14 +226,17 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         self.dismiss(animated: true, completion: nil)
     }
     
+    // Update event action
     func updateEvent(){
         let title = eventTitle.text!
         
+        // Empty field validation
         if (title.isEmpty){
             popAlert("Blank field", "Please enter a title for the countdown!")
             return
         }
         
+        // Title Length validation
         if (title.count > 30){
             popAlert("Invalid name", "Please enter a shorter name for the countdown!")
             return
@@ -229,7 +249,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         let time = timePicker.date
         
         let reminders = [reminder1.isOn, reminder2.isOn, reminder3.isOn]
-        let remindersAsString = arrayToString(reminders)
+        let remindersAsString = utils.arrayToString(reminders)
 
         let colour = selectedColour
         
@@ -241,6 +261,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         currentEvent!.reminders = remindersAsString
         currentEvent!.colour = colour
         
+        // call the controllers to reflect on when the event is updated
         eventController.updateEvent(currentEvent!)
         firebaseDataController.updateEvent(currentEvent!)
         
@@ -252,16 +273,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         self.dismiss(animated: true, completion: nil)
     }
     
-    func arrayToString(_ array:[Bool]) -> String {
-        let stringArray = array.map{String($0)}
-        return stringArray.joined(separator: ",")
-    }
-    
-    func stringToArray(_ s:String) -> [Bool] {
-        let stringArray:[String] = s.components(separatedBy: ",")
-        return stringArray.map{Bool($0)!}
-    }
-    
+    // customisable pop alert function
     func popAlert(_ alertTitle:String, _ alertMessage:String){
         let alertView = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
                 
