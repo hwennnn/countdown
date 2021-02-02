@@ -1,23 +1,28 @@
-# Countdown
-<br />
+# <img src="countdown/logo_clear.png" alt="Logo" width="25" height="25"> Countdown 
 <p align="center">
-    <img src="countdown/logo_clear.png" alt="Logo" width="80" height="80">
-  <p align="center">
-      NPQuickBite is an education mobile app for the experiential-based learning. All the courses are "bite-sized". The courses are categorised by Security, Financial, Programming and Miscellaneous.
-
-  All content is created by Ngee Ann Polytechnic lecturers with years of the relevant experience. Contents are customised text, images and videos.
-
-  The app is targeted at knowledge workers and general public.
-
-  #1. The Security section is to help the general public to be aware of the danger in phishing and fraudulent. The advanced topic will discussed on malware and latest issues in security.
-
-  #2. The Financial section is to help the knowledge worker in the area of banking and finance to understand the latest fintech initiatives around the world. The advanced topic will include crypto-currency and Open Banking API.
-
-  #3. The Programming section is to help user to quickly understand the concepts of problem solving using tools such as Python. The advanced topic will include Object-Oriented concepts to solve real world problem with technology.
-
-  #4. The Miscellaneous section is to provide basic topics such as the use of IT tools in daily life.
-
-  All courses will incorporate a simple quiz unit to access the understanding of the topic. As the spirit of learning, multiple attempts are encouraged. The quiz results will be shown in subsequent unit.
+  <p>
+      Countdown is a productivity mobile app for keeping track of events in daily life. The app aims to help the users to be more productive by encouraging good         habits of time management.
+      The app is targeted to everyone.
+      <p>
+      Features:
+      <br>
+        <b>#1.</b> Create, edit and delete events and view them from a calendar or widgets.
+      <br>
+      <b>#2.</b> Pick any icon you'd like to represent the mood of the countdown.
+      <br>
+      <b>#3.</b> In addition, to receive notifications about upcoming events, users can customise reminders 1 hour or 1 day before the event.
+      <br>
+      <b>#4.</b> View all of the events through a calendar, informing them about how many events they have in a month.
+      <br>
+      <b>#5.</b> Interact with customisable widgets to view the different events from a single view of one event of their choice to a list of 7 events at a glance.
+      <br>
+      <b>#6.</b> Count up from past events (available on each countdown page).
+      <br>
+      <b>#7.</b> View the events' countdown in real time
+      <br>
+      <b>#8.</b> Use the app on different devices as events are synced through the cloud.  
+      <br>
+      </p>
   </p>
 </p>
 
@@ -25,14 +30,6 @@
 <img src= "https://media.giphy.com/media/HYOlBKJBqgAfe/giphy.gif" width="400" >
 <img src= "https://media.giphy.com/media/HYOlBKJBqgAfe/giphy.gif" width="400" >
 </p>
-
-## Features
-
-- [x] Feature 1
-- [x] Feature 2
-- [x] Feature 3
-- [x] Feature 4
-- [x] Feature 5
 
 ## Requirements
 
