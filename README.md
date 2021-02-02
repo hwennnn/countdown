@@ -31,12 +31,29 @@
 <img src= "https://media.giphy.com/media/HYOlBKJBqgAfe/giphy.gif" width="400" >
 </p>
 
+## Built With
+
+- [Firebase Realtime database](https://firebase.google.com/docs/database) - Used for cloud database
+- [Firebase Auth](https://firebase.google.com/docs/auth) - Used for user authentication
+- [CVCalendar](https://github.com/CVCalendar/CVCalendar) - Used to display events on calendar
+- [SideMenu](https://github.com/jonkykong/SideMenu) - Used for side menu profile
+- [lottie-ios](https://github.com/airbnb/lottie-ios) - Used for display animation banner
+- [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView) - Used for indicate progress on actions
+- [ISEmojiView](https://github.com/isaced/ISEmojiView) - Used for emoji keyboard
+
 ## Requirements
 
 - iOS 9.0+
 - Xcode 14
 
 ## Installation
+
+#### Git clone
+
+```bash
+git clone https://github.com/hwennnn/countdown.git
+cd countdown
+```
 
 #### CocoaPods
 Install the pod libraries using [CocoaPods](http://cocoapods.org/):
@@ -45,10 +62,9 @@ Install the pod libraries using [CocoaPods](http://cocoapods.org/):
 pod install
 ```
 
-## Usage
+#### Usage
 
-```swift
-cd directory
+```bash
 open .countdown.xcworkspace
 ```
 
