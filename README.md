@@ -2,12 +2,20 @@
 <br />
 <p align="center">
     <img src="countdown/logo_clear.png" alt="Logo" width="80" height="80">
-  <p align="center">
-      Countdown is a productivity mobile app for keeping track of events in daily life. The app aims to help the users to be more productive by encouraging good  habits of time management.
-      The app is targeted at knowledge workers and general public.
-
-      
-      
+  <p>
+      Countdown is a productivity mobile app for keeping track of events in daily life. The app aims to help the users to be more productive by encouraging good         habits of time management.
+      The app is targeted to everyone.
+      <p>
+      Features:
+      #1. Create, edit and delete events and view them from a calendar or widgets.
+      #2. Pick any icon you'd like to represent the mood of the countdown.
+      #3. In addition, to receive notifications about upcoming events, users can customise reminders 1 hour or 1 day before the event.
+      #4. View all of the events through a calendar, informing them about how many events they have in a month.
+      #5. Interact with customisable widgets to view the different events from a single view of one event of their choice to a list of 7 events at a glance.
+      #6. Count up from past events (available on each countdown page)
+      #7. View the events' countdown in real time
+      #8. Use the app on different devices as events are synced through the cloud.  
+      </p>
   </p>
 </p>
 
