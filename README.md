@@ -1,7 +1,7 @@
 # Countdown
 <br />
 <p align="center">
-    <img src="countdown/logo_clean.png" alt="Logo" width="80" height="80">
+    <img src="countdown/logo_clear.png" alt="Logo" width="80" height="80">
   <p align="center">
       NPQuickBite is an education mobile app for the experiential-based learning. All the courses are "bite-sized". The courses are categorised by Security, Financial, Programming and Miscellaneous.
 
