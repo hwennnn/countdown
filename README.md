@@ -48,26 +48,14 @@ Install the pod libraries using [CocoaPods](http://cocoapods.org/):
 pod install
 ```
 
-#### Carthage
-Create a `Cartfile` that lists the framework and run `carthage update`. Follow the [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios) to add `$(SRCROOT)/Carthage/Build/iOS/YourLibrary.framework` to an iOS project.
-
-```
-github "yourUsername/yourlibrary"
-```
-#### Manually
-1. Download and drop ```YourLibrary.swift``` in your project.  
-2. Congratulations!  
-
-## Usage example
+## Usage
 
 ```swift
-import EZSwiftExtensions
-ez.detectScreenShot { () -> () in
-    print("User took a screen shot")
-}
+cd directory
+open .countdown.xcworkspace
 ```
 
 ## Contribute
 
-We would love you for the contribution to **YourLibraryName**, check the ``LICENSE`` file for more info.
+We would love you for the contribution to **Countdown**, any issue or pull requrest is welcomed.
 
