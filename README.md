@@ -48,6 +48,13 @@
 
 ## Installation
 
+#### Git clone
+
+```bash
+git clone https://github.com/hwennnn/countdown.git
+cd countdown
+```
+
 #### CocoaPods
 Install the pod libraries using [CocoaPods](http://cocoapods.org/):
 
