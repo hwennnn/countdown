@@ -63,10 +63,11 @@ extension EventEntry{
     static var stub: EventEntry{
         EventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)],configuration: SelectEventIntent())
     }
-
+    
+    // placeholder for preview of the widgets
     static var placeholder: EventEntry{
         EventEntry(date: Date(), event: [.init("", "Doctor appointment", "🏥".encodeEmoji
-                                               , false, Date(), Date(), Date(), "", 4, 0.0) ,.init("", "Homework", "📚".encodeEmoji, false, Date(), Date(), Date(), "", 1, 0.0),.init("", "Ballet Reciet", "🩰".encodeEmoji, false, Date(), Date(), Date(), "", 2, 0.0) ], isPlaceholder: true ,configuration: SelectEventIntent())
+                                               , false, Date().addingTimeInterval(86400*2), Date().addingTimeInterval(86400*2), Date().addingTimeInterval(86400*2), "", 4, 0.0) ,.init("", "Homework", "📚".encodeEmoji, false, Date().addingTimeInterval(86400*5), Date().addingTimeInterval(86400*5), Date().addingTimeInterval(86400*5), "", 1, 0.0),.init("", "Ballet Reciet", "🩰".encodeEmoji, false, Date().addingTimeInterval(86400*10), Date().addingTimeInterval(86400*10), Date().addingTimeInterval(86400*10), "", 2, 0.0) ], isPlaceholder: true ,configuration: SelectEventIntent())
     }
     
     // default view when there are no events in the list
