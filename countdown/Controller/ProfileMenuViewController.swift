@@ -13,7 +13,9 @@ import WidgetKit
 
 class ProfileMenuViewController: UIViewController{
     
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userID: UILabel!
+    
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
     let notificationManager = LocalNotificationManager()
@@ -24,6 +26,7 @@ class ProfileMenuViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        emailLabel.underline()
         if (appDelegate.currentUser != nil){
             self.userID.text = appDelegate.currentUser!.email
         }
@@ -53,4 +56,16 @@ class ProfileMenuViewController: UIViewController{
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension UILabel {
+    func underline() {
+        if let textString = self.text {
+            let attributedString = NSMutableAttributedString(string: textString)
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
+                  value: NSUnderlineStyle.single.rawValue,
+              range: NSRange(location: 0, length: attributedString.length))
+            attributedText = attributedString
+        }
+    }
 }

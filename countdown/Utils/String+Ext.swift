@@ -48,5 +48,9 @@ extension String {
         }
         return self
     }
+    
+    var underLined: NSAttributedString {
+        NSMutableAttributedString(string: self, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+    }
 }
 
