@@ -1,11 +1,11 @@
-# Countdown <img src="countdown/logo_clear.png" alt="Logo" width="40" height="40">
-<br />
+# <img src="countdown/logo_clear.png" alt="Logo" width="25" height="25"> Countdown 
 <p align="center">
   <p>
       Countdown is a productivity mobile app for keeping track of events in daily life. The app aims to help the users to be more productive by encouraging good         habits of time management.
       The app is targeted to everyone.
       <p>
       Features:
+      <br>
       #1. Create, edit and delete events and view them from a calendar or widgets.
       <br>
       #2. Pick any icon you'd like to represent the mood of the countdown.
