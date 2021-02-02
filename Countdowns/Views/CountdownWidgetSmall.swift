@@ -49,7 +49,7 @@ struct CountdownWidgetSmall: View {
                     Text(event.name).bold().foregroundColor(.black).font(.subheadline).lineLimit(2)
                 }.lineSpacing(1)
                 
-                if shouldDisplayView(entry: entry){
+                if !shouldDisplayView(entry: entry){
                     
                     Spacer()
                     
@@ -67,9 +67,7 @@ struct CountdownWidgetSmall: View {
                 }
                 else{
                     Spacer()
-                    Text("➕").foregroundColor(.black)
                     Text("Click here").foregroundColor(.black).font(.subheadline)
-
                 }
             
             }.padding(15)

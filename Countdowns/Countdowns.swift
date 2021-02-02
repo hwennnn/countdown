@@ -68,7 +68,7 @@ extension EventEntry{
     
     static var defaultview: EventEntry{
         
-        EventEntry(date: Date(), event: [.init("", "Create first countdown!", "📅".encodeEmoji, false, Date() , Date(), Date(), "", 4, 0.0)],isPlaceholder: true , configuration: SelectEventIntent())
+        EventEntry(date: Date(), event: [.init("", "Create first countdown!", "📅".encodeEmoji, false, Date() , Date(), Date(), "", 4, 0.0)],isPlaceholder: false , configuration: SelectEventIntent())
     }
 }
 
