@@ -90,5 +90,10 @@
         return calendar.date(from: components)!
     }
     
+    func stringToArray(_ s:String) -> [Bool] {
+        let stringArray:[String] = s.components(separatedBy: ",")
+        return stringArray.map{Bool($0)!}
+    }
+    
 }
                 
