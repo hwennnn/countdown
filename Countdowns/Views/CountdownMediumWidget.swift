@@ -13,6 +13,10 @@ func shouldShowViewMedium(c:Int) -> Bool {
     return c < 3
 }
 
+func shouldPlaceSpacerMedium(entry:EventEntry) -> Bool {
+    return entry.event.count < 3
+}
+
 struct CountdownMediumWidget: View {
     let entry:EventEntry
 
@@ -26,10 +30,12 @@ struct CountdownMediumWidget: View {
                         }
                     }
                 }.padding(10)
-                Spacer()
+                if shouldPlaceSpacerMedium(entry: entry){
+                    Spacer()
+            
+                }
             }
         )
-        
     }
 }
 

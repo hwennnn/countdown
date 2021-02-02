@@ -22,8 +22,12 @@ func fetchEvent(entry:EventEntry) -> Event {
     if entry.event.count > 0 {
         return entry.event[0]
     }
-    return EventEntry.placeholder.event[0]
+    return EventEntry.defaultview.event[0]
     
+}
+
+func shouldDisplayView(entry:EventEntry) -> Bool{
+    return !entry.isPlaceholder
 }
 
 struct CountdownWidgetSmall: View {
@@ -35,38 +39,48 @@ struct CountdownWidgetSmall: View {
         let combined = utils.combineDateAndTime(event.date, event.time, event.includedTime)
         let days = utils.calculateCountDown(combined)
         
+        
         ZStack(alignment: .topLeading){
             Color(utils.colourSchemeList[event.colour].colorWithHexString()).edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading){
-                
+                    
                 HStack(){
                     Text(event.emoji.decodeEmoji).foregroundColor(.black)
                     Text(event.name).bold().foregroundColor(.black).font(.subheadline).lineLimit(2)
                 }.lineSpacing(1)
                 
-                Spacer()
-                
-                VStack(alignment: .leading)
-                {
-                    Text(String(days)).font(.title).foregroundColor(.black)
-                    Text(utils.getCountDownDesc(combined)).foregroundColor(.black).font(.system(size: 12))
-                }
-                
-                Spacer()
+                if shouldDisplayView(entry: entry){
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading)
+                    {
+                        Text(String(days)).font(.title).foregroundColor(.black)
+                        Text(utils.getCountDownDesc(combined)).foregroundColor(.black).font(.system(size: 12))
+                    }
+                    
+                    Spacer()
 
-                HStack{
-                    Text(utils.convertDateToString(event)).foregroundColor(.black).font(.system(size: 13)).lineLimit(2)
+                    HStack{
+                        Text(utils.convertDateToString(event)).foregroundColor(.black).font(.system(size: 13)).lineLimit(2)
+                    }
                 }
-                
-            }.padding(15)
+                else{
+                    Spacer()
+                    Text("Click here").foregroundColor(.black).font(.subheadline)
+                }
             
+            }.padding(15)
+                
         }
+        
+        
     }
 }
 
 struct CountdownWidgetSmall_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownWidgetSmall(entry:EventEntry.placeholder).previewContext(WidgetPreviewContext(family: .systemSmall))
+        CountdownWidgetSmall(entry:EventEntry.defaultview).previewContext(WidgetPreviewContext(family: .systemSmall))
     }
     
 }

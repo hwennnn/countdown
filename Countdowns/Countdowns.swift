@@ -65,6 +65,10 @@ extension EventEntry{
         EventEntry(date: Date(), event: [.init("", "Doctor appointment", "🏥".encodeEmoji
                                                , false, Date(), Date(), Date(), "", 4, 0.0) ,.init("", "Homework", "📚".encodeEmoji, false, Date(), Date(), Date(), "", 1, 0.0),.init("", "Ballet Reciet", "🩰".encodeEmoji, false, Date(), Date(), Date(), "", 2, 0.0) ], isPlaceholder: true ,configuration: SelectEventIntent())
     }
+    
+    static var defaultview: EventEntry{
+        EventEntry(date: Date(), event: [.init("", "Create first countdown!", "📅".encodeEmoji, false, Date() , Date(), Date(), "", 4, 0.0)],isPlaceholder: true , configuration: SelectEventIntent())
+    }
 }
 
 struct CountdownsEntryView : View {
@@ -108,7 +112,7 @@ struct Countdowns: Widget {
 
 struct Countdowns_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownsEntryView(entry: EventEntry.stub )
+        CountdownsEntryView(entry: EventEntry.defaultview )
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

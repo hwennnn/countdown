@@ -22,7 +22,7 @@ struct EventView: View {
             VStack(alignment: .leading){
                 HStack{
                     Text(decode((entry.event[selected].emoji))!)
-                    Text(entry.event[selected].name).bold().foregroundColor(.black)
+                    Text(entry.event[selected].name).font(.subheadline).bold().foregroundColor(.black)
                 }.lineLimit(1)
                 Text(utils.convertDateToString(entry.event[selected])).font(.system(size: 13)).foregroundColor(.black)
             }
