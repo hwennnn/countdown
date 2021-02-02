@@ -62,10 +62,9 @@ Install the pod libraries using [CocoaPods](http://cocoapods.org/):
 pod install
 ```
 
-## Usage
+#### Usage
 
-```swift
-cd directory
+```bash
 open .countdown.xcworkspace
 ```
 
