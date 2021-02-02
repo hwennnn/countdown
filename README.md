@@ -3,8 +3,7 @@
 <p align="center">
     <img src="countdown/logo_clear.png" alt="Logo" width="80" height="80">
   <p align="center">
-      Countdown is a productivity mobile app for keeping track of events in daily life. The app aims to help the users to be more productive by encouraging good   
-      habits of time management.
+      Countdown is a productivity mobile app for keeping track of events in daily life. The app aims to help the users to be more productive by encouraging good  habits of time management.
       
       
   </p>
