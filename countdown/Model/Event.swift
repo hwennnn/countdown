@@ -9,43 +9,27 @@ import Foundation
 import CoreData
 
 class Event{
-    var id: String?
+    var id: String
     var name: String
-    var date: Date
-    var created_at: Date
-    var group: Group?
-    var progress: Float
+    var emoji: String
     var includedTime: Bool
-    var reminderPicked: Int
+    var date: Date
+    var time: Date
+    var created_at: Date
+    var reminders: String
+    var colour: Int
+    var progress: Float
     
-    init(_ name:String,_ date:Date,_ created_at:Date,_ group:Group, progress:Float,  _ includedTime:Bool, _ reminderPicked:Int) {
-        self.name = name
-        self.date = date
-        self.created_at = created_at
-        self.group = group
-        self.progress = progress
-        self.includedTime = includedTime
-        self.reminderPicked = reminderPicked
-    }
-    
-    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ progress:Float,  _ includedTime:Bool, _ reminderPicked:Int) {
+    init(_ id: String, _ name:String, _ emoji:String, _ includedTime:Bool, _ date:Date, _ time:Date, _ created_at:Date, _ reminders:String, _ colour:Int, _ progress:Float) {
         self.id = id
         self.name = name
-        self.date = date
-        self.created_at = created_at
-        self.progress = progress
+        self.emoji = emoji
         self.includedTime = includedTime
-        self.reminderPicked = reminderPicked
-    }
-    
-    init(_ id: String, _ name:String, _ date:Date, _ created_at:Date, _ group:Group, _ progress:Float, _ includedTime:Bool, _ reminderPicked:Int) {
-        self.id = id
-        self.name = name
         self.date = date
+        self.time = time
         self.created_at = created_at
-        self.group = group
+        self.reminders = reminders
+        self.colour = colour
         self.progress = progress
-        self.includedTime = includedTime
-        self.reminderPicked = reminderPicked
     }
 }

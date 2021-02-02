@@ -8,6 +8,7 @@
 import UIKit
 import CVCalendar
 import Foundation
+import SideMenu
 
 class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
 
@@ -16,14 +17,15 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet var eventTable: UITableView!
     
-    
+    let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+    let utils = Utility()
     
     private var randomNumberOfDotMarkersForDay = [Int]()
     private var shouldShowDaysOut = true
     private var animationFinished = true
     private var selectedDay: DayView!
     private var currentCalendar: Calendar?
-    let formatter = DateFormatter()
+    var formatter = DateFormatter()
     
     // Controller
     let eventController = EventController()
@@ -33,39 +35,28 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     var eventArr:[Event] = []
     
     
-    func calculateCountDown(_ date:Date) -> Int{
-        return Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+    @IBAction func didTapMenu(){
+        present(appDelegate.menu!, animated: true, completion: nil)
     }
     
-    func dateFormat(_ date:Date) -> String{
-        let dateFormatter = DateFormatter() // set to local date (Singapore)
-        dateFormatter.locale = Locale(identifier: "en_SG") // set desired format, note a is AM and FM format
-        dateFormatter.dateFormat = "d MMM yyyy h:mm a" // convert date to String
-        let datevalue = dateFormatter.string(from: date)
+    func getCurrentMonthLabel() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "MMMM YYYY"
+        f.locale = Locale(identifier: "en_SG")
         
-        return datevalue
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventArr.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath)
-        let event = eventArr[indexPath.row]
-        cell.textLabel!.text = event.name
-        cell.detailTextLabel!.text = "\(dateFormat(event.date)) \(calculateCountDown(event.date)) days left"
-        return cell
-        
+        return f.string(from: Date())
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        self.datesDictionary = self.loadEventData()
+        
+        monthLabel.text = getCurrentMonthLabel()
+        
+        formatter.dateFormat = "dd MMMM, yyyy"
+        formatter.locale = Locale(identifier: "en_SG")
+        
         calendarView.calendarAppearanceDelegate = self
         calendarView.animatorDelegate = self
         calendarView.delegate = self
@@ -74,29 +65,24 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = .colorFromCode(2)
         self.navigationItem.title = "Calendar"
         
-        formatter.dateFormat = "dd MMMM, yyyy"
-        
         eventTable.delegate = self
         eventTable.dataSource = self
-       
-        
-        //filling up dictionary (data)
-        for event in eventController.retrieveAllEvent(){
-            let eventDate = formatter.string(from: event.date)
-            let keyExists = self.datesDictionary[eventDate] != nil
-            if (keyExists) {
-                self.datesDictionary[eventDate]?.append(event)
-            }else{
-                self.datesDictionary[eventDate] = [event]
-            }
-        }
-        self.eventTable.reloadData()
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
         self.eventTable.reloadData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.datesDictionary = self.loadEventData()
+        
+        let date = selectedDay.date.convertedDate()!
+        let formattedDateString:String = formatter.string(from: date)
+        self.eventArr = self.datesDictionary[formattedDateString] ?? []
+        self.eventTable.reloadData()
+        self.calendarView.contentController.refreshPresentedMonth()
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -111,6 +97,58 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         self.eventTable.reloadData()
         // Dispose of any resources that can be recreated.
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return eventArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = self.eventTable.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! EventTableViewCell
+
+        let event = eventArr[indexPath.row]
+        let remainingDateTime = utils.combineDateAndTime(event.date, event.time, event.includedTime)
+        
+        cell.colourLine.backgroundColor = utils.colourSchemeList[event.colour].colorWithHexString()
+        cell.title.text = "\(event.emoji.decodeEmoji) \(event.name)"
+        cell.date.text = "\(utils.convertDateToString(event))"
+        cell.remaining.text = "\(utils.calculateCountDown(remainingDateTime))"
+        cell.remainingDesc.text = "\(utils.getCountDownDesc(remainingDateTime))"
+
+        return cell
+    }
+    
+    // fetching data from core data and loading datesdictionary
+    func loadEventData() -> [String:[Event]]{
+        //filling up dictionary (data)
+        var dict = [String:[Event]]()
+        
+        for event in eventController.retrieveAllEvent(){
+            let eventDate = formatter.string(from: event.date)
+            let keyExists = dict[eventDate] != nil
+            if (keyExists) {
+                dict[eventDate]?.append(event)
+            } else{
+                dict[eventDate] = [event]
+            }
+        }
+        
+        return dict
+    }
+    
+    // when click on event in table view , redirects to event details page 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "calendarEventDetails", let destination = segue.destination as? EventDetailsViewController {
+            if let cell:EventTableViewCell = sender as? EventTableViewCell{
+                let row = self.eventTable.indexPath(for: cell)?.row
+                destination.event = self.eventArr[row!]
+            }
+        }
+    }
 }
 
 extension CalendarViewController : CVCalendarMenuViewDelegate{
@@ -119,8 +157,9 @@ extension CalendarViewController : CVCalendarMenuViewDelegate{
 
 extension CalendarViewController : CVCalendarViewDelegate{
     func presentationMode() -> CalendarMode { return CalendarMode.monthView }
-    func firstWeekday() -> Weekday { return Weekday.monday }
+    func firstWeekday() -> Weekday { return Weekday.sunday }
     
+    // animations and updating of selected month
     func presentedDateUpdated(_ date: CVDate) {
             if monthLabel.text != date.globalDescription && self.animationFinished {
                 let updatedMonthLabel = UILabel()
@@ -136,6 +175,7 @@ extension CalendarViewController : CVCalendarViewDelegate{
                 updatedMonthLabel.transform = CGAffineTransform(translationX: 0, y: offset)
                 updatedMonthLabel.transform = CGAffineTransform(scaleX: 1, y: 0.1)
                 
+                // animating month label
                 UIView.animate(withDuration: 0.35, delay: 0, options: UIView.AnimationOptions.curveEaseInOut , animations: {
                     self.animationFinished = false
                     self.monthLabel.transform = CGAffineTransform(translationX: 0, y: -offset)
@@ -156,23 +196,33 @@ extension CalendarViewController : CVCalendarViewDelegate{
                 }
                 
                 self.view.insertSubview(updatedMonthLabel, aboveSubview: self.monthLabel)
+                self.calendarView.contentController.refreshPresentedMonth()
             }
         }
     
     
+    // update table view when date is click from the calendar ,
+    // selecting data from datesDictionary based on date clicked
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool){
-        self.eventArr = self.datesDictionary[dayView.date.commonDescription] ?? []
-//        for i in eventController.retrieveAllEvent(){
-//            formatter.dateFormat = "dd MMMM, yyyy"
-//            let eventDate = formatter.string(from: i.date)
-//            print(eventDate , dayView.date.commonDescription )
-//            if (eventDate == dayView.date.commonDescription){
-//                eventArr.append(i)
-//            }
-//        }
-        print(eventArr)
+        self.selectedDay = dayView
+        let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
+        self.eventArr = self.datesDictionary[formattedDateString] ?? []
         self.eventTable.reloadData()
+    }
+    
+    // addding a circle to dates where there are events
+    func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
+        let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
+        if let _ = self.datesDictionary[formattedDateString]{
+            return true
+        }
 
+        return false
+    }
+    
+    // set circle color
+    func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
+        return [.systemBlue]
     }
 }
 

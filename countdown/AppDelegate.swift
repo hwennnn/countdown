@@ -7,15 +7,60 @@
 
 import UIKit
 import CoreData
+import Firebase
+import SideMenu
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
+    var currentUser:FirebaseAuth.User?
+    var menu: UISideMenuNavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // configure the firebase
+        FirebaseApp.configure()
+        
+        // to make sure the firebase authentication will be reset when the app is newly installed (auth is stored in keychain)
+        let userDefaults = UserDefaults.standard
+        if userDefaults.value(forKey: "appFirstTimeOpend") == nil {
+            //if app is first time opened then it will be nil
+            userDefaults.setValue(true, forKey: "appFirstTimeOpend")
+            
+            // signOut from Firebase Auth
+            do {
+                try Auth.auth().signOut()
+            }catch {
+
+            }
+            
+            // load boarding screen here
+        }
+        
+        // request noficaition authorization
         requestAuthorization()
+        
+        currentUser = Auth.auth().currentUser
+        
+        // firebase user listener to update the current user
+        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print("The auth state has changed! \(user?.uid ?? "NULL")")
+            self.currentUser = user
+        }
+        
+        // Define the side menu
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        menu = storyboard.instantiateViewController(identifier: "LeftMenu") as? UISideMenuNavigationController
+        
+        SideMenuManager.default.menuLeftNavigationController = menu
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuAnimationFadeStrength = 0.5
+        SideMenuManager.default.menuWidth = menu!.view.frame.width * 0.7
+        SideMenuManager.default.menuAllowPushOfSameClassTwice = false
+        SideMenuManager.default.menuLeftNavigationController?.sideMenuManager.menuPresentMode = .menuSlideIn
+        
         return true
     }
 
@@ -42,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "countdown")
+        let container = NSCustomPersistentContainer(name: "countdown")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

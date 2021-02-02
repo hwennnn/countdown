@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		121AD7EBE110196EE2B28CF4 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1BF6AE9E3ECC754B2E5A2B /* Pods_countdown.framework */; };
-		8A08FDEB25B9C62F00756367 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */; };
+		5FFEC8A136E2B507F4FB84E8 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F63520597B33519B40973 /* Pods_countdown.framework */; };
+		8A16BEC225C5077E004C15D5 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A16BEC125C5077E004C15D5 /* logo.png */; };
+		8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */; };
+		8A4D3FC025C820530073FA1C /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
+		8A5068C525C83DCB00A68A13 /* calendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A5068C425C83DCB00A68A13 /* calendar.json */; };
+		8A5D6FB525C3FF3600301E56 /* EventActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */; };
 		8A880ED325A7428A00494BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
-		8A880ED625A7429700494BD3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED525A7429700494BD3 /* Group.swift */; };
-		8A880ED925A742A500494BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED825A742A500494BD3 /* User.swift */; };
+		8A945C8025C696A50076F596 /* EventDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A945C7F25C696A50076F596 /* EventDetailCollectionViewCell.swift */; };
+		8A945C8A25C6B8000076F596 /* splashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A945C8925C6B8000076F596 /* splashScreen.png */; };
+		8AB2875025C91805005DAC0E /* logo_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB2874F25C91805005DAC0E /* logo_clear.png */; };
 		8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295BC25A73A5400EC33EB /* AppDelegate.swift */; };
 		8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */; };
 		8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB295C225A73A5400EC33EB /* Main.storyboard */; };
@@ -20,18 +25,94 @@
 		8AB295CC25A73A5500EC33EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */; };
 		8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DA25A740D500EC33EB /* EventTableViewController.swift */; };
 		8AB295DE25A7411300EC33EB /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295DD25A7411300EC33EB /* EventController.swift */; };
-		8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295E025A7415800EC33EB /* EventActionViewController.swift */; };
+		8AD7853E25C162E3009E8357 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7853D25C162E3009E8357 /* LocalNotificationManager.swift */; };
+		8AD7854225C16628009E8357 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7854125C16628009E8357 /* SignUpViewController.swift */; };
+		8AD7855525C182F7009E8357 /* ProfileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */; };
+		8AEB590025C5AE80008E1209 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB58FF25C5AE80008E1209 /* EventTableViewCell.swift */; };
+		8AEB590A25C5CB0F008E1209 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB590925C5CB0F008E1209 /* EventDetailsViewController.swift */; };
+		8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF954D625C1507400F31095 /* GoogleService-Info.plist */; };
+		8AF9552725C1589400F31095 /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9552625C1589400F31095 /* Base.storyboard */; };
+		8AF9552C25C159A100F31095 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9552B25C159A100F31095 /* LoginViewController.swift */; };
+		B613EBA825C6EF6B00136B61 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B613EBA725C6EF6B00136B61 /* Intents.framework */; };
+		B613EBAB25C6EF6B00136B61 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EBAA25C6EF6B00136B61 /* IntentHandler.swift */; };
+		B613EBAF25C6EF6B00136B61 /* CountdownIntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B613EBA625C6EF6B00136B61 /* CountdownIntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B613EBB925C6EF8100136B61 /* Countdowns.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */; };
+		B613EBBD25C6EFA100136B61 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
+		B613EBC125C6EFA800136B61 /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */; };
+		B613EBC525C6F44D00136B61 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EBAA25C6EF6B00136B61 /* IntentHandler.swift */; };
+		B613EBC925C6FAA400136B61 /* countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */; };
+		B613EBFB25C6FE1400136B61 /* CountdownMediumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EBFA25C6FE1400136B61 /* CountdownMediumWidget.swift */; };
+		B613EC3325C706C600136B61 /* CountdownLargeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC3225C706C600136B61 /* CountdownLargeWidget.swift */; };
+		B613EC5225C70DD200136B61 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
+		B613EC5325C70DD200136B61 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
+		B620304125C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */; };
+		B620304225C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */; };
+		B620304725C6350F0033FDCF /* countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */; };
+		B62BF3F325C78BCF007FAFC2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62BF3F225C78BCF007FAFC2 /* Utility.swift */; };
+		B62BF3F425C78BCF007FAFC2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62BF3F225C78BCF007FAFC2 /* Utility.swift */; };
+		B62BF3F525C78BCF007FAFC2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62BF3F225C78BCF007FAFC2 /* Utility.swift */; };
+		B634120725C5464500E69447 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880ED225A7428A00494BD3 /* Event.swift */; };
+		B63412BF25C5844500E69447 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63412BE25C5844500E69447 /* CoreDataContainer.swift */; };
+		B63412C025C5844500E69447 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63412BE25C5844500E69447 /* CoreDataContainer.swift */; };
 		B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */; };
+		B64A364625C30C7D0087999A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64A362825C308C40087999A /* WidgetKit.framework */; };
+		B64A364725C30C7D0087999A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64A362A25C308C40087999A /* SwiftUI.framework */; };
+		B64A364A25C30C7E0087999A /* Countdowns.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A364925C30C7E0087999A /* Countdowns.swift */; };
+		B64A364D25C30C7F0087999A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64A364C25C30C7F0087999A /* Assets.xcassets */; };
+		B64A364F25C30C7F0087999A /* Countdowns.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */; };
+		B64A365025C30C7F0087999A /* Countdowns.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */; };
+		B64A365325C30C7F0087999A /* CountdownsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B64A364525C30C7D0087999A /* CountdownsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B65F96AF25C8EA8900DF1086 /* CoredataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */; };
+		B65F96B025C8EA8900DF1086 /* CoredataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */; };
+		B65F96B125C8EA8900DF1086 /* CoredataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */; };
+		B694E34825C929F600084142 /* MultiEventDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694E34725C929F600084142 /* MultiEventDefaultView.swift */; };
+		B6E0225225C3EFCD00E66B1C /* CountdownWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */; };
+		B6E0225925C3F07500E66B1C /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0225825C3F07500E66B1C /* EventView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B613EBAD25C6EF6B00136B61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AB295B125A73A5400EC33EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B613EBA525C6EF6B00136B61;
+			remoteInfo = CountdownIntentExtension;
+		};
+		B64A365125C30C7F0087999A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AB295B125A73A5400EC33EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B64A364425C30C7D0087999A;
+			remoteInfo = CountdownsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B64A363825C308C40087999A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B613EBAF25C6EF6B00136B61 /* CountdownIntentExtension.appex in Embed App Extensions */,
+				B64A365325C30C7F0087999A /* CountdownsExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		2C1BF6AE9E3ECC754B2E5A2B /* Pods_countdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35E44D11EB7E338A68B1B8FD /* Pods-countdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.release.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.release.xcconfig"; sourceTree = "<group>"; };
-		79856B1942002CD138968C45 /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
-		8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		159A631724B6B1873F5B5BB0 /* Pods-countdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.release.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.release.xcconfig"; sourceTree = "<group>"; };
+		6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
+		8A16BEC125C5077E004C15D5 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataController.swift; sourceTree = "<group>"; };
+		8A5068C425C83DCB00A68A13 /* calendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = calendar.json; sourceTree = "<group>"; };
+		8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionsViewController.swift; sourceTree = "<group>"; };
 		8A880ED225A7428A00494BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		8A880ED525A7429700494BD3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		8A880ED825A742A500494BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8A945C7F25C696A50076F596 /* EventDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A945C8925C6B8000076F596 /* splashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashScreen.png; sourceTree = "<group>"; };
+		8AB2874F25C91805005DAC0E /* logo_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_clear.png; sourceTree = "<group>"; };
 		8AB295B925A73A5400EC33EB /* countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB295BC25A73A5400EC33EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,8 +123,40 @@
 		8AB295CD25A73A5500EC33EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AB295DA25A740D500EC33EB /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		8AB295DD25A7411300EC33EB /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
-		8AB295E025A7415800EC33EB /* EventActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionViewController.swift; sourceTree = "<group>"; };
+		8AD7853D25C162E3009E8357 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		8AD7854125C16628009E8357 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuViewController.swift; sourceTree = "<group>"; };
+		8AEB58FF25C5AE80008E1209 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		8AEB590925C5CB0F008E1209 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		8AF954D625C1507400F31095 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8AF9552625C1589400F31095 /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
+		8AF9552B25C159A100F31095 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B613EBA625C6EF6B00136B61 /* CountdownIntentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CountdownIntentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B613EBA725C6EF6B00136B61 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		B613EBAA25C6EF6B00136B61 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		B613EBAC25C6EF6B00136B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B613EBCD25C6FD1400136B61 /* CountdownIntentExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CountdownIntentExtension.entitlements; sourceTree = "<group>"; };
+		B613EBFA25C6FE1400136B61 /* CountdownMediumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownMediumWidget.swift; sourceTree = "<group>"; };
+		B613EC3225C706C600136B61 /* CountdownLargeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLargeWidget.swift; sourceTree = "<group>"; };
+		B613EC5025C70DD200136B61 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCustomPersistentContainer.swift; sourceTree = "<group>"; };
+		B62BF3F225C78BCF007FAFC2 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		B634120325C545B300E69447 /* countdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = countdown.entitlements; sourceTree = "<group>"; };
+		B634120425C5460A00E69447 /* CountdownsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CountdownsExtension.entitlements; sourceTree = "<group>"; };
+		B63412BE25C5844500E69447 /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
 		B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		B64A362825C308C40087999A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B64A362A25C308C40087999A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B64A364525C30C7D0087999A /* CountdownsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CountdownsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B64A364925C30C7E0087999A /* Countdowns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdowns.swift; sourceTree = "<group>"; };
+		B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Countdowns.intentdefinition; sourceTree = "<group>"; };
+		B64A364C25C30C7F0087999A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B64A364E25C30C7F0087999A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataUtils.swift; sourceTree = "<group>"; };
+		B694E34725C929F600084142 /* MultiEventDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiEventDefaultView.swift; sourceTree = "<group>"; };
+		B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetSmall.swift; sourceTree = "<group>"; };
+		B6E0225825C3F07500E66B1C /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		D32F63520597B33519B40973 /* Pods_countdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +164,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				121AD7EBE110196EE2B28CF4 /* Pods_countdown.framework in Frameworks */,
+				5FFEC8A136E2B507F4FB84E8 /* Pods_countdown.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B613EBA325C6EF6B00136B61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B613EBA825C6EF6B00136B61 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B64A364225C30C7D0087999A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B64A364725C30C7D0087999A /* SwiftUI.framework in Frameworks */,
+				B64A364625C30C7D0087999A /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,16 +191,19 @@
 		091AADB8B08E9008A02F1C58 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				79856B1942002CD138968C45 /* Pods-countdown.debug.xcconfig */,
-				35E44D11EB7E338A68B1B8FD /* Pods-countdown.release.xcconfig */,
+				6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */,
+				159A631724B6B1873F5B5BB0 /* Pods-countdown.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		5A6EB39495B19A3F6CCEF8D8 /* Frameworks */ = {
+		65691C96376A44C09E3A87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C1BF6AE9E3ECC754B2E5A2B /* Pods_countdown.framework */,
+				D32F63520597B33519B40973 /* Pods_countdown.framework */,
+				B64A362825C308C40087999A /* WidgetKit.framework */,
+				B64A362A25C308C40087999A /* SwiftUI.framework */,
+				B613EBA725C6EF6B00136B61 /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -78,10 +211,14 @@
 		8AB295B025A73A5400EC33EB = {
 			isa = PBXGroup;
 			children = (
+				B620304025C6338D0033FDCF /* NSCustomPersistentContainer.swift */,
+				B634120425C5460A00E69447 /* CountdownsExtension.entitlements */,
 				8AB295BB25A73A5400EC33EB /* countdown */,
+				B64A364825C30C7D0087999A /* Countdowns */,
+				B613EBA925C6EF6B00136B61 /* CountdownIntentExtension */,
 				8AB295BA25A73A5400EC33EB /* Products */,
 				091AADB8B08E9008A02F1C58 /* Pods */,
-				5A6EB39495B19A3F6CCEF8D8 /* Frameworks */,
+				65691C96376A44C09E3A87F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				8AB295B925A73A5400EC33EB /* countdown.app */,
+				B64A364525C30C7D0087999A /* CountdownsExtension.appex */,
+				B613EBA625C6EF6B00136B61 /* CountdownIntentExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,16 +235,22 @@
 		8AB295BB25A73A5400EC33EB /* countdown */ = {
 			isa = PBXGroup;
 			children = (
+				B634120325C545B300E69447 /* countdown.entitlements */,
+				8AD7853C25C162DA009E8357 /* Utils */,
+				8AF9552925C1589B00F31095 /* Storyboard */,
 				8AB295D825A7402D00EC33EB /* Model */,
 				8AB295D625A7401100EC33EB /* Controller */,
-				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */,
-				8AB295C225A73A5400EC33EB /* Main.storyboard */,
+				8A16BEC125C5077E004C15D5 /* logo.png */,
+				8A945C8925C6B8000076F596 /* splashScreen.png */,
+				8AB2874F25C91805005DAC0E /* logo_clear.png */,
+				8A5068C425C83DCB00A68A13 /* calendar.json */,
+				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295C825A73A5500EC33EB /* Assets.xcassets */,
 				8AB295CA25A73A5500EC33EB /* LaunchScreen.storyboard */,
 				8AB295CD25A73A5500EC33EB /* Info.plist */,
 				8AB295C525A73A5400EC33EB /* countdown.xcdatamodeld */,
-				8A08FDEA25B9C62F00756367 /* LocalNotificationManager.swift */,
+				8AF954D625C1507400F31095 /* GoogleService-Info.plist */,
 			);
 			path = countdown;
 			sourceTree = "<group>";
@@ -116,7 +261,13 @@
 				B640DCDD25AD2FCB00C59EAD /* CalendarViewController.swift */,
 				8AB295DA25A740D500EC33EB /* EventTableViewController.swift */,
 				8AB295DD25A7411300EC33EB /* EventController.swift */,
-				8AB295E025A7415800EC33EB /* EventActionViewController.swift */,
+				8AF9552B25C159A100F31095 /* LoginViewController.swift */,
+				8AD7854125C16628009E8357 /* SignUpViewController.swift */,
+				8AD7855425C182F7009E8357 /* ProfileMenuViewController.swift */,
+				8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */,
+				8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */,
+				8AEB590925C5CB0F008E1209 /* EventDetailsViewController.swift */,
+				B63412BE25C5844500E69447 /* CoreDataContainer.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -125,10 +276,72 @@
 			isa = PBXGroup;
 			children = (
 				8A880ED225A7428A00494BD3 /* Event.swift */,
-				8A880ED525A7429700494BD3 /* Group.swift */,
-				8A880ED825A742A500494BD3 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8AD7853C25C162DA009E8357 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8AD7853D25C162E3009E8357 /* LocalNotificationManager.swift */,
+				8AEB58FF25C5AE80008E1209 /* EventTableViewCell.swift */,
+				8A945C7F25C696A50076F596 /* EventDetailCollectionViewCell.swift */,
+				B613EC5025C70DD200136B61 /* String+Ext.swift */,
+				B62BF3F225C78BCF007FAFC2 /* Utility.swift */,
+				B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8AF9552925C1589B00F31095 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8AF9552625C1589400F31095 /* Base.storyboard */,
+				8AB295C225A73A5400EC33EB /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		B613EBA925C6EF6B00136B61 /* CountdownIntentExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B613EBCD25C6FD1400136B61 /* CountdownIntentExtension.entitlements */,
+				B613EBAA25C6EF6B00136B61 /* IntentHandler.swift */,
+				B613EBAC25C6EF6B00136B61 /* Info.plist */,
+			);
+			path = CountdownIntentExtension;
+			sourceTree = "<group>";
+		};
+		B64A364825C30C7D0087999A /* Countdowns */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0225025C3EFB500E66B1C /* Views */,
+				B64A364925C30C7E0087999A /* Countdowns.swift */,
+				B64A364B25C30C7E0087999A /* Countdowns.intentdefinition */,
+				B64A364C25C30C7F0087999A /* Assets.xcassets */,
+				B64A364E25C30C7F0087999A /* Info.plist */,
+			);
+			path = Countdowns;
+			sourceTree = "<group>";
+		};
+		B6E0225025C3EFB500E66B1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0225725C3F05E00E66B1C /* Commons */,
+				B613EBFA25C6FE1400136B61 /* CountdownMediumWidget.swift */,
+				B613EC3225C706C600136B61 /* CountdownLargeWidget.swift */,
+				B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B6E0225725C3F05E00E66B1C /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0225825C3F07500E66B1C /* EventView.swift */,
+				B694E34725C929F600084142 /* MultiEventDefaultView.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,20 +351,57 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AB295D025A73A5500EC33EB /* Build configuration list for PBXNativeTarget "countdown" */;
 			buildPhases = (
-				7FE28E9738FAFC98ED82194D /* [CP] Check Pods Manifest.lock */,
+				F069623F16FF68039DE315B2 /* [CP] Check Pods Manifest.lock */,
 				8AB295B525A73A5400EC33EB /* Sources */,
 				8AB295B625A73A5400EC33EB /* Frameworks */,
 				8AB295B725A73A5400EC33EB /* Resources */,
-				CE4851D8EE33B7174AF57FA8 /* [CP] Embed Pods Frameworks */,
+				CC06FE59E353C9295CDBF728 /* [CP] Embed Pods Frameworks */,
+				B64A363825C308C40087999A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B64A365225C30C7F0087999A /* PBXTargetDependency */,
+				B613EBAE25C6EF6B00136B61 /* PBXTargetDependency */,
 			);
 			name = countdown;
 			productName = countdown;
 			productReference = 8AB295B925A73A5400EC33EB /* countdown.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B613EBA525C6EF6B00136B61 /* CountdownIntentExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B613EBB025C6EF6B00136B61 /* Build configuration list for PBXNativeTarget "CountdownIntentExtension" */;
+			buildPhases = (
+				B613EBA225C6EF6B00136B61 /* Sources */,
+				B613EBA325C6EF6B00136B61 /* Frameworks */,
+				B613EBA425C6EF6B00136B61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CountdownIntentExtension;
+			productName = CountdownIntentExtension;
+			productReference = B613EBA625C6EF6B00136B61 /* CountdownIntentExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B64A364425C30C7D0087999A /* CountdownsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B64A365425C30C7F0087999A /* Build configuration list for PBXNativeTarget "CountdownsExtension" */;
+			buildPhases = (
+				B64A364125C30C7D0087999A /* Sources */,
+				B64A364225C30C7D0087999A /* Frameworks */,
+				B64A364325C30C7D0087999A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CountdownsExtension;
+			productName = CountdownsExtension;
+			productReference = B64A364525C30C7D0087999A /* CountdownsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -159,11 +409,17 @@
 		8AB295B125A73A5400EC33EB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					8AB295B825A73A5400EC33EB = {
 						CreatedOnToolsVersion = 12.3;
+					};
+					B613EBA525C6EF6B00136B61 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					B64A364425C30C7D0087999A = {
+						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
@@ -181,6 +437,8 @@
 			projectRoot = "";
 			targets = (
 				8AB295B825A73A5400EC33EB /* countdown */,
+				B64A364425C30C7D0087999A /* CountdownsExtension */,
+				B613EBA525C6EF6B00136B61 /* CountdownIntentExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -191,15 +449,53 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AB295CC25A73A5500EC33EB /* LaunchScreen.storyboard in Resources */,
+				8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */,
+				8AF9552725C1589400F31095 /* Base.storyboard in Resources */,
 				8AB295C925A73A5500EC33EB /* Assets.xcassets in Resources */,
+				8AB2875025C91805005DAC0E /* logo_clear.png in Resources */,
+				8A16BEC225C5077E004C15D5 /* logo.png in Resources */,
+				8A945C8A25C6B8000076F596 /* splashScreen.png in Resources */,
 				8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */,
+				8A5068C525C83DCB00A68A13 /* calendar.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B613EBA425C6EF6B00136B61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B64A364325C30C7D0087999A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B64A364D25C30C7F0087999A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7FE28E9738FAFC98ED82194D /* [CP] Check Pods Manifest.lock */ = {
+		CC06FE59E353C9295CDBF728 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F069623F16FF68039DE315B2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -221,23 +517,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CE4851D8EE33B7174AF57FA8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -245,21 +524,82 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A08FDEB25B9C62F00756367 /* LocalNotificationManager.swift in Sources */,
+				8AF9552C25C159A100F31095 /* LoginViewController.swift in Sources */,
+				8A945C8025C696A50076F596 /* EventDetailCollectionViewCell.swift in Sources */,
 				B640DCDE25AD2FCB00C59EAD /* CalendarViewController.swift in Sources */,
 				8AB295BD25A73A5400EC33EB /* AppDelegate.swift in Sources */,
-				8AB295E125A7415800EC33EB /* EventActionViewController.swift in Sources */,
+				8AEB590025C5AE80008E1209 /* EventTableViewCell.swift in Sources */,
+				8AEB590A25C5CB0F008E1209 /* EventDetailsViewController.swift in Sources */,
+				B620304125C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */,
 				8AB295BF25A73A5400EC33EB /* SceneDelegate.swift in Sources */,
-				8A880ED625A7429700494BD3 /* Group.swift in Sources */,
+				B65F96AF25C8EA8900DF1086 /* CoredataUtils.swift in Sources */,
+				8AD7853E25C162E3009E8357 /* LocalNotificationManager.swift in Sources */,
 				8AB295DE25A7411300EC33EB /* EventController.swift in Sources */,
-				8A880ED925A742A500494BD3 /* User.swift in Sources */,
+				8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */,
+				B63412BF25C5844500E69447 /* CoreDataContainer.swift in Sources */,
 				8AB295DB25A740D500EC33EB /* EventTableViewController.swift in Sources */,
 				8A880ED325A7428A00494BD3 /* Event.swift in Sources */,
+				B62BF3F325C78BCF007FAFC2 /* Utility.swift in Sources */,
+				8A4D3FC025C820530073FA1C /* String+Ext.swift in Sources */,
+				B64A365025C30C7F0087999A /* Countdowns.intentdefinition in Sources */,
+				8AD7855525C182F7009E8357 /* ProfileMenuViewController.swift in Sources */,
+				8AD7854225C16628009E8357 /* SignUpViewController.swift in Sources */,
 				8AB295C725A73A5400EC33EB /* countdown.xcdatamodeld in Sources */,
+				8A5D6FB525C3FF3600301E56 /* EventActionsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B613EBA225C6EF6B00136B61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B62BF3F525C78BCF007FAFC2 /* Utility.swift in Sources */,
+				B613EC5325C70DD200136B61 /* String+Ext.swift in Sources */,
+				B65F96B125C8EA8900DF1086 /* CoredataUtils.swift in Sources */,
+				B613EBC125C6EFA800136B61 /* NSCustomPersistentContainer.swift in Sources */,
+				B613EBC925C6FAA400136B61 /* countdown.xcdatamodeld in Sources */,
+				B613EBB925C6EF8100136B61 /* Countdowns.intentdefinition in Sources */,
+				B613EBBD25C6EFA100136B61 /* Event.swift in Sources */,
+				B613EBAB25C6EF6B00136B61 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B64A364125C30C7D0087999A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B613EBFB25C6FE1400136B61 /* CountdownMediumWidget.swift in Sources */,
+				B63412C025C5844500E69447 /* CoreDataContainer.swift in Sources */,
+				B613EBC525C6F44D00136B61 /* IntentHandler.swift in Sources */,
+				B694E34825C929F600084142 /* MultiEventDefaultView.swift in Sources */,
+				B620304725C6350F0033FDCF /* countdown.xcdatamodeld in Sources */,
+				B64A364F25C30C7F0087999A /* Countdowns.intentdefinition in Sources */,
+				B6E0225225C3EFCD00E66B1C /* CountdownWidgetSmall.swift in Sources */,
+				B613EC5225C70DD200136B61 /* String+Ext.swift in Sources */,
+				B62BF3F425C78BCF007FAFC2 /* Utility.swift in Sources */,
+				B64A364A25C30C7E0087999A /* Countdowns.swift in Sources */,
+				B613EC3325C706C600136B61 /* CountdownLargeWidget.swift in Sources */,
+				B65F96B025C8EA8900DF1086 /* CoredataUtils.swift in Sources */,
+				B620304225C6338D0033FDCF /* NSCustomPersistentContainer.swift in Sources */,
+				B634120725C5464500E69447 /* Event.swift in Sources */,
+				B6E0225925C3F07500E66B1C /* EventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B613EBAE25C6EF6B00136B61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B613EBA525C6EF6B00136B61 /* CountdownIntentExtension */;
+			targetProxy = B613EBAD25C6EF6B00136B61 /* PBXContainerItemProxy */;
+		};
+		B64A365225C30C7F0087999A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B64A364425C30C7D0087999A /* CountdownsExtension */;
+			targetProxy = B64A365125C30C7F0087999A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8AB295C225A73A5400EC33EB /* Main.storyboard */ = {
@@ -318,6 +658,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -379,6 +720,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -399,19 +741,41 @@
 		};
 		8AB295D125A73A5500EC33EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79856B1942002CD138968C45 /* Pods-countdown.debug.xcconfig */;
+			baseConfigurationReference = 6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = countdown/countdown.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46H8NG3ATK;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CVCalendar/CVCalendar.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase/FirebaseDatabase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SideMenu/SideMenu.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+				);
 				INFOPLIST_FILE = countdown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.countdown;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -421,21 +785,137 @@
 		};
 		8AB295D225A73A5500EC33EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35E44D11EB7E338A68B1B8FD /* Pods-countdown.release.xcconfig */;
+			baseConfigurationReference = 159A631724B6B1873F5B5BB0 /* Pods-countdown.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = countdown/countdown.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46H8NG3ATK;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CVCalendar/CVCalendar.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase/FirebaseDatabase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SideMenu/SideMenu.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+				);
 				INFOPLIST_FILE = countdown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.countdown;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B613EBB125C6EF6B00136B61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CountdownIntentExtension/CountdownIntentExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
+				INFOPLIST_FILE = CountdownIntentExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown.CountdownIntentExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B613EBB225C6EF6B00136B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CountdownIntentExtension/CountdownIntentExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
+				INFOPLIST_FILE = CountdownIntentExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown.CountdownIntentExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B64A365525C30C7F0087999A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CountdownsExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
+				INFOPLIST_FILE = Countdowns/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown.MadCountdown;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B64A365625C30C7F0087999A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CountdownsExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J9J43QP69;
+				INFOPLIST_FILE = Countdowns/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.mad2.madcountdown.MadCountdown;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -458,6 +938,24 @@
 			buildConfigurations = (
 				8AB295D125A73A5500EC33EB /* Debug */,
 				8AB295D225A73A5500EC33EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B613EBB025C6EF6B00136B61 /* Build configuration list for PBXNativeTarget "CountdownIntentExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B613EBB125C6EF6B00136B61 /* Debug */,
+				B613EBB225C6EF6B00136B61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B64A365425C30C7F0087999A /* Build configuration list for PBXNativeTarget "CountdownsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B64A365525C30C7F0087999A /* Debug */,
+				B64A365625C30C7F0087999A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
