@@ -27,8 +27,18 @@
 </p>
 
 <p align="row">
-<img src= "screenshots/login.png" width="400">
-<img src= "screenshots/signup.png" width="400">
+  <img src= "screenshots/signup.png" width="400" height="800">
+<img src= "screenshots/login.png" width="400" height="800">
+<img src= "screenshots/home.png" width="400" height="800">
+  <img src= "screenshots/details.png" width="400" height="800">
+  <img src= "screenshots/create1.png" width="400" height="800">
+  <img src= "screenshots/create2.png" width="400" height="800">
+<img src= "screenshots/edit.png" width="400" height="800">
+<img src= "screenshots/delete.png" width="400" height="800">
+    <img src= "screenshots/calendar.png" width="400" height="800">
+<img src= "screenshots/profile.png" width="400" height="800">
+  <img src= "screenshots/widgets.png" width="400" height="800">
+  <img src= "screenshots/notifications.png" width="400">
 </p>
 
 ## Built With
