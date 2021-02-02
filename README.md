@@ -6,21 +6,21 @@
       <p>
       Features:
       <br>
-      #1. Create, edit and delete events and view them from a calendar or widgets.
+        <b>#1.</b> Create, edit and delete events and view them from a calendar or widgets.
       <br>
-      #2. Pick any icon you'd like to represent the mood of the countdown.
+      <b>#2.</b> Pick any icon you'd like to represent the mood of the countdown.
       <br>
-      #3. In addition, to receive notifications about upcoming events, users can customise reminders 1 hour or 1 day before the event.
+      <b>#3.</b> In addition, to receive notifications about upcoming events, users can customise reminders 1 hour or 1 day before the event.
       <br>
-      #4. View all of the events through a calendar, informing them about how many events they have in a month.
+      <b>#4.</b> View all of the events through a calendar, informing them about how many events they have in a month.
       <br>
-      #5. Interact with customisable widgets to view the different events from a single view of one event of their choice to a list of 7 events at a glance.
+      <b>#5.</b> Interact with customisable widgets to view the different events from a single view of one event of their choice to a list of 7 events at a glance.
       <br>
-      #6. Count up from past events (available on each countdown page).
+      <b>#6.</b> Count up from past events (available on each countdown page).
       <br>
-      #7. View the events' countdown in real time
+      <b>#7.</b> View the events' countdown in real time
       <br>
-      #8. Use the app on different devices as events are synced through the cloud.  
+      <b>#8.</b> Use the app on different devices as events are synced through the cloud.  
       <br>
       </p>
   </p>
