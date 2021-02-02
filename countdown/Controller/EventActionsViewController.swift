@@ -131,9 +131,10 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         }
         
         for button in buttons{
-            button.layer.cornerRadius = 15
+            button.layer.cornerRadius = 23
         }
-        buttons[selectedColour].layer.borderWidth = 1
+        
+        buttons[selectedColour].layer.borderWidth = 1.5
         buttons[selectedColour].layer.borderColor = UIColor.black.cgColor
     }
     
@@ -149,7 +150,7 @@ class EventActionsViewController: UIViewController, UITextFieldDelegate, EmojiVi
         for (index,button) in colourList.enumerated(){
             if (button.tag == sender.tag){
                 selectedColour = index
-                button.layer.borderWidth = 1
+                button.layer.borderWidth = 2
                 button.layer.borderColor = UIColor.black.cgColor
             }else{
                 button.layer.borderWidth = 0
