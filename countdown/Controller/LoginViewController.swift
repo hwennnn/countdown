@@ -128,7 +128,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         let password = passwordField.text!
         
         // Firebase Auth API to validate login information
-        // Redirect the user to main page when sucess
+        // Redirect the user to main page when success
         // Pop failure alert when got login error
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] success, error in
             guard self != nil else { return }
