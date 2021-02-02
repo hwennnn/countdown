@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Customise collection view cell for the event detail.
 class EventDetailCollectionViewCell:UICollectionViewCell{
     
     @IBOutlet weak var remaining: UILabel!
