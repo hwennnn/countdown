@@ -11,8 +11,10 @@ import CoreData
 
 class EventController: UIViewController{
     
+    // Use the utility object
     let utils = Utility()
-        
+    
+    // This will create a new event entry in core data
     func addEvent(_ event:Event){
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -39,6 +41,7 @@ class EventController: UIViewController{
         }
     }
     
+    // This will update the existing event in the core data based on its identifier.
     func updateEvent(_ event:Event){
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -73,6 +76,7 @@ class EventController: UIViewController{
         
     }
     
+    // This will delete the event from the core data using its identifier.
     func deleteEvent(_ event:Event){
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -98,7 +102,7 @@ class EventController: UIViewController{
         }
     }
     
-    
+    // This will fetch all the events data from the core data.
     func retrieveAllEvent() -> [Event]{
         var eventList:[Event] = []
         var completed:[Event] = []
@@ -135,7 +139,10 @@ class EventController: UIViewController{
         } catch let error as NSError{
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-
+        
+        // Sort the event data
+        // First sort both completed and incomplete events in two different
+        // Prioritise the incomplete first by first putting in the incomplete and thereafter completed
         completed.sort { (event1, event2) -> Bool in
             return utils.combineDateAndTime(event1.date, event1.time, event1.includedTime) < utils.combineDateAndTime(event2.date, event2.time, event2.includedTime)
         }
@@ -150,6 +157,8 @@ class EventController: UIViewController{
         return eventList
     }
     
+    
+    // This will clear all the event table data from the core data. This is called when logging out.
     func deleteAllEvents() {
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext

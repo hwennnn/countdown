@@ -12,6 +12,7 @@ import WidgetKit
 
 class EventTableViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
     
+    // Initialisation of storyboard objects
     @IBOutlet weak var bannerView: UIView!
     @IBOutlet weak var bannerRemaining: UILabel!
     @IBOutlet weak var bannerRemainingDesc: UILabel!
@@ -19,6 +20,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var bannerDate: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    // Initialisation of controllers
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let eventController = EventController()
     let firebaseDataController = FirebaseDataController()
@@ -28,10 +30,12 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     var firstEvent:Event?
     var eventList:[Event] = []
     
+    // This will open the side menu when the hamburger button on the top left is clicked.
     @IBAction func didTapMenu(){
         present(appDelegate.menu!, animated: true, completion: nil)
     }
     
+    // This will initialise the delegate and gesture when the view is loaded.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,15 +50,21 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         self.tableView.reloadData()
     }
  
+    // This will initialise the eventList(table view data) when the view is starting to appear.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         initEventList()
         self.tableView.reloadData()
     }
     
+    // This will initialise the eventList(table view data)
     func initEventList(){
+        // Fetching the data from core data
         var fetchedList = eventController.retrieveAllEvent()
         
+        // If the fetchedList count is 0, put both bannerview and tableview empty.
+        // If the fetchedList count is 1, put the only event on the bannerview and left the tableview empty.
+        // If the fetchedList count is more than 1, put the first event on the banner view and put the rest to the the tableview.
         if (fetchedList.count == 0){
             self.navigationController?.navigationBar.barTintColor = nil
             self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
@@ -93,12 +103,13 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         }
     }
     
+    // perform segue to event detail page when the banner is clicked (also the event is not NULL)
     @objc func tappedBanner(sender : UITapGestureRecognizer) {
         if (self.firstEvent != nil){
             performSegue(withIdentifier: "eventDetails", sender: nil)
         }
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -107,6 +118,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         return eventList.count
     }
     
+    // Initialise the content of the table view cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EventTableViewCell
 
@@ -125,7 +137,8 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
+    // Enable swipe right gesture for deleting event
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             let event = self.eventList[indexPath.row]
@@ -133,6 +146,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         }
     }
     
+    // Enable swipe left gesture for editing event
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal,
                                         title: "Edit") { [weak self] (action, view, completionHandler) in
@@ -145,6 +159,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
 
     }
     
+    // Pop an alert to the user when the user attempts to delete the event
     func deleteAction(_ event:Event){
         let alertView = UIAlertController(title: "Delete Countdown", message: "Are you sure you want to delete \(event.name)?", preferredStyle: UIAlertController.Style.alert)
                 
@@ -155,6 +170,7 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         self.present(alertView, animated: true, completion: nil)
     }
     
+    // This function will call all the controllers to reflect on the event is deleted
     func deleteEvent(_ event:Event){
         eventController.deleteEvent(event)
         firebaseDataController.deleteEvent(event)
@@ -164,10 +180,12 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    // Swipe left will perform segue to edit the event
     func editHandler(_ index: Int){
         performSegue(withIdentifier: "eventAction", sender: index)
     }
     
+    // Parse in the event to the destination eventController when performing segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "eventAction", let destination = segue.destination.children[0] as? EventActionsViewController {
             if let s = sender as? Int{

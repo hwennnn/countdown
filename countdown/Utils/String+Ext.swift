@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// String extension class
 extension String {
     private func intFromHexString(_ hexStr: String) -> UInt32 {
         var hexInt: UInt32 = 0
@@ -20,6 +21,7 @@ extension String {
         return hexInt
     }
     
+    // This function will return the UIColor object by parsing in the hex string(#ababab).
     func colorWithHexString(_ alpha:CGFloat = 1.0) -> UIColor {
 
         // Convert hex string to an integer
@@ -33,6 +35,7 @@ extension String {
         return color
     }
     
+    // This function will encode the emoji to string.
     var encodeEmoji: String{
         if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue){
             return encodeStr as String
@@ -40,6 +43,7 @@ extension String {
         return self
     }
     
+    // This function will decode the emoji.
     var decodeEmoji: String{
         let data = self.data(using: String.Encoding.utf8);
         let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
@@ -47,6 +51,10 @@ extension String {
             return str as String
         }
         return self
+    }
+    
+    var underLined: NSAttributedString {
+        NSMutableAttributedString(string: self, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
 }
 

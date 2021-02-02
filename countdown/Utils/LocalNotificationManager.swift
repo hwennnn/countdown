@@ -9,8 +9,10 @@ import Foundation
 import UserNotifications
 
 class LocalNotificationManager{
-    var notifications = [Notification]()
     
+    let utils = Utility()
+    
+    // This will list out all the pending notifications
     func listScheduledNotifications() {
         print("List notifications")
         UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
@@ -21,6 +23,7 @@ class LocalNotificationManager{
         }
     }
     
+    // This will check whether the application is granted authorization to send out notifications. If so, it will schedule notifications.
     private func requestAuthorization(_ event: Event) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
 
@@ -30,6 +33,7 @@ class LocalNotificationManager{
         }
     }
     
+    // This function is accessible to the main app. It will request authorization or directly schedule the event's notifications based on the notification settings.
     func schedule(_ event: Event) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
 
@@ -44,12 +48,13 @@ class LocalNotificationManager{
         }
     }
     
+    // This serves as a helper function to schedule notifications by passing different index(which indicates different notification timing) to the main schedule function.
     private func scheduleNotifications(_ event:Event){
         // set reminder when the countdown finishes
         scheduleNotification(event, -1)
         
         // set reminders based on the user settings
-        let reminders = stringToArray(event.reminders)
+        let reminders = utils.stringToArray(event.reminders)
         for (index, needSet) in reminders.enumerated(){
             if (needSet){
                 scheduleNotification(event, index)
@@ -57,19 +62,21 @@ class LocalNotificationManager{
         }
     }
     
+    // This is the main schedule function. It will wrap out the event details(title and date) and send a pending to request to the nofication center for sending out the notifications later.
     private func scheduleNotification(_ event: Event, _ index: Int) {
         let content = UNMutableNotificationContent()
         content.title = "Countdown - \(event.name)"
         content.sound = UNNotificationSound.default
         content.badge = 1
 
-        var combinedDate = combineDateAndTime(event.date, event.time, event.includedTime)
+        var combinedDate = utils.combineDateAndTime(event.date, event.time, event.includedTime)
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_SG")
         dateFormatter.dateFormat = "h:mm a"
         let date = dateFormatter.string(from: combinedDate)
         
+        // customise different content based on the notification timing
         if (index == -1){
             content.body = "The countdown has completed"
         }else{
@@ -95,7 +102,7 @@ class LocalNotificationManager{
         }
         
         
-//         substract based on the reminder hours settings
+        // substract based on the reminder hours settings
         switch (index){
             case 0:
                 // 30 minutes before
@@ -136,46 +143,24 @@ class LocalNotificationManager{
         
     }
     
+    // This function remove all notifications. This will be called when logged out.
     func removeAllNotifications(){
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
     
+    // This function will remove all notification for a particular event. This will be called when updating or deleting a event.
     func removeNotifications(_ event:Event){
         removeNotification(event, -1)
         
-        let reminders = stringToArray(event.reminders)
+        let reminders = utils.stringToArray(event.reminders)
         for (index, _) in reminders.enumerated(){
             removeNotification(event, index)
         }
     }
     
+    // This function will remove the notification based on the identifier using the suffix index.
     private func removeNotification(_ event:Event, _ index:Int){
         let notificationID = (index == -1) ? event.id : "\(event.id)\(index)"
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationID])
-    }
-    
-    func combineDateAndTime(_ date: Date, _ time: Date, _ includedTime:Bool) -> Date {
-        
-        let calendar = NSCalendar.current
-
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
-
-        var components = DateComponents()
-        components.year = dateComponents.year
-        components.month = dateComponents.month
-        components.day = dateComponents.day
-        
-        if (includedTime){
-            components.hour = timeComponents.hour
-            components.minute = timeComponents.minute
-        }
-        
-        return calendar.date(from: components)!
-    }
-    
-    func stringToArray(_ s:String) -> [Bool] {
-        let stringArray:[String] = s.components(separatedBy: ",")
-        return stringArray.map{Bool($0)!}
     }
 }

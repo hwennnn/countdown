@@ -688,33 +688,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izt-NS-mOO">
-                                <rect key="frame" x="41" y="90" width="195" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYW-Yp-YKH">
-                                <rect key="frame" x="41" y="219" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYW-Yp-YKH">
+                                <rect key="frame" x="34" y="379" width="90" height="39"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="dDI-KT-YdU"/>
+                                    <constraint firstAttribute="height" constant="39" id="dDu-BR-2h9"/>
+                                </constraints>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="logout:" destination="LfV-JV-ctL" eventType="touchUpInside" id="RvG-zQ-kvX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N73-nI-fQZ">
+                                <rect key="frame" x="34" y="247" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_clear.png" translatesAutoresizingMaskIntoConstraints="NO" id="RPe-96-XaN">
+                                <rect key="frame" x="0.0" y="60" width="162" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="162" id="qyb-uF-eW9"/>
+                                    <constraint firstAttribute="height" constant="105" id="szr-Ry-klC"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-6v-anG">
+                                <rect key="frame" x="34" y="173" width="107" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" systemColor="systemIndigoColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😊 Thank you for using our app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpJ-lI-DtL">
+                                <rect key="frame" x="34" y="465" width="209" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Izt-NS-mOO">
+                                <rect key="frame" x="34" y="276" width="209" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="209" id="b5f-r2-wi5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jl6-qI-w2s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Bd0-6v-anG" firstAttribute="leading" secondItem="jl6-qI-w2s" secondAttribute="leading" constant="34" id="54T-NE-Fex"/>
+                            <constraint firstItem="kYW-Yp-YKH" firstAttribute="leading" secondItem="jl6-qI-w2s" secondAttribute="leading" constant="34" id="LaG-P4-9HB"/>
+                            <constraint firstItem="kYW-Yp-YKH" firstAttribute="top" secondItem="Izt-NS-mOO" secondAttribute="bottom" constant="85" id="V2m-Yw-SXg"/>
+                            <constraint firstItem="N73-nI-fQZ" firstAttribute="leading" secondItem="jl6-qI-w2s" secondAttribute="leading" constant="34" id="VZy-jW-q9e"/>
+                            <constraint firstItem="RPe-96-XaN" firstAttribute="leading" secondItem="jl6-qI-w2s" secondAttribute="leading" id="XZ5-9c-E5h"/>
+                            <constraint firstItem="EpJ-lI-DtL" firstAttribute="leading" secondItem="jl6-qI-w2s" secondAttribute="leading" constant="34" id="bH8-Br-rj9"/>
+                            <constraint firstItem="Izt-NS-mOO" firstAttribute="top" secondItem="N73-nI-fQZ" secondAttribute="bottom" constant="8" symbolic="YES" id="bKU-Eb-azJ"/>
+                            <constraint firstItem="Izt-NS-mOO" firstAttribute="leading" secondItem="jl6-qI-w2s" secondAttribute="leading" constant="34" id="eJJ-2E-ZEN"/>
+                            <constraint firstItem="EpJ-lI-DtL" firstAttribute="top" secondItem="kYW-Yp-YKH" secondAttribute="bottom" constant="47" id="feR-iI-T1b"/>
+                            <constraint firstItem="Bd0-6v-anG" firstAttribute="top" secondItem="RPe-96-XaN" secondAttribute="bottom" constant="8" symbolic="YES" id="k2B-7s-hYM"/>
+                            <constraint firstItem="N73-nI-fQZ" firstAttribute="top" secondItem="Bd0-6v-anG" secondAttribute="bottom" constant="50" id="pxl-aj-Rev"/>
+                            <constraint firstItem="RPe-96-XaN" firstAttribute="top" secondItem="jl6-qI-w2s" secondAttribute="top" constant="16" id="qOi-IP-sal"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WHK-9U-RjS"/>
                     <connections>
+                        <outlet property="emailLabel" destination="N73-nI-fQZ" id="J6a-FV-6Zi"/>
                         <outlet property="userID" destination="Izt-NS-mOO" id="P9Q-n5-xpU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJu-3Q-Mb7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189.8550724637682" y="-986.38392857142856"/>
+            <point key="canvasLocation" x="1189.2307692307693" y="-986.72985781990519"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="Tv3-7V-WH9">
@@ -930,6 +981,7 @@
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="logo_clear.png" width="384" height="384"/>
         <namedColor name="AccentColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
@@ -944,6 +996,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

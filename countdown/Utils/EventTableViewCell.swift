@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Customise table view cell for the event table.
 class EventTableViewCell:UITableViewCell {
     
     @IBOutlet weak var colourLine: UIView!
