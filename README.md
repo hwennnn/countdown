@@ -1,11 +1,23 @@
 # Countdown
 <br />
 <p align="center">
-  <a href="https://github.com/alexanderritik/Best-README-Template">
-    <img src="logo.jpeg" alt="Logo" width="80" height="80">
-  </a>
+    <img src="countdown/logo.png" alt="Logo" width="80" height="80">
   <p align="center">
-    One to two paragraph statement about your product and what it does.
+      NPQuickBite is an education mobile app for the experiential-based learning. All the courses are "bite-sized". The courses are categorised by Security, Financial, Programming and Miscellaneous.
+
+  All content is created by Ngee Ann Polytechnic lecturers with years of the relevant experience. Contents are customised text, images and videos.
+
+  The app is targeted at knowledge workers and general public.
+
+  #1. The Security section is to help the general public to be aware of the danger in phishing and fraudulent. The advanced topic will discussed on malware and latest issues in security.
+
+  #2. The Financial section is to help the knowledge worker in the area of banking and finance to understand the latest fintech initiatives around the world. The advanced topic will include crypto-currency and Open Banking API.
+
+  #3. The Programming section is to help user to quickly understand the concepts of problem solving using tools such as Python. The advanced topic will include Object-Oriented concepts to solve real world problem with technology.
+
+  #4. The Miscellaneous section is to provide basic topics such as the use of IT tools in daily life.
+
+  All courses will incorporate a simple quiz unit to access the understanding of the topic. As the spirit of learning, multiple attempts are encouraged. The quiz results will be shown in subsequent unit.
   </p>
 </p>
 
