@@ -27,7 +27,7 @@ func fetchEvent(entry:EventEntry) -> Event {
 }
 
 func shouldDisplayView(entry:EventEntry) -> Bool{
-    return entry.isPlaceholder
+    return !entry.isPlaceholder
 }
 
 struct CountdownWidgetSmall: View {
@@ -49,7 +49,7 @@ struct CountdownWidgetSmall: View {
                     Text(event.name).bold().foregroundColor(.black).font(.subheadline).lineLimit(2)
                 }.lineSpacing(1)
                 
-                if !shouldDisplayView(entry: entry){
+                if shouldDisplayView(entry: entry){
                     
                     Spacer()
                     
