@@ -12,6 +12,10 @@ func shouldShowViewLarge(c:Int) -> Bool {
     return c < 7
 }
 
+func shouldPlaceSpacerLarge(entry:EventEntry) -> Bool {
+    return entry.event.count < 7
+}
+
 struct CountdownLargeWidget: View {
     let entry:EventEntry
     var body: some View {
@@ -25,7 +29,9 @@ struct CountdownLargeWidget: View {
                         }
                     }
                 }.padding(10)
-                Spacer()
+                if shouldPlaceSpacerLarge(entry: entry){
+                    Spacer()
+                }
             }
         )
     }
