@@ -80,7 +80,7 @@ pod install
 #### Usage
 
 ```bash
-open .countdown.xcworkspace
+open countdown.xcworkspace
 ```
 
 ## Credits
