@@ -8,6 +8,7 @@
 import SwiftUI
 import WidgetKit
 
+// fetches event by id , else if cannot be found , the recent one will be return else if defaultview
 func fetchEvent(entry:EventEntry) -> Event {
     for event in entry.event{
         if entry.configuration.Event != nil {
@@ -26,9 +27,10 @@ func fetchEvent(entry:EventEntry) -> Event {
     
 }
 
-func shouldDisplayView(entry:EventEntry) -> Bool{
-    return !entry.isPlaceholder
-}
+// helper function to check if a entry is a placeholder
+//func shouldDisplayView(entry:EventEntry) -> Bool{
+//    return entry.isPlaceholder
+//}
 
 struct CountdownWidgetSmall: View {
     let entry:EventEntry
@@ -49,38 +51,30 @@ struct CountdownWidgetSmall: View {
                     Text(event.name).bold().foregroundColor(.black).font(.subheadline).lineLimit(2)
                 }.lineSpacing(1)
                 
-                if shouldDisplayView(entry: entry){
-                    
-                    Spacer()
-                    
-                    VStack(alignment: .leading)
-                    {
-                        Text(String(days)).font(.title).foregroundColor(.black)
-                        Text(utils.getCountDownDesc(combined)).foregroundColor(.black).font(.system(size: 12))
-                    }
-                    
-                    Spacer()
+                Spacer()
+                
+                VStack(alignment: .leading)
+                {
+                    Text(String(days)).font(.title).foregroundColor(.black)
+                    Text(utils.getCountDownDesc(combined)).foregroundColor(.black).font(.system(size: 12))
+                }
+                
+                Spacer()
 
-                    HStack{
-                        Text(utils.convertDateToString(event)).foregroundColor(.black).font(.system(size: 13)).lineLimit(2)
-                    }
+                HStack{
+                    Text(utils.convertDateToString(event)).foregroundColor(.black).font(.system(size: 13)).lineLimit(2)
                 }
-                else{
-                    Spacer()
-                    Text("Click here").foregroundColor(.black).font(.subheadline)
-                }
+                
             
             }.padding(15)
                 
         }
-        
-        
     }
 }
 
 struct CountdownWidgetSmall_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownWidgetSmall(entry:EventEntry.defaultview).previewContext(WidgetPreviewContext(family: .systemSmall))
+        CountdownWidgetSmall(entry:EventEntry.placeholder).previewContext(WidgetPreviewContext(family: .systemSmall))
     }
     
 }

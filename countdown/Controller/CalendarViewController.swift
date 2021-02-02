@@ -34,6 +34,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
     var datesDictionary = [String:[Event]]()
     var eventArr:[Event] = []
     
+    
     @IBAction func didTapMenu(){
         present(appDelegate.menu!, animated: true, completion: nil)
     }
@@ -78,15 +79,6 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         let date = selectedDay.date.convertedDate()!
         let formattedDateString:String = formatter.string(from: date)
         self.eventArr = self.datesDictionary[formattedDateString] ?? []
-        
-//        printing of the dictionary
-//        for day in datesDictionary{
-//            print(day.key)
-//            for e in day.value as [Event]{
-//                print(e.name, dateFormat(e))
-//            }
-//        }
-        
         self.eventTable.reloadData()
         self.calendarView.contentController.refreshPresentedMonth()
     }
@@ -130,6 +122,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         return cell
     }
     
+    // fetching data from core data and loading datesdictionary
     func loadEventData() -> [String:[Event]]{
         //filling up dictionary (data)
         var dict = [String:[Event]]()
@@ -147,6 +140,7 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         return dict
     }
     
+    // when click on event in table view , redirects to event details page 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "calendarEventDetails", let destination = segue.destination as? EventDetailsViewController {
             if let cell:EventTableViewCell = sender as? EventTableViewCell{
@@ -165,6 +159,7 @@ extension CalendarViewController : CVCalendarViewDelegate{
     func presentationMode() -> CalendarMode { return CalendarMode.monthView }
     func firstWeekday() -> Weekday { return Weekday.sunday }
     
+    // animations and updating of selected month
     func presentedDateUpdated(_ date: CVDate) {
             if monthLabel.text != date.globalDescription && self.animationFinished {
                 let updatedMonthLabel = UILabel()
@@ -180,6 +175,7 @@ extension CalendarViewController : CVCalendarViewDelegate{
                 updatedMonthLabel.transform = CGAffineTransform(translationX: 0, y: offset)
                 updatedMonthLabel.transform = CGAffineTransform(scaleX: 1, y: 0.1)
                 
+                // animating month label
                 UIView.animate(withDuration: 0.35, delay: 0, options: UIView.AnimationOptions.curveEaseInOut , animations: {
                     self.animationFinished = false
                     self.monthLabel.transform = CGAffineTransform(translationX: 0, y: -offset)
@@ -205,16 +201,16 @@ extension CalendarViewController : CVCalendarViewDelegate{
         }
     
     
+    // update table view when date is click from the calendar ,
+    // selecting data from datesDictionary based on date clicked
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool){
         self.selectedDay = dayView
         let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
         self.eventArr = self.datesDictionary[formattedDateString] ?? []
-
-//        print(formattedDateString, self.eventArr)
-        
         self.eventTable.reloadData()
     }
     
+    // addding a circle to dates where there are events
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
         let formattedDateString:String = formatter.string(from: dayView.date.convertedDate()!)
         if let _ = self.datesDictionary[formattedDateString]{
@@ -224,6 +220,7 @@ extension CalendarViewController : CVCalendarViewDelegate{
         return false
     }
     
+    // set circle color
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
         return [.systemBlue]
     }

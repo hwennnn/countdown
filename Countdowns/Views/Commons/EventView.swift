@@ -2,7 +2,7 @@
 //  EventView.swift
 //  CountdownsExtension
 //
-//  Created by shadow on 29/1/21.
+//  Created by zachary on 29/1/21.
 //
 
 import SwiftUI
@@ -21,7 +21,7 @@ struct EventView: View {
             Rectangle().fill(Color(utils.colourSchemeList[entry.event[selected].colour].colorWithHexString())).frame(width: 5, height: 40).padding(4)
             VStack(alignment: .leading){
                 HStack{
-                    Text(decode((entry.event[selected].emoji))!)
+                    Text(entry.event[selected].emoji.decodeEmoji)
                     Text(entry.event[selected].name).font(.subheadline).bold().foregroundColor(.black)
                 }.lineLimit(1)
                 Text(utils.convertDateToString(entry.event[selected])).font(.system(size: 13)).foregroundColor(.black)

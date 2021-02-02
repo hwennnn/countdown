@@ -2,16 +2,19 @@
 //  CountdownLargeWidget.swift
 //  CountdownsExtension
 //
-//  Created by shadow on 31/1/21.
+//  Created by zachary on 31/1/21.
 //
 
 import SwiftUI
 import WidgetKit
 
+
+//limiting the number of events to 7
 func shouldShowViewLarge(c:Int) -> Bool {
     return c < 7
 }
 
+// adding blank space when less than 7 events
 func shouldPlaceSpacerLarge(entry:EventEntry) -> Bool {
     return entry.event.count < 7
 }

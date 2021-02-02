@@ -12,17 +12,18 @@ import Foundation
 import CoreData
 import UIKit
 
-
-
 struct EventTimelineProvider: IntentTimelineProvider {
+    
     typealias Intent = SelectEventIntent
     typealias Entry = EventEntry
+
     let coredatautils = CoredataUtils()
     
     func placeholder(in context: Context) -> EventEntry {
         EventEntry.placeholder
     }
     
+    // fetches data from core data to update widget
     func getSnapshot(for configuration: SelectEventIntent, in context: Context, completion: @escaping (EventEntry) -> Void) {
         if context.isPreview {
             completion(EventEntry.placeholder)
@@ -37,6 +38,7 @@ struct EventTimelineProvider: IntentTimelineProvider {
         }
     }
     
+    // setting when to update the widget
     func getTimeline(for configuration: SelectEventIntent, in context: Context, completion: @escaping (Timeline<EventEntry>) -> Void) {
         if let event:[Event]? = coredatautils.fetchdata(){
             let entry = EventEntry(date: Date(), event: event! ,configuration: configuration)
@@ -57,6 +59,7 @@ struct EventEntry: TimelineEntry {
 }
 
 extension EventEntry{
+    
     static var stub: EventEntry{
         EventEntry(date: Date(), event: [.init("", "EventName", "", false, Date(), Date(), Date(), "", 3, 0.0)],configuration: SelectEventIntent())
     }
@@ -66,6 +69,7 @@ extension EventEntry{
                                                , false, Date(), Date(), Date(), "", 4, 0.0) ,.init("", "Homework", "📚".encodeEmoji, false, Date(), Date(), Date(), "", 1, 0.0),.init("", "Ballet Reciet", "🩰".encodeEmoji, false, Date(), Date(), Date(), "", 2, 0.0) ], isPlaceholder: true ,configuration: SelectEventIntent())
     }
     
+    // default view when there are no events in the list
     static var defaultview: EventEntry{
         EventEntry(date: Date(), event: [.init("", "Create first countdown!", "📅".encodeEmoji, false, Date() , Date(), Date(), "", 4, 0.0)],isPlaceholder: true , configuration: SelectEventIntent())
     }
@@ -89,12 +93,6 @@ struct CountdownsEntryView : View {
     
     
 }
-
-func decode(_ s: String) -> String? {
-    let data = s.data(using: .utf8)!
-    return String(data: data, encoding: .nonLossyASCII)
-}
-
 
 @main
 struct Countdowns: Widget {

@@ -64,6 +64,7 @@
 		B65F96AF25C8EA8900DF1086 /* CoredataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */; };
 		B65F96B025C8EA8900DF1086 /* CoredataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */; };
 		B65F96B125C8EA8900DF1086 /* CoredataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */; };
+		B694E34825C929F600084142 /* MultiEventDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694E34725C929F600084142 /* MultiEventDefaultView.swift */; };
 		B6E0225225C3EFCD00E66B1C /* CountdownWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */; };
 		B6E0225925C3F07500E66B1C /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0225825C3F07500E66B1C /* EventView.swift */; };
 /* End PBXBuildFile section */
@@ -150,6 +151,7 @@
 		B64A364C25C30C7F0087999A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64A364E25C30C7F0087999A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B65F96AE25C8EA8900DF1086 /* CoredataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataUtils.swift; sourceTree = "<group>"; };
+		B694E34725C929F600084142 /* MultiEventDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiEventDefaultView.swift; sourceTree = "<group>"; };
 		B6E0225125C3EFCD00E66B1C /* CountdownWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetSmall.swift; sourceTree = "<group>"; };
 		B6E0225825C3F07500E66B1C /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		D32F63520597B33519B40973 /* Pods_countdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,8 +239,8 @@
 				8AB295D825A7402D00EC33EB /* Model */,
 				8AB295D625A7401100EC33EB /* Controller */,
 				8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */,
-				8A945C8925C6B8000076F596 /* splashScreen.png */,
 				8A16BEC125C5077E004C15D5 /* logo.png */,
+				8A945C8925C6B8000076F596 /* splashScreen.png */,
 				8A5068C425C83DCB00A68A13 /* calendar.json */,
 				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
 				8AB295C825A73A5500EC33EB /* Assets.xcassets */,
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				B6E0225825C3F07500E66B1C /* EventView.swift */,
+				B694E34725C929F600084142 /* MultiEventDefaultView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				B613EBFB25C6FE1400136B61 /* CountdownMediumWidget.swift in Sources */,
 				B63412C025C5844500E69447 /* CoreDataContainer.swift in Sources */,
 				B613EBC525C6F44D00136B61 /* IntentHandler.swift in Sources */,
+				B694E34825C929F600084142 /* MultiEventDefaultView.swift in Sources */,
 				B620304725C6350F0033FDCF /* countdown.xcdatamodeld in Sources */,
 				B64A364F25C30C7F0087999A /* Countdowns.intentdefinition in Sources */,
 				B6E0225225C3EFCD00E66B1C /* CountdownWidgetSmall.swift in Sources */,

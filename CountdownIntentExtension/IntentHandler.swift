@@ -9,6 +9,7 @@ import Intents
 import CoreData
 import WidgetKit
 
+// fetching available events from coredata populating options when editing widget
 class IntentHandler: INExtension,SelectEventIntentHandling{
     func provideEventOptionsCollection(for intent: SelectEventIntent, with completion: @escaping (INObjectCollection<EventParam>?, Error?) -> Void) {
             let coredatautils = CoredataUtils()

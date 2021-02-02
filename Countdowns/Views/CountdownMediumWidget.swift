@@ -9,10 +9,13 @@ import SwiftUI
 import WidgetKit
 import Foundation
 
+
+//limiting the number of events to 3
 func shouldShowViewMedium(c:Int) -> Bool {
     return c < 3
 }
 
+// adding blank space when less than 3 events
 func shouldPlaceSpacerMedium(entry:EventEntry) -> Bool {
     return entry.event.count < 3
 }
