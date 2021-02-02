@@ -32,5 +32,21 @@ extension String {
         let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
         return color
     }
+    
+    var encodeEmoji: String{
+        if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue){
+            return encodeStr as String
+        }
+        return self
+    }
+    
+    var decodeEmoji: String{
+        let data = self.data(using: String.Encoding.utf8);
+        let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
+        if let str = decodedStr{
+            return str as String
+        }
+        return self
+    }
 }
 

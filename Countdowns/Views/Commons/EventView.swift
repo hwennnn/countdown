@@ -22,16 +22,16 @@ struct EventView: View {
             VStack(alignment: .leading){
                 HStack{
                     Text(decode((entry.event[selected].emoji))!)
-                    Text(entry.event[selected].name).bold()
+                    Text(entry.event[selected].name).bold().foregroundColor(.black)
                 }.lineLimit(1)
-                Text(utils.convertDateToString(entry.event[selected])).font(.system(size: 13))
+                Text(utils.convertDateToString(entry.event[selected])).font(.system(size: 13)).foregroundColor(.black)
             }
             Spacer()
             VStack{
-                Text(String(days)).font(.system(size: 20)).bold()
-                Text(utils.getCountDownDesc(combined)).font(.system(size: 13))
+                Text(String(days)).font(.system(size: 20)).bold().foregroundColor(.black)
+                Text(utils.getCountDownDesc(combined)).font(.system(size: 13)).foregroundColor(.black)
             }.padding(5)
-        }.minimumScaleFactor(0.5).redacted(reason: entry.isPlaceholder ? .placeholder : .init())
+        }.minimumScaleFactor(0.5)
     }
 }
 

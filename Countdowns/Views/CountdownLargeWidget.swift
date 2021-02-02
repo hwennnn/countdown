@@ -15,13 +15,19 @@ func shouldShowViewLarge(c:Int) -> Bool {
 struct CountdownLargeWidget: View {
     let entry:EventEntry
     var body: some View {
-        VStack{
-            ForEach(0 ..< entry.event.count){
-                if shouldShowViewLarge(c:$0){
-                    EventView(entry: entry,selected: $0)
-                }
+        
+        Color(.white).edgesIgnoringSafeArea(.all).overlay(
+            VStack(alignment: .leading,spacing:15){
+                VStack(alignment: .leading){
+                    ForEach(0 ..< entry.event.count){
+                        if shouldShowViewLarge(c:$0){
+                            EventView(entry: entry,selected: $0)
+                        }
+                    }
+                }.padding(10)
+                Spacer()
             }
-        }.padding(10).redacted(reason: entry.isPlaceholder ? .placeholder : .init())
+        )
     }
 }
 

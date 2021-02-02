@@ -24,8 +24,8 @@
 	<dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
+		<key>NSWidgetBackgroundColorName</key>
+		<string>WidgetBackground</string>
 	</dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>.white</string>
 </dict>
 </plist>

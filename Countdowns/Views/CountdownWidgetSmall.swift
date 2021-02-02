@@ -2,7 +2,7 @@
 //  CountdownWidgetSmall.swift
 //  CountdownsExtension
 //
-//  Created by shadow on 29/1/21.
+//  Created by zachary on 29/1/21.
 //
 
 import SwiftUI
@@ -19,6 +19,9 @@ func fetchEvent(entry:EventEntry) -> Event {
         }
     }
     WidgetCenter.shared.reloadAllTimelines()
+    if entry.event.count > 0 {
+        return entry.event[0]
+    }
     return EventEntry.placeholder.event[0]
     
 }
@@ -37,7 +40,7 @@ struct CountdownWidgetSmall: View {
             VStack(alignment: .leading){
                 
                 HStack(){
-                    Text(decode((event.emoji))!).foregroundColor(.black)
+                    Text(event.emoji.decodeEmoji).foregroundColor(.black)
                     Text(event.name).bold().foregroundColor(.black).font(.subheadline).lineLimit(2)
                 }.lineSpacing(1)
                 
@@ -57,7 +60,7 @@ struct CountdownWidgetSmall: View {
                 
             }.padding(15)
             
-        }.redacted(reason: entry.isPlaceholder ? .placeholder : .init())
+        }
     }
 }
 
