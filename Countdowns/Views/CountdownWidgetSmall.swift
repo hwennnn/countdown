@@ -38,7 +38,7 @@ struct CountdownWidgetSmall: View {
                 
                 HStack(){
                     Text(decode((event.emoji))!).foregroundColor(.black)
-                    Text(event.name).foregroundColor(.black).font(.subheadline).lineLimit(2)
+                    Text(event.name).bold().foregroundColor(.black).font(.subheadline).lineLimit(2)
                 }.lineSpacing(1)
                 
                 Spacer()
