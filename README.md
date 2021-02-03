@@ -26,6 +26,10 @@
   </p>
 </p>
 
+
+## Demo Video
+[![Demo Video](screenshots/poster.png)](https://youtu.be/xdkzLyXWwXIE)
+
 ## Screenshots
 <p align="row">
   <img src= "screenshots/signup.png" width="400" height="800">
@@ -76,7 +80,7 @@ pod install
 #### Usage
 
 ```bash
-open .countdown.xcworkspace
+open countdown.xcworkspace
 ```
 
 ## Credits
