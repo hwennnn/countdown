@@ -169,7 +169,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
     }
     
-    
+    // Google SignIn delegate function
+    // This will be called when sign in action with Google is attempted
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         
         if let error = error {
@@ -207,7 +208,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
     }
 
-
+    // Google SignIn delegate function
+    // This will be called when sign in action with Google is cancelled or closed
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         if let error = error {
@@ -216,12 +218,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         }
     }
   
-    
+    // button onClick function to trigeer google signIn
     @IBAction func googleLogin(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
     }
     
-    
+    // Facebook SignIn delegate function
+    // This will be called when sign in action with Facebook is attempted
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
@@ -260,6 +263,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
 
     }
     
+    // Facebook SignIn delegate function
+    // This will be called when sign in action with Facebook is cancelled or closed
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("logout facebook")
     }
