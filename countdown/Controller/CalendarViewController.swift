@@ -118,6 +118,14 @@ class CalendarViewController : UIViewController,UITableViewDelegate,UITableViewD
         cell.date.text = "\(utils.convertDateToString(event))"
         cell.remaining.text = "\(utils.calculateCountDown(remainingDateTime))"
         cell.remainingDesc.text = "\(utils.getCountDownDesc(remainingDateTime))"
+        
+        if (Date() > remainingDateTime){
+            cell.remaining.textColor = .blue
+            cell.remainingDesc.textColor = .blue
+        }else{
+            cell.remaining.textColor = .black
+            cell.remainingDesc.textColor = .black
+        }
 
         return cell
     }

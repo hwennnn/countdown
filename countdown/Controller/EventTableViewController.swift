@@ -124,12 +124,19 @@ class EventTableViewController : UIViewController,UITableViewDelegate,UITableVie
 
         let event = eventList[indexPath.row]
         let remainingDateTime = utils.combineDateAndTime(event.date, event.time, event.includedTime)
-        
         cell.colourLine.backgroundColor = utils.colourSchemeList[event.colour].colorWithHexString()
         cell.title.text = "\(event.emoji.decodeEmoji) \(event.name)"
         cell.date.text = "\(utils.convertDateToString(event))"
         cell.remaining.text = "\(utils.calculateCountDown(remainingDateTime))"
         cell.remainingDesc.text = "\(utils.getCountDownDesc(remainingDateTime))"
+        
+        if (Date() > remainingDateTime){
+            cell.remaining.textColor = .blue
+            cell.remainingDesc.textColor = .blue
+        }else{
+            cell.remaining.textColor = .black
+            cell.remainingDesc.textColor = .black
+        }
   
         return cell
     }
