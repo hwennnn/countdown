@@ -54,6 +54,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
+        facebookLoginButton.isHidden = true
         facebookLoginButton.delegate = self
         facebookLoginButton.permissions = ["public_profile", "email"]
         
@@ -221,6 +222,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     // button onClick function to trigeer google signIn
     @IBAction func googleLogin(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
+    }
+    
+    @IBAction func facebookLogin(_ sender: Any) {
+        facebookLoginButton.sendActions(for: .touchUpInside)
     }
     
     // Facebook SignIn delegate function
