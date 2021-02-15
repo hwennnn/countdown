@@ -82,26 +82,39 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dq-dC-jwC">
-                                        <rect key="frame" x="75" y="444" width="50" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Google"/>
-                                        <connections>
-                                            <action selector="googleLogin:" destination="6rL-dJ-5ok" eventType="touchUpInside" id="jvo-Lc-VCO"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xf0-No-DHz" customClass="FBSDKLoginButton">
-                                        <rect key="frame" x="174" y="444" width="67" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="kxj-TW-Swb">
+                                        <rect key="frame" x="143" y="415" width="128" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dq-dC-jwC">
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="BAS-zs-4zP"/>
+                                                    <constraint firstAttribute="height" constant="44" id="a7i-d1-LRj"/>
+                                                </constraints>
+                                                <state key="normal" image="google.png">
+                                                    <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="googleLogin:" destination="6rL-dJ-5ok" eventType="touchUpInside" id="jvo-Lc-VCO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orv-g4-fdq">
+                                                <rect key="frame" x="84" y="0.0" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="99K-h7-8mF"/>
+                                                    <constraint firstAttribute="height" constant="44" id="iZi-87-sE9"/>
+                                                </constraints>
+                                                <state key="normal" image="facebook.png"/>
+                                                <connections>
+                                                    <action selector="facebookLogin:" destination="6rL-dJ-5ok" eventType="touchUpInside" id="Dr6-Mk-2ry"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xf0-No-DHz" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="141" y="319" width="133" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Facebook"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAm-oi-xgE">
-                                        <rect key="frame" x="174" y="444" width="67" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Facebook"/>
-                                        <connections>
-                                            <action selector="facebookLogin:" destination="6rL-dJ-5ok" eventType="touchUpInside" id="q0Z-G3-oGE"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -112,6 +125,8 @@
                                     <constraint firstItem="fe6-cQ-E0x" firstAttribute="centerX" secondItem="RAH-DC-uKl" secondAttribute="centerX" id="WfJ-mj-zo1"/>
                                     <constraint firstItem="Oyt-OT-ovz" firstAttribute="centerX" secondItem="RAH-DC-uKl" secondAttribute="centerX" id="Wxr-9v-Gdh"/>
                                     <constraint firstItem="W1Q-KV-nmt" firstAttribute="top" secondItem="Oyt-OT-ovz" secondAttribute="bottom" constant="49" id="aqf-sD-O4R"/>
+                                    <constraint firstItem="kxj-TW-Swb" firstAttribute="centerX" secondItem="RAH-DC-uKl" secondAttribute="centerX" id="dkK-3P-crm"/>
+                                    <constraint firstItem="kxj-TW-Swb" firstAttribute="top" secondItem="Uqd-YZ-bTy" secondAttribute="bottom" constant="32" id="m3g-XQ-wxS"/>
                                     <constraint firstItem="Uqd-YZ-bTy" firstAttribute="centerX" secondItem="RAH-DC-uKl" secondAttribute="centerX" id="u5E-m1-LZy"/>
                                     <constraint firstItem="jJC-9O-iQa" firstAttribute="centerX" secondItem="RAH-DC-uKl" secondAttribute="centerX" id="xWG-a6-exc"/>
                                     <constraint firstItem="jJC-9O-iQa" firstAttribute="top" secondItem="W1Q-KV-nmt" secondAttribute="bottom" constant="42" id="xYA-fW-90D"/>
@@ -304,6 +319,8 @@
     </designables>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="facebook.png" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="google.png" width="18" height="18"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

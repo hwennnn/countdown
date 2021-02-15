@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5FFEC8A136E2B507F4FB84E8 /* Pods_countdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F63520597B33519B40973 /* Pods_countdown.framework */; };
 		8A16BEC225C5077E004C15D5 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A16BEC125C5077E004C15D5 /* logo.png */; };
+		8A2B1FAF25DAC75400354FC5 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A2B1FAE25DAC75400354FC5 /* google.png */; };
+		8A2B1FB725DAC77300354FC5 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A2B1FB625DAC77300354FC5 /* facebook.png */; };
 		8A2B871325C25A5D002DCDBB /* FirebaseDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */; };
 		8A4D3FC025C820530073FA1C /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B613EC5025C70DD200136B61 /* String+Ext.swift */; };
 		8A5068C525C83DCB00A68A13 /* calendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A5068C425C83DCB00A68A13 /* calendar.json */; };
@@ -106,6 +108,8 @@
 		159A631724B6B1873F5B5BB0 /* Pods-countdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.release.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.release.xcconfig"; sourceTree = "<group>"; };
 		6B2C1E0DE78C22AB8F365A6B /* Pods-countdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countdown.debug.xcconfig"; path = "Target Support Files/Pods-countdown/Pods-countdown.debug.xcconfig"; sourceTree = "<group>"; };
 		8A16BEC125C5077E004C15D5 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		8A2B1FAE25DAC75400354FC5 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
+		8A2B1FB625DAC77300354FC5 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		8A2B871225C25A5D002DCDBB /* FirebaseDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataController.swift; sourceTree = "<group>"; };
 		8A5068C425C83DCB00A68A13 /* calendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = calendar.json; sourceTree = "<group>"; };
 		8A5D6FB425C3FF3600301E56 /* EventActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionsViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				8AB295D625A7401100EC33EB /* Controller */,
 				8AB295BE25A73A5400EC33EB /* SceneDelegate.swift */,
 				8AB295BC25A73A5400EC33EB /* AppDelegate.swift */,
+				8A2B1FAE25DAC75400354FC5 /* google.png */,
+				8A2B1FB625DAC77300354FC5 /* facebook.png */,
 				8A16BEC125C5077E004C15D5 /* logo.png */,
 				8A945C8925C6B8000076F596 /* splashScreen.png */,
 				8AB2874F25C91805005DAC0E /* logo_clear.png */,
@@ -452,8 +458,10 @@
 				8AB295CC25A73A5500EC33EB /* LaunchScreen.storyboard in Resources */,
 				8AF954D725C1507400F31095 /* GoogleService-Info.plist in Resources */,
 				8AF9552725C1589400F31095 /* Base.storyboard in Resources */,
+				8A2B1FB725DAC77300354FC5 /* facebook.png in Resources */,
 				8AB295C925A73A5500EC33EB /* Assets.xcassets in Resources */,
 				8AB2875025C91805005DAC0E /* logo_clear.png in Resources */,
+				8A2B1FAF25DAC75400354FC5 /* google.png in Resources */,
 				8A16BEC225C5077E004C15D5 /* logo.png in Resources */,
 				8A945C8A25C6B8000076F596 /* splashScreen.png in Resources */,
 				8AB295C425A73A5400EC33EB /* Main.storyboard in Resources */,

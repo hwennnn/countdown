@@ -219,11 +219,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         }
     }
   
-    // button onClick function to trigeer google signIn
+    // button onClick function to trigeer Google signIn
     @IBAction func googleLogin(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
     }
     
+    // button onClick function to trigeer Facebook signIn
     @IBAction func facebookLogin(_ sender: Any) {
         facebookLoginButton.sendActions(for: .touchUpInside)
     }
