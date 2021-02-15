@@ -128,6 +128,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     
     // Login Action
     @IBAction func login(_ sender: Any) {
+        // disable user interaction while animating activity indicator
+        self.view.isUserInteractionEnabled = false
         // Animate the activity indicator
         activityIndicator.startAnimating()
         // Disable the login button to prevent multiple submission
@@ -146,6 +148,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 
                 self!.firebaseDataController.fetchAllEvents(completion: { completion in
                     if (completion){
+                        self!.view.isUserInteractionEnabled = true
                         self!.activityIndicator.stopAnimating()
                         self!.redirectToMain(true)
                         WidgetCenter.shared.reloadAllTimelines()
@@ -156,6 +159,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 self!.passwordField.text = ""
                 
             }else{
+                self!.view.isUserInteractionEnabled = true
                 self!.activityIndicator.stopAnimating()
                 print(error!.localizedDescription)
                 self!.popAlert("Login Error", error!.localizedDescription)
@@ -176,11 +180,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
+        // disable user interaction while animating activity indicator
+        self.view.isUserInteractionEnabled = false
+        
         // Animate the activity indicator
         activityIndicator.startAnimating()
       
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
+                self.view.isUserInteractionEnabled = true
                 self.activityIndicator.stopAnimating()
                 print(error.localizedDescription)
                 self.popAlert("Login Error", error.localizedDescription)
@@ -189,6 +197,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             
             self.firebaseDataController.fetchAllEvents(completion: { completion in
                 if (completion){
+                    self.view.isUserInteractionEnabled = true
                     self.activityIndicator.stopAnimating()
                     self.redirectToMain(true)
                     WidgetCenter.shared.reloadAllTimelines()
@@ -224,6 +233,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             return
         }
         
+        // disable user interaction while animating activity indicator
+        self.view.isUserInteractionEnabled = false
         // Animate the activity indicator
         activityIndicator.startAnimating()
         
@@ -231,6 +242,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
+                self.view.isUserInteractionEnabled = true
                 self.activityIndicator.stopAnimating()
                 print(error.localizedDescription)
                 return
@@ -238,6 +250,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             
             self.firebaseDataController.fetchAllEvents(completion: { completion in
                 if (completion){
+                    self.view.isUserInteractionEnabled = true
                     self.activityIndicator.stopAnimating()
                     self.redirectToMain(true)
                     WidgetCenter.shared.reloadAllTimelines()
