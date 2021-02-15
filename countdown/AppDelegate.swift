@@ -11,6 +11,7 @@ import Firebase
 import SideMenu
 import GoogleSignIn
 import WidgetKit
+import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

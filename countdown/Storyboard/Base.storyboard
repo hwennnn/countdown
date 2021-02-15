@@ -90,6 +90,11 @@
                                             <action selector="googleLogin:" destination="6rL-dJ-5ok" eventType="touchUpInside" id="jvo-Lc-VCO"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xf0-No-DHz" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="174" y="444" width="67" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Facebook"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -135,6 +140,7 @@
                         <outlet property="activityIndicator" destination="1kx-Kc-d0r" id="vyb-nz-2xs"/>
                         <outlet property="animationView" destination="MFQ-q8-yG1" id="hDf-Ns-mmg"/>
                         <outlet property="emailField" destination="Oyt-OT-ovz" id="htt-Vb-vrm"/>
+                        <outlet property="facebookLoginButton" destination="Xf0-No-DHz" id="W6B-Jk-dRk"/>
                         <outlet property="loginButton" destination="jJC-9O-iQa" id="2N5-fb-eeZ"/>
                         <outlet property="passwordField" destination="W1Q-KV-nmt" id="Vad-tO-agI"/>
                     </connections>

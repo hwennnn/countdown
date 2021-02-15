@@ -5,6 +5,16 @@ PODS:
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
   - CVCalendar (1.6.2)
+  - FBSDKCoreKit (9.0.0):
+    - FBSDKCoreKit/Basics (= 9.0.0)
+    - FBSDKCoreKit/Core (= 9.0.0)
+  - FBSDKCoreKit/Basics (9.0.0)
+  - FBSDKCoreKit/Core (9.0.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (9.0.0):
+    - FBSDKLoginKit/Login (= 9.0.0)
+  - FBSDKLoginKit/Login (9.0.0):
+    - FBSDKCoreKit (~> 9.0.0)
   - Firebase/Analytics (6.34.0):
     - Firebase/Core
   - Firebase/Auth (6.34.0):
@@ -104,6 +114,7 @@ PODS:
 
 DEPENDENCIES:
   - CVCalendar (~> 1.6.2)
+  - FBSDKLoginKit
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
@@ -117,6 +128,8 @@ SPEC REPOS:
   trunk:
     - AppAuth
     - CVCalendar
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -141,6 +154,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   CVCalendar: 515092247b9c5059855643c2a2220f259bd5417f
+  FBSDKCoreKit: ac6cc500b8e104bb9a4dd20b1527b5d199123c2e
+  FBSDKLoginKit: e9b6542fdee322333502ab497f628b011dce7d78
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
@@ -162,6 +177,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SideMenu: 87efd943737bb83aedf0358884d09fcf5576636d
 
-PODFILE CHECKSUM: 8594c3f653952826b0d12c067b1ab694d5cefa22
+PODFILE CHECKSUM: 1e981c6e2dd8a1bdb602a74085d8b88109ae009d
 
 COCOAPODS: 1.10.0

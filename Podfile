@@ -15,6 +15,7 @@ target 'countdown' do
 
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
   pod ‘SideMenu’
   pod 'Firebase/Database'
   pod 'ISEmojiView'

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SideMenu
 import WidgetKit
+import FBSDKLoginKit
 
 class ProfileMenuViewController: UIViewController{
     
@@ -48,6 +49,9 @@ class ProfileMenuViewController: UIViewController{
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError.localizedDescription)
         }
+        
+        // logout from facebook if needed
+        LoginManager().logOut()
         
         // call controller to delete all events and notifications
         eventController.deleteAllEvents()

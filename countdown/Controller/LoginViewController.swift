@@ -12,8 +12,9 @@ import WidgetKit
 import Lottie
 import NVActivityIndicatorView
 import GoogleSignIn
+import FBSDKLoginKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate{
+class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate, LoginButtonDelegate{
     
     // Initialisation of storyboard objects
     @IBOutlet weak var loginButton: UIButton!
@@ -21,6 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var facebookLoginButton: FBLoginButton!
     
     // Initialisation of controllers
     let firebaseDataController = FirebaseDataController()
@@ -51,9 +53,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
-
+        
+        facebookLoginButton.delegate = self
+        facebookLoginButton.permissions = ["public_profile", "email"]
+        
     }
-    
+   
     // play the animation when the view appeared.
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -170,22 +175,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
 
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        // Animate the activity indicator
+        activityIndicator.startAnimating()
       
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
+                self.activityIndicator.stopAnimating()
                 print(error.localizedDescription)
+                self.popAlert("Login Error", error.localizedDescription)
                 return
             }
             
             self.firebaseDataController.fetchAllEvents(completion: { completion in
                 if (completion){
+                    self.activityIndicator.stopAnimating()
                     self.redirectToMain(true)
                     WidgetCenter.shared.reloadAllTimelines()
                 }
             })
-            
         }
-
+        
     }
 
 
@@ -201,5 +211,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     @IBAction func googleLogin(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
     }
+    
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            self.popAlert("Login Error", error.localizedDescription)
+            return
+          }
+        
+        if ((result?.isCancelled) == true){
+            return
+        }
+        
+        // Animate the activity indicator
+        activityIndicator.startAnimating()
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                self.activityIndicator.stopAnimating()
+                print(error.localizedDescription)
+                return
+            }
+            
+            self.firebaseDataController.fetchAllEvents(completion: { completion in
+                if (completion){
+                    self.activityIndicator.stopAnimating()
+                    self.redirectToMain(true)
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
+            })
+        }
+
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("logout facebook")
+    }
+    
     
 }
