@@ -11,9 +11,9 @@ import Firebase
 import WidgetKit
 import Lottie
 import NVActivityIndicatorView
+import GoogleSignIn
 
-
-class LoginViewController: UIViewController, UITextFieldDelegate{
+class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate{
     
     // Initialisation of storyboard objects
     @IBOutlet weak var loginButton: UIButton!
@@ -48,6 +48,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+
     }
     
     // play the animation when the view appeared.
@@ -155,4 +159,47 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
+    
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+      
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            self.firebaseDataController.fetchAllEvents(completion: { completion in
+                if (completion){
+                    self.redirectToMain(true)
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
+            })
+            
+        }
+
+    }
+
+
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+    }
+  
+    
+    @IBAction func googleLogin(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
 }

@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 import Firebase
 import SideMenu
+import GoogleSignIn
+import WidgetKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // configure the firebase
         FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
         // to make sure the firebase authentication will be reset when the app is newly installed (auth is stored in keychain)
         let userDefaults = UserDefaults.standard
@@ -136,6 +140,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     
     }
-
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      return GIDSignIn.sharedInstance().handle(url)
+    }
+  
 }
 
