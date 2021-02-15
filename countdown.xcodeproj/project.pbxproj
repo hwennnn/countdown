@@ -357,6 +357,7 @@
 				8AB295B725A73A5400EC33EB /* Resources */,
 				CC06FE59E353C9295CDBF728 /* [CP] Embed Pods Frameworks */,
 				B64A363825C308C40087999A /* Embed App Extensions */,
+				5FE0723F842DB5E36B65BB77 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -478,6 +479,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5FE0723F842DB5E36B65BB77 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-countdown/Pods-countdown-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CC06FE59E353C9295CDBF728 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

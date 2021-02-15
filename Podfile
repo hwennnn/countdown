@@ -14,6 +14,7 @@ target 'countdown' do
   # https://firebase.google.com/docs/ios/setup#available-pods
 
   pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
   pod ‘SideMenu’
   pod 'Firebase/Database'
   pod 'ISEmojiView'
