@@ -31,10 +31,9 @@
 [![Demo Video](screenshots/poster.png)](https://youtu.be/xdkzLyXWwXIE)
 
 ## Screenshots
-<p align="row">
-<img src= "screenshots/home.png" width="400" height="800">
-  <img src= "screenshots/widgets.png" width="400" height="800">
-</p>
+Home            | Widgets
+:-------------------------:|:-------------------------:
+![](screenshots/home.png)  |  ![](screenshots/widgets.png)
 
 ## Built With
 
