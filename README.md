@@ -1,34 +1,39 @@
 # <img src="countdown/logo_clear.png" alt="Logo" width="25" height="25"> Countdown 
 <p align="center">
   <p>
-      Countdown is a productivity mobile app for keeping track of events in daily life. The app aims to help the users to be more productive by encouraging good         habits of time management.
-      The app is targeted to everyone.
-      <p>
-      Features:
-      <br>
-        <b>#1.</b> Create, edit and delete events and view them from a calendar or widgets.
-      <br>
-      <b>#2.</b> Pick any icon you'd like to represent the mood of the countdown.
-      <br>
-      <b>#3.</b> In addition, to receive notifications about upcoming events, users can customise reminders 1 hour or 1 day before the event.
-      <br>
-      <b>#4.</b> View all of the events through a calendar, informing them about how many events they have in a month.
-      <br>
-      <b>#5.</b> Interact with customisable widgets to view the different events from a single view of one event of their choice to a list of 7 events at a glance.
-      <br>
-      <b>#6.</b> Count up from past events (available on each countdown page).
-      <br>
-      <b>#7.</b> View the events' countdown in real time
-      <br>
-      <b>#8.</b> Use the app on different devices as events are synced through the cloud.  
-      <br>
-      </p>
+  <h3>Introducing Countdown: Supercharge Your Productivity Today!</h3>
+
+  Tired of feeling overwhelmed by your busy schedule? Want to make the most of your time and stay on top of your daily events? Look no further than Countdown, the ultimate productivity app designed to revolutionize the way you track and manage your day-to-day activities.
+  
+  Countdown is your go-to companion, empowering you to take control of your time and cultivate positive time management habits. With its sleek design and powerful features, it's the ultimate tool for anyone looking to boost their productivity.
+  
+  Key Features:
+  
+  1. Effortless Event Management: Create, edit, and delete events with ease. Whether it's a meeting, a deadline, or a special occasion, Countdown keeps you organized and ensures you never miss a beat.
+  
+  2. Mood-Enhancing Icons: Personalize your events with a range of expressive icons that reflect your mood. Make each countdown uniquely yours and add a touch of personality to your schedule.
+  
+  3. Customizable Reminders: Stay ahead of your events with timely reminders. Customize notifications to receive alerts 1 hour or 1 day before an event, ensuring you're always prepared and on time.
+  
+  4. Calendar Overview: Gain a comprehensive view of all your events with the intuitive calendar. Easily navigate through months and stay informed about the number of events you have coming up, helping you plan and prioritize effectively.
+  
+  5. Interactive Widgets: Transform your home screen into a productivity powerhouse. Countdown offers customizable widgets that provide a quick glance at your events, from a single event view to a convenient list of seven events. Stay organized and focused at a glance.
+  
+  6. Count Up and Relive Memories: Not just for future events! Countdown allows you to count up from past events, bringing back cherished memories and celebrating milestones. Reflect on your achievements and motivate yourself for even greater success.
+  
+  7. Real-Time Countdown: Experience the thrill of watching your events unfold in real time. Countdown displays live countdowns, creating a sense of anticipation and excitement as you approach your upcoming events.
+  
+  8. Cloud Sync: Access your events seamlessly across multiple devices. With cloud synchronization, your events are always up to date, ensuring you never miss a beat, no matter where you are.
+
+  Don't let time slip away. Take charge of your schedule and make every moment count with Countdown. Download now and unlock the key to productivity and success. It's time to supercharge your day with Countdown—the ultimate productivity companion for everyone.
+
+  Make the most of your time. Start counting down to success with Countdown!
   </p>
 </p>
 
 
 ## Demo Video
-[![Demo Video](screenshots/poster.png)](https://youtu.be/xdkzLyXWwXIE)
+[![Demo Video](screenshots/poster.png)](https://youtu.be/WeatffbHuSM)
 
 ## Screenshots
 Home            | Widgets
