@@ -33,7 +33,7 @@
 
 
 ## Demo Video
-[![Demo Video](screenshots/poster.png)](https://youtu.be/WeatffbHuSM)
+[![Demo Video](screenshots/poster.png)](https://youtu.be/43Grl5l6w2w)
 
 ## Screenshots
 Home            | Widgets
